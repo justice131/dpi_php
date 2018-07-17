@@ -1,0 +1,53 @@
+catchment_name,year,lga_name,lga_prop_catchment,industry_code,employee_count
+macquarie,2011,Bourke(A),0.028,A,230
+macquarie,2011,Bourke(A),0.028,B,12
+macquarie,2011,Brewarrina (A),0.3668,A,154
+macquarie,2011,Brewarrina (A),0.3668,B,3
+macquarie,2011,Walgett(A),0.0824,A,669
+macquarie,2011,Walgett(A),0.0824,B,51
+macquarie,2011,Coonamble(A),0.2152,A,496
+macquarie,2011,Coonamble(A),0.2152,B,3
+macquarie,2011,Gilgandra(A),0.3617,A,524
+macquarie,2011,Gilgandra(A),0.3617,B,5
+macquarie,2011,Western Plains Regional (A),0.9667,A,1136
+macquarie,2011,Western Plains Regional (A),0.9667,B,193
+macquarie,2011,Warrumbungle Shire (A),0.2182,A,991
+macquarie,2011,Warrumbungle Shire (A),0.2182,B,36
+macquarie,2011,Upper Hunter Shire (A),0.0101,A,1240
+macquarie,2011,Upper Hunter Shire (A),0.0101,B,711
+macquarie,2011,Mid-Western Regional (A),0.7321,A,889
+macquarie,2011,Mid-Western Regional (A),0.7321,B,1292
+macquarie,2011,Lithgow (C),0.7821,A,218
+macquarie,2011,Lithgow (C),0.7821,B,999
+macquarie,2011,Oberon (A),0.4095,A,403
+macquarie,2011,Oberon (A),0.4095,B,21
+macquarie,2011,Bathurst Regional(A),0.8303,A,684
+macquarie,2011,Bathurst Regional(A),0.8303,B,316
+macquarie,2011,Blayney (A),0.1105,A,395
+macquarie,2011,Blayney (A),0.1105,B,283
+macquarie,2011,Cabonne (A),0.5214,A,1169
+macquarie,2011,Cabonne (A),0.5214,B,223
+macquarie,2011,Parkes(A),0.5301,A,681
+macquarie,2011,Parkes(A),0.5301,B,434
+macquarie,2011,Lachlan(A),0.2724,A,916
+macquarie,2011,Lachlan(A),0.2724,B,77
+macquarie,2011,Cobar (A),0.0095,A,224
+macquarie,2011,Cobar (A),0.0095,B,682
+macquarie,2011,Bogan(A),0.8449,A,328
+macquarie,2011,Bogan(A),0.8449,B,136
+macquarie,2011,Warren(A),1,A,534
+macquarie,2011,Warren(A),1,B,4
+macquarie,2011,Narromine (A),1,A,718
+macquarie,2011,Narromine (A),1,B,42
+macquarie,2011,Orange (C),1,A,345
+macquarie,2011,Orange (C),1,B,1104
+manning,2011,Mid-Coast(A),0.5687,A,1530
+manning,2011,Mid-Coast(A),0.5687,B,412
+manning,2011,Upper Hunter Shire (A),0.0735,A,1240
+manning,2011,Upper Hunter Shire (A),0.0735,B,711
+manning,2011,Tamworth Regional (A),0.0347,A,1643
+manning,2011,Tamworth Regional (A),0.0347,B,199
+manning,2011,Walcha (A),0.2208,A,631
+manning,2011,Walcha (A),0.2208,B,3
+manning,2011,Port Macquarie-Hastings (A),0.0291,A,718
+manning,2011,Port Macquarie-Hastings (A),0.0291,B,110

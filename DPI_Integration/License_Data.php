@@ -62,10 +62,20 @@
                         $Purpose=$result_arr['Purpose'];
                         $Longitude=$result_arr['Longitude'];
                         $Latitude=$result_arr['Latitude'];
-                        echo "<tr><td>$id</td><td>$Basin_name</td><td>$Category</td>"
-                            . "<td>$AL</td><td>$WaterType</td><td>$purpose_des</td>"
-                            . "<td>$WSP</td><td>$WS</td><td>$ShareComponent</td>"
-                            . "<td>$Purpose</td><td>$Longitude</td><td>$Latitude</td><tr>";
+                        echo "<tr>"
+                                . "<td>$id</td>"
+                                . "<td>$Basin_name</td>"
+                                . "<td>$Category</td>"
+                                . "<td>$AL</td>"
+                                . "<td>$WaterType</td>"
+                                . "<td>$purpose_des</td>"
+                                . "<td>$WSP</td>"
+                                . "<td>$WS</td>"
+                                . "<td>$ShareComponent</td>"
+                                . "<td>$Purpose</td>"
+                                . "<td>$Longitude</td>"
+                                . "<td>$Latitude</td>"
+                                . "<tr>";
                         }
                 ?>
                 </tbody>

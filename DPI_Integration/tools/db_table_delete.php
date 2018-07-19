@@ -1,5 +1,6 @@
 <?php
-    include 'db.helper/db_connection_ini.php';
+    include '../db.helper/db_connection_ini.php';
+    
     $table_name = $_GET["table_name"];
     mysqli_select_db($conn, "dpi_project");
     if ($table_name == "whole_catchment_indices"){
@@ -14,6 +15,8 @@
         $sql = "truncate table operational_mines;";
     }else if ($table_name == "water_treatment_centre"){
         $sql = "truncate table water_treatment_centre;";
+    }else if ($table_name == "lga_data"){
+        $sql = "truncate table lga_data;";
     }else if ($table_name == "town_water_supply"){
         $sql = "truncate table town_water_supply;";
     }else if ($table_name == "water_source"){

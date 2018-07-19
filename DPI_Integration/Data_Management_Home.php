@@ -44,7 +44,7 @@
                     </div>
           </div>
         </div>
-
+        
         <div class="slider" id="home">
          <div class="slider_container">
             <div class="wmuSlider example1">

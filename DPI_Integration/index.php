@@ -57,32 +57,32 @@ and open the template in the editor.
 					</td>
 				  </tr>
 				  <tr>
-					<td>
-						<div>
-						  <div class="box-title">
-							<h4><b>Map Icon Legend</b></h4>
-						  </div>
-						  <div class="box-content" style="height:518px;">
-							<div id="rightdiv">
-                                                            <div id="legend">
-                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Regulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Unregulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Groundwater<br>
-                                                                <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Management zone<br>
-                                                                <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (groundwater)<br>
-                                                                <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (groundwater)<br>
-                                                                <img src="lib/leaflet/images/water_treatment_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp; &nbsp;Water treatment centre<br>
-                                                                <img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp; &nbsp;Power generator<br>
-                                                                <br>
-                                                            </div>
-							</div>
-						  </div>
-						</div>
-					</td>
+                                    <td>
+                                        <div>
+                                          <div class="box-title">
+                                                <h4><b>Map Icon Legend</b></h4>
+                                          </div>
+                                          <div class="box-content" style="height:518px;">
+                                                <div id="rightdiv">
+                                                    <div id="legend">
+                                                        <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Regulated river<br>
+                                                        <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Unregulated river<br>
+                                                        <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Groundwater<br>
+                                                        <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Management zone<br>
+                                                        <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (regulated river)<br>
+                                                        <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (unregulated river)<br>
+                                                        <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (groundwater)<br>
+                                                        <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (regulated river)<br>
+                                                        <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (unregulated river)<br>
+                                                        <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (groundwater)<br>
+                                                        <img src="lib/leaflet/images/water_treatment_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp; &nbsp;Water treatment centre<br>
+                                                        <img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp; &nbsp;Power generator<br>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                          </div>
+                                        </div>
+                                    </td>
 				  </tr>
 				  </table>
 			</div>                  
@@ -2189,13 +2189,20 @@ and open the template in the editor.
                     var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     this._div.innerHTML = (
                         props?
-                        '<h5>' + catch_name + ' Catchment' + '</h5>' + 
-                        'Overall Flow Utilisation: '+ overall_fui + '<br/>' +
-                        'Overall Irrigation Drought Security: '+ overall_idsi + '<br />'+
-                        'Overall Flood Management: '+ overall_fmi + '<br />'+
-                        'Overall Delivery Efficiency: '+ overall_dei + '<br />'+
-                        'Szie of Surface Water: ' + surface_water_size + '<br />'+
-                        'Size of Groundwater: ' + groundwater_size + '<br />'
+//                        '<h5>' + catch_name + ' Catchment' + '</h5>' + 
+//                        'Overall Flow Utilisation: '+ overall_fui + '<br/>' +
+//                        'Overall Irrigation Drought Security: '+ overall_idsi + '<br />'+
+//                        'Overall Flood Management: '+ overall_fmi + '<br />'+
+//                        'Overall Delivery Efficiency: '+ overall_dei + '<br />'+
+//                        'Szie of Surface Water: ' + surface_water_size + '<br />'+
+//                        'Size of Groundwater: ' + groundwater_size + '<br />'
+                        '<b>' + catch_name + ' Catchment' + '</b><br/><br/>' + 
+                        '<p style=\"line-height:50%\"><img src=\"images/'+index_level(overall_fui,"fui")+'\" height=\"25\" width=\"25\"> Flow Utilisation: <b>'+ overall_fui + '</b><br/><br/>' +
+                        '<img src=\"images/'+index_level(overall_idsi,"idsi")+'\" height=\"25\" width=\"25\"> Irrigation Drought Security: <b>'+ overall_idsi + '</b><br/><br/>'+
+                        '<img src=\"images/'+index_level(overall_fmi,"fmi")+'\" height=\"25\" width=\"25\"> Flood Management: <b>'+ overall_fmi + '</b><br/><br/>'+
+                        '<img src=\"images/'+index_level(overall_dei,"dei")+'\" height=\"25\" width=\"25\"> Delivery Efficiency: <b>'+ overall_dei + '</b><br/><br/>'+
+                        '<img src=\"images/surface_water.png\" height=\"25\" width=\"25\"> Size of Surface Water: <b>' + surface_water_size + '</b><br/><br />'+
+                        '<img src=\"images/ground_water.png\" height=\"25\" width=\"25\"> Size of Groundwater: <b>' + groundwater_size + '</b><br /></p>'
                         : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                     );
                 <?php }?>;
@@ -2229,8 +2236,108 @@ and open the template in the editor.
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }
+            
+            // add the lenged
+            var legend = L.control({position: 'bottomright'});
+            legend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'info legend');
+                div.innerHTML= '<div style=\"background-color:white\"><canvas id=\"bar-pic\" width=200 height=180></canvas></div>';
+                return div;
+            };
+            legend.addTo(map);
+            
+            Chart.defaults.global.title.display = false;
+            Chart.defaults.global.legend.display = false;
+            var popCanvas = document.getElementById("bar-pic").getContext("2d");
+            var bg_color = new Array();
+            var data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>];
+            for(i = 0; i < 3; i++) {
+                if(data[i] <= 0.25){
+                    bg_color.push("rgba(255, 0, 0, 1)");
+                }else if(data[i] <= 0.4){
+                    bg_color.push("rgba(245, 255, 50, 1)");
+                }else{
+                    bg_color.push("rgba(50, 255, 70, 1)");
+                }
+            }
+            if(data[3] <= 0.7){
+                bg_color.push("rgba(255, 0, 0, 1)");
+            }else if(data[3] <= 0.8){
+                bg_color.push("rgba(245, 255, 50, 1)");
+            }else{
+                bg_color.push("rgba(50, 255, 70, 1)");
+            }
+//            bg_color.push("rgba(50, 255, 70, 1)");
+//            bg_color.push("rgba(255, 159, 64, 1)");
+
+            var barChart = new Chart(popCanvas, {
+                type: 'bar',
+                data: {
+//                    labels: ["FUI", "IDSI", "FMI", "DEI", "Surface", "Ground"],
+                    labels: ["FUI", "IDSI", "FMI", "DEI"],
+                    datasets: [{
+                      label: '',
+                      data: data,
+                      backgroundColor: bg_color
+                    }]
+                },
+                options:{
+                    scales: {
+                      yAxes: [{
+                            display: false,
+                            gridLines: {
+                              display: false
+                            }
+                      }],
+                      xAxes: [{
+                            gridLines: {
+                              display: false
+                            },
+                            textStyle:{color: '#FFF'}
+                      }]
+                    }
+                }
+            });
+            
+            
+//            Chart.defaults.global.title.display = false;
+//            Chart.defaults.global.legend.display = false;
+//            var popCanvas = document.getElementById("bar-pic").getContext("2d");
+//            var barChart = new Chart(popCanvas, {
+//                type: 'bar',
+//                data: {
+//                        labels: ["FUI", "IDSI", "FMI", "DEI", "Surface", "Ground"],
+//                        datasets: [{
+//                          label: '',
+//                          data: [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, 
+//                              <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>],
+//                          backgroundColor: [
+//                                'rgba(255, 99, 132, 0.6)',
+//                                'rgba(54, 162, 235, 0.6)',
+//                                'rgba(255, 206, 86, 0.6)',
+//                                'rgba(75, 192, 192, 0.6)',
+//                                'rgba(153, 102, 255, 0.6)',
+//                                'rgba(255, 159, 64, 0.6)',
+//                          ]
+//                        }]
+//                },
+//                options:{
+//                        scales: {
+//                          yAxes: [{
+//                                display: false,
+//                                gridLines: {
+//                                  display: false
+//                                }
+//                          }],
+//                          xAxes: [{
+//                                gridLines: {
+//                                  display: false
+//                                }
+//                          }]
+//                        }
+//                }
+//            });
             //Edited by justice
-            //L.geoJSON(MacquarieBogan_CatchmentBoundary).addTo(map).getBounds();
         </script>
     </body>
 </html>

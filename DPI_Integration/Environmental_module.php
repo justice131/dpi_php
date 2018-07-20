@@ -55,7 +55,6 @@ and open the template in the editor.
                                                         </tr>
                                                     </table>
 						  </div>
-                                                 
 						</div>
 					</td>
 				  </tr>

@@ -44,7 +44,7 @@
                     </div>
           </div>
         </div>
-
+        
         <div class="slider" id="home">
          <div class="slider_container">
             <div class="wmuSlider example1">
@@ -82,4 +82,3 @@
          <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     </body>
 </html>
-

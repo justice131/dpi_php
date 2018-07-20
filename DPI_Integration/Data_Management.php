@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>
-            index
+            Data_Management
         </title>
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -62,6 +62,12 @@
                                     <dd class="">
                                         <a href="javascript:;" _href="Water_Treatment_Centre.php">
                                            <cite>Water_Treatment_Centre</cite>
+                                        </a>
+                              </dd>
+                              <dd class="">
+                                    <dd class="">
+                                        <a href="javascript:;" _href="LGA_Data.php">
+                                           <cite>LGA_Data</cite>
                                         </a>
                               </dd>
                             </dl>

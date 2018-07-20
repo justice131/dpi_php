@@ -1,8 +1,6 @@
 <?php
 //Get the connection of the database
-function get_db_conn(){
-    include 'db.helper/db_connection_ini.php';
-}
+include '../db.helper/db_connection_ini.php';
 
 //Create the database dpi_project if not exist
 function create_db_if_not_exist($conn){
@@ -14,7 +12,6 @@ function create_db_if_not_exist($conn){
 }
 
 //Get connection and create database
-$conn = get_db_conn();
 create_db_if_not_exist($conn);
 
 //Create whole_catchment_indices
@@ -104,6 +101,72 @@ $sql = "CREATE TABLE IF NOT EXISTS water_treatment_centre( ".
     "PRIMARY KEY (wtc_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
 mysqli_query($conn,$sql);
 
+//Create lga_data
+$sql = "CREATE TABLE IF NOT EXISTS lga_data( ".
+    "lga_id INT NOT NULL AUTO_INCREMENT, ".
+    "lga_name VARCHAR(70) NOT NULL, ".
+    "catchment VARCHAR(70) NOT NULL, ".
+    "proportion_in_macquarie_catchment FLOAT, ".
+    "proportion_in_manning_catchment FLOAT, ".
+    "proportion_in_backwater FLOAT, ".
+    "proportion_in_bell FLOAT, ".
+    "proportion_in_bullbodney FLOAT, ".
+    "proportion_in_burrendong FLOAT, ".
+    "proportion_in_campbells FLOAT, ".
+    "proportion_in_coolbaggie FLOAT, ".
+    "proportion_in_cooyal FLOAT, ".
+    "proportion_in_ewenmar FLOAT, ".
+    "proportion_in_fish FLOAT, ".
+    "proportion_in_goolma FLOAT, ".
+    "proportion_in_lawsons FLOAT, ".
+    "proportion_in_little FLOAT, ".
+    "proportion_in_lowerbogan FLOAT, ".
+    "proportion_in_lowermacquarie FLOAT, ".   
+    "proportion_in_lowertalbragar FLOAT, ".
+    "proportion_in_macquarie FLOAT, ".
+    "proportion_in_marra FLOAT, ".
+    "proportion_in_marthaguy FLOAT, ".
+    "proportion_in_maryvale FLOAT, ".
+    "proportion_in_molong FLOAT, ".
+    "proportion_in_piambong FLOAT, ".
+    "proportion_in_pipeclay FLOAT, ".
+    "proportion_in_queen FLOAT, ".
+    "proportion_in_summerhill FLOAT, ".
+    "proportion_in_turon FLOAT, ".
+    "proportion_in_upperbogan FLOAT, ".
+    "proportion_in_uppercudgegong FLOAT, ".
+    "proportion_in_uppertallbragar FLOAT, ".
+    "proportion_in_wambangalong FLOAT, ".
+    "proportion_in_winburndale FLOAT, ".
+    "proportion_in_avon FLOAT, ".
+    "proportion_in_bowman FLOAT, ".
+    "proportion_in_cooplacurripa FLOAT, ".
+    "proportion_in_dingo FLOAT, ".
+    "proportion_in_lowerbarnard FLOAT, ".
+    "proportion_in_lowerbarrington FLOAT, ".
+    "proportion_in_lowermanning FLOAT, ".   
+    "proportion_in_manning FLOAT, ".
+    "proportion_in_midmanning FLOAT, ".
+    "proportion_in_myall FLOAT, ".
+    "proportion_in_nowendoc FLOAT, ".
+    "proportion_in_rowleys FLOAT, ".
+    "proportion_in_upperbarnard FLOAT, ".
+    "proportion_in_upperbarrington FLOAT, ".
+    "proportion_in_uppergloucester FLOAT, ".
+    "proportion_in_uppermanning FLOAT, ".
+    "year_population FLOAT, ".
+    "population FLOAT, ".
+    "year_irrigation VARCHAR(50), ".
+    "irrigation_production VARCHAR(50), ".
+    "year_mining VARCHAR(50), ".
+    "mining_production FLOAT, ".
+    "year_employment VARCHAR(50), ".
+    "employment_irrigation FLOAT, ".
+    "employment_mining FLOAT, ".
+    "PRIMARY KEY (lga_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
+    mysqli_query($conn,$sql);
+
+    
 //Create town_water_supply
 $sql = "CREATE TABLE IF NOT EXISTS town_water_supply( ".
     "tws_id INT NOT NULL AUTO_INCREMENT, ".

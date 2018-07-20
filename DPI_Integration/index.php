@@ -3512,7 +3512,10 @@ and open the template in the editor.
             Chart.defaults.global.legend.display = false;
             var popCanvas = document.getElementById("bar-pic").getContext("2d");
             var bg_color = new Array();
-            var data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>];
+            var data = [];
+            <?php if(!empty($row)){?>;
+                data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>];
+            <?php }?>;
             for(i = 0; i < 3; i++) {
                 if(data[i] <= 0.25){
                     bg_color.push("rgba(255, 0, 0, 1)");
@@ -3562,43 +3565,6 @@ and open the template in the editor.
             });
             
             
-//            Chart.defaults.global.title.display = false;
-//            Chart.defaults.global.legend.display = false;
-//            var popCanvas = document.getElementById("bar-pic").getContext("2d");
-//            var barChart = new Chart(popCanvas, {
-//                type: 'bar',
-//                data: {
-//                        labels: ["FUI", "IDSI", "FMI", "DEI", "Surface", "Ground"],
-//                        datasets: [{
-//                          label: '',
-//                          data: [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, 
-//                              <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>],
-//                          backgroundColor: [
-//                                'rgba(255, 99, 132, 0.6)',
-//                                'rgba(54, 162, 235, 0.6)',
-//                                'rgba(255, 206, 86, 0.6)',
-//                                'rgba(75, 192, 192, 0.6)',
-//                                'rgba(153, 102, 255, 0.6)',
-//                                'rgba(255, 159, 64, 0.6)',
-//                          ]
-//                        }]
-//                },
-//                options:{
-//                        scales: {
-//                          yAxes: [{
-//                                display: false,
-//                                gridLines: {
-//                                  display: false
-//                                }
-//                          }],
-//                          xAxes: [{
-//                                gridLines: {
-//                                  display: false
-//                                }
-//                          }]
-//                        }
-//                }
-//            });
             //Edited by justice
         </script>
     </body>

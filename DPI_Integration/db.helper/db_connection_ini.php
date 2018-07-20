@@ -1,7 +1,7 @@
 <?php
 $dbhost = 'localhost';
 $dbuser = 'root';
-$dbpass = '';
+$dbpass = '123';
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass);
 if(! $conn ){
     die('Could not connect: ' . mysql_error());

@@ -779,8 +779,8 @@ and open the template in the editor.
                     var Mak_uw_1 = L.marker(unregulated_0, {icon: Icon_1}).addTo(map)
                     .bindPopup(MacquarieBogan_unregulated.features[0].properties.WATER_SOUR+ '<br/><br/>' 
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -816,8 +816,8 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -862,8 +862,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -907,8 +908,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -953,8 +955,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));          
 
@@ -1000,10 +1003,11 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));          
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));         
 
                     <?php if(!empty($ro_6)){?>
                         var AE ="<?php echo $ro_6["all_entitlement"]; ?>";
@@ -1046,10 +1050,11 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));           
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));          
  
                      <?php if(!empty($ro_7)){?>
                         var AE ="<?php echo $ro_7["all_entitlement"]; ?>";
@@ -1092,10 +1097,11 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));          
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));         
 
                     <?php if(!empty($ro_8)){?>
                         var AE ="<?php echo $ro_8["all_entitlement"]; ?>";
@@ -1139,10 +1145,11 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));          
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));        
                     
                     <?php if(!empty($ro_9)){?>
                         var AE ="<?php echo $ro_9["all_entitlement"]; ?>";
@@ -1185,8 +1192,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             
@@ -1231,8 +1239,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             
@@ -1277,8 +1286,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             
@@ -1323,8 +1333,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
  
@@ -1369,8 +1380,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1415,8 +1427,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1461,8 +1474,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             
@@ -1538,8 +1552,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
  
@@ -1584,8 +1599,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1630,8 +1646,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1676,8 +1693,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1722,8 +1740,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1768,8 +1787,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
  
@@ -1814,8 +1834,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
  
@@ -1860,8 +1881,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1906,8 +1928,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1952,8 +1975,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -1998,8 +2022,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -2044,8 +2069,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -2090,8 +2116,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE) + ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             
@@ -2483,8 +2510,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -2529,8 +2557,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
@@ -2575,8 +2604,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
@@ -2621,8 +2651,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             
@@ -2667,8 +2698,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
@@ -2714,8 +2746,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
    
@@ -2760,8 +2793,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
    
@@ -2806,8 +2840,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
@@ -2852,8 +2887,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
    
@@ -2898,8 +2934,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
@@ -2945,8 +2982,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
    
@@ -2991,8 +3029,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
@@ -3037,8 +3076,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
@@ -3083,8 +3123,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
                     
@@ -3129,8 +3170,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
  
@@ -3175,8 +3217,9 @@ and open the template in the editor.
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             

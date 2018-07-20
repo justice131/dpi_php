@@ -1619,7 +1619,7 @@ and open the template in the editor.
                         var cat = work_mac[i][5];
                         var Basin_name = work_mac[i][6];
                         var Water_Source = work_mac[i][7];
-                        if (Basin_name === 'Macquarie'){
+                        if (Basin_name === 'Macquarie' & Purpose === 'TOWN WATER SUPPLY'){
                                 switch(WT){
                                     case 'REG': 
                                     var M = L.marker([Lat_workapproval, Lon_workapproval], {icon: Icon_license_1})
@@ -2280,7 +2280,7 @@ and open the template in the editor.
                         var cat = work_mac[i][5];
                         var Basin_name = work_mac[i][6];
                         var Water_Source = work_mac[i][7];
-                        if (Basin_name === 'Manning'){
+                        if (Basin_name === 'Macquarie' & Purpose === 'TOWN WATER SUPPLY'){
                                 switch(WT){
                                     case 'REG': 
                                     var M = L.marker([Lat_workapproval, Lon_workapproval], {icon: Icon_license_1})

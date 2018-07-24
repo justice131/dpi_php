@@ -10,6 +10,11 @@ and open the template in the editor.
         <?php include("Common_Script_Import.html"); ?>
         <script type="text/javascript" src="border/Macquarie_Mining.geojson"></script>
         <script type="text/javascript" src="border/Manning_Mining.geojson"></script>
+        <style>
+        .hover_info {
+            width: 280px;
+        }
+        </style>
     </head>
     <body style="background-color:#F3F3F4;">
         <nav class="navbar-default navbar-static-side" role="navigation">
@@ -2282,14 +2287,19 @@ and open the template in the editor.
                         var Employ = "<?php echo $em_manning; ?>";
                     }
                     this._div.innerHTML = (
-                        //props?
-                        '<h5>' + 'Mining Sector within ' + catch_name + ' Catchment' + '</h5>' + 
-                        'Total Number of Mines: '+ toThousands(Total_no_mine) + '<br/>' +
-                        'Annual Production Value: '+ catchment_size + '<br />'+
-                        'Annual Employment Number: '+ toThousands(Math.round(Employ)) + '<br />'+
-                        'Annual Use of Water: '+ overall_dei + '<br />'+
-                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
-                        //: '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
+//                        props?
+//                        '<h5>' + 'Mining Sector within ' + catch_name + ' Catchment' + '</h5>' + 
+//                        'Total Number of Mines: '+ toThousands(Total_no_mine) + '<br/>' +
+//                        'Annual Production Value: '+ catchment_size + '<br />'+
+//                        'Annual Employment Number: '+ toThousands(Math.round(Employ)) + '<br />'+
+//                        'Annual Use of Water: '+ overall_dei + '<br />'+
+//                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
+                          '<b>' + 'Mining Sector within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
+                          '<p style=\"line-height:50%\"><img src=\"images/mining_number.png\" height=\"25\" width=\"25\"> Total Number of Mines: <b>' + toThousands(Total_no_mine) + '</b><br/><br />'+
+                          '<img src=\"images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + toThousands(Total_no_mine)  + '</b><br/><br />'+
+                          '<img src=\"images/mining_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
+                          '<img src=\"images/mining_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
+                          '<img src=\"images/mining_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + toThousands(Math.round(Employ))  + '</b><br/></p>'   
                     );
                 <?php }?>;
             };

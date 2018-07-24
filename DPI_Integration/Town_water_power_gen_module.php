@@ -10,7 +10,7 @@ and open the template in the editor.
         <?php include("Common_Script_Import.html"); ?>
         <style>
         .hover_info {
-            width: 385px;
+            width: 380px;
         }
         </style>
     </head>

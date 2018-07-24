@@ -366,9 +366,12 @@ and open the template in the editor.
                         }).addTo(map);
                 //Zooms to the layer selected
                 map.fitBounds(CAT.getBounds());
+                //legendinfo.addTo(map);
                 hover_info.addTo(map);
+                Add_legend();
                 if (checkbox_id !== null){
                     checkbox_id.style.display = "block";
+                    
                 }
                 //Reset to default checkbox
                 $("input[type=checkbox]").each(function() { this.checked=false; });
@@ -397,6 +400,7 @@ and open the template in the editor.
                 removeLayer(displayed_gis_layer_approval);
                 document.getElementById('selectCAT').value = 'default';
                 map.removeControl(hover_info);
+                map.removeControl(legendinfo);
             }
                        
             // find the middle point from geojason file
@@ -3543,70 +3547,71 @@ and open the template in the editor.
             }
             
             // add the lenged
-            var legend = L.control({position: 'bottomright'});
-            legend.onAdd = function (map) {
-                var div = L.DomUtil.create('div', 'info legend');
-                div.innerHTML= '<div style=\"background-color:white\"><canvas id=\"bar-pic\" width=200 height=180></canvas></div>';
-                return div;
-            };
-            legend.addTo(map);
-            
-            Chart.defaults.global.title.display = false;
-            Chart.defaults.global.legend.display = false;
-            var popCanvas = document.getElementById("bar-pic").getContext("2d");
-            var bg_color = new Array();
-            var data = [];
-            <?php if(!empty($row)){?>;
-                data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>];
-            <?php }?>;
-            for(i = 0; i < 3; i++) {
-                if(data[i] <= 0.25){
+            function Add_legend(){
+                legendinfo = L.control({position: 'bottomright'});
+                legendinfo.onAdd = function (map) {
+                    var div = L.DomUtil.create('div', 'info legend');
+                    div.innerHTML= '<div style=\"background-color:white\"><canvas id=\"bar-pic\" width=200 height=180></canvas></div>';
+                    return div;
+                };
+                legendinfo.addTo(map);
+
+                Chart.defaults.global.title.display = false;
+                Chart.defaults.global.legend.display = false;
+                var popCanvas = document.getElementById("bar-pic").getContext("2d");
+                var bg_color = new Array();
+                var data = [];
+                <?php if(!empty($row)){?>;
+                    data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>];
+                <?php }?>;
+                for(i = 0; i < 3; i++) {
+                    if(data[i] <= 0.25){
+                        bg_color.push("rgba(255, 0, 0, 1)");
+                    }else if(data[i] <= 0.4){
+                        bg_color.push("rgba(245, 255, 50, 1)");
+                    }else{
+                        bg_color.push("rgba(50, 255, 70, 1)");
+                    }
+                }
+                if(data[3] <= 0.7){
                     bg_color.push("rgba(255, 0, 0, 1)");
-                }else if(data[i] <= 0.4){
+                }else if(data[3] <= 0.8){
                     bg_color.push("rgba(245, 255, 50, 1)");
                 }else{
                     bg_color.push("rgba(50, 255, 70, 1)");
                 }
-            }
-            if(data[3] <= 0.7){
-                bg_color.push("rgba(255, 0, 0, 1)");
-            }else if(data[3] <= 0.8){
-                bg_color.push("rgba(245, 255, 50, 1)");
-            }else{
-                bg_color.push("rgba(50, 255, 70, 1)");
-            }
-//            bg_color.push("rgba(50, 255, 70, 1)");
-//            bg_color.push("rgba(255, 159, 64, 1)");
+    //            bg_color.push("rgba(50, 255, 70, 1)");
+    //            bg_color.push("rgba(255, 159, 64, 1)");
 
-            var barChart = new Chart(popCanvas, {
-                type: 'bar',
-                data: {
-//                    labels: ["FUI", "IDSI", "FMI", "DEI", "Surface", "Ground"],
-                    labels: ["FUI", "IDSI", "FMI", "DEI"],
-                    datasets: [{
-                      label: '',
-                      data: data,
-                      backgroundColor: bg_color
-                    }]
-                },
-                options:{
-                    scales: {
-                      yAxes: [{
-                            display: false,
-                            gridLines: {
-                              display: false
-                            }
-                      }],
-                      xAxes: [{
-                            gridLines: {
-                              display: false
-                            },
-                            textStyle:{color: '#FFF'}
-                      }]
+                var barChart = new Chart(popCanvas, {
+                    type: 'bar',
+                    data: {
+    //                    labels: ["FUI", "IDSI", "FMI", "DEI", "Surface", "Ground"],
+                        labels: ["FUI", "IDSI", "FMI", "DEI"],
+                        datasets: [{
+                          label: '',
+                          data: data,
+                          backgroundColor: bg_color
+                        }]
+                    },
+                    options:{
+                        scales: {
+                          yAxes: [{
+                                display: false,
+                                gridLines: {
+                                  display: false
+                                }
+                          }],
+                          xAxes: [{
+                                gridLines: {
+                                  display: false
+                                },
+                                textStyle:{color: '#FFF'}
+                          }]
+                        }
                     }
-                }
-            });
-            
+                });
+            }
             
             //Edited by justice
         </script>

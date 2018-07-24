@@ -8,6 +8,11 @@ and open the template in the editor.
     <head>
         <title>Critical Environmental Assets</title>
         <?php include("Common_Script_Import.html"); ?>
+        <style>
+        .hover_info {
+            width: 260px;
+        }
+        </style>      
         <script type="text/javascript" src="border/Macquarie_Wetland.geojson"></script>
         <script type="text/javascript" src="border/Manning_Wetland.geojson"></script>
     </head>
@@ -2256,11 +2261,13 @@ and open the template in the editor.
                         
                     }
                     this._div.innerHTML = (
-                        //props?
-                        '<h5>' + 'Critical Environmental Assets within ' + catch_name + ' Catchment' + '</h5>' + 
-                        'Total Number of Asset: ' + Total_no + '<br/>' +
-                        'Total Area of Asset: ' + toThousands(Math.round(Total_area*100)/100) + ' Ha'
-                       // : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
+//                        '<h5>' + 'Critical Environmental Assets within ' + catch_name + ' Catchment' + '</h5>' + 
+//                        'Total Number of Asset: ' + Total_no + '<br/>' +
+//                        'Total Area of Asset: ' + toThousands(Math.round(Total_area*100)/100) + ' Ha'
+                        
+                        '<b>' + 'Critical Environmental Assets within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
+                        '<p style=\"line-height:50%\"><img src=\"images/environmental_number.png\" height=\"25\" width=\"25\"> Total Number of Asset: <b>' + Total_no + '</b><br/><br />'+
+                        '<img src=\"images/environmental_area.png\" height=\"25\" width=\"25\"> Total Area of Asset: <b>' + toThousands(Math.round(Total_area*100)/100) + ' Ha' + '</b><br/></p>'     
                     );
                 <?php }?>;
             };

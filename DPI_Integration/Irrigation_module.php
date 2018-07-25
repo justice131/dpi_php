@@ -378,12 +378,12 @@ and open the template in the editor.
                     var overall_fui = "<?php echo $row["overall_fui"]; ?>";
                 <?php }?>;
                     
-                if (overall_fui>=0.7){
-                    return '#ff3333';
-                }else if (overall_fui>0.3 & overall_fui<0.7){
-                    return '#33ff33';
+                if (overall_fui>0.4){
+                    return 'rgba(21, 171, 108, 1)';
+                }else if (overall_fui>0.25 & overall_fui<=0.4){
+                    return 'rgba(252, 157, 61, 1)';
                 }else{
-                    return '#ff8533';
+                    return 'rgba(255, 56, 3, 1)';
                 }
             }
             

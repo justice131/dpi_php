@@ -12,19 +12,6 @@ and open the template in the editor.
         <script type="text/javascript" src="border/Manning_Management_Zone.geojson"></script>
         <style>
             .hover_info {
-                padding-top: 5px;
-                padding-right: -5px;
-                padding-left: 15px;
-                padding-bottom: 10px;
-                top: 0px;
-                right: 0px;
-                font: 13.5px "Times New Roman";
-                background: #ffffff;
-                box-shadow: 0 0 15px rgba(0,0,0,0.2);
-                border-radius: 5px;
-                width: 240px;
-                text-align: left;
-                line-height: 125%;
                 display: none;
             }
         </style>
@@ -354,12 +341,12 @@ and open the template in the editor.
                     var overall_fui = "<?php echo $row["overall_fui"]; ?>";
                 <?php }?>;
                     
-                if (overall_fui>=0.7){
-                    return '#ff3333';
-                }else if (overall_fui>0.3 & overall_fui<0.7){
-                    return '#33ff33';
+                if (overall_fui>0.4){
+                    return 'rgba(21, 171, 108, 1)';
+                }else if (overall_fui>0.25 & overall_fui<=0.4){
+                    return 'rgba(252, 157, 61, 1)';
                 }else{
-                    return '#ff8533';
+                    return 'rgba(255, 56, 3, 1)';
                 }
             }
             

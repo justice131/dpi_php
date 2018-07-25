@@ -334,12 +334,12 @@ and open the template in the editor.
                     var overall_fui = "<?php echo $row["overall_fui"]; ?>";
                 <?php }?>;
                     
-                if (overall_fui>=0.7){
-                    return '#ff3333';
-                }else if (overall_fui>0.3 & overall_fui<0.7){
-                    return '#33ff33';
+                if (overall_fui>0.4){
+                    return 'rgba(21, 171, 108, 1)';
+                }else if (overall_fui>0.25 & overall_fui<=0.4){
+                    return 'rgba(252, 157, 61, 1)';
                 }else{
-                    return '#ff8533';
+                    return 'rgba(255, 56, 3, 1)';
                 }
             }
             
@@ -3566,19 +3566,19 @@ and open the template in the editor.
                 <?php }?>;
                 for(i = 0; i < 3; i++) {
                     if(data[i] <= 0.25){
-                        bg_color.push("rgba(255, 0, 0, 1)");
+                        bg_color.push("rgba(255, 56, 3, 1)");
                     }else if(data[i] <= 0.4){
-                        bg_color.push("rgba(245, 255, 50, 1)");
+                        bg_color.push("rgba(252, 157, 61, 1)");
                     }else{
-                        bg_color.push("rgba(50, 255, 70, 1)");
+                        bg_color.push("rgba(21, 171, 108, 1)");
                     }
                 }
                 if(data[3] <= 0.7){
-                    bg_color.push("rgba(255, 0, 0, 1)");
+                    bg_color.push("rgba(253, 56, 3, 1)");
                 }else if(data[3] <= 0.8){
-                    bg_color.push("rgba(245, 255, 50, 1)");
+                    bg_color.push("rgba(252, 157, 61, 1)");
                 }else{
-                    bg_color.push("rgba(50, 255, 70, 1)");
+                    bg_color.push("rgba(21, 171, 108, 1)");
                 }
     //            bg_color.push("rgba(50, 255, 70, 1)");
     //            bg_color.push("rgba(255, 159, 64, 1)");

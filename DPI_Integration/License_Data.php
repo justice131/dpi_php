@@ -54,10 +54,10 @@
                         $Category=$result_arr['Category']; 
                         $AL=$result_arr['AL'];
                         $WaterType=$result_arr['WaterType'];  
+                        $purpose_des=$result_arr['purpose_des']; 
                         $WSP=$result_arr['WSP'];
                         $WS=$result_arr['WS'];
                         $ShareComponent=$result_arr['ShareComponent'];   
-                        $Purpose=$result_arr['Purpose'];
                         $Longitude=$result_arr['Longitude'];
                         $Latitude=$result_arr['Latitude'];
                         echo "<tr>"

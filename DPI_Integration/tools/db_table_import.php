@@ -397,7 +397,7 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
         }else if ($table_name == "license_data"){
             $sql = "truncate table license_data;";
             mysqli_query($conn,$sql);
-            $col_num_s = 11;
+            $col_num_s = 10;
             $col_num = count($data[0]);
             if($col_num_s!=$col_num){
                 echo "<script>alert(\"File format not valid.\")</script>";
@@ -406,8 +406,8 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
             for($i=1;$i<$row_num;$i++){
                 $col_num = count($data[$i]);
                 if($col_num_s==$col_num){
-                    $sql="insert delayed into license_data(Basin_name,Category,AL,WaterType,purpose_des,WSP,WS,ShareComponent,Purpose,Longitude,Latitude)values(\""
-                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\",\"".$data[$i][8]."\",\"".$data[$i][9]."\",\"".$data[$i][10]."\");";
+                    $sql="insert delayed into license_data(Basin_name,Category,AL,WaterType,purpose_des,WSP,WS,ShareComponent,Longitude,Latitude)values(\""
+                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\",\"".$data[$i][8]."\",\"".$data[$i][9]."\");";
                     mysqli_query($conn,$sql);
                 }
             }

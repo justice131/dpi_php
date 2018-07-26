@@ -267,8 +267,7 @@ $sql = "CREATE TABLE IF NOT EXISTS license_data( ".
     "purpose_des VARCHAR(150), ".
     "WSP VARCHAR(150), ".
     "WS VARCHAR(150), ".        
-    "ShareComponent FLOAT, ".
-    "Purpose VARCHAR(150), ". 
+    "ShareComponent FLOAT, ". 
     "Longitude FLOAT, ".
     "Latitude FLOAT, ".
     "PRIMARY KEY (id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";

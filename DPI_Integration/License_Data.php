@@ -37,7 +37,6 @@
                          <th>WSP</th>
                          <th>WS</th>
                          <th>ShareComponent</th>
-                         <th>Purpose</th>
                          <th>Longitude</th>
                          <th>Latitude</th>
                      <tr
@@ -55,7 +54,6 @@
                         $Category=$result_arr['Category']; 
                         $AL=$result_arr['AL'];
                         $WaterType=$result_arr['WaterType'];  
-                        $purpose_des=$result_arr['purpose_des']; 
                         $WSP=$result_arr['WSP'];
                         $WS=$result_arr['WS'];
                         $ShareComponent=$result_arr['ShareComponent'];   
@@ -72,7 +70,6 @@
                                 . "<td>$WSP</td>"
                                 . "<td>$WS</td>"
                                 . "<td>$ShareComponent</td>"
-                                . "<td>$Purpose</td>"
                                 . "<td>$Longitude</td>"
                                 . "<td>$Latitude</td>"
                                 . "<tr>";

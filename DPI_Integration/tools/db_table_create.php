@@ -165,6 +165,15 @@ $sql = "CREATE TABLE IF NOT EXISTS lga_data( ".
     "employment_mining FLOAT, ".
     "PRIMARY KEY (lga_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
     mysqli_query($conn,$sql);
+    
+//Create manning_flow_data
+$sql = "CREATE TABLE IF NOT EXISTS manning_flow_data( ".
+    "station_id INT NOT NULL AUTO_INCREMENT, ".
+    "station_code INT NOT NULL, ".
+    "date VARCHAR(30) NOT NULL, ".
+    "flow FLOAT, ".
+    "PRIMARY KEY (station_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
+mysqli_query($conn,$sql);
 
     
 //Create town_water_supply

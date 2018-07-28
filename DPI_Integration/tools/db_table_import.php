@@ -254,6 +254,23 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
                     mysqli_query($conn,$sql);   
                 }
             }
+        }else if ($table_name == "manning_flow_data"){
+            $sql = "truncate table manning_flow_data;";
+            mysqli_query($conn,$sql);
+            $col_num_s = 3;
+            $col_num = count($data[0]);
+            if($col_num_s!=$col_num){
+                echo "File format not valid";
+                return;
+            }
+            for($i=1;$i<$row_num;$i++){
+                $col_num = count($data[$i]);
+                if($col_num_s==$col_num){
+                    $sql="insert delayed into manning_flow_data(station_code,date,flow)values(\""
+                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\");";
+                    mysqli_query($conn,$sql);
+                }
+            }
         }else if ($table_name == "town_water_supply"){
             $sql = "truncate table town_water_supply;";
             mysqli_query($conn,$sql);

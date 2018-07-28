@@ -17,6 +17,8 @@
         $sql = "truncate table water_treatment_centre;";
     }else if ($table_name == "lga_data"){
         $sql = "truncate table lga_data;";
+    }else if ($table_name == "manning_flow_data"){
+        $sql = "truncate table manning_flow_data;";
     }else if ($table_name == "town_water_supply"){
         $sql = "truncate table town_water_supply;";
     }else if ($table_name == "water_source"){
@@ -37,23 +39,6 @@
         $sql = "truncate table dam_daily_data.php;";
     }else if ($table_name == "dam_summary.php"){
         $sql = "truncate table dam_summary.php;";
-    }else if ($table_name == "all_table"){
-        $sql = "truncate table whole_catchment_indices;";
-        $sql .= "truncate table river_indices;";
-        $sql .= "truncate table management_zone_indices;";
-        $sql .= "truncate table irrigated_areas;";
-        $sql .= "truncate table water_treatment_centre;";
-        $sql .= "truncate table operational_mines;";
-        $sql .= "truncate table town_water_supply;";
-        $sql .= "truncate table water_source;"; 
-        $sql .= "truncate table license_data;";
-        $sql .= "truncate table valley_summary;";
-        $sql .= "truncate table valley_daily_data;";
-        $sql .= "truncate table valley_yearly_data;";
-        $sql .= "truncate table dam_daily_data;";
-        $sql .= "truncate table dam_summary;"; 
-        $sql .= "truncate table work_approval";
-        $sql .= "truncate table employment_data;";
     }
     $retval = mysqli_query($conn,$sql);
     if(! $retval ){

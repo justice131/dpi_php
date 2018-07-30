@@ -781,7 +781,7 @@ and open the template in the editor.
                     <?php }?> 
                     
                     var Mak_uw_1 = L.marker(unregulated_0, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[0].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[0].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
                     + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
@@ -811,7 +811,7 @@ and open the template in the editor.
                     <?php }?> 
                     
                     var Mak_uw_2 = L.marker(unregulated_1, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[1].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[1].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -858,7 +858,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                     var Mak_uw_3 = L.marker(unregulated_2, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[2].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[2].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -904,7 +904,7 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                     <?php }?> 
                     var Mak_uw_4 = L.marker(unregulated_3, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[3].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -951,7 +951,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                     var Mak_uw_5 = L.marker(unregulated_4, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[4].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[4].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -999,7 +999,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                     var Mak_uw_6 = L.marker(unregulated_5, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[5].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[5].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1046,7 +1046,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                     var Mak_uw_7 = L.marker(unregulated_6, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[6].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[6].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1093,7 +1093,7 @@ and open the template in the editor.
                     <?php }?> 
 
                     var Mak_uw_8 = L.marker(unregulated_7, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[7].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[7].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1141,7 +1141,7 @@ and open the template in the editor.
                         
                         
                     var Mak_uw_9 = L.marker(unregulated_8, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[8].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[8].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1188,7 +1188,7 @@ and open the template in the editor.
                     <?php }?>                         
                         
                     var Mak_uw_10 = L.marker(unregulated_9, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[9].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[9].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1235,7 +1235,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_11 = L.marker(unregulated_10, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[10].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[10].properties.WATER_SOUR + '<b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1282,7 +1282,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_12 = L.marker(unregulated_11, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[11].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[11].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1329,7 +1329,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_13 = L.marker(unregulated_12, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[12].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[12].properties.WATER_SOUR + '<b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1376,7 +1376,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_14 = L.marker(unregulated_13, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[13].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[13].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1423,7 +1423,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_15 = L.marker(unregulated_14, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[14].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[14].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1470,7 +1470,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_16 = L.marker(unregulated_15, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[15].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[15].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1508,7 +1508,7 @@ and open the template in the editor.
             
             
                     var Mak_uw_17 = L.marker(unregulated_16, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[16].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[16].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
                     + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
@@ -1548,7 +1548,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_18 = L.marker(unregulated_17, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[17].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[17].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1595,7 +1595,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_19 = L.marker(unregulated_18, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[18].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[18].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1642,7 +1642,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_20 = L.marker(unregulated_19, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[19].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[19].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1689,7 +1689,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_21 = L.marker(unregulated_20, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[20].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[20].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1736,7 +1736,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_22 = L.marker(unregulated_21, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[21].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[21].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1783,7 +1783,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_23 = L.marker(unregulated_22, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[22].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[22].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1830,7 +1830,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_24 = L.marker(unregulated_23, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[23].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[23].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1877,7 +1877,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_25 = L.marker(unregulated_24, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[24].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[24].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1924,7 +1924,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_26 = L.marker(unregulated_25, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[25].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[25].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1971,7 +1971,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_27 = L.marker(unregulated_26, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[26].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[26].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2018,7 +2018,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_28 = L.marker(unregulated_27, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[27].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[27].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2065,7 +2065,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_29 = L.marker(unregulated_28, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[28].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[28].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2112,7 +2112,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_30 = L.marker(unregulated_29, {icon: Icon_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_unregulated.features[29].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[29].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2506,7 +2506,7 @@ and open the template in the editor.
                     <?php }?>
                     
                     var Mak_1 = L.marker(man_unre_0, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[0].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[0].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2553,7 +2553,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_2 = L.marker(man_unre_1, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[1].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[1].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2600,7 +2600,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_3 = L.marker(man_unre_2, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[2].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[2].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2647,7 +2647,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_4 = L.marker(man_unre_3, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[3].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2694,7 +2694,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_5 = L.marker(man_unre_4, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[4].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[4].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2742,7 +2742,7 @@ and open the template in the editor.
                         
                     man_unre_5[1] = man_unre_5[1] + 0.05;
                     var Mak_6 = L.marker(man_unre_5, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[5].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[5].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2789,7 +2789,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_7 = L.marker(man_unre_6, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[6].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[6].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2836,7 +2836,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_8 = L.marker(man_unre_7, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[7].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[7].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2883,7 +2883,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_9 = L.marker(man_unre_8, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[8].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[8].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2930,7 +2930,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_10 = L.marker(man_unre_9, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[9].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[9].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -2978,7 +2978,7 @@ and open the template in the editor.
                         
                     man_unre_10[0] = man_unre_10[0] - 0.05;
                     var Mak_11 = L.marker(man_unre_10, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[10].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[10].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -3025,7 +3025,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_12 = L.marker(man_unre_11, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[11].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[11].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -3072,7 +3072,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_13 = L.marker(man_unre_12, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[12].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[12].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -3119,7 +3119,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_14 = L.marker(man_unre_13, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[13].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[13].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -3166,7 +3166,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_15 = L.marker(man_unre_14, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[14].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[14].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -3213,7 +3213,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     var Mak_16 = L.marker(man_unre_15, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[15].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[15].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'

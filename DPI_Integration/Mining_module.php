@@ -2413,7 +2413,7 @@ and open the template in the editor.
             
             var displayed_gis_layer_unregulated = [];
             function show_gis_Manning_unregulated(id){
-                var checkBox = document.getElementById(id); 
+                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
                 var geojsonfile_1 = Manning_Unregulatedriver;
                 if (checkBox.checked === true){
@@ -2514,7 +2514,16 @@ and open the template in the editor.
 
                             $sq_16 = "SELECT * FROM water_source WHERE water_source = 'Upper Manning River Water Source'";                             
                             $res_16 = $conn->query($sq_16);
-                            $ro_16 = $res_16->fetch_assoc();                          
+                            $ro_16 = $res_16->fetch_assoc();   
+                            
+                            $sq_17 = "SELECT * FROM LGA_Data WHERE catchment = 'manning'";  
+                            $res_17 = $conn->query($sq_17);
+                            $lga_2 = array();
+                            $o = -1;
+                            while ($ro_17 = $res_17->fetch_assoc()){
+                                $o++;
+                                $lga_2[$o] = $ro_17;
+                            } 
                         
                         }else{
                             include 'db.helper/db_connection_ini.php';
@@ -2529,17 +2538,45 @@ and open the template in the editor.
                         var FU ="<?php echo $ro_1["FUI"]; ?>";
                         var DS ="<?php echo $ro_1["DSI"]; ?>";
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
-                    <?php }?>                     
+                        //IE = IE.toFixed(2);
+                    <?php }?>  
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_avon"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
                     
                     var Mak_1 = L.marker(man_unre_0, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[0].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[0].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
                     <?php if(!empty($ro_2)){?>
                         var AE ="<?php echo $ro_2["all_entitlement"]; ?>";
@@ -2550,15 +2587,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_2["DSI"]; ?>";
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_bowman"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_2 = L.marker(man_unre_1, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[1].properties.WATER_SOUR + '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[1].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
 
                     <?php if(!empty($ro_3)){?>
                         var AE ="<?php echo $ro_3["all_entitlement"]; ?>";
@@ -2569,15 +2634,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_3["DSI"]; ?>";
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_cooplacurripa"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_3 = L.marker(man_unre_2, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[2].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[2].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
                     <?php if(!empty($ro_4)){?>
                         var AE ="<?php echo $ro_4["all_entitlement"]; ?>";
@@ -2588,15 +2681,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_4["DSI"]; ?>";
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_dingo"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_4 = L.marker(man_unre_3, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[3].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             
                     <?php if(!empty($ro_5)){?>
                         var AE ="<?php echo $ro_5["all_entitlement"]; ?>";
@@ -2607,15 +2728,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_5["DSI"]; ?>";
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_lowerbarnard"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_5 = L.marker(man_unre_4, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[4].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[4].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
                     <?php if(!empty($ro_6)){?>
                         var AE ="<?php echo $ro_6["all_entitlement"]; ?>";
@@ -2626,16 +2775,44 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_6["DSI"]; ?>";
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_lowerbarrington"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     man_unre_5[1] = man_unre_5[1] + 0.05;
                     var Mak_6 = L.marker(man_unre_5, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[5].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[5].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
    
                     <?php if(!empty($ro_7)){?>
                         var AE ="<?php echo $ro_7["all_entitlement"]; ?>";
@@ -2646,15 +2823,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_7["DSI"]; ?>";
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_lowermanning"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_7 = L.marker(man_unre_6, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[6].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[6].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
    
                     <?php if(!empty($ro_8)){?>
                         var AE ="<?php echo $ro_8["all_entitlement"]; ?>";
@@ -2665,15 +2870,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_8["DSI"]; ?>";
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_manning"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_8 = L.marker(man_unre_7, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[7].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[7].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
                     <?php if(!empty($ro_9)){?>
                         var AE ="<?php echo $ro_9["all_entitlement"]; ?>";
@@ -2684,15 +2917,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_9["DSI"]; ?>";
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_midmanning"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_9 = L.marker(man_unre_8, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[8].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[8].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
    
                     <?php if(!empty($ro_10)){?>
                         var AE ="<?php echo $ro_10["all_entitlement"]; ?>";
@@ -2703,15 +2964,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_10["DSI"]; ?>";
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_myall"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_10 = L.marker(man_unre_9, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[9].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[9].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
                     <?php if(!empty($ro_11)){?>
                         var AE ="<?php echo $ro_11["all_entitlement"]; ?>";
@@ -2722,16 +3011,44 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_11["DSI"]; ?>";
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_nowendoc"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     man_unre_10[0] = man_unre_10[0] - 0.05;
                     var Mak_11 = L.marker(man_unre_10, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[10].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[10].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
    
                     <?php if(!empty($ro_12)){?>
                         var AE ="<?php echo $ro_12["all_entitlement"]; ?>";
@@ -2741,16 +3058,44 @@ and open the template in the editor.
                         var FU ="<?php echo $ro_12["FUI"]; ?>";
                         var DS ="<?php echo $ro_12["DSI"]; ?>";
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
-                    <?php }?> 
+                    <?php }?>
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_rowleys"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_12 = L.marker(man_unre_11, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[11].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[11].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
                     <?php if(!empty($ro_13)){?>
                         var AE ="<?php echo $ro_13["all_entitlement"]; ?>";
@@ -2761,15 +3106,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_13["DSI"]; ?>";
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_upperbarnard"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_13 = L.marker(man_unre_12, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[12].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[12].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
   
                     <?php if(!empty($ro_14)){?>
                         var AE ="<?php echo $ro_14["all_entitlement"]; ?>";
@@ -2780,16 +3153,44 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_14["DSI"]; ?>";
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_upperbarrington"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_14 = L.marker(man_unre_13, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[13].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[13].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
-    
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    
                     <?php if(!empty($ro_15)){?>
                         var AE ="<?php echo $ro_15["all_entitlement"]; ?>";
                         var UE ="<?php echo $ro_15["unreg_entitlement"]; ?>";
@@ -2799,15 +3200,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_15["DSI"]; ?>";
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                     <?php }?> 
+                    
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_uppergloucester"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_15 = L.marker(man_unre_14, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[14].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[14].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
  
                     <?php if(!empty($ro_16)){?>
                         var AE ="<?php echo $ro_16["all_entitlement"]; ?>";
@@ -2818,15 +3247,43 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_16["DSI"]; ?>";
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                     <?php }?> 
+                        
+                    <?php if(!empty($lga_2)){?>
+                        var Population = 0;
+                        var Irrigation_production = 0;
+                        var Mining_production = 0;
+                        var Irrigation_employment = 0;
+                        var Mining_employment = 0;
+                        <?php for ($x=0; $x<count($lga_2); $x++) {?>
+                            var WaSource_prop ="<?php echo $lga_2[$x]["proportion_in_uppermanning"]; ?>";
+                            var Pop ="<?php echo $lga_2[$x]["population"]; ?>";
+                            var Irrigation_pro ="<?php echo $lga_2[$x]["irrigation_production"]; ?>";
+                            Irrigation_pro = parseInt(Irrigation_pro.replace(/,/g, ''));
+                            var Mining_pro ="<?php echo $lga_2[$x]["mining_production"]; ?>";
+                            var Irrigation_emp ="<?php echo $lga_2[$x]["employment_irrigation"]; ?>";
+                            var Mining_emp ="<?php echo $lga_2[$x]["employment_mining"]; ?>";
+                            Population = Population + WaSource_prop*Pop;
+                            Irrigation_production = Irrigation_production + WaSource_prop*Irrigation_pro;
+                            Mining_production = Mining_production + WaSource_prop*Mining_pro;
+                            Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
+                            Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
+                        <?php }?> 
+                    <?php }?>
+                        
                     var Mak_16 = L.marker(man_unre_15, {icon: Icon_1}).addTo(map)
-                    .bindPopup(Manning_unregulated.features[15].properties.WATER_SOUR+ '<br/><br/>' 
+                    .bindPopup('<b>' + Manning_unregulated.features[15].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
                     + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
                     + 'FUI: ' + toThousands(FU) + '<br/>'
                     + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha');
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
+                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
+                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
             
                     displayed_gis_layer_unregulated.push(Mak_1);
                     displayed_gis_layer_unregulated.push(Mak_2);
@@ -2847,7 +3304,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_unregulated);
-                }             
+                }                    
             }
             
             var displayed_gis_layer_groundwater = [];   

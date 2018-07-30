@@ -1235,7 +1235,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_11 = L.marker(unregulated_10, {icon: Icon_1}).addTo(map)
-                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[10].properties.WATER_SOUR + '<b><br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[10].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
@@ -1329,7 +1329,7 @@ and open the template in the editor.
                     <?php }?>  
                         
                     var Mak_uw_13 = L.marker(unregulated_12, {icon: Icon_1}).addTo(map)
-                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[12].properties.WATER_SOUR + '<b><br/><br/>' 
+                    .bindPopup('<b>' + MacquarieBogan_unregulated.features[12].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'

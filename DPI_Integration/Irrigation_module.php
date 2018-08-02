@@ -2299,7 +2299,7 @@ and open the template in the editor.
             function show_gis_MacquarieBogan_workapprovals(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){  
-                    var markerClusters = new L.MarkerClusterGroup();
+                    var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
                     for (i=0; i<work_mac.length; i++){
                         var Lat_workapproval = work_mac[i][0];
                         var Lon_workapproval = work_mac[i][1];
@@ -2369,7 +2369,7 @@ and open the template in the editor.
             function show_gis_MacquarieBogan_approvals(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){  
-                    var markerClusters = new L.MarkerClusterGroup();
+                    var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
                     for (i=0; i<work_approval_array.length; i++){
                         var Lat_approval = work_approval_array[i][0];
                         var Lon_approval = work_approval_array[i][1];
@@ -3417,7 +3417,7 @@ and open the template in the editor.
             function show_gis_Manning_workapprovals(id){                 
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){  
-                    var markerClusters = new L.MarkerClusterGroup();
+                    var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
                     for (i=0; i<work_mac.length; i++){
                         var Lat_workapproval = work_mac[i][0];
                         var Lon_workapproval = work_mac[i][1];
@@ -3473,7 +3473,7 @@ and open the template in the editor.
             function show_gis_Manning_approvals(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){
-                    var markerClusters = new L.MarkerClusterGroup();
+                    var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
                     for (i=0; i<work_approval_array.length; i++){
                         var Lat_approval = work_approval_array[i][0];
                         var Lon_approval = work_approval_array[i][1];

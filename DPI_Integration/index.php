@@ -401,6 +401,8 @@ and open the template in the editor.
                 document.getElementById('selectCAT').value = 'default';
                 map.removeControl(hover_info);
                 map.removeControl(legendinfo);
+                map.removeControl(controlSearch);
+                //controlSearch.remove(map);
             }
                        
             // find the middle point from geojason file
@@ -2296,7 +2298,18 @@ and open the template in the editor.
             function show_gis_MacquarieBogan_approvals(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){  
-                    var markerClusters = new L.MarkerClusterGroup();
+                    var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
+                    controlSearch = new L.Control.Search({
+                        position:'topleft',
+                        layer: markerClusters,
+                        initial: false,
+                        zoom: 15,
+                        marker: false,
+                        propertyName: 'App_id',
+                        textPlaceholder: 'Search work approval ID',
+                        textErr: 'Work approval not found'
+                    }); 
+                    map.addControl(controlSearch);
                     for (i=0; i<work_approval_array.length; i++){
                         var Lat_approval = work_approval_array[i][0];
                         var Lon_approval = work_approval_array[i][1];
@@ -2308,27 +2321,24 @@ and open the template in the editor.
                         if (Basin_name === 'macquarie'){
                             switch(Water_type){
                                 case 'REG': 
-                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_1})
+                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_1, App_id: Approval_id})
                                 .bindPopup("Approval ID: " + Approval_id + '<br/>'
                                 + "Work Description: " + Work_description + '<br/>'
                                 + "Share Component: " + toThousands(So) + " ML"); 
-                                mouse_over_workapproval(M);
                                 markerClusters.addLayer(M);
                                 break;
                                 case 'UNREG':
-                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_2})
+                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_2, App_id: Approval_id})
                                 .bindPopup("Approval ID: " + Approval_id + '<br/>'
                                 + "Work Description: " + Work_description + '<br/>'
                                 + "Share Component: " + toThousands(So) + " ML"); 
-                                mouse_over_workapproval(M);
                                 markerClusters.addLayer(M);                       
                                 break;
                                 case 'GW':
-                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_3})
+                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_3, App_id: Approval_id})
                                 .bindPopup("Approval ID: " + Approval_id + '<br/>'
                                 + "Work Description: " + Work_description + '<br/>'
                                 + "Share Component: " + toThousands(So) + " ML"); 
-                                mouse_over_workapproval(M);
                                 markerClusters.addLayer(M);                       
                                 break;
                             }
@@ -2336,10 +2346,14 @@ and open the template in the editor.
                         }
                         map.addLayer(markerClusters);
                         displayed_gis_layer_approval.push(markerClusters);
+                        controlSearch.on('search:locationfound', function(e) {
+                            e.layer.addTo(map).openPopup();
+                        });
                     }
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_approval);
+                    map.removeControl(controlSearch);
                 } 
             }
                        
@@ -3400,7 +3414,18 @@ and open the template in the editor.
             function show_gis_Manning_approvals(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){
-                    var markerClusters = new L.MarkerClusterGroup();
+                    var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
+                    controlSearch = new L.Control.Search({
+                        position:'topleft',
+                        layer: markerClusters,
+                        initial: false,
+                        zoom: 15,
+                        marker: false,
+                        propertyName: 'App_id',
+                        textPlaceholder: 'Search work approval ID',
+                        textErr: 'Work approval not found'
+                    }); 
+                    map.addControl(controlSearch);
                     for (i=0; i<work_approval_array.length; i++){
                         var Lat_approval = work_approval_array[i][0];
                         var Lon_approval = work_approval_array[i][1];
@@ -3412,31 +3437,31 @@ and open the template in the editor.
                         if (Basin_name === 'manning'){
                             switch(Water_type){
                                 case 'REG':                                
-                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_1})
+                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_1, App_id: Approval_id})
                                 .bindPopup("Approval ID: " + Approval_id + '<br/>'
                                 + "Work Description: " + Work_description + '<br/>'
                                 + "Share Component: " + toThousands(So) + " ML"); 
-                                mouse_over_workapproval(M);
                                 markerClusters.addLayer(M);                                
                                 break;
                                 case 'UNREG':
-                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_2})
+                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_2, App_id: Approval_id})
                                 .bindPopup("Approval ID: " + Approval_id + '<br/>'
                                 + "Work Description: " + Work_description + '<br/>'
                                 + "Share Component: " + toThousands(So) + " ML"); 
-                                mouse_over_workapproval(M);
                                 markerClusters.addLayer(M); 
                                 break;
                                 case 'GW':
-                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_3})
+                                var M = L.marker([Lat_approval, Lon_approval], {icon: Icon_approval_3, App_id: Approval_id})
                                 .bindPopup("Approval ID: " + Approval_id + '<br/>'
                                 + "Work Description: " + Work_description + '<br/>'
                                 + "Share Component: " + toThousands(So) + " ML"); 
-                                mouse_over_workapproval(M);
                                 markerClusters.addLayer(M); 
                                 break;
                             }
                             displayed_gis_layer_approval.push(M);
+                            controlSearch.on('search:locationfound', function(e) {
+                                e.layer.addTo(map).openPopup();
+                            });
                         }
                     map.addLayer(markerClusters);
                     displayed_gis_layer_approval.push(markerClusters);
@@ -3444,6 +3469,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_approval);
+                    map.removeControl(controlSearch);
                 } 
             }
             // display information of each catchment

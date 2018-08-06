@@ -173,7 +173,7 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");;
             });
             
-            var map = L.map('map',{zoomControl: false}).setView([-29.0, 134.7], 4.4);
+            var map = L.map('map',{zoomControl: false, loadingControl: true}).setView([-29.0, 134.7], 4.4);
             L.control.zoom({
                 position:'bottomleft'
             }).addTo(map);
@@ -3459,7 +3459,8 @@ and open the template in the editor.
                                 break;
                             }
                             displayed_gis_layer_approval.push(M);
-                            controlSearch.on('search:locationfound', function(e) {
+                            controlSearch.on('search:locationfound', 
+                            function(e) {
                                 e.layer.addTo(map).openPopup();
                             });
                         }

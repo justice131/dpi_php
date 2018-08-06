@@ -309,7 +309,7 @@ L.Control.Search = L.Control.extend({
 			.on(input, 'keyup', this._handleKeypress, this)
 			.on(input, 'blur', this.collapseDelayed, this)
 			.on(input, 'focus', this.collapseDelayedStop, this);
-		
+                       
 		return input;
 	},
 
@@ -390,6 +390,7 @@ L.Control.Search = L.Control.extend({
 					this._input.focus();
 					this._hideTooltip();	
 					this._handleSubmit();
+                                        
 				}, this);
 
 		return tip;
@@ -644,6 +645,7 @@ L.Control.Search = L.Control.extend({
 		var sel;
 		if ((sel = this._input.selection) && sel.empty) {
 			sel.empty();
+                        
 		}
 		else if (this._input.createTextRange) {
 			sel = this._input.createTextRange();
@@ -718,7 +720,7 @@ L.Control.Search = L.Control.extend({
 
 	searchText: function(text) {
 		var code = text.charCodeAt(text.length);
-
+                
 		this._input.value = text;
 
 		this._input.style.display = 'block';
@@ -818,7 +820,7 @@ L.Control.Search = L.Control.extend({
 	},
 
 	_handleSubmit: function() {	//button and tooltip click and enter submit
-
+                
 		this._hideAutoType();
 		
 		this.hideAlert();
@@ -833,7 +835,6 @@ L.Control.Search = L.Control.extend({
 			else
 			{
 				var loc = this._getLocation(this._input.value);
-				
 				if(loc===false)
 					this.showAlert();
 				else

@@ -286,8 +286,21 @@ and open the template in the editor.
                 iconSize:     [18, 28],   
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
-            });            
-            
+            }); 
+
+            var Icon_site = L.icon({
+                iconUrl: 'lib/leaflet/images/new-marker-9.png',
+                iconSize:     [28, 28],   
+                iconAnchor:   [14, 28],  
+                popupAnchor:  [0, -30] 
+            }); 
+
+            var Icon_site_2 = L.icon({
+                iconUrl: 'lib/leaflet/images/new-marker-10.png',
+                iconSize:     [28, 28],   
+                iconAnchor:   [14, 28],  
+                popupAnchor:  [0, -30] 
+            }); 
             
             function inside (point, vs) {
                 var x = point[0], y = point[1];
@@ -2158,7 +2171,62 @@ and open the template in the editor.
                     displayed_gis_layer_unregulated.push(Mak_uw_28);
                     displayed_gis_layer_unregulated.push(Mak_uw_29);
                     displayed_gis_layer_unregulated.push(Mak_uw_30);
-                    
+ 
+                    // Add site location for Rooban
+                    <?php
+                    include 'db.helper/db_connection_ini.php';
+                    if($conn!=null){
+                        $sqa_1 = "SELECT * FROM station_site WHERE catchment = 'Macquarie' AND site_type = 'surface water'";                             
+                        $res_1 = $conn->query($sqa_1);
+                        $macquarie_site_surface = array();
+                        $o = -1;
+                        while ($macquarie_site_1 = $res_1->fetch_assoc()){
+                            $o++;
+                            $macquarie_site_surface[$o] = $macquarie_site_1;
+                        }  
+                        
+                        $sqa_2 = "SELECT * FROM macquarie_sampling_point";                             
+                        $res_2 = $conn->query($sqa_2);
+                        $macquarie_sample = array();
+                        $p = -1;
+                        while ($macquarie_site_2 = $res_2->fetch_assoc()){
+                            $p++;
+                            $macquarie_sample[$p] = $macquarie_site_2;
+                        }                        
+                    }else{
+                        include 'db.helper/db_connection_ini.php';
+                    }
+                    ?>
+
+                    <?php if(!empty($macquarie_site_surface)){?>;
+                        <?php for ($x=0; $x<count($macquarie_site_surface); $x++) {?>                                                    
+                            var lat ="<?php echo $macquarie_site_surface[$x]["latitude"]; ?>";
+                            var lon ="<?php echo $macquarie_site_surface[$x]["longitude"]; ?>";
+                            var site_name ="<?php echo $macquarie_site_surface[$x]["site_name"]; ?>";
+                            var site_id ="<?php echo $macquarie_site_surface[$x]["site_id"]; ?>";
+
+                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
+                            .bindPopup('Site Name: ' + site_name + '<br/>'
+                            + 'Site ID: ' + site_id);
+                            displayed_gis_layer_unregulated.push(M);
+                        <?php }?>;    
+                    <?php }?>;  
+                        
+                    <?php if(!empty($macquarie_sample)){?>;
+                        <?php for ($x=0; $x<count($macquarie_sample); $x++) {?>                                                    
+                            var lat ="<?php echo $macquarie_sample[$x]["latitude"]; ?>";
+                            var lon ="<?php echo $macquarie_sample[$x]["longitude"]; ?>";
+                            var des ="<?php echo $macquarie_sample[$x]["description"]; ?>";
+                            var site_id ="<?php echo $macquarie_sample[$x]["station_number"]; ?>";
+
+                            var M = L.marker([lat, lon], {icon: Icon_site_2}).addTo(map)
+                            .bindPopup('Description: ' + des + '<br/>'
+                            + 'Station Number: ' + site_id);
+                            displayed_gis_layer_unregulated.push(M);
+                        <?php }?>;    
+                    <?php }?>;
+                    //Add site location for Rooban 
+ 
                     }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_unregulated);
@@ -2203,6 +2271,38 @@ and open the template in the editor.
                     displayed_gis_layer_groundwater.push(Mak_groundwater_2);
                     displayed_gis_layer_groundwater.push(Mak_groundwater_3);
                     displayed_gis_layer_groundwater.push(Mak_groundwater_4);
+                    
+                    // Add site location for Rooban
+                    <?php
+                    include 'db.helper/db_connection_ini.php';
+                    if($conn!=null){
+                        $sqa_2 = "SELECT * FROM station_site WHERE catchment = 'Macquarie' AND site_type = 'ground water'";                             
+                        $res_2 = $conn->query($sqa_2);
+                        $macquarie_site_ground = array();
+                        $o = -1;
+                        while ($macquarie_site_2 = $res_2->fetch_assoc()){
+                            $o++;
+                            $macquarie_site_ground[$o] = $macquarie_site_2;
+                        }                      
+                    }else{
+                        include 'db.helper/db_connection_ini.php';
+                    }
+                    ?>
+
+                    <?php if(!empty($macquarie_site_ground)){?>;
+                        <?php for ($x=0; $x<count($macquarie_site_ground); $x++) {?>                                                    
+                            var lat ="<?php echo $macquarie_site_ground[$x]["latitude"]; ?>";
+                            var lon ="<?php echo $macquarie_site_ground[$x]["longitude"]; ?>";
+                            var site_name ="<?php echo $macquarie_site_ground[$x]["site_name"]; ?>";
+                            var site_id ="<?php echo $macquarie_site_ground[$x]["site_id"]; ?>";
+
+                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
+                            .bindPopup('Site Name: ' + site_name + '<br/>'
+                            + 'Site ID: ' + site_id);
+                            displayed_gis_layer_groundwater.push(M);
+                        <?php }?>;    
+                    <?php }?>;                              
+                    //Add site location for Rooban                    
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_groundwater);
@@ -2373,6 +2473,20 @@ and open the template in the editor.
                 var geojsonfile = Manning_unregulated;
                 var geojsonfile_1 = Manning_Unregulatedriver;
                 if (checkBox.checked === true){
+                    var markersLayer = new L.LayerGroup();
+                    map.addLayer(markersLayer);
+                    controlSearch = new L.Control.Search({
+                        position:'topleft',
+                        layer: markersLayer,
+                        initial: false,
+                        zoom: 12,
+                        marker: false,
+                        propertyName: 'water_source',
+                        textPlaceholder: 'Search work source name',
+                        textErr: 'Water source not found'
+                    }); 
+                    map.addControl(controlSearch);
+                    
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
                             return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
@@ -2518,8 +2632,8 @@ and open the template in the editor.
                             Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
                         <?php }?> 
                     <?php }?>
-                    
-                    var Mak_1 = L.marker(man_unre_0, {icon: Icon_1}).addTo(map)
+                    //var water_source = Manning_unregulated.features[0].properties.WATER_SOUR;
+                    var Mak_1 = L.marker(man_unre_0, {icon: Icon_1, water_source: Manning_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[0].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2533,6 +2647,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_1);
 
                     <?php if(!empty($ro_2)){?>
                         var AE ="<?php echo $ro_2["all_entitlement"]; ?>";
@@ -2566,7 +2681,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_2 = L.marker(man_unre_1, {icon: Icon_1}).addTo(map)
+                    var Mak_2 = L.marker(man_unre_1, {icon: Icon_1, water_source: Manning_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[1].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2580,6 +2695,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_2);
 
                     <?php if(!empty($ro_3)){?>
                         var AE ="<?php echo $ro_3["all_entitlement"]; ?>";
@@ -2613,7 +2729,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_3 = L.marker(man_unre_2, {icon: Icon_1}).addTo(map)
+                    var Mak_3 = L.marker(man_unre_2, {icon: Icon_1, water_source: Manning_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[2].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2627,6 +2743,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_3);
   
                     <?php if(!empty($ro_4)){?>
                         var AE ="<?php echo $ro_4["all_entitlement"]; ?>";
@@ -2660,7 +2777,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_4 = L.marker(man_unre_3, {icon: Icon_1}).addTo(map)
+                    var Mak_4 = L.marker(man_unre_3, {icon: Icon_1, water_source: Manning_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2674,6 +2791,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_4);
             
                     <?php if(!empty($ro_5)){?>
                         var AE ="<?php echo $ro_5["all_entitlement"]; ?>";
@@ -2707,7 +2825,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_5 = L.marker(man_unre_4, {icon: Icon_1}).addTo(map)
+                    var Mak_5 = L.marker(man_unre_4, {icon: Icon_1, water_source: Manning_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[4].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2721,6 +2839,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_5);
   
                     <?php if(!empty($ro_6)){?>
                         var AE ="<?php echo $ro_6["all_entitlement"]; ?>";
@@ -2755,7 +2874,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     man_unre_5[1] = man_unre_5[1] + 0.05;
-                    var Mak_6 = L.marker(man_unre_5, {icon: Icon_1}).addTo(map)
+                    var Mak_6 = L.marker(man_unre_5, {icon: Icon_1, water_source: Manning_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[5].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2769,6 +2888,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_6);
    
                     <?php if(!empty($ro_7)){?>
                         var AE ="<?php echo $ro_7["all_entitlement"]; ?>";
@@ -2802,7 +2922,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_7 = L.marker(man_unre_6, {icon: Icon_1}).addTo(map)
+                    var Mak_7 = L.marker(man_unre_6, {icon: Icon_1, water_source: Manning_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[6].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2816,6 +2936,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_7);
    
                     <?php if(!empty($ro_8)){?>
                         var AE ="<?php echo $ro_8["all_entitlement"]; ?>";
@@ -2849,7 +2970,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_8 = L.marker(man_unre_7, {icon: Icon_1}).addTo(map)
+                    var Mak_8 = L.marker(man_unre_7, {icon: Icon_1, water_source: Manning_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[7].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2863,6 +2984,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_8);
   
                     <?php if(!empty($ro_9)){?>
                         var AE ="<?php echo $ro_9["all_entitlement"]; ?>";
@@ -2896,7 +3018,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_9 = L.marker(man_unre_8, {icon: Icon_1}).addTo(map)
+                    var Mak_9 = L.marker(man_unre_8, {icon: Icon_1, water_source: Manning_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[8].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2910,6 +3032,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_9);
    
                     <?php if(!empty($ro_10)){?>
                         var AE ="<?php echo $ro_10["all_entitlement"]; ?>";
@@ -2943,7 +3066,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_10 = L.marker(man_unre_9, {icon: Icon_1}).addTo(map)
+                    var Mak_10 = L.marker(man_unre_9, {icon: Icon_1, water_source: Manning_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[9].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2957,6 +3080,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_10);
   
                     <?php if(!empty($ro_11)){?>
                         var AE ="<?php echo $ro_11["all_entitlement"]; ?>";
@@ -2991,7 +3115,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     man_unre_10[0] = man_unre_10[0] - 0.05;
-                    var Mak_11 = L.marker(man_unre_10, {icon: Icon_1}).addTo(map)
+                    var Mak_11 = L.marker(man_unre_10, {icon: Icon_1, water_source: Manning_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[10].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3005,6 +3129,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_11);
    
                     <?php if(!empty($ro_12)){?>
                         var AE ="<?php echo $ro_12["all_entitlement"]; ?>";
@@ -3038,7 +3163,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_12 = L.marker(man_unre_11, {icon: Icon_1}).addTo(map)
+                    var Mak_12 = L.marker(man_unre_11, {icon: Icon_1, water_source: Manning_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[11].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3052,6 +3177,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_12);
   
                     <?php if(!empty($ro_13)){?>
                         var AE ="<?php echo $ro_13["all_entitlement"]; ?>";
@@ -3085,7 +3211,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_13 = L.marker(man_unre_12, {icon: Icon_1}).addTo(map)
+                    var Mak_13 = L.marker(man_unre_12, {icon: Icon_1, water_source: Manning_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[12].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3099,6 +3225,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_13);
   
                     <?php if(!empty($ro_14)){?>
                         var AE ="<?php echo $ro_14["all_entitlement"]; ?>";
@@ -3132,7 +3259,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_14 = L.marker(man_unre_13, {icon: Icon_1}).addTo(map)
+                    var Mak_14 = L.marker(man_unre_13, {icon: Icon_1, water_source: Manning_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[13].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3146,6 +3273,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_14);
                     
                     <?php if(!empty($ro_15)){?>
                         var AE ="<?php echo $ro_15["all_entitlement"]; ?>";
@@ -3179,7 +3307,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_15 = L.marker(man_unre_14, {icon: Icon_1}).addTo(map)
+                    var Mak_15 = L.marker(man_unre_14, {icon: Icon_1, water_source: Manning_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[14].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3193,6 +3321,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_15);
  
                     <?php if(!empty($ro_16)){?>
                         var AE ="<?php echo $ro_16["all_entitlement"]; ?>";
@@ -3226,7 +3355,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_16 = L.marker(man_unre_15, {icon: Icon_1}).addTo(map)
+                    var Mak_16 = L.marker(man_unre_15, {icon: Icon_1, water_source: Manning_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[15].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3240,6 +3369,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_16);
             
                     displayed_gis_layer_unregulated.push(Mak_1);
                     displayed_gis_layer_unregulated.push(Mak_2);
@@ -3257,9 +3387,47 @@ and open the template in the editor.
                     displayed_gis_layer_unregulated.push(Mak_14);
                     displayed_gis_layer_unregulated.push(Mak_15);
                     displayed_gis_layer_unregulated.push(Mak_16);
+                    
+                    controlSearch.on('search:locationfound', 
+                    function(e) {
+                        e.layer.addTo(map).openPopup();
+                    });                   
+
+                    // Add site location for Rooban
+                    <?php
+                    include 'db.helper/db_connection_ini.php';
+                    if($conn!=null){
+                        $sqa_3 = "SELECT * FROM station_site WHERE catchment = 'Manning' AND site_type = 'surface water'";                             
+                        $res_3 = $conn->query($sqa_3);
+                        $manning_site_surface = array();
+                        $o = -1;
+                        while ($manning_site_3 = $res_3->fetch_assoc()){
+                            $o++;
+                            $manning_site_surface[$o] = $manning_site_3;
+                        }                      
+                    }else{
+                        include 'db.helper/db_connection_ini.php';
+                    }
+                    ?>
+
+                    <?php if(!empty($manning_site_surface)){?>;
+                        <?php for ($x=0; $x<count($manning_site_surface); $x++) {?>                                                    
+                            var lat ="<?php echo $manning_site_surface[$x]["latitude"]; ?>";
+                            var lon ="<?php echo $manning_site_surface[$x]["longitude"]; ?>";
+                            var site_name ="<?php echo $manning_site_surface[$x]["site_name"]; ?>";
+                            var site_id ="<?php echo $manning_site_surface[$x]["site_id"]; ?>";
+
+                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
+                            .bindPopup('Site Name: ' + site_name + '<br/>'
+                            + 'Site ID: ' + site_id);
+                            displayed_gis_layer_unregulated.push(M);
+                        <?php }?>;    
+                    <?php }?>;                              
+                    //Add site location for Rooban
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_unregulated);
+                    map.removeControl(controlSearch);
                 }             
             }
             
@@ -3347,6 +3515,38 @@ and open the template in the editor.
                     displayed_gis_layer_groundwater.push(Mak_13);
                     displayed_gis_layer_groundwater.push(Mak_14);
                     displayed_gis_layer_groundwater.push(Mak_15);
+
+                    // Add site location for Rooban
+                    <?php
+                    include 'db.helper/db_connection_ini.php';
+                    if($conn!=null){
+                        $sqa_4 = "SELECT * FROM station_site WHERE catchment = 'Manning' AND site_type = 'ground water'";                             
+                        $res_4 = $conn->query($sqa_4);
+                        $manning_site_ground = array();
+                        $o = -1;
+                        while ($manning_site_4 = $res_4->fetch_assoc()){
+                            $o++;
+                            $manning_site_ground[$o] = $manning_site_4;
+                        }                      
+                    }else{
+                        include 'db.helper/db_connection_ini.php';
+                    }
+                    ?>
+
+                    <?php if(!empty($manning_site_ground)){?>;
+                        <?php for ($x=0; $x<count($manning_site_ground); $x++) {?>                                                    
+                            var lat ="<?php echo $manning_site_ground[$x]["latitude"]; ?>";
+                            var lon ="<?php echo $manning_site_ground[$x]["longitude"]; ?>";
+                            var site_name ="<?php echo $manning_site_ground[$x]["site_name"]; ?>";
+                            var site_id ="<?php echo $manning_site_ground[$x]["site_id"]; ?>";
+
+                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
+                            .bindPopup('Site Name: ' + site_name + '<br/>'
+                            + 'Site ID: ' + site_id);
+                            displayed_gis_layer_groundwater.push(M);
+                        <?php }?>;    
+                    <?php }?>;                              
+                    //Add site location for Rooban
 
                 }
                 if (checkBox.checked === false){

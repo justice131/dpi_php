@@ -586,6 +586,20 @@ and open the template in the editor.
                 var geojsonfile = MacquarieBogan_unregulated;
                 var geojsonfile_1 = Macquarie_Unregulatedriver;
                 if (checkBox.checked === true){
+                    var markersLayer = new L.LayerGroup();
+                    map.addLayer(markersLayer);
+                    controlSearch = new L.Control.Search({
+                        position:'topleft',
+                        layer: markersLayer,
+                        initial: false,
+                        zoom: 11,
+                        marker: false,
+                        propertyName: 'water_source',
+                        textPlaceholder: 'Search work source',
+                        textErr: 'Water source not found'
+                    }); 
+                    map.addControl(controlSearch);
+                    
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
                             return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
@@ -795,13 +809,14 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                     
-                    var Mak_uw_1 = L.marker(unregulated_0, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_1 = L.marker(unregulated_0, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[0].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
                     + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_1);
 
                     <?php if(!empty($lga_1)){?>
                         var Population = 0;
@@ -825,7 +840,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                     
-                    var Mak_uw_2 = L.marker(unregulated_1, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_2 = L.marker(unregulated_1, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[1].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -839,6 +854,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_2);
 
                     <?php if(!empty($ro_2)){?>
                         var AE ="<?php echo $ro_2["all_entitlement"]; ?>";
@@ -872,7 +888,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_3 = L.marker(unregulated_2, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_3 = L.marker(unregulated_2, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[2].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -886,6 +902,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_3);
 
                     <?php if(!empty($lga_1)){?>
                         var Population = 0;
@@ -918,7 +935,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_3["DSI"]; ?>";
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                     <?php }?> 
-                    var Mak_uw_4 = L.marker(unregulated_3, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_4 = L.marker(unregulated_3, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -932,6 +949,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_4);
 
                     <?php if(!empty($ro_4)){?>
                         var AE ="<?php echo $ro_4["all_entitlement"]; ?>";
@@ -965,7 +983,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_5 = L.marker(unregulated_4, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_5 = L.marker(unregulated_4, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[4].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -979,7 +997,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));          
-
+                    markersLayer.addLayer(Mak_uw_5);
 
                     <?php if(!empty($ro_5)){?>
                         var AE ="<?php echo $ro_5["all_entitlement"]; ?>";
@@ -1013,7 +1031,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_6 = L.marker(unregulated_5, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_6 = L.marker(unregulated_5, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[5].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1026,7 +1044,8 @@ and open the template in the editor.
                     + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));         
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment))); 
+                    markersLayer.addLayer(Mak_uw_6);
 
                     <?php if(!empty($ro_6)){?>
                         var AE ="<?php echo $ro_6["all_entitlement"]; ?>";
@@ -1060,7 +1079,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_7 = L.marker(unregulated_6, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_7 = L.marker(unregulated_6, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[6].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1073,7 +1092,8 @@ and open the template in the editor.
                     + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));          
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment))); 
+                    markersLayer.addLayer(Mak_uw_7);
  
                      <?php if(!empty($ro_7)){?>
                         var AE ="<?php echo $ro_7["all_entitlement"]; ?>";
@@ -1107,7 +1127,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
 
-                    var Mak_uw_8 = L.marker(unregulated_7, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_8 = L.marker(unregulated_7, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[7].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1120,7 +1140,8 @@ and open the template in the editor.
                     + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));         
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));     
+                    markersLayer.addLayer(Mak_uw_8);
 
                     <?php if(!empty($ro_8)){?>
                         var AE ="<?php echo $ro_8["all_entitlement"]; ?>";
@@ -1155,7 +1176,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                         
-                    var Mak_uw_9 = L.marker(unregulated_8, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_9 = L.marker(unregulated_8, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[8].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1168,7 +1189,8 @@ and open the template in the editor.
                     + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));        
+                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));  
+                    markersLayer.addLayer(Mak_uw_9);
                     
                     <?php if(!empty($ro_9)){?>
                         var AE ="<?php echo $ro_9["all_entitlement"]; ?>";
@@ -1202,7 +1224,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>                         
                         
-                    var Mak_uw_10 = L.marker(unregulated_9, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_10 = L.marker(unregulated_9, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[9].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1216,6 +1238,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_10);
             
                      <?php if(!empty($ro_10)){?>
                         var AE ="<?php echo $ro_10["all_entitlement"]; ?>";
@@ -1249,7 +1272,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_11 = L.marker(unregulated_10, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_11 = L.marker(unregulated_10, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[10].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1263,6 +1286,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_11);
             
                     <?php if(!empty($ro_11)){?>
                         var AE ="<?php echo $ro_11["all_entitlement"]; ?>";
@@ -1296,7 +1320,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_12 = L.marker(unregulated_11, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_12 = L.marker(unregulated_11, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[11].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1310,6 +1334,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_12);
             
                     <?php if(!empty($ro_12)){?>
                         var AE ="<?php echo $ro_12["all_entitlement"]; ?>";
@@ -1343,7 +1368,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_13 = L.marker(unregulated_12, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_13 = L.marker(unregulated_12, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[12].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1357,6 +1382,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_13);
  
                      <?php if(!empty($ro_13)){?>
                         var AE ="<?php echo $ro_13["all_entitlement"]; ?>";
@@ -1390,7 +1416,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_14 = L.marker(unregulated_13, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_14 = L.marker(unregulated_13, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[13].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1404,6 +1430,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_14);
 
                     <?php if(!empty($ro_14)){?>
                         var AE ="<?php echo $ro_14["all_entitlement"]; ?>";
@@ -1437,7 +1464,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_15 = L.marker(unregulated_14, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_15 = L.marker(unregulated_14, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[14].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1451,6 +1478,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_15);
 
                     <?php if(!empty($ro_15)){?>
                         var AE ="<?php echo $ro_15["all_entitlement"]; ?>";
@@ -1484,7 +1512,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_16 = L.marker(unregulated_15, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_16 = L.marker(unregulated_15, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[15].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1498,6 +1526,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_16);
             
                     <?php if(!empty($lga_1)){?>
                         var Population = 0;
@@ -1522,13 +1551,14 @@ and open the template in the editor.
                     <?php }?>           
             
             
-                    var Mak_uw_17 = L.marker(unregulated_16, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_17 = L.marker(unregulated_16, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[16].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[16].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
                     + 'Annual Population Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Population Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_17);
  
                     <?php if(!empty($ro_17)){?>
                         var AE ="<?php echo $ro_17["all_entitlement"]; ?>";
@@ -1562,7 +1592,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_18 = L.marker(unregulated_17, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_18 = L.marker(unregulated_17, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[17].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[17].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1576,6 +1606,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_18);
  
                      <?php if(!empty($ro_18)){?>
                         var AE ="<?php echo $ro_18["all_entitlement"]; ?>";
@@ -1609,7 +1640,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_19 = L.marker(unregulated_18, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_19 = L.marker(unregulated_18, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[18].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[18].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1623,6 +1654,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_19);
 
                     <?php if(!empty($ro_19)){?>
                         var AE ="<?php echo $ro_19["all_entitlement"]; ?>";
@@ -1656,7 +1688,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_20 = L.marker(unregulated_19, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_20 = L.marker(unregulated_19, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[19].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[19].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1670,6 +1702,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_20);
 
                     <?php if(!empty($ro_20)){?>
                         var AE ="<?php echo $ro_20["all_entitlement"]; ?>";
@@ -1703,7 +1736,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_21 = L.marker(unregulated_20, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_21 = L.marker(unregulated_20, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[20].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[20].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1717,6 +1750,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_21);
 
                     <?php if(!empty($ro_21)){?>
                         var AE ="<?php echo $ro_21["all_entitlement"]; ?>";
@@ -1750,7 +1784,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_22 = L.marker(unregulated_21, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_22 = L.marker(unregulated_21, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[21].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[21].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1764,6 +1798,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_22);
 
                     <?php if(!empty($ro_22)){?>
                         var AE ="<?php echo $ro_22["all_entitlement"]; ?>";
@@ -1797,7 +1832,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_23 = L.marker(unregulated_22, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_23 = L.marker(unregulated_22, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[22].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[22].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1811,6 +1846,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_23);
  
                      <?php if(!empty($ro_23)){?>
                         var AE ="<?php echo $ro_23["all_entitlement"]; ?>";
@@ -1844,7 +1880,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_24 = L.marker(unregulated_23, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_24 = L.marker(unregulated_23, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[23].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[23].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1858,6 +1894,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_24);
  
                      <?php if(!empty($ro_24)){?>
                         var AE ="<?php echo $ro_24["all_entitlement"]; ?>";
@@ -1891,7 +1928,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_25 = L.marker(unregulated_24, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_25 = L.marker(unregulated_24, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[24].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[24].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1905,6 +1942,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_25);
 
                     <?php if(!empty($ro_25)){?>
                         var AE ="<?php echo $ro_25["all_entitlement"]; ?>";
@@ -1938,7 +1976,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_26 = L.marker(unregulated_25, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_26 = L.marker(unregulated_25, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[25].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[25].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1952,6 +1990,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_26);
 
                     <?php if(!empty($ro_26)){?>
                         var AE ="<?php echo $ro_26["all_entitlement"]; ?>";
@@ -1985,7 +2024,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_27 = L.marker(unregulated_26, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_27 = L.marker(unregulated_26, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[26].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[26].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1999,6 +2038,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_27);
 
                     <?php if(!empty($ro_27)){?>
                         var AE ="<?php echo $ro_27["all_entitlement"]; ?>";
@@ -2032,7 +2072,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_28 = L.marker(unregulated_27, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_28 = L.marker(unregulated_27, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[27].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[27].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2046,6 +2086,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_28);
 
                     <?php if(!empty($ro_28)){?>
                         var AE ="<?php echo $ro_28["all_entitlement"]; ?>";
@@ -2079,7 +2120,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_29 = L.marker(unregulated_28, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_29 = L.marker(unregulated_28, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[28].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[28].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2093,6 +2134,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_29);
 
                     <?php if(!empty($ro_29)){?>
                         var AE ="<?php echo $ro_29["all_entitlement"]; ?>";
@@ -2126,7 +2168,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_30 = L.marker(unregulated_29, {icon: Icon_1}).addTo(map)
+                    var Mak_uw_30 = L.marker(unregulated_29, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[29].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[29].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2140,6 +2182,7 @@ and open the template in the editor.
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
+                    markersLayer.addLayer(Mak_uw_30);
             
                     displayed_gis_layer_unregulated.push(Mak_uw_1);
                     displayed_gis_layer_unregulated.push(Mak_uw_2);
@@ -2171,7 +2214,11 @@ and open the template in the editor.
                     displayed_gis_layer_unregulated.push(Mak_uw_28);
                     displayed_gis_layer_unregulated.push(Mak_uw_29);
                     displayed_gis_layer_unregulated.push(Mak_uw_30);
- 
+                    
+                    controlSearch.on('search:locationfound', 
+                    function(e) {
+                        e.layer.addTo(map).openPopup();
+                    });  
                     // Add site location for Rooban
                     <?php
                     include 'db.helper/db_connection_ini.php';
@@ -2230,6 +2277,7 @@ and open the template in the editor.
                     }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_unregulated);
+                    map.removeControl(controlSearch);
                 } 
             }
             
@@ -2482,7 +2530,7 @@ and open the template in the editor.
                         zoom: 12,
                         marker: false,
                         propertyName: 'water_source',
-                        textPlaceholder: 'Search work source name',
+                        textPlaceholder: 'Search work source',
                         textErr: 'Water source not found'
                     }); 
                     map.addControl(controlSearch);

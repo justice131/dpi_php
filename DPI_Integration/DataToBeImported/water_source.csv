@@ -1,44 +1,47 @@
-catchment_id,water_source,all_entitlement,unreg_entitlement,mean_flow,seasonflow,FUI,DSI,irrigable_area
-Macquarie,Marthaguy Creek Water Source,7608,7608,74,1,1,0,32990.27485
-Macquarie,Bulbodney Grahway Creek Water Source,8816,7492,26478,1,0.283,0,46581.67729
-Macquarie,Upper Bogan River Water Source,1729,1729,26478,156,0.065,0.005,38581.38535
-Macquarie,Upper Talbragar River Water Source,370,370,12450,1179,0.03,0.159,14214.79777
-Macquarie,Coolbaggie Creek Water Source,466,466,324,1,1,0,9470.470134
-Macquarie,Lower Talbragar River Water Source,2251,2251,22285,1128,0.101,0.025,21533.57373
-Macquarie,Maryvale Geurie Creek Water Source,639,639,6,1,1,0,4620.342447
-Macquarie,Cooyal Wialdra Creek Water Source,741,741,2656,136,0.279,0.009,2701.297846
-Macquarie,Wambangalong Whylandra Creek Water Source,169,169,52,4,1,0.001,7619.649809
-Macquarie,Little River Water Source,2270,2270,22609,2066,0.1,0.046,8509.024538
-Macquarie,Piambong Creek Water Source,925,925,1219,59,0.759,0.003,5338.480685
-Macquarie,Goolma Creek Water Source,0,0,18,1,0,1,2059.825992
-Macquarie,Pipeclay Creek Water Source,446,446,2394,164,0.186,0.018,2308.730169
-Macquarie,Bell River Water Source,8136,8136,63820,6151,0.127,0.038,9081.279479
-Macquarie,Lawsons Creek Water Source,1496,1496,12257,1051,0.122,0.035,2068.948442
-Macquarie,MEROO CREEK Burrendong Water Source,0,0,69397,6959,0,1,0
-Macquarie,Upper Cudgegong River Water Source,6452,3952,11386,162,0.347,0.002,1268.0363
-Macquarie,PYRAMUL CREEK Burrendong Water Source,0,0,51036,5904,0,1,0
-Macquarie,Macquarie River above Burrendong Water Source,25586,8086,432586,40627,0.019,0.251,3105.253795
-Macquarie,Molong Creek Water Source,5616,5616,12348,880,0.455,0.008,1808.828017
-Macquarie,Turon Crudine River Water Source,328,328,106553,13762,0.003,1,2571.102311
-Macquarie,Summerhill Creek Water Source,11744,3944,109211,7304,0.036,0.093,2553.057102
-Macquarie,Winburndale Rivulet Water Source,1629,1629,36300,4734,0.045,0.145,4085.735617
-Macquarie,Vale Evans Plains Creek Water Source,0,0,11779,1326,0,1,0
-Macquarie,Queen Charlottes Creek Water Source,0,0,19389,2001,0,1,0
-Macquarie,Fish River Water Source,18071,2195,139175,11201,0.016,0.255,2269.075563
-Macquarie,Campbells River Water Source,2101,2101,115143,10999,0.018,0.262,958.8768821
-Manning,Avon River Water Source,1744,1736,102782.3163,55481.25552,0.016967899,1,1431.626195
-Manning,Bowman River Water Source,2120,2111,45089.66632,20157.56758,0.047017425,0.477441203,413.0387999
-Manning,Cooplacurripa River Water Source,800,800,146063.943,29255.60698,0.005477053,1,559.9880666
-Manning,Dingo Creek Water Source,4878,4867,262793.0091,181158.747,0.018562138,1,1171.203289
-Manning,Lower Barnard River Water Source,21369,1369,271370.1985,77186.96347,0.078744829,1,445.4324994
-Manning,Lower Barrington / Gloucester Rivers Water Source,11263,10605.5,507464.703,246217.9617,0.022194647,1,1015.568564
-Manning,Lower Manning River Water Source,20390,7889,1809668.043,1106600.298,0.01126726,1,1619.403003
-Manning,Manning Estuary Tributaries Water Source,3608.5,3028.5,61730.53696,34348.59371,0.058455672,0.567089214,6731.40511
-Manning,Mid Manning River Water Source,991,991,327103.6033,131983.6871,0.003029621,1,217.3367968
-Manning,Myall Creek Water Source,57,57,141911.0675,39679.06234,0.00040166,1,803.885704
-Manning,Nowendoc River Water Source,1274,1273,365890.3414,189266.0417,0.003481918,1,820.9849249
-Manning,Rowleys River Water Source,277,277,344003.9484,163593.2578,0.000805223,1,123.7742304
-Manning,Upper Barnard River Water Source,1159,1159,132903.8628,97755.54975,0.008720589,1,11.52045622
-Manning,Upper Barrington River Water Source,944,944,289634.0166,125309.2509,0.003259286,1,591.4859934
-Manning,Upper Gloucester River Water Source,5401,5394,245000.9395,127013.2569,0.022044813,1,828.3945956
-Manning,Upper Manning River Water Source,2243,2234,192600.6732,65215.23929,0.011645858,1,529.3465439
+catchment_id,water_source,longterm_extraction_limit,unreg_entitlement,mean_flow,FUI,DSI,irrigable_area,wetland_area
+Macquarie,Backwater Boggy Cowal Water Source,4531.00,2627.00,145.90,4.93,83.9,12692.64787,2646.60
+Macquarie,Bell River Water Source,8115.00,8136.00,304.96,7.31,83.1,509.9266643,
+Macquarie,Bulbodney Grahway Creek Water Source,14038.00,7922.00,149.83,14.49,78.7,,1076.46
+Macquarie,Burrendong Dam Tributaries Water Source,873.00,577.00,333.54,0.47,78.8,,6473.46
+Macquarie,Campbells River Water Source,2356.00,2101.00,228.30,2.52,75.4,159.8132512,144.73
+Macquarie,Coolbaggie Creek Water Source,507.00,466.00,68.41,1.87,83.9,877.2138134,184.60
+Macquarie,Cooyal Wialdra Creek Water Source,989.00,741.00,77.64,2.61,89.0,91.25207614,4.73
+Macquarie,Ewenmar Creek Water Source,65177.00,1289.50,90.98,3.88,83.9,6160.487664,13939.93
+Macquarie,Fish River Water Source,18374.50,18071.00,257.24,19.25,85.6,18.25237449,298.69
+Macquarie,Goolma Creek Water Source,71.00,0.00,10.09,0.00,89.0,,1412.69
+Macquarie,Lawsons Creek Water Source,1632.00,1496.00,47.35,8.66,89.8,128.0991786,743.32
+Macquarie,Little River Water Source,2621.00,2270.00,97.47,6.38,82.2,636.0286631,
+Macquarie,Lower Bogan River Water Source,44021.00,41277.00,156.05,72.47,78.7,1610.27661,245215.36
+Macquarie,Lower Macquarie River Water Source,51993.50,48616.00,231.64,57.50,76.3,4394.995041,237878.17
+Macquarie,Lower Talbragar River Water Source,2009.00,2251.00,94.48,6.53,83.6,566.5158438,
+Macquarie,Macquarie River above Burrendong Water Source,25871.00,25586.00,548.27,12.79,78.0,543.6345003,1.32
+Macquarie,Marra Creek Water Source,438.50,311.50,4.91,17.40,100.0,1776.836298,46236.58
+Macquarie,Marthaguy Creek Water Source,4620.00,7608.00,204.50,10.19,81.4,3289.826898,29652.47
+Macquarie,Maryvale Geurie Creek Water Source,745.00,639.00,29.93,5.85,82.2,1092.711442,4.55
+Macquarie,Molong Creek Water Source,5663.00,5616.00,69.99,21.98,78.8,479.9319731,27.42
+Macquarie,Piambong Creek Water Source,1113.00,925.00,4.66,54.40,89.0,344.3737048,1092.51
+Macquarie,Pipeclay Creek Water Source,491.00,446.00,17.47,7.00,91.5,503.0571364,65.62
+Macquarie,Queen Charlottes Vale Evans Plains Creek Water Source,2125.00,1925.00,72.18,7.31,82.2,139.4763893,13.20
+Macquarie,Summerhill Creek Water Source,12402.00,11744.00,193.51,16.63,78.8,197.3106387,304.37
+Macquarie,Turon Crudine River Water Source,585.00,328.00,291.41,0.31,79.7,2.216484204,19.86
+Macquarie,Upper Bogan River Water Source,2182.50,1729.00,106.59,4.44,78.7,3711.695595,4412.41
+Macquarie,Upper Cudgegong River Water Source,6580.50,6452.00,151.42,11.67,75.4,11.42363833,90.41
+Macquarie,Upper Talbragar River Water Source,627.00,370.00,55.14,1.84,83.6,394.4364329,
+Macquarie,Wambangalong Whylandra Creek Water Source,220.00,169.00,45.48,1.02,82.2,834.7718922,7.56
+Macquarie,Winburndale Rivulet Water Source,1814.00,1629.00,171.03,2.61,83.1,19.14092754,24.85
+Manning,Avon River Water Source,1744,1736,102782.3163,0.016967899,1,1431.626195,
+Manning,Bowman River Water Source,2120,2111,45089.66632,0.047017425,0.477441203,413.0387999,
+Manning,Cooplacurripa River Water Source,800,800,146063.943,0.005477053,1,559.9880666,
+Manning,Dingo Creek Water Source,4878,4867,262793.0091,0.018562138,1,1171.203289,
+Manning,Lower Barnard River Water Source,21369,1369,271370.1985,0.078744829,1,445.4324994,
+Manning,Lower Barrington / Gloucester Rivers Water Source,11263,10605.5,507464.703,0.022194647,1,1015.568564,
+Manning,Lower Manning River Water Source,20390,7889,1809668.043,0.01126726,1,1619.403003,
+Manning,Manning Estuary Tributaries Water Source,3608.5,3028.5,61730.53696,0.058455672,0.567089214,6731.40511,
+Manning,Mid Manning River Water Source,991,991,327103.6033,0.003029621,1,217.3367968,
+Manning,Myall Creek Water Source,57,57,141911.0675,0.00040166,1,803.885704,
+Manning,Nowendoc River Water Source,1274,1273,365890.3414,0.003481918,1,820.9849249,
+Manning,Rowleys River Water Source,277,277,344003.9484,0.000805223,1,123.7742304,
+Manning,Upper Barnard River Water Source,1159,1159,132903.8628,0.008720589,1,11.52045622,
+Manning,Upper Barrington River Water Source,944,944,289634.0166,0.003259286,1,591.4859934,
+Manning,Upper Gloucester River Water Source,5401,5394,245000.9395,0.022044813,1,828.3945956,
+Manning,Upper Manning River Water Source,2243,2234,192600.6732,0.011645858,1,529.3465439,

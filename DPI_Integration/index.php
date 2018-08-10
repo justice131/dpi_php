@@ -109,7 +109,11 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Groundwater-CAT-Manning" onclick="show_gis_Manning_groundwater('Groundwater-CAT-Manning')"> <font size="2">Groundwater </font></br>
                                                 <input type="checkbox" id="Work-approvals-CAT-Manning" onclick="show_gis_Manning_workapprovals('Work-approvals-CAT-Manning')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font>
-                                        </div>                                     
+                                        </div> 
+                                    
+                                        <div id="link_to_parallel_coordinate">
+                                            <a href="Paralle_coordinate_Macquarie.php" target="_blank">Insight</a>
+                                        </div>        
                                 </div>
 			</div>
 		</div>
@@ -331,7 +335,7 @@ and open the template in the editor.
 //                addCATLayer(CATName, CATValue);
                 
                 //Edited by justice
-                var  myselect=document.getElementById("selectCAT");
+                var myselect=document.getElementById("selectCAT");
                 var selectedIndex=myselect.selectedIndex;
                 var selectValue=myselect.options[selectedIndex].value;
                 if(selectValue==="MacquarieBogan"){
@@ -579,13 +583,81 @@ and open the template in the editor.
                 } 
             }
             
+            function color_fui(Fui_macquarie, feature){          
+                function compareSecondColumn(a, b) {
+                    if (a[1] === b[1]) {
+                        return 0;
+                    }
+                    else {
+                        return (a[1] > b[1]) ? -1 : 1;
+                    }
+                }
+                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
+                if(Fui_macquarie.length%3 === 0){
+                    var i = Fui_macquarie.length/3;
+                    var e = Fui_macquarie.length;
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
+                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
+                }else{
+                    var e = Fui_macquarie.length;
+                    var j = Math.floor(e/3);                   
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,j);
+                    Fui_macquarie_2 = Fui_macquarie.slice(j,2*j);
+                    Fui_macquarie_3 = Fui_macquarie.slice(2*j,e);
+                }
+              
+                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+                    return 'rgba(255, 56, 3, 1)';
+                }
+                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
+                    return 'rgba(252, 157, 61, 1)';
+                }
+                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
+                    return 'rgba(21, 171, 108, 1)';
+                }else{
+                    return 'grey';
+                }
+                
+            }
+            
             //display unregulated info for MacquarieBogan
             var displayed_gis_layer_unregulated = [];          
             function show_gis_MacquarieBogan_unregulated(id){
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_unregulated;
                 var geojsonfile_1 = Macquarie_Unregulatedriver;
+                var link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 if (checkBox.checked === true){
+                    // display link icon
+                    link_to_parr.style.display = 'block';
+                    
+                    <?php
+                        include 'db.helper/db_connection_ini.php';
+                        if($conn!=null){
+                            $fui_macquarie = "SELECT water_source, FUI FROM water_source WHERE catchment_id = 'Macquarie'";                             
+                            $fui_macquarie_1 = $conn->query($fui_macquarie);
+                            $fui_macquarie_2 = array();
+                            $o = -1;
+                            while ($r_m = $fui_macquarie_1->fetch_assoc()){
+                                $o++;
+                                $fui_macquarie_2[$o] = $r_m;
+                            }                      
+                        }else{
+                            include 'db.helper/db_connection_ini.php';
+                        }
+                    ?>
+                                    
+                    var Fui_macquarie = [];
+                    <?php if(!empty($fui_macquarie_2)){?>;
+                        <?php for ($x=0; $x<count($fui_macquarie_2); $x++) {?>
+                            var ws ="<?php echo $fui_macquarie_2[$x]["water_source"]; ?>";
+                            var fui ="<?php echo $fui_macquarie_2[$x]["FUI"]; ?>";
+                            Fui_macquarie.push([ws, fui]);
+                        <?php }?>;    
+                    <?php }?>;
+                        
+                                    
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }
@@ -604,13 +676,17 @@ and open the template in the editor.
                     map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
-                        style: function (feature) {
-                            return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
+//                        style: function (feature) {
+//                            return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
+//                        }
+                        onEachFeature: function onEach(feature, layer){
+                            layer.setStyle({color: color_fui(Fui_macquarie, feature.properties.WATER_SOUR), weight: 1.2, fillOpacity: 0.4});
                         }
+
                     }).addTo(map);
                     var Reg_1 = L.geoJSON(geojsonfile_1, {
                         style: function (feature) {
-                            return { color: 'blue', weight: 1.5, fillOpacity: 0.3};
+                            return { color: 'blue', weight: 1.2, fillOpacity: 0.3};
                         }
                     }).addTo(map);                   
                     displayed_gis_layer_unregulated.push(Reg);  
@@ -1132,13 +1208,6 @@ and open the template in the editor.
 
                     var Mak_uw_8 = L.marker(unregulated_7, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[7].properties.WATER_SOUR + '</b><br/><br/>' 
-                    + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
-                    + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'SeasonFlow: ' + toThousands(SF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(FU) + '<br/>'
-                    + 'DSI: ' + toThousands(DS) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
                     + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
                     + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
@@ -2222,8 +2291,9 @@ and open the template in the editor.
                     function(e) {
                         e.layer.addTo(map).openPopup();
                     });  
-                    // Add site location for Rooban
-                    <?php
+                    
+//                    // Add site location for Rooban
+//                    <?php
                     include 'db.helper/db_connection_ini.php';
                     if($conn!=null){
                         $sqa_1 = "SELECT * FROM station_site WHERE catchment = 'Macquarie' AND site_type = 'surface water'";                             
@@ -2246,41 +2316,42 @@ and open the template in the editor.
                     }else{
                         include 'db.helper/db_connection_ini.php';
                     }
-                    ?>
-
-                    <?php if(!empty($macquarie_site_surface)){?>;
-                        <?php for ($x=0; $x<count($macquarie_site_surface); $x++) {?>                                                    
-                            var lat ="<?php echo $macquarie_site_surface[$x]["latitude"]; ?>";
-                            var lon ="<?php echo $macquarie_site_surface[$x]["longitude"]; ?>";
-                            var site_name ="<?php echo $macquarie_site_surface[$x]["site_name"]; ?>";
-                            var site_id ="<?php echo $macquarie_site_surface[$x]["site_id"]; ?>";
-
-                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
-                            .bindPopup('Site Name: ' + site_name + '<br/>'
-                            + 'Site ID: ' + site_id);
-                            displayed_gis_layer_unregulated.push(M);
-                        <?php }?>;    
-                    <?php }?>;  
-                        
-                    <?php if(!empty($macquarie_sample)){?>;
-                        <?php for ($x=0; $x<count($macquarie_sample); $x++) {?>                                                    
-                            var lat ="<?php echo $macquarie_sample[$x]["latitude"]; ?>";
-                            var lon ="<?php echo $macquarie_sample[$x]["longitude"]; ?>";
-                            var des ="<?php echo $macquarie_sample[$x]["description"]; ?>";
-                            var site_id ="<?php echo $macquarie_sample[$x]["station_number"]; ?>";
-
-                            var M = L.marker([lat, lon], {icon: Icon_site_2}).addTo(map)
-                            .bindPopup('Description: ' + des + '<br/>'
-                            + 'Station Number: ' + site_id);
-                            displayed_gis_layer_unregulated.push(M);
-                        <?php }?>;    
-                    <?php }?>;
-                    //Add site location for Rooban 
+                    ?>//
+//
+//                    <?php if(!empty($macquarie_site_surface)){?>;
+//                        <?php for ($x=0; $x<count($macquarie_site_surface); $x++) {?>                                                    
+//                            var lat ="<?php echo $macquarie_site_surface[$x]["latitude"]; ?>";
+//                            var lon ="<?php echo $macquarie_site_surface[$x]["longitude"]; ?>";
+//                            var site_name ="<?php echo $macquarie_site_surface[$x]["site_name"]; ?>";
+//                            var site_id ="<?php echo $macquarie_site_surface[$x]["site_id"]; ?>";
+//
+//                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
+//                            .bindPopup('Site Name: ' + site_name + '<br/>'
+//                            + 'Site ID: ' + site_id);
+//                            displayed_gis_layer_unregulated.push(M);
+//                        <?php }?>;    
+//                    <?php }?>;  
+//                        
+//                    <?php if(!empty($macquarie_sample)){?>;
+//                        <?php for ($x=0; $x<count($macquarie_sample); $x++) {?>                                                    
+//                            var lat ="<?php echo $macquarie_sample[$x]["latitude"]; ?>";
+//                            var lon ="<?php echo $macquarie_sample[$x]["longitude"]; ?>";
+//                            var des ="<?php echo $macquarie_sample[$x]["description"]; ?>";
+//                            var site_id ="<?php echo $macquarie_sample[$x]["station_number"]; ?>";
+//
+//                            var M = L.marker([lat, lon], {icon: Icon_site_2}).addTo(map)
+//                            .bindPopup('Description: ' + des + '<br/>'
+//                            + 'Station Number: ' + site_id);
+//                            displayed_gis_layer_unregulated.push(M);
+//                        <?php }?>;    
+//                    <?php }?>;
+//                    Add site location for Rooban 
  
                     }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_unregulated);
                     map.removeControl(controlSearch);
+                    link_to_parr.style.display = 'none';
                 } 
             }
             

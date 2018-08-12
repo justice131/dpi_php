@@ -178,6 +178,26 @@ and open the template in the editor.
                             return myCols[2];
                     }
             }
+            
+            function toThousands(num) {
+                if (isNaN(num)) { 
+                    throw new TypeError("num is not a number"); 
+                } 
+                var groups = (/([\-\+]?)(\d*)(\.\d+)?/g).exec("" + num), 
+                    mask = groups[1],
+                    integers = (groups[2] || "").split(""),
+                    decimal = groups[3] || "",
+                    remain = integers.length % 3; 
+  
+                var temp = integers.reduce(function(previousValue, currentValue, index) { 
+                if (index + 1 === remain || (index + 1 - remain) % 3 === 0) { 
+                    return previousValue + currentValue + ","; 
+                } else { 
+                    return previousValue + currentValue; 
+                } 
+                }, "").replace(/\,$/g, ""); 
+                    return mask + temp + decimal; 
+            }
 
             function showIt(d) {
                     return d > 0 ? 0.75 : 0;
@@ -295,25 +315,25 @@ and open the template in the editor.
             info.update = function (props) {
                     this._div.innerHTML = (props?
                             '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                    'irrigated_area: '+ props.irrigated_area +'<br />'+
-                                    'population: '+ props.population +'<br />'+
-                                    'irrigation_value: '+ props.irrigation_value +'<br />'+
-                                    'mining_value: '+ props.mining_value +'<br />'+
-                                    'employment_irrigation: '+ props.employment_irrigation +'<br />'+
-                                    'employment_mining: '+ props.employment_mining +'<br />'+
-                                    'total_entitlement: '+ props.total_entitlement +'<br />'+
-                                    'wetland_area: '+ props.wetland_area +'<br />'+
-                                    'dissolved_oxygen: '+ props.dissolved_oxygen +'<br />'+
-                                    'mean_flow: '+ props.mean_flow +'<br />'+
-                                    'variation: '+ props.variation +'<br />'+
-                                    'median: '+ props.median +'<br />'+
-                                    'days_below_mean: '+ props.days_below_mean +'<br />'+
-                                    'DSI: '+ props.DSI +'<br />'+
-                                    '100_yrs_flood_frequency: '+ props.one_hundred_yrs_flood_frequency +'<br />'+
-                                    'time_below_requirement: '+ props.time_below_requirement +'<br />'+
-                                    'FUI1: '+ props.FUI1 +'<br />'+
-                                    'water_scarcity: '+ props.water_scarcity +'<br />'+
-                                    'FUI: ' + props.FUI +'<br />'
+                                    'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                    'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                    'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                    'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                    'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                    'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                    'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                    'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
+                                    'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                    'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                    'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+                                    'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+                                    'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                    'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
+                                    '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                    'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                    'FUI1: '+ '<b>'+ toThousands(props.FUI1) + '</b>'+'<br />'+
+                                    'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                    'FUI: ' + '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'
                             : '<b>'+ 'Hover over a Water Source'+'</b>');
             };
             info.addTo(map);

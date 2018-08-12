@@ -1,0 +1,190 @@
+/*
+IMPORTANT:
+In order to preserve the uniform grid appearance, all cell styles need to have padding, margin and border sizes.
+No built-in (selected, editable, highlight, flashing, invalid, loading, :focus) or user-specified CSS
+classes should alter those!
+*/
+
+.slick-header-columns {
+  border-bottom: 1px solid silver;
+}
+
+.slick-header-column {
+  border-right: 1px solid silver;
+}
+
+.slick-header-column:hover, .slick-header-column-active {
+}
+
+.slick-headerrow {
+  background: #fafafa;
+}
+
+.slick-headerrow-column {
+  background: #fafafa;
+  border-bottom: 0;
+  height: 100%;
+}
+
+.slick-row.ui-state-active {
+  background: #F5F7D7;
+}
+
+.slick-row {
+  position: absolute;
+  background: white;
+  border: 0px;
+  line-height: 20px;
+}
+
+.slick-row.selected {
+  z-index: 10;
+  background: #DFE8F6;
+}
+
+.slick-cell {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.slick-group {
+  border-bottom: 2px solid silver;
+}
+
+.slick-group-toggle {
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+}
+
+.slick-group-toggle.expanded {
+}
+
+.slick-group-toggle.collapsed {
+}
+
+.slick-group-totals {
+  color: gray;
+  background: white;
+}
+
+.slick-cell.selected {
+  background-color: beige;
+}
+
+.slick-cell.active {
+  border-color: gray;
+  border-style: solid;
+}
+
+.slick-sortable-placeholder {
+  background: silver !important;
+}
+
+.slick-row.odd {
+  background: #fafafa;
+}
+
+.slick-row.ui-state-active {
+  background: #F5F7D7;
+}
+
+.slick-row.loading {
+  opacity: 0.5;
+  filter: alpha(opacity = 50);
+}
+
+.slick-cell.invalid {
+  border-color: red;
+}
+
+ul {
+	padding: 0px; margin-left: 0px; cursor: default;
+}
+li {
+	background: url("../images/arrow_right_spearmint.png") no-repeat left; list-style: none; margin: 0px; padding: 0px 0px 0px 14px;
+}
+#grid {
+	background: white; outline: 0px;
+}
+.grid-header {
+	border-width: 0px 1px; border-style: none solid; border-color: currentColor gray; border-image: none; height: 24px; color: black; line-height: 24px;
+}
+.grid-header label {
+	margin: auto auto auto 6px; font-weight: bold; display: inline-block;
+}
+.grid-header .ui-icon {
+	border-color: transparent; margin: 4px 4px auto 6px; background-color: transparent;
+}
+.grid-header .ui-state-hover.ui-icon {
+	background-color: white;
+}
+.grid-header #txtSearch {
+	margin: 0px 4px; padding: 2px; border: 1px solid silver; border-image: none; -moz-border-radius: 2px; -webkit-border-radius: 2px;
+}
+.options-panel {
+	background: rgb(240, 240, 240); padding: 4px; border: 1px solid silver; border-image: none; left: 650px; top: 0px; width: 320px; margin-bottom: 20px; position: absolute; -moz-border-radius: 6px; -webkit-border-radius: 6px;
+}
+.task-name.slick-cell {
+	text-align: right; font-weight: bold;
+}
+.task-percent.slick-cell {
+	text-align: right;
+}
+.cell-move-handle.slick-cell {
+	background: rgb(239, 239, 239); text-align: right; font-weight: bold; border-right-color: gray; border-right-width: medium; border-right-style: solid; cursor: move;
+}
+.cell-move-handle:hover {
+	background: rgb(182, 185, 189);
+}
+.selected.slick-row .cell-move-handle {
+	background: rgb(213, 220, 141);
+}
+.slick-row .cell-actions {
+	text-align: left;
+}
+.complete.slick-row {
+	color: rgb(85, 85, 85); background-color: rgb(221, 255, 221);
+}
+.percent-complete-bar {
+	height: 6px; display: inline-block; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+}
+input.editor-text {
+	background: none; margin: 0px; padding: 0px; outline: 0px; border: 0px currentColor; border-image: none; width: 100%; height: 100%;
+}
+.ui-datepicker-trigger {
+	padding: 0px; margin-top: 2px; vertical-align: top;
+}
+input.editor-percentcomplete {
+	background: none; margin: 0px; padding: 0px; outline: 0px; border: 0px currentColor; border-image: none; width: 100%; height: 100%; float: left;
+}
+.editor-percentcomplete-picker {
+	width: 16px; height: 100%; overflow: visible; float: right; display: inline-block; position: relative; z-index: 1000;
+}
+.editor-percentcomplete-helper {
+	border: 0px solid gray; border-image: none; left: -9px; top: -2px; width: 120px; height: 140px; overflow: visible; padding-left: 9px; display: none; position: absolute;
+}
+.editor-percentcomplete-wrapper {
+	background: beige; border-width: 1px 1px 1px 0px; border-style: solid solid solid none; border-color: gray gray gray currentColor; padding: 20px 8px; border-image: none; width: 100%; height: 98px;
+}
+.editor-percentcomplete-buttons {
+	float: right;
+}
+.editor-percentcomplete-buttons button {
+	width: 80px;
+}
+.editor-percentcomplete-slider {
+	float: left;
+}
+.editor-percentcomplete-picker:hover .editor-percentcomplete-helper {
+	display: block;
+}
+.editor-percentcomplete-helper:hover {
+	display: block;
+}
+select.editor-yesno {
+	margin: 0px; width: 100%; vertical-align: middle;
+}
+input.editor-checkbox {
+	margin: 0px; padding: 0px; border: 0px currentColor; border-image: none; height: 100%;
+}

@@ -74,6 +74,20 @@ and open the template in the editor.
         box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
     
+    #Ck_box_para_macquarie {
+        position: absolute;
+        top: 75px;
+        left: 35px;
+        background: white;
+        font: 10px Georgia;
+        color: black;
+        padding: 10px;
+        line-height:125%;
+        z-index: 30;
+        border-radius: 5px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    
     #link_to_parallel_coordinate{
         position: absolute;
         top: 240px;

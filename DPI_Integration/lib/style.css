@@ -1,0 +1,171 @@
+body {
+	background: rgb(252, 252, 252); margin: 24px; line-height: 1.45em; font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; font-size: 14px;
+}
+a {
+	color: rgb(85, 85, 85);
+}
+a:hover {
+	color: rgb(0, 0, 0);
+}
+ul {
+	margin: 0px 20px; padding: 0px;
+}
+.dark {
+	background: rgb(34, 34, 34);
+}
+p {
+	width: 560px;
+}
+pre {
+	background: rgb(242, 242, 242); padding: 4px 8px; border: 1px solid rgb(204, 204, 204); border-image: none; color: rgb(68, 68, 68); font-family: Ubuntu Mono, Monaco, monospace;
+}
+h1 small {
+	font-size: 0.5em; font-weight: normal;
+}
+h3 {
+	margin-top: 40px;
+}
+.float {
+	float: left;
+}
+.centered {
+	text-align: center;
+}
+.hide {
+	display: none;
+}
+input {
+	font-size: 16px;
+}
+
+#main {
+  width: 100%;
+  min-width: 760px;
+  margin: 8px auto;
+}
+#nav {
+  height: 64px;
+  width: 100%;
+  margin: 0 auto;
+  background: rgba(0,0,0,0.12);
+}
+p {
+  margin-left: 12px;
+}
+#nav h1 {
+  float: left;
+  font-size: 24px;
+  padding: 2px 0px;
+  margin: 12px 0 0 12px;
+}
+#nav .toggle {
+  margin: 12px 8px 0 0;
+  padding: 4px;
+  height: 16px;
+  background: rgba(0,0,0,0.1);
+  color: #666;
+}
+#nav a.toggle:hover {
+  color: #222;
+  background: rgba(0,0,0,0.15);
+}
+#nav .toggle.on {
+  color: #222;
+  font-weight: bold;
+}
+#legend { 
+  float: left;
+  clear: left;
+  margin: 0 200px 0 12px;
+  font-size: 11px;
+  line-height: 1.6em;
+}
+#legend .item {
+  float: left;
+  margin-right: 10px;
+}
+#legend .color {
+  height: 10px;
+  width: 10px;
+  opacity: 0.7;
+}
+#legend div {
+  display: inline-block;
+  margin: 0 2px;
+}
+.widgets {
+  margin: 0 4% 0 0;
+}
+.widgets h3 {
+  float: left;
+  margin: 12px 0 0 12px;
+  font-size: 16px;
+  line-height: 20px;
+}
+.button {
+  font-size: 13px;
+  line-height: 16px;
+  margin: 12px 4px;
+  padding: 2px 8px;
+  background: #ddd;
+  color: #999;
+  text-decoration: none;
+  text-align: center;
+  font-weight: bold;
+  float: right;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+.widget {
+  margin-top: 4px;
+  padding: 2px 8px;
+  height: 36px;
+  line-height: 11px;
+  font-size: 11px;
+  text-align: center;
+  float: right;
+}
+.info {
+  margin: 12px;
+  line-height: 20px;
+  float: right;
+}
+.button:hover {
+  color: #333;
+  background: #eee;
+}
+.button.red:hover {
+  color: #921;
+}
+.button.blue:hover {
+  color: #027;
+}
+.button.green:hover {
+  color: #050;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.clear {
+  clear: both;
+}
+.clear.left {
+  clear: left;
+}
+.clear.right {
+  clear: right;
+}
+.gone {
+  display: none;
+}
+h2 {
+  color: #333;
+}
+.intro {
+  font-size: 13px;
+  line-height: 1.3em;
+  margin: 6px 0 0 12px;
+}

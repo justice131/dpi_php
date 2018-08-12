@@ -1,0 +1,39 @@
+.parcoords > svg {
+	font: 12px/normal sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
+}
+.parcoords > canvas {
+	font: 12px/normal sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
+}
+.parcoords > canvas {
+	pointer-events: none;
+}
+.parcoords text.label {
+	cursor: default;
+}
+.parcoords rect.background {
+	fill: transparent;
+}
+.parcoords rect.background:hover {
+	fill: rgba(120, 120, 120, 0.2);
+}
+.parcoords .resize rect {
+	fill: rgba(0, 0, 0, 0.1);
+}
+.parcoords rect.extent {
+	fill: rgba(255, 255, 255, 0.25); stroke: rgba(0, 0, 0, 0.6);
+}
+.parcoords .axis line {
+	fill: none; stroke: #222; shape-rendering: crispEdges;
+}
+.parcoords .axis path {
+	fill: none; stroke: #222; shape-rendering: crispEdges;
+}
+.parcoords canvas {
+	opacity: 1; -webkit-transition: opacity 0.3s; -moz-transition: opacity 0.3s; -o-transition: opacity 0.3s;
+}
+.parcoords canvas.faded {
+	opacity: 0.25;
+}
+.parcoords {
+	-ms-user-select: none; background-color: white; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; user-select: none;
+}

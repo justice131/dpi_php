@@ -1,4 +1,4 @@
-water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI1,water_scarcity,FUI,IndexRank
+water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI,water_scarcity,FUI_100,IndexRank
 Lower Bogan River Water Source,1610.27661,1491,31114808,0.16,154,2,42208,245215.36,86.3,156.05,7.01,0,0.92,78.7,0.01,0.66,72.47,38201.01,0.28,1
 Lower Macquarie River Water Source,4394.995041,926,33632155,0.14,123,1,48616,237878.17,98.2,231.64,2.86,41.49,0.83,76.3,0.29,0.65,57.5,91305.29,0.42,2
 Piambong Creek Water Source,344.3737048,2332,6078416,62.03,79,547,925,1092.51,79.9,4.66,9.2,0.15,0.89,89,0.01,0.61,54.4,1212.44,0.46,3
@@ -9,7 +9,7 @@ Summerhill Creek Water Source,197.3106387,36297,35049240,370.47,287,3369,11744,3
 Bulbodney Grahway Creek Water Source,0,2530,59113543,2.49,287,23,8816,1076.46,86.3,149.83,7.01,0,0.92,78.7,0.01,0.32,14.49,21615.15,0.86,8
 Macquarie River above Burrendong Water Source,543.6345003,10960,14595597,32.85,143,307,25586,1.32,105.2,548.27,4.46,61.37,0.82,78,0,0.15,12.79,18258.83,0.87,9
 Upper Cudgegong River Water Source,11.42363833,2260,5882248,60.07,77,530,6451.5,90.41,100.2,151.42,5.99,29,0.84,75.4,0.01,0.1,11.67,24454.3,0.88,10
-Marthaguy Creek Water Source,3289.826898,2613,67868338,0.26,303,3,7608,29652.47,89.6,204.5,4.58,0.86,0.87,81.4,0.03,0.26,10.19,28566.31,0.90,11
+Marthaguy Creek Water Source,3289.826898,2613,67868338,0.26,303,3,7608,29652.47,89.6,204.5,4.58,0.86,0.87,81.4,0.03,0.26,10.19,28566.31,0.9,11
 Lawsons Creek Water Source,128.0991786,2000,5213902,53.21,68,469,1496,743.32,100.2,47.35,12.22,6.37,0.92,89.8,0.01,0.06,8.66,9121.02,0.91,12
 Bell River Water Source,509.9266643,13155,29958130,68.93,258,629,8136,0,85.3,304.96,5.12,47.71,0.85,83.1,0.01,0.08,7.31,8716.3,0.93,13
 Queen Charlottes Vale Evans Plains Creek Water Source,139.4763893,6395,9717907,19.02,95,178,1925,13.2,97.1,72.18,4.24,12,0.85,82.2,0,0.03,7.31,4119.66,0.93,14
@@ -26,6 +26,6 @@ Campbells River Water Source,159.8132512,4713,11013942,10.85,105,102,2101,144.73
 Coolbaggie Creek Water Source,877.2138134,6288,16337866,6.91,132,66,466,184.6,85.9,68.41,11.09,0.3,0.93,83.9,0.01,0.03,1.87,4703.39,0.98,25
 Upper Talbragar River Water Source,394.4364329,2091,14613608,26.6,134,236,370,0,75.4,55.14,8.77,2.58,0.88,83.6,0.02,0.13,1.84,10772.52,0.98,26
 Wambangalong Whylandra Creek Water Source,834.7718922,6245,14709304,6.91,123,66,169,7.56,84.4,45.48,6.18,3.27,0.87,82.2,0.01,0.02,1.02,3556.9,0.99,27
-Burrendong Dam Tributaries Water Source,0,9826,22706758,124.71,252,1104,577,6473.46,97.3,333.54,7.04,27,0.84,78.8,0.01,0.01,0.47,12426.81,1.00,28
-Turon Crudine River Water Source,2.216484204,8756,10842668,103.15,129,937,328,19.86,107.8,291.41,5.54,49,0.85,79.7,0.01,0,0.31,12147.67,1.00,29
-Goolma Creek Water Source,0,2939,6403979,24.4,67,217,0,1412.69,79.9,10.09,9.2,0.33,0.89,89,0.01,0,0,1253.48,1.00,30
+Burrendong Dam Tributaries Water Source,0,9826,22706758,124.71,252,1104,577,6473.46,97.3,333.54,7.04,27,0.84,78.8,0.01,0.01,0.47,12426.81,1,28
+Turon Crudine River Water Source,2.216484204,8756,10842668,103.15,129,937,328,19.86,107.8,291.41,5.54,49,0.85,79.7,0.01,0,0.31,12147.67,1,29
+Goolma Creek Water Source,0,2939,6403979,24.4,67,217,0,1412.69,79.9,10.09,9.2,0.33,0.89,89,0.01,0,0,1253.48,1,30

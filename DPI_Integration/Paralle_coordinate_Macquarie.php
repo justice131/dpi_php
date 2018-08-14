@@ -909,6 +909,1812 @@ and open the template in the editor.
                     
                 }
             }
+            
+            displayed_s3 = [];
+            function show_s3(id){
+                    function getColorScalar(d) {
+                        if(d<=Math.floor(max_row/3)){
+                        return myCols[0];
+                        }else if(d<=Math.ceil(2*max_row/3)){
+                        return myCols[1];
+                        }else{
+                        return myCols[2];
+                        }
+                    }
+                    function style(feature) {
+                            return {
+                                    weight: 1,
+                                    opacity: showIt(1),
+                                    color: 'white',
+                                    dashArray: '3',
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillColor: getColorScalar(feature.properties.IndexRank)
+                            };
+                    }
+                    var max_row=0;//Get the row number of ranking file
+                    d3.csv("data/DSI.csv", function (data) {
+                        _.each(data, function (d, i) {
+                        max_row++;
+                        });
+                    });
+                    
+                    var checkBox = document.getElementById(id); 
+                    if (checkBox.checked === true){
+                    parcoord.style.display = 'block';
+                    grid.style.display = 'block';
+                    // control that shows state info on hover
+                    info = L.control({position: 'topright'});
+                    info.onAdd = function (map) {
+                            this._div = L.DomUtil.create('div', 'info');
+                            this.update();
+                            return this._div;
+                    };
+                    info.update = function (props) {
+                            this._div.innerHTML = (props?
+                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
+                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'DSI(100%): ' + '<b>'+ props.DSI_100 + '</b>'+'<br />'
+                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                    };
+                    info.addTo(map);
+
+                    var lgaDict = {};
+//                    var geojson, geojsonLabels;
+                    // initialise each property for of geojson
+                    for (j = 0; j < lgas.features.length; j++) {
+                            lgas.features[j].properties.irrigated_area=0;
+                            lgas.features[j].properties.population=0;
+                            lgas.features[j].properties.irrigation_value=0;
+                            lgas.features[j].properties.mining_value=0;
+                            lgas.features[j].properties.employment_irrigation=0;
+                            lgas.features[j].properties.employment_mining=0;
+                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.wetland_area=0;
+                            lgas.features[j].properties.dissolved_oxygen=0;
+                            lgas.features[j].properties.mean_flow=0;
+                            lgas.features[j].properties.variation=0;
+                            lgas.features[j].properties.median=0;
+                            lgas.features[j].properties.days_below_mean=0;
+                            lgas.features[j].properties.DSI=0;
+                            lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                            lgas.features[j].properties.time_below_requirement=0;
+                            lgas.features[j].properties.FUI=0;
+                            lgas.features[j].properties.water_scarcity=0;
+                            lgas.features[j].properties.DSI_100=0;
+                            lgas.features[j].properties.IndexRank=0;
+                            lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                    }
+
+                    // Create parallel Coordinate
+                    parcoords = d3.parcoords()("#parcoord")
+                            .alpha(1)
+                            .mode("queue") // progressive rendering
+                            .height(760)
+                            .width(2800)
+                            .margin({
+                                    top: 25,
+                                    left: 1,
+                                    right: 1,
+                                    bottom: 15
+                            })
+                            .color(function (d) { return getColorScalar(d.IndexRank) });
+
+
+                    //Read data for parallel coordinate
+                    d3.csv("data/DSI.csv", function (data) {
+                            _.each(data, function (d, i) {
+                                    d.index = d.index || i; //unique id
+                                    var water_source_name = d.water_sources
+                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
+                                    lgaDict[water_source_name].properties.population=d.population;
+                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
+                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
+                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
+                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
+                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
+                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
+                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
+                                    lgaDict[water_source_name].properties.variation=d.variation;
+                                    lgaDict[water_source_name].properties.median=d.median;
+                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
+                                    lgaDict[water_source_name].properties.DSI=d.DSI;
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
+                                    lgaDict[water_source_name].properties.FUI=d.FUI;
+                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
+                                    lgaDict[water_source_name].properties.DSI_100=d.DSI_100;
+                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    lga.push(water_source_name);
+                            });
+
+                            // add lga layer
+                            geojson = L.geoJson(lgas, {
+                                    style: style,                            
+                                    onEachFeature: onEachFeature
+                            }).addTo(map);
+
+                            // add label layer
+                            geojsonLabels = L.geoJson(lgaCentroids, {
+                                    pointToLayer: function (feature, latlng) {
+                                            return  L.marker(latlng, {
+                                                    clickable : false,
+                                                    draggable : false,
+                                                    icon: L.divIcon({
+                                                    className: 'my-leaflet-div-icon',
+                                                    })
+                                            });
+                                    },
+                            }).addTo(map);
+                            displayed_s3.push(geojson);
+                            displayed_s3.push(geojsonLabels);                         
+
+                            // add legend
+                            legend = L.control({position: 'bottomright'});
+                            legend.onAdd = function (map) {
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                    labels = [],
+                                    from, to;
+                                    labels.push(
+                                                    '<i style="background:' + myCols[0] + '"></i> ' +
+                                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[1] + '"></i> ' +
+                                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[2] + '"></i> ' +
+                                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    return div;
+                            };
+                            legend.addTo(map);
+
+                            //Bind data to parallel coordinate
+                            parcoords.data(data)
+                                            .hideAxis(["water_sources","index"])
+                                            .render()
+                                            .reorderable()
+                                            .brushMode("1D-axes")
+                                            .rate(400);
+
+                            // setting up grid
+                            var column_keys = d3.keys(data[0]);
+                            var columns = column_keys.map(function(key,i) {
+                                    return {
+                                            id: key,
+                                            name: key,
+                                            field: key,
+                                            sortable: true}
+                            });
+
+                            var options = {
+                                    enableCellNavigation: true,
+                                    enableColumnReorder: false,
+                                    multiColumnSort: false,
+                            };
+
+                            var dataView = new Slick.Data.DataView();
+                            var grid = new Slick.Grid("#grid", dataView, columns, options);
+
+                            grid.autosizeColumns();
+
+                            // wire up model events to drive the grid
+                            dataView.onRowCountChanged.subscribe(function (e, args) {
+                                    grid.updateRowCount();
+                                    grid.render();
+                            });
+
+                            dataView.onRowsChanged.subscribe(function (e, args) {
+                                    grid.invalidateRows(args.rows);
+                                    grid.render();
+                            });
+
+                            // column sorting
+                            var sortcol = column_keys[0];
+                            var sortdir = 1;
+
+                            function comparer(a, b) {
+                                    var x = a[sortcol], y = b[sortcol];
+                                    return (x == y ? 0 : (x > y ? 1 : -1));
+                            }
+
+                            // click header to sort grid column
+                            grid.onSort.subscribe(function (e, args) {
+                                    sortdir = args.sortAsc ? 1 : -1;
+                                    sortcol = args.sortCol.field;
+
+                                    if ($.browser.msie && $.browser.version <= 8) {
+                                            dataView.fastSort(sortcol, args.sortAsc);
+                                    } else {
+                                            dataView.sort(comparer, args.sortAsc);
+                                    }
+                            });
+
+                            // highlight row in chart
+                            grid.onMouseEnter.subscribe(function(e,args) {
+                                    var i = grid.getCellFromEvent(e).row;
+                                    var d = parcoords.brushed() || data;
+                                    parcoords.highlight([d[i]]);
+                            });
+
+                            grid.onMouseLeave.subscribe(function(e,args) {
+                                    parcoords.unhighlight();
+                            });
+
+                            // fill grid with data
+                            gridUpdate(data);
+
+                            // update grid on brush
+                            parcoords.on("brush", function (d) {
+                                    filtered = d;
+                                    isSelected = true;
+                                    gridUpdate(d);
+                                    //update map
+                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
+                                    _.each(d, function (k, i) {
+                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                    });
+
+                                    map.removeControl(legend);
+                                    legend.addTo(map);
+                                    refreshMap(lga);
+                            });
+
+
+                            function gridUpdate(data) {
+                                    dataView.beginUpdate();
+                                    dataView.setItems(data);
+                                    dataView.endUpdate();
+                            };
+
+                            function refreshMap(updatedLGA) {
+                                    // go through updateLGA, or edit the values directly in the geojson layers
+                                    geojson.getLayers().map(function (d) {
+                                            geojson.resetStyle(d);
+                                            geojsonLabels.getLayers().forEach(function (z) {
+                                                    if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
+                                                            if (d.feature.properties.FUI > 0) {
+                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                            } else {
+                                                                    z._icon.innerHTML = "";
+                                                            }
+                                                    }
+                                            });
+                                    })
+                            }
+                    });
+                }
+                if (checkBox.checked === false){
+                    parcoord.style.display = 'none';
+                    grid.style.display = 'none';
+                    map.removeControl(info);
+                    map.removeControl(legend);
+                    removeLayer(displayed_s3);                   
+                }
+            }
+            
+            displayed_s4 = [];
+            function show_s4(id){
+                    function getColorScalar(d) {
+                        if(d<=Math.floor(max_row/3)){
+                        return myCols[0];
+                        }else if(d<=Math.ceil(2*max_row/3)){
+                        return myCols[1];
+                        }else{
+                        return myCols[2];
+                        }
+                    }
+                    function style(feature) {
+                            return {
+                                    weight: 1,
+                                    opacity: showIt(1),
+                                    color: 'white',
+                                    dashArray: '3',
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillColor: getColorScalar(feature.properties.IndexRank)
+                            };
+                    }
+                    var max_row=0;//Get the row number of ranking file
+                    d3.csv("data/DSI_mine_production.csv", function (data) {
+                        _.each(data, function (d, i) {
+                        max_row++;
+                        });
+                    });
+                    
+                    var checkBox = document.getElementById(id); 
+                    if (checkBox.checked === true){
+                    parcoord.style.display = 'block';
+                    grid.style.display = 'block';
+                    // control that shows state info on hover
+                    info = L.control({position: 'topright'});
+                    info.onAdd = function (map) {
+                            this._div = L.DomUtil.create('div', 'info');
+                            this.update();
+                            return this._div;
+                    };
+                    info.update = function (props) {
+                            this._div.innerHTML = (props?
+                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
+                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'DSI_mine_production: ' + '<b>'+ props.DSI_mine_production + '</b>'+'<br />'
+                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                    };
+                    info.addTo(map);
+
+                    var lgaDict = {};
+//                    var geojson, geojsonLabels;
+                    // initialise each property for of geojson
+                    for (j = 0; j < lgas.features.length; j++) {
+                            lgas.features[j].properties.irrigated_area=0;
+                            lgas.features[j].properties.population=0;
+                            lgas.features[j].properties.irrigation_value=0;
+                            lgas.features[j].properties.mining_value=0;
+                            lgas.features[j].properties.employment_irrigation=0;
+                            lgas.features[j].properties.employment_mining=0;
+                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.wetland_area=0;
+                            lgas.features[j].properties.dissolved_oxygen=0;
+                            lgas.features[j].properties.mean_flow=0;
+                            lgas.features[j].properties.variation=0;
+                            lgas.features[j].properties.median=0;
+                            lgas.features[j].properties.days_below_mean=0;
+                            lgas.features[j].properties.DSI=0;
+                            lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                            lgas.features[j].properties.time_below_requirement=0;
+                            lgas.features[j].properties.FUI=0;
+                            lgas.features[j].properties.water_scarcity=0;
+                            lgas.features[j].properties.DSI_mine_production=0;
+                            lgas.features[j].properties.IndexRank=0;
+                            lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                    }
+
+                    // Create parallel Coordinate
+                    parcoords = d3.parcoords()("#parcoord")
+                            .alpha(1)
+                            .mode("queue") // progressive rendering
+                            .height(760)
+                            .width(2800)
+                            .margin({
+                                    top: 25,
+                                    left: 1,
+                                    right: 1,
+                                    bottom: 15
+                            })
+                            .color(function (d) { return getColorScalar(d.IndexRank) });
+
+
+                    //Read data for parallel coordinate
+                    d3.csv("data/DSI_mine_production.csv", function (data) {
+                            _.each(data, function (d, i) {
+                                    d.index = d.index || i; //unique id
+                                    var water_source_name = d.water_sources
+                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
+                                    lgaDict[water_source_name].properties.population=d.population;
+                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
+                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
+                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
+                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
+                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
+                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
+                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
+                                    lgaDict[water_source_name].properties.variation=d.variation;
+                                    lgaDict[water_source_name].properties.median=d.median;
+                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
+                                    lgaDict[water_source_name].properties.DSI=d.DSI;
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
+                                    lgaDict[water_source_name].properties.FUI=d.FUI;
+                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
+                                    lgaDict[water_source_name].properties.DSI_mine_production=d.DSI_mine_production;
+                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    lga.push(water_source_name);
+                            });
+
+                            // add lga layer
+                            geojson = L.geoJson(lgas, {
+                                    style: style,                            
+                                    onEachFeature: onEachFeature
+                            }).addTo(map);
+
+                            // add label layer
+                            geojsonLabels = L.geoJson(lgaCentroids, {
+                                    pointToLayer: function (feature, latlng) {
+                                            return  L.marker(latlng, {
+                                                    clickable : false,
+                                                    draggable : false,
+                                                    icon: L.divIcon({
+                                                    className: 'my-leaflet-div-icon',
+                                                    })
+                                            });
+                                    },
+                            }).addTo(map);
+                            displayed_s4.push(geojson);
+                            displayed_s4.push(geojsonLabels);                         
+
+                            // add legend
+                            legend = L.control({position: 'bottomright'});
+                            legend.onAdd = function (map) {
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                    labels = [],
+                                    from, to;
+                                    labels.push(
+                                                    '<i style="background:' + myCols[0] + '"></i> ' +
+                                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[1] + '"></i> ' +
+                                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[2] + '"></i> ' +
+                                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    return div;
+                            };
+                            legend.addTo(map);
+
+                            //Bind data to parallel coordinate
+                            parcoords.data(data)
+                                            .hideAxis(["water_sources","index"])
+                                            .render()
+                                            .reorderable()
+                                            .brushMode("1D-axes")
+                                            .rate(400);
+
+                            // setting up grid
+                            var column_keys = d3.keys(data[0]);
+                            var columns = column_keys.map(function(key,i) {
+                                    return {
+                                            id: key,
+                                            name: key,
+                                            field: key,
+                                            sortable: true}
+                            });
+
+                            var options = {
+                                    enableCellNavigation: true,
+                                    enableColumnReorder: false,
+                                    multiColumnSort: false,
+                            };
+
+                            var dataView = new Slick.Data.DataView();
+                            var grid = new Slick.Grid("#grid", dataView, columns, options);
+
+                            grid.autosizeColumns();
+
+                            // wire up model events to drive the grid
+                            dataView.onRowCountChanged.subscribe(function (e, args) {
+                                    grid.updateRowCount();
+                                    grid.render();
+                            });
+
+                            dataView.onRowsChanged.subscribe(function (e, args) {
+                                    grid.invalidateRows(args.rows);
+                                    grid.render();
+                            });
+
+                            // column sorting
+                            var sortcol = column_keys[0];
+                            var sortdir = 1;
+
+                            function comparer(a, b) {
+                                    var x = a[sortcol], y = b[sortcol];
+                                    return (x == y ? 0 : (x > y ? 1 : -1));
+                            }
+
+                            // click header to sort grid column
+                            grid.onSort.subscribe(function (e, args) {
+                                    sortdir = args.sortAsc ? 1 : -1;
+                                    sortcol = args.sortCol.field;
+
+                                    if ($.browser.msie && $.browser.version <= 8) {
+                                            dataView.fastSort(sortcol, args.sortAsc);
+                                    } else {
+                                            dataView.sort(comparer, args.sortAsc);
+                                    }
+                            });
+
+                            // highlight row in chart
+                            grid.onMouseEnter.subscribe(function(e,args) {
+                                    var i = grid.getCellFromEvent(e).row;
+                                    var d = parcoords.brushed() || data;
+                                    parcoords.highlight([d[i]]);
+                            });
+
+                            grid.onMouseLeave.subscribe(function(e,args) {
+                                    parcoords.unhighlight();
+                            });
+
+                            // fill grid with data
+                            gridUpdate(data);
+
+                            // update grid on brush
+                            parcoords.on("brush", function (d) {
+                                    filtered = d;
+                                    isSelected = true;
+                                    gridUpdate(d);
+                                    //update map
+                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
+                                    _.each(d, function (k, i) {
+                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                    });
+
+                                    map.removeControl(legend);
+                                    legend.addTo(map);
+                                    refreshMap(lga);
+                            });
+
+
+                            function gridUpdate(data) {
+                                    dataView.beginUpdate();
+                                    dataView.setItems(data);
+                                    dataView.endUpdate();
+                            };
+
+                            function refreshMap(updatedLGA) {
+                                    // go through updateLGA, or edit the values directly in the geojson layers
+                                    geojson.getLayers().map(function (d) {
+                                            geojson.resetStyle(d);
+                                            geojsonLabels.getLayers().forEach(function (z) {
+                                                    if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
+                                                            if (d.feature.properties.FUI > 0) {
+                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                            } else {
+                                                                    z._icon.innerHTML = "";
+                                                            }
+                                                    }
+                                            });
+                                    })
+                            }
+                    });
+                }
+                if (checkBox.checked === false){
+                    parcoord.style.display = 'none';
+                    grid.style.display = 'none';
+                    map.removeControl(info);
+                    map.removeControl(legend);
+                    removeLayer(displayed_s4);                   
+                }
+            }
+            
+            displayed_s5 = [];
+            function show_s5(id){
+                    function getColorScalar(d) {
+                        if(d<=Math.floor(max_row/3)){
+                        return myCols[0];
+                        }else if(d<=Math.ceil(2*max_row/3)){
+                        return myCols[1];
+                        }else{
+                        return myCols[2];
+                        }
+                    }
+                    function style(feature) {
+                            return {
+                                    weight: 1,
+                                    opacity: showIt(1),
+                                    color: 'white',
+                                    dashArray: '3',
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillColor: getColorScalar(feature.properties.IndexRank)
+                            };
+                    }
+                    var max_row=0;//Get the row number of ranking file
+                    d3.csv("data/DSI_agriculture_production.csv", function (data) {
+                        _.each(data, function (d, i) {
+                        max_row++;
+                        });
+                    });
+                    
+                    var checkBox = document.getElementById(id); 
+                    if (checkBox.checked === true){
+                    parcoord.style.display = 'block';
+                    grid.style.display = 'block';
+                    // control that shows state info on hover
+                    info = L.control({position: 'topright'});
+                    info.onAdd = function (map) {
+                            this._div = L.DomUtil.create('div', 'info');
+                            this.update();
+                            return this._div;
+                    };
+                    info.update = function (props) {
+                            this._div.innerHTML = (props?
+                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
+                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'DSI_agriculture_production: ' + '<b>'+ props.DSI_agriculture_production + '</b>'+'<br />'
+                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                    };
+                    info.addTo(map);
+
+                    var lgaDict = {};
+//                    var geojson, geojsonLabels;
+                    // initialise each property for of geojson
+                    for (j = 0; j < lgas.features.length; j++) {
+                            lgas.features[j].properties.irrigated_area=0;
+                            lgas.features[j].properties.population=0;
+                            lgas.features[j].properties.irrigation_value=0;
+                            lgas.features[j].properties.mining_value=0;
+                            lgas.features[j].properties.employment_irrigation=0;
+                            lgas.features[j].properties.employment_mining=0;
+                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.wetland_area=0;
+                            lgas.features[j].properties.dissolved_oxygen=0;
+                            lgas.features[j].properties.mean_flow=0;
+                            lgas.features[j].properties.variation=0;
+                            lgas.features[j].properties.median=0;
+                            lgas.features[j].properties.days_below_mean=0;
+                            lgas.features[j].properties.DSI=0;
+                            lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                            lgas.features[j].properties.time_below_requirement=0;
+                            lgas.features[j].properties.FUI=0;
+                            lgas.features[j].properties.water_scarcity=0;
+                            lgas.features[j].properties.DSI_agriculture_production=0;
+                            lgas.features[j].properties.IndexRank=0;
+                            lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                    }
+
+                    // Create parallel Coordinate
+                    parcoords = d3.parcoords()("#parcoord")
+                            .alpha(1)
+                            .mode("queue") // progressive rendering
+                            .height(760)
+                            .width(2800)
+                            .margin({
+                                    top: 25,
+                                    left: 1,
+                                    right: 1,
+                                    bottom: 15
+                            })
+                            .color(function (d) { return getColorScalar(d.IndexRank) });
+
+
+                    //Read data for parallel coordinate
+                    d3.csv("data/DSI_agriculture_production.csv", function (data) {
+                            _.each(data, function (d, i) {
+                                    d.index = d.index || i; //unique id
+                                    var water_source_name = d.water_sources
+                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
+                                    lgaDict[water_source_name].properties.population=d.population;
+                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
+                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
+                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
+                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
+                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
+                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
+                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
+                                    lgaDict[water_source_name].properties.variation=d.variation;
+                                    lgaDict[water_source_name].properties.median=d.median;
+                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
+                                    lgaDict[water_source_name].properties.DSI=d.DSI;
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
+                                    lgaDict[water_source_name].properties.FUI=d.FUI;
+                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
+                                    lgaDict[water_source_name].properties.DSI_agriculture_production=d.DSI_agriculture_production;
+                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    lga.push(water_source_name);
+                            });
+
+                            // add lga layer
+                            geojson = L.geoJson(lgas, {
+                                    style: style,                            
+                                    onEachFeature: onEachFeature
+                            }).addTo(map);
+
+                            // add label layer
+                            geojsonLabels = L.geoJson(lgaCentroids, {
+                                    pointToLayer: function (feature, latlng) {
+                                            return  L.marker(latlng, {
+                                                    clickable : false,
+                                                    draggable : false,
+                                                    icon: L.divIcon({
+                                                    className: 'my-leaflet-div-icon',
+                                                    })
+                                            });
+                                    },
+                            }).addTo(map);
+                            displayed_s5.push(geojson);
+                            displayed_s5.push(geojsonLabels);                         
+
+                            // add legend
+                            legend = L.control({position: 'bottomright'});
+                            legend.onAdd = function (map) {
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                    labels = [],
+                                    from, to;
+                                    labels.push(
+                                                    '<i style="background:' + myCols[0] + '"></i> ' +
+                                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[1] + '"></i> ' +
+                                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[2] + '"></i> ' +
+                                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    return div;
+                            };
+                            legend.addTo(map);
+
+                            //Bind data to parallel coordinate
+                            parcoords.data(data)
+                                            .hideAxis(["water_sources","index"])
+                                            .render()
+                                            .reorderable()
+                                            .brushMode("1D-axes")
+                                            .rate(400);
+
+                            // setting up grid
+                            var column_keys = d3.keys(data[0]);
+                            var columns = column_keys.map(function(key,i) {
+                                    return {
+                                            id: key,
+                                            name: key,
+                                            field: key,
+                                            sortable: true}
+                            });
+
+                            var options = {
+                                    enableCellNavigation: true,
+                                    enableColumnReorder: false,
+                                    multiColumnSort: false,
+                            };
+
+                            var dataView = new Slick.Data.DataView();
+                            var grid = new Slick.Grid("#grid", dataView, columns, options);
+
+                            grid.autosizeColumns();
+
+                            // wire up model events to drive the grid
+                            dataView.onRowCountChanged.subscribe(function (e, args) {
+                                    grid.updateRowCount();
+                                    grid.render();
+                            });
+
+                            dataView.onRowsChanged.subscribe(function (e, args) {
+                                    grid.invalidateRows(args.rows);
+                                    grid.render();
+                            });
+
+                            // column sorting
+                            var sortcol = column_keys[0];
+                            var sortdir = 1;
+
+                            function comparer(a, b) {
+                                    var x = a[sortcol], y = b[sortcol];
+                                    return (x == y ? 0 : (x > y ? 1 : -1));
+                            }
+
+                            // click header to sort grid column
+                            grid.onSort.subscribe(function (e, args) {
+                                    sortdir = args.sortAsc ? 1 : -1;
+                                    sortcol = args.sortCol.field;
+
+                                    if ($.browser.msie && $.browser.version <= 8) {
+                                            dataView.fastSort(sortcol, args.sortAsc);
+                                    } else {
+                                            dataView.sort(comparer, args.sortAsc);
+                                    }
+                            });
+
+                            // highlight row in chart
+                            grid.onMouseEnter.subscribe(function(e,args) {
+                                    var i = grid.getCellFromEvent(e).row;
+                                    var d = parcoords.brushed() || data;
+                                    parcoords.highlight([d[i]]);
+                            });
+
+                            grid.onMouseLeave.subscribe(function(e,args) {
+                                    parcoords.unhighlight();
+                            });
+
+                            // fill grid with data
+                            gridUpdate(data);
+
+                            // update grid on brush
+                            parcoords.on("brush", function (d) {
+                                    filtered = d;
+                                    isSelected = true;
+                                    gridUpdate(d);
+                                    //update map
+                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
+                                    _.each(d, function (k, i) {
+                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                    });
+
+                                    map.removeControl(legend);
+                                    legend.addTo(map);
+                                    refreshMap(lga);
+                            });
+
+
+                            function gridUpdate(data) {
+                                    dataView.beginUpdate();
+                                    dataView.setItems(data);
+                                    dataView.endUpdate();
+                            };
+
+                            function refreshMap(updatedLGA) {
+                                    // go through updateLGA, or edit the values directly in the geojson layers
+                                    geojson.getLayers().map(function (d) {
+                                            geojson.resetStyle(d);
+                                            geojsonLabels.getLayers().forEach(function (z) {
+                                                    if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
+                                                            if (d.feature.properties.FUI > 0) {
+                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                            } else {
+                                                                    z._icon.innerHTML = "";
+                                                            }
+                                                    }
+                                            });
+                                    })
+                            }
+                    });
+                }
+                if (checkBox.checked === false){
+                    parcoord.style.display = 'none';
+                    grid.style.display = 'none';
+                    map.removeControl(info);
+                    map.removeControl(legend);
+                    removeLayer(displayed_s5);                   
+                }
+            }
+            
+            displayed_s6 = [];
+            function show_s6(id){
+                    function getColorScalar(d) {
+                        if(d<=Math.floor(max_row/3)){
+                        return myCols[0];
+                        }else if(d<=Math.ceil(2*max_row/3)){
+                        return myCols[1];
+                        }else{
+                        return myCols[2];
+                        }
+                    }
+                    function style(feature) {
+                            return {
+                                    weight: 1,
+                                    opacity: showIt(1),
+                                    color: 'white',
+                                    dashArray: '3',
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillColor: getColorScalar(feature.properties.IndexRank)
+                            };
+                    }
+                    var max_row=0;//Get the row number of ranking file
+                    d3.csv("data/days_below_mean_agriculture_production.csv", function (data) {
+                        _.each(data, function (d, i) {
+                        max_row++;
+                        });
+                    });
+                    
+                    var checkBox = document.getElementById(id); 
+                    if (checkBox.checked === true){
+                    parcoord.style.display = 'block';
+                    grid.style.display = 'block';
+                    // control that shows state info on hover
+                    info = L.control({position: 'topright'});
+                    info.onAdd = function (map) {
+                            this._div = L.DomUtil.create('div', 'info');
+                            this.update();
+                            return this._div;
+                    };
+                    info.update = function (props) {
+                            this._div.innerHTML = (props?
+                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
+                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'Days below mean(50%) *Agriculture production (50%): ' + '<b>'+ props.days_below_mean_agriculture_production + '</b>'+'<br />'
+                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                    };
+                    info.addTo(map);
+
+                    var lgaDict = {};
+//                    var geojson, geojsonLabels;
+                    // initialise each property for of geojson
+                    for (j = 0; j < lgas.features.length; j++) {
+                            lgas.features[j].properties.irrigated_area=0;
+                            lgas.features[j].properties.population=0;
+                            lgas.features[j].properties.irrigation_value=0;
+                            lgas.features[j].properties.mining_value=0;
+                            lgas.features[j].properties.employment_irrigation=0;
+                            lgas.features[j].properties.employment_mining=0;
+                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.wetland_area=0;
+                            lgas.features[j].properties.dissolved_oxygen=0;
+                            lgas.features[j].properties.mean_flow=0;
+                            lgas.features[j].properties.variation=0;
+                            lgas.features[j].properties.median=0;
+                            lgas.features[j].properties.days_below_mean=0;
+                            lgas.features[j].properties.DSI=0;
+                            lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                            lgas.features[j].properties.time_below_requirement=0;
+                            lgas.features[j].properties.FUI=0;
+                            lgas.features[j].properties.water_scarcity=0;
+                            lgas.features[j].properties.days_below_mean_agriculture_production=0;
+                            lgas.features[j].properties.IndexRank=0;
+                            lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                    }
+
+                    // Create parallel Coordinate
+                    parcoords = d3.parcoords()("#parcoord")
+                            .alpha(1)
+                            .mode("queue") // progressive rendering
+                            .height(760)
+                            .width(2800)
+                            .margin({
+                                    top: 25,
+                                    left: 1,
+                                    right: 1,
+                                    bottom: 15
+                            })
+                            .color(function (d) { return getColorScalar(d.IndexRank) });
+
+
+                    //Read data for parallel coordinate
+                    d3.csv("data/days_below_mean_agriculture_production.csv", function (data) {
+                            _.each(data, function (d, i) {
+                                    d.index = d.index || i; //unique id
+                                    var water_source_name = d.water_sources
+                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
+                                    lgaDict[water_source_name].properties.population=d.population;
+                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
+                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
+                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
+                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
+                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
+                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
+                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
+                                    lgaDict[water_source_name].properties.variation=d.variation;
+                                    lgaDict[water_source_name].properties.median=d.median;
+                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
+                                    lgaDict[water_source_name].properties.DSI=d.DSI;
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
+                                    lgaDict[water_source_name].properties.FUI=d.FUI;
+                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
+                                    lgaDict[water_source_name].properties.days_below_mean_agriculture_production=d.days_below_mean_agriculture_production;
+                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    lga.push(water_source_name);
+                            });
+
+                            // add lga layer
+                            geojson = L.geoJson(lgas, {
+                                    style: style,                            
+                                    onEachFeature: onEachFeature
+                            }).addTo(map);
+
+                            // add label layer
+                            geojsonLabels = L.geoJson(lgaCentroids, {
+                                    pointToLayer: function (feature, latlng) {
+                                            return  L.marker(latlng, {
+                                                    clickable : false,
+                                                    draggable : false,
+                                                    icon: L.divIcon({
+                                                    className: 'my-leaflet-div-icon',
+                                                    })
+                                            });
+                                    },
+                            }).addTo(map);
+                            displayed_s6.push(geojson);
+                            displayed_s6.push(geojsonLabels);                         
+
+                            // add legend
+                            legend = L.control({position: 'bottomright'});
+                            legend.onAdd = function (map) {
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                    labels = [],
+                                    from, to;
+                                    labels.push(
+                                                    '<i style="background:' + myCols[0] + '"></i> ' +
+                                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[1] + '"></i> ' +
+                                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[2] + '"></i> ' +
+                                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    return div;
+                            };
+                            legend.addTo(map);
+
+                            //Bind data to parallel coordinate
+                            parcoords.data(data)
+                                            .hideAxis(["water_sources","index"])
+                                            .render()
+                                            .reorderable()
+                                            .brushMode("1D-axes")
+                                            .rate(400);
+
+                            // setting up grid
+                            var column_keys = d3.keys(data[0]);
+                            var columns = column_keys.map(function(key,i) {
+                                    return {
+                                            id: key,
+                                            name: key,
+                                            field: key,
+                                            sortable: true}
+                            });
+
+                            var options = {
+                                    enableCellNavigation: true,
+                                    enableColumnReorder: false,
+                                    multiColumnSort: false,
+                            };
+
+                            var dataView = new Slick.Data.DataView();
+                            var grid = new Slick.Grid("#grid", dataView, columns, options);
+
+                            grid.autosizeColumns();
+
+                            // wire up model events to drive the grid
+                            dataView.onRowCountChanged.subscribe(function (e, args) {
+                                    grid.updateRowCount();
+                                    grid.render();
+                            });
+
+                            dataView.onRowsChanged.subscribe(function (e, args) {
+                                    grid.invalidateRows(args.rows);
+                                    grid.render();
+                            });
+
+                            // column sorting
+                            var sortcol = column_keys[0];
+                            var sortdir = 1;
+
+                            function comparer(a, b) {
+                                    var x = a[sortcol], y = b[sortcol];
+                                    return (x == y ? 0 : (x > y ? 1 : -1));
+                            }
+
+                            // click header to sort grid column
+                            grid.onSort.subscribe(function (e, args) {
+                                    sortdir = args.sortAsc ? 1 : -1;
+                                    sortcol = args.sortCol.field;
+
+                                    if ($.browser.msie && $.browser.version <= 8) {
+                                            dataView.fastSort(sortcol, args.sortAsc);
+                                    } else {
+                                            dataView.sort(comparer, args.sortAsc);
+                                    }
+                            });
+
+                            // highlight row in chart
+                            grid.onMouseEnter.subscribe(function(e,args) {
+                                    var i = grid.getCellFromEvent(e).row;
+                                    var d = parcoords.brushed() || data;
+                                    parcoords.highlight([d[i]]);
+                            });
+
+                            grid.onMouseLeave.subscribe(function(e,args) {
+                                    parcoords.unhighlight();
+                            });
+
+                            // fill grid with data
+                            gridUpdate(data);
+
+                            // update grid on brush
+                            parcoords.on("brush", function (d) {
+                                    filtered = d;
+                                    isSelected = true;
+                                    gridUpdate(d);
+                                    //update map
+                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
+                                    _.each(d, function (k, i) {
+                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                    });
+
+                                    map.removeControl(legend);
+                                    legend.addTo(map);
+                                    refreshMap(lga);
+                            });
+
+
+                            function gridUpdate(data) {
+                                    dataView.beginUpdate();
+                                    dataView.setItems(data);
+                                    dataView.endUpdate();
+                            };
+
+                            function refreshMap(updatedLGA) {
+                                    // go through updateLGA, or edit the values directly in the geojson layers
+                                    geojson.getLayers().map(function (d) {
+                                            geojson.resetStyle(d);
+                                            geojsonLabels.getLayers().forEach(function (z) {
+                                                    if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
+                                                            if (d.feature.properties.FUI > 0) {
+                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                            } else {
+                                                                    z._icon.innerHTML = "";
+                                                            }
+                                                    }
+                                            });
+                                    })
+                            }
+                    });
+                }
+                if (checkBox.checked === false){
+                    parcoord.style.display = 'none';
+                    grid.style.display = 'none';
+                    map.removeControl(info);
+                    map.removeControl(legend);
+                    removeLayer(displayed_s6);                   
+                }
+            }
+            
+            displayed_s7 = [];
+            function show_s7(id){
+                    function getColorScalar(d) {
+                        if(d<=Math.floor(max_row/3)){
+                        return myCols[0];
+                        }else if(d<=Math.ceil(2*max_row/3)){
+                        return myCols[1];
+                        }else{
+                        return myCols[2];
+                        }
+                    }
+                    function style(feature) {
+                            return {
+                                    weight: 1,
+                                    opacity: showIt(1),
+                                    color: 'white',
+                                    dashArray: '3',
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillColor: getColorScalar(feature.properties.IndexRank)
+                            };
+                    }
+                    var max_row=0;//Get the row number of ranking file
+                    d3.csv("data/status_of_ecosystem_population.csv", function (data) {
+                        _.each(data, function (d, i) {
+                        max_row++;
+                        });
+                    });
+                    
+                    var checkBox = document.getElementById(id); 
+                    if (checkBox.checked === true){
+                    parcoord.style.display = 'block';
+                    grid.style.display = 'block';
+                    // control that shows state info on hover
+                    info = L.control({position: 'topright'});
+                    info.onAdd = function (map) {
+                            this._div = L.DomUtil.create('div', 'info');
+                            this.update();
+                            return this._div;
+                    };
+                    info.update = function (props) {
+                            this._div.innerHTML = (props?
+                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
+                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'Status of ecosystem (80%) X Populationm(20%): ' + '<b>'+ props.status_of_ecosystem_population + '</b>'+'<br />'
+                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                    };
+                    info.addTo(map);
+
+                    var lgaDict = {};
+//                    var geojson, geojsonLabels;
+                    // initialise each property for of geojson
+                    for (j = 0; j < lgas.features.length; j++) {
+                            lgas.features[j].properties.irrigated_area=0;
+                            lgas.features[j].properties.population=0;
+                            lgas.features[j].properties.irrigation_value=0;
+                            lgas.features[j].properties.mining_value=0;
+                            lgas.features[j].properties.employment_irrigation=0;
+                            lgas.features[j].properties.employment_mining=0;
+                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.wetland_area=0;
+                            lgas.features[j].properties.dissolved_oxygen=0;
+                            lgas.features[j].properties.mean_flow=0;
+                            lgas.features[j].properties.variation=0;
+                            lgas.features[j].properties.median=0;
+                            lgas.features[j].properties.days_below_mean=0;
+                            lgas.features[j].properties.DSI=0;
+                            lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                            lgas.features[j].properties.time_below_requirement=0;
+                            lgas.features[j].properties.FUI=0;
+                            lgas.features[j].properties.water_scarcity=0;
+                            lgas.features[j].properties.status_of_ecosystem_population=0;
+                            lgas.features[j].properties.IndexRank=0;
+                            lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                    }
+
+                    // Create parallel Coordinate
+                    parcoords = d3.parcoords()("#parcoord")
+                            .alpha(1)
+                            .mode("queue") // progressive rendering
+                            .height(760)
+                            .width(2800)
+                            .margin({
+                                    top: 25,
+                                    left: 1,
+                                    right: 1,
+                                    bottom: 15
+                            })
+                            .color(function (d) { return getColorScalar(d.IndexRank) });
+
+
+                    //Read data for parallel coordinate
+                    d3.csv("data/status_of_ecosystem_population.csv", function (data) {
+                            _.each(data, function (d, i) {
+                                    d.index = d.index || i; //unique id
+                                    var water_source_name = d.water_sources
+                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
+                                    lgaDict[water_source_name].properties.population=d.population;
+                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
+                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
+                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
+                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
+                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
+                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
+                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
+                                    lgaDict[water_source_name].properties.variation=d.variation;
+                                    lgaDict[water_source_name].properties.median=d.median;
+                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
+                                    lgaDict[water_source_name].properties.DSI=d.DSI;
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
+                                    lgaDict[water_source_name].properties.FUI=d.FUI;
+                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
+                                    lgaDict[water_source_name].properties.status_of_ecosystem_population=d.status_of_ecosystem_population;
+                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    lga.push(water_source_name);
+                            });
+
+                            // add lga layer
+                            geojson = L.geoJson(lgas, {
+                                    style: style,                            
+                                    onEachFeature: onEachFeature
+                            }).addTo(map);
+
+                            // add label layer
+                            geojsonLabels = L.geoJson(lgaCentroids, {
+                                    pointToLayer: function (feature, latlng) {
+                                            return  L.marker(latlng, {
+                                                    clickable : false,
+                                                    draggable : false,
+                                                    icon: L.divIcon({
+                                                    className: 'my-leaflet-div-icon',
+                                                    })
+                                            });
+                                    },
+                            }).addTo(map);
+                            displayed_s7.push(geojson);
+                            displayed_s7.push(geojsonLabels);                         
+
+                            // add legend
+                            legend = L.control({position: 'bottomright'});
+                            legend.onAdd = function (map) {
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                    labels = [],
+                                    from, to;
+                                    labels.push(
+                                                    '<i style="background:' + myCols[0] + '"></i> ' +
+                                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[1] + '"></i> ' +
+                                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[2] + '"></i> ' +
+                                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    return div;
+                            };
+                            legend.addTo(map);
+
+                            //Bind data to parallel coordinate
+                            parcoords.data(data)
+                                            .hideAxis(["water_sources","index"])
+                                            .render()
+                                            .reorderable()
+                                            .brushMode("1D-axes")
+                                            .rate(400);
+
+                            // setting up grid
+                            var column_keys = d3.keys(data[0]);
+                            var columns = column_keys.map(function(key,i) {
+                                    return {
+                                            id: key,
+                                            name: key,
+                                            field: key,
+                                            sortable: true}
+                            });
+
+                            var options = {
+                                    enableCellNavigation: true,
+                                    enableColumnReorder: false,
+                                    multiColumnSort: false,
+                            };
+
+                            var dataView = new Slick.Data.DataView();
+                            var grid = new Slick.Grid("#grid", dataView, columns, options);
+
+                            grid.autosizeColumns();
+
+                            // wire up model events to drive the grid
+                            dataView.onRowCountChanged.subscribe(function (e, args) {
+                                    grid.updateRowCount();
+                                    grid.render();
+                            });
+
+                            dataView.onRowsChanged.subscribe(function (e, args) {
+                                    grid.invalidateRows(args.rows);
+                                    grid.render();
+                            });
+
+                            // column sorting
+                            var sortcol = column_keys[0];
+                            var sortdir = 1;
+
+                            function comparer(a, b) {
+                                    var x = a[sortcol], y = b[sortcol];
+                                    return (x == y ? 0 : (x > y ? 1 : -1));
+                            }
+
+                            // click header to sort grid column
+                            grid.onSort.subscribe(function (e, args) {
+                                    sortdir = args.sortAsc ? 1 : -1;
+                                    sortcol = args.sortCol.field;
+
+                                    if ($.browser.msie && $.browser.version <= 8) {
+                                            dataView.fastSort(sortcol, args.sortAsc);
+                                    } else {
+                                            dataView.sort(comparer, args.sortAsc);
+                                    }
+                            });
+
+                            // highlight row in chart
+                            grid.onMouseEnter.subscribe(function(e,args) {
+                                    var i = grid.getCellFromEvent(e).row;
+                                    var d = parcoords.brushed() || data;
+                                    parcoords.highlight([d[i]]);
+                            });
+
+                            grid.onMouseLeave.subscribe(function(e,args) {
+                                    parcoords.unhighlight();
+                            });
+
+                            // fill grid with data
+                            gridUpdate(data);
+
+                            // update grid on brush
+                            parcoords.on("brush", function (d) {
+                                    filtered = d;
+                                    isSelected = true;
+                                    gridUpdate(d);
+                                    //update map
+                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
+                                    _.each(d, function (k, i) {
+                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                    });
+
+                                    map.removeControl(legend);
+                                    legend.addTo(map);
+                                    refreshMap(lga);
+                            });
+
+
+                            function gridUpdate(data) {
+                                    dataView.beginUpdate();
+                                    dataView.setItems(data);
+                                    dataView.endUpdate();
+                            };
+
+                            function refreshMap(updatedLGA) {
+                                    // go through updateLGA, or edit the values directly in the geojson layers
+                                    geojson.getLayers().map(function (d) {
+                                            geojson.resetStyle(d);
+                                            geojsonLabels.getLayers().forEach(function (z) {
+                                                    if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
+                                                            if (d.feature.properties.FUI > 0) {
+                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                            } else {
+                                                                    z._icon.innerHTML = "";
+                                                            }
+                                                    }
+                                            });
+                                    })
+                            }
+                    });
+                }
+                if (checkBox.checked === false){
+                    parcoord.style.display = 'none';
+                    grid.style.display = 'none';
+                    map.removeControl(info);
+                    map.removeControl(legend);
+                    removeLayer(displayed_s7);                   
+                }
+            }
+            
+            displayed_s8 = [];
+            function show_s8(id){
+                    function getColorScalar(d) {
+                        if(d<=Math.floor(max_row/3)){
+                        return myCols[0];
+                        }else if(d<=Math.ceil(2*max_row/3)){
+                        return myCols[1];
+                        }else{
+                        return myCols[2];
+                        }
+                    }
+                    function style(feature) {
+                            return {
+                                    weight: 1,
+                                    opacity: showIt(1),
+                                    color: 'white',
+                                    dashArray: '3',
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillColor: getColorScalar(feature.properties.IndexRank)
+                            };
+                    }
+                    var max_row=0;//Get the row number of ranking file
+                    d3.csv("data/health_of_water_bodies_population.csv", function (data) {
+                        _.each(data, function (d, i) {
+                        max_row++;
+                        });
+                    });
+                    
+                    var checkBox = document.getElementById(id); 
+                    if (checkBox.checked === true){
+                    parcoord.style.display = 'block';
+                    grid.style.display = 'block';
+                    // control that shows state info on hover
+                    info = L.control({position: 'topright'});
+                    info.onAdd = function (map) {
+                            this._div = L.DomUtil.create('div', 'info');
+                            this.update();
+                            return this._div;
+                    };
+                    info.update = function (props) {
+                            this._div.innerHTML = (props?
+                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
+                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'Health of water bodies(80%) ✖ Population(20%): ' + '<b>'+ props.health_of_water_bodies_population + '</b>'+'<br />'
+                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                    };
+                    info.addTo(map);
+
+                    var lgaDict = {};
+//                    var geojson, geojsonLabels;
+                    // initialise each property for of geojson
+                    for (j = 0; j < lgas.features.length; j++) {
+                            lgas.features[j].properties.irrigated_area=0;
+                            lgas.features[j].properties.population=0;
+                            lgas.features[j].properties.irrigation_value=0;
+                            lgas.features[j].properties.mining_value=0;
+                            lgas.features[j].properties.employment_irrigation=0;
+                            lgas.features[j].properties.employment_mining=0;
+                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.wetland_area=0;
+                            lgas.features[j].properties.dissolved_oxygen=0;
+                            lgas.features[j].properties.mean_flow=0;
+                            lgas.features[j].properties.variation=0;
+                            lgas.features[j].properties.median=0;
+                            lgas.features[j].properties.days_below_mean=0;
+                            lgas.features[j].properties.DSI=0;
+                            lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                            lgas.features[j].properties.time_below_requirement=0;
+                            lgas.features[j].properties.FUI=0;
+                            lgas.features[j].properties.water_scarcity=0;
+                            lgas.features[j].properties.health_of_water_bodies_population=0;
+                            lgas.features[j].properties.IndexRank=0;
+                            lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                    }
+
+                    // Create parallel Coordinate
+                    parcoords = d3.parcoords()("#parcoord")
+                            .alpha(1)
+                            .mode("queue") // progressive rendering
+                            .height(760)
+                            .width(2800)
+                            .margin({
+                                    top: 25,
+                                    left: 1,
+                                    right: 1,
+                                    bottom: 15
+                            })
+                            .color(function (d) { return getColorScalar(d.IndexRank) });
+
+
+                    //Read data for parallel coordinate
+                    d3.csv("data/health_of_water_bodies_population.csv", function (data) {
+                            _.each(data, function (d, i) {
+                                    d.index = d.index || i; //unique id
+                                    var water_source_name = d.water_sources
+                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
+                                    lgaDict[water_source_name].properties.population=d.population;
+                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
+                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
+                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
+                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
+                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
+                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
+                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
+                                    lgaDict[water_source_name].properties.variation=d.variation;
+                                    lgaDict[water_source_name].properties.median=d.median;
+                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
+                                    lgaDict[water_source_name].properties.DSI=d.DSI;
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
+                                    lgaDict[water_source_name].properties.FUI=d.FUI;
+                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
+                                    lgaDict[water_source_name].properties.health_of_water_bodies_population=d.health_of_water_bodies_population;
+                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    lga.push(water_source_name);
+                            });
+
+                            // add lga layer
+                            geojson = L.geoJson(lgas, {
+                                    style: style,                            
+                                    onEachFeature: onEachFeature
+                            }).addTo(map);
+
+                            // add label layer
+                            geojsonLabels = L.geoJson(lgaCentroids, {
+                                    pointToLayer: function (feature, latlng) {
+                                            return  L.marker(latlng, {
+                                                    clickable : false,
+                                                    draggable : false,
+                                                    icon: L.divIcon({
+                                                    className: 'my-leaflet-div-icon',
+                                                    })
+                                            });
+                                    },
+                            }).addTo(map);
+                            displayed_s8.push(geojson);
+                            displayed_s8.push(geojsonLabels);                         
+
+                            // add legend
+                            legend = L.control({position: 'bottomright'});
+                            legend.onAdd = function (map) {
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                    labels = [],
+                                    from, to;
+                                    labels.push(
+                                                    '<i style="background:' + myCols[0] + '"></i> ' +
+                                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[1] + '"></i> ' +
+                                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[2] + '"></i> ' +
+                                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    return div;
+                            };
+                            legend.addTo(map);
+
+                            //Bind data to parallel coordinate
+                            parcoords.data(data)
+                                            .hideAxis(["water_sources","index"])
+                                            .render()
+                                            .reorderable()
+                                            .brushMode("1D-axes")
+                                            .rate(400);
+
+                            // setting up grid
+                            var column_keys = d3.keys(data[0]);
+                            var columns = column_keys.map(function(key,i) {
+                                    return {
+                                            id: key,
+                                            name: key,
+                                            field: key,
+                                            sortable: true}
+                            });
+
+                            var options = {
+                                    enableCellNavigation: true,
+                                    enableColumnReorder: false,
+                                    multiColumnSort: false,
+                            };
+
+                            var dataView = new Slick.Data.DataView();
+                            var grid = new Slick.Grid("#grid", dataView, columns, options);
+
+                            grid.autosizeColumns();
+
+                            // wire up model events to drive the grid
+                            dataView.onRowCountChanged.subscribe(function (e, args) {
+                                    grid.updateRowCount();
+                                    grid.render();
+                            });
+
+                            dataView.onRowsChanged.subscribe(function (e, args) {
+                                    grid.invalidateRows(args.rows);
+                                    grid.render();
+                            });
+
+                            // column sorting
+                            var sortcol = column_keys[0];
+                            var sortdir = 1;
+
+                            function comparer(a, b) {
+                                    var x = a[sortcol], y = b[sortcol];
+                                    return (x == y ? 0 : (x > y ? 1 : -1));
+                            }
+
+                            // click header to sort grid column
+                            grid.onSort.subscribe(function (e, args) {
+                                    sortdir = args.sortAsc ? 1 : -1;
+                                    sortcol = args.sortCol.field;
+
+                                    if ($.browser.msie && $.browser.version <= 8) {
+                                            dataView.fastSort(sortcol, args.sortAsc);
+                                    } else {
+                                            dataView.sort(comparer, args.sortAsc);
+                                    }
+                            });
+
+                            // highlight row in chart
+                            grid.onMouseEnter.subscribe(function(e,args) {
+                                    var i = grid.getCellFromEvent(e).row;
+                                    var d = parcoords.brushed() || data;
+                                    parcoords.highlight([d[i]]);
+                            });
+
+                            grid.onMouseLeave.subscribe(function(e,args) {
+                                    parcoords.unhighlight();
+                            });
+
+                            // fill grid with data
+                            gridUpdate(data);
+
+                            // update grid on brush
+                            parcoords.on("brush", function (d) {
+                                    filtered = d;
+                                    isSelected = true;
+                                    gridUpdate(d);
+                                    //update map
+                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
+                                    _.each(d, function (k, i) {
+                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                    });
+
+                                    map.removeControl(legend);
+                                    legend.addTo(map);
+                                    refreshMap(lga);
+                            });
+
+
+                            function gridUpdate(data) {
+                                    dataView.beginUpdate();
+                                    dataView.setItems(data);
+                                    dataView.endUpdate();
+                            };
+
+                            function refreshMap(updatedLGA) {
+                                    // go through updateLGA, or edit the values directly in the geojson layers
+                                    geojson.getLayers().map(function (d) {
+                                            geojson.resetStyle(d);
+                                            geojsonLabels.getLayers().forEach(function (z) {
+                                                    if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
+                                                            if (d.feature.properties.FUI > 0) {
+                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                            } else {
+                                                                    z._icon.innerHTML = "";
+                                                            }
+                                                    }
+                                            });
+                                    })
+                            }
+                    });
+                }
+                if (checkBox.checked === false){
+                    parcoord.style.display = 'none';
+                    grid.style.display = 'none';
+                    map.removeControl(info);
+                    map.removeControl(legend);
+                    removeLayer(displayed_s8);                   
+                }
+            }
         </script>
     </body>
 </html>

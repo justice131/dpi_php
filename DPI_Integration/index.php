@@ -3993,7 +3993,7 @@ and open the template in the editor.
                 legendinfo = L.control({position: 'bottomright'});
                 legendinfo.onAdd = function (map) {
                     var div = L.DomUtil.create('div', 'info legend');
-                    div.innerHTML= '<div style=\"background-color:white\"><canvas id=\"bar-pic\" width=200 height=180></canvas></div>';
+                    div.innerHTML= '<div style=\"background-color:white;border-radius:10px;\"><canvas id=\"bar-pic\" width=200 height=180></canvas></div>';
                     return div;
                 };
                 legendinfo.addTo(map);

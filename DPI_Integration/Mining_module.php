@@ -181,7 +181,7 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");;
             });
             
-            var map = L.map('map',{zoomControl: false}).setView([-29.0, 134.7], 4.4);
+            var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
             }).addTo(map);

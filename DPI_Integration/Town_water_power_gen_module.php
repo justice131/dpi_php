@@ -184,7 +184,7 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");;
             });
             
-            var map = L.map('map',{zoomControl: false}).setView([-29.0, 134.7], 4.4);
+            var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
             }).addTo(map);
@@ -3583,17 +3583,17 @@ and open the template in the editor.
 //                        props?
 //                        '<h5>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</h5>' + 
 //                        'Number of Water Treatment Centres: '+ toThousands(no_wtc) + '<br/>' +
-//                        'Population Affected: '+ toThousands(popu_wtc) + '<br />'+
+//                        'Population: '+ toThousands(popu_wtc) + '<br />'+
 //                        'Annual Power Generated: '+ overall_fmi + '<br />'+
 //                        'Annual Use of Water for Town Water and Sewerage: '+ overall_dei + '<br />'+
 //                        'Annual Use of Water for Power Generation: ' + surface_water_size + '<br />'
 //                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                           '<b>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
                           '<p style=\"line-height:50%\"><img src=\"images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centres: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Population Affected: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
+                          '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Population Served: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
+                          '<img src=\"images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + 0 + '</b><br/><br />'+
                           '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water and Sewerage: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + toThousands(popu_wtc) + '</b><br/></p>'  
+                          '<img src=\"images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + 0 + '</b><br/></p>'  
                     );
                 <?php }?>;
             };

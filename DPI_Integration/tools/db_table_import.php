@@ -477,6 +477,58 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
                 mysqli_query($conn,$sql);
                 $start += $query_per_time;
             }
+        }else if ($table_name == "waste_water_treatment_centre"){
+            $sql = "truncate table waste_water_treatment_centre;";
+            mysqli_query($conn,$sql);
+            $col_num_s = 7;
+            $col_num = count($data[0]);
+            if($col_num_s!=$col_num){
+                echo "File format not valid";
+                return;
+            }
+            for($i=1;$i<$row_num;$i++){
+                $col_num = count($data[$i]);
+                if($col_num_s==$col_num){
+                    $sql="insert delayed into waste_water_treatment_centre("
+                        ."catchment,"
+                        ."lga,"
+                        ."treatment_plant,"
+                        ."latitude,"
+                        ."longitude,"
+                        ."wwqi,"
+                        ."treted_volume)values("
+                            . "\"".$data[$i][0]."\","
+                            . "\"".$data[$i][1]."\","
+                            . "\"".$data[$i][2]."\","
+                            . "\"".$data[$i][3]."\","
+                            . "\"".$data[$i][4]."\","
+                            . "\"".$data[$i][5]."\","
+                            . "\"".$data[$i][6]."\");";
+                    mysqli_query($conn,$sql);   
+                }
+            }
+        }else if ($table_name == "ground_water"){
+            $sql = "truncate table ground_water;";
+            mysqli_query($conn,$sql);
+            $col_num_s = 3;
+            $col_num = count($data[0]);
+            if($col_num_s!=$col_num){
+                echo "File format not valid";
+                return;
+            }
+            for($i=1;$i<$row_num;$i++){
+                $col_num = count($data[$i]);
+                if($col_num_s==$col_num){
+                    $sql="insert delayed into ground_water("
+                        ."catchment,"
+                        ."groundwater,"
+                        ."longterm_extraction_limit)values("
+                            . "\"".$data[$i][0]."\","
+                            . "\"".$data[$i][1]."\","
+                            . "\"".$data[$i][2]."\");";
+                    mysqli_query($conn,$sql);   
+                }
+            }
         }else{
             echo "Error in table name";
             return;

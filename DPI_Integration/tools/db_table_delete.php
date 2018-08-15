@@ -35,10 +35,14 @@
         $sql = "truncate table valley_daily_data;";
     }else if ($table_name == "valley_yearly_data"){
         $sql = "truncate table valley_yearly_data;";
-    }else if ($table_name == "dam_daily_data.php"){
-        $sql = "truncate table dam_daily_data.php;";
-    }else if ($table_name == "dam_summary.php"){
-        $sql = "truncate table dam_summary.php;";
+    }else if ($table_name == "dam_daily_data"){
+        $sql = "truncate table dam_daily_data;";
+    }else if ($table_name == "dam_summary"){
+        $sql = "truncate table dam_summary;";
+    }else if ($table_name == "waste_water_treatment_centre"){
+        $sql = "truncate table waste_water_treatment_centre;";
+    }else if ($table_name == "ground_water"){
+        $sql = "truncate table ground_water;";
     }
     $retval = mysqli_query($conn,$sql);
     if(! $retval ){

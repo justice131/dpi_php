@@ -420,6 +420,7 @@ and open the template in the editor.
                 map.removeControl(legendinfo);
                 map.removeControl(controlSearch);
                 //controlSearch.remove(map);
+                link_to_parr.style.display = 'none';
             }
                        
             // find the middle point from geojason file
@@ -627,7 +628,7 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_unregulated;
                 var geojsonfile_1 = Macquarie_Unregulatedriver;
-                var link_to_parr = document.getElementById('link_to_parallel_coordinate');
+                link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 if (checkBox.checked === true){
                     // display link icon
                     link_to_parr.style.display = 'block';

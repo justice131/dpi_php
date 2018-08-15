@@ -253,8 +253,22 @@ and open the template in the editor.
                 popupAnchor:  [0, -15] 
             });
             
-            var Icon_6 = L.icon({
-                iconUrl: 'lib/leaflet/images/water_treatment_icon.png',
+            var Icon_red = L.icon({
+                iconUrl: 'lib/leaflet/images/water_treatment_icon_red.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_orange = L.icon({
+                iconUrl: 'lib/leaflet/images/water_treatment_icon_orange.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_green = L.icon({
+                iconUrl: 'lib/leaflet/images/water_treatment_icon_green.png',
                 iconSize:     [15, 15], 
                 iconAnchor:   [7.5, 7.5],  
                 popupAnchor:  [0, -15] 
@@ -356,6 +370,72 @@ and open the template in the editor.
                 }
             }
             
+            function icon_wsdi(Fui_macquarie, feature){          
+                function compareSecondColumn(a, b) {
+                    if (a[1] === b[1]) {
+                        return 0;
+                    }
+                    else {
+                        return (a[1] > b[1]) ? -1 : 1;
+                    }
+                }
+                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
+                if(Fui_macquarie.length%3 === 0){
+                    var i = Fui_macquarie.length/3;
+                    var e = Fui_macquarie.length;
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
+                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
+                }else{
+                    var e = Fui_macquarie.length;
+                    var j = Math.floor(e/3); 
+                    if (j>0){
+                        Fui_macquarie_1 = Fui_macquarie.slice(0,j);
+                        Fui_macquarie_2 = Fui_macquarie.slice(j,2*j);
+                        Fui_macquarie_3 = Fui_macquarie.slice(2*j,e);
+                    }else{
+                        if (e === 2){
+                            Fui_macquarie_1 = Fui_macquarie.slice(0,1);
+                            Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                            Fui_macquarie_3 = Fui_macquarie.slice(1,e);
+                        }
+                        if (e === 1){
+                            Fui_macquarie_1 = Fui_macquarie.slice(0,e);
+                            Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                            Fui_macquarie_3 = Fui_macquarie.slice(e,e);
+                        }
+                    }
+                }
+              
+                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_red;
+                }
+                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_orange;
+                }
+                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_green;
+                }              
+            }
+            
+            var wsdi_rank_Macquarie = [];
+            var wsdi_rank_Manning = [];
+            <?php if(!empty($town_water_supply)){?>;
+                <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+                    var cat ="<?php echo $town_water_supply[$x]["catchment"]; ?>";
+                    if (cat === 'Macquarie'){
+                        var loc ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                        var wsdi ="<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                        wsdi_rank_Macquarie.push([loc, wsdi]);
+                    }
+                    if (cat === 'Manning'){
+                        var loc ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                        var wsdi ="<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                        wsdi_rank_Manning.push([loc, wsdi]);
+                    }
+                <?php }?>;    
+            <?php }?>;
+            
             var featureCATCollection = []; 
             var check_collection = [];
             function addCATLayer(CATName, CATValue){
@@ -395,7 +475,7 @@ and open the template in the editor.
                                 var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
                                 var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
                                 var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
-                                var M = L.marker([lat, lon], {icon: Icon_6}).addTo(map)
+                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Macquarie, location)}).addTo(map)
                                 .bindPopup('Location: ' + location + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
@@ -427,7 +507,7 @@ and open the template in the editor.
                                 var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
                                 var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
                                 var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
-                                var M = L.marker([lat, lon], {icon: Icon_6}).addTo(map)
+                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Manning, location)}).addTo(map)
                                 .bindPopup('Location: ' + location + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'

@@ -3396,6 +3396,23 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_Groundwater;
                 if (checkBox.checked === true){
+                    if (typeof controlSearch !== 'undefined') {
+                        map.removeControl(controlSearch);
+                    }                    
+                    var markersLayer = new L.LayerGroup();
+                    map.addLayer(markersLayer);
+                    controlSearch = new L.Control.Search({
+                        position:'topleft',
+                        layer: markersLayer,
+                        initial: false,
+                        zoom: 11,
+                        marker: false,
+                        propertyName: 'gwater_source',
+                        textPlaceholder: 'Search groundwater source',
+                        textErr: 'Groundwater source not found'
+                    }); 
+                    map.addControl(controlSearch);
+                    
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
                             return { color: getRandomColor(), weight: 1.5, fillOpacity: 0.3};
@@ -3419,46 +3436,75 @@ and open the template in the editor.
                     var man_gw_13 = getCentroid(Manning_Groundwater.features[13].geometry.coordinates[8][0]);
                     var man_gw_14 = getCentroid(Manning_Groundwater.features[14].geometry.coordinates[0][0]);
                     
-                    var Mak_1 = L.marker(man_gw_0, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[0].properties.W_Source_1);
-                    var Mak_2 = L.marker(man_gw_1, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[1].properties.W_Source_1);
+                    var Mak_1 = L.marker(man_gw_0, {icon: Icon_0, gwater_source: Manning_Groundwater.features[0].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[0].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_1);
+                    
+                    var Mak_2 = L.marker(man_gw_1, {icon: Icon_0, gwater_source: Manning_Groundwater.features[1].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[1].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_2);
                     man_gw_2[1] = man_gw_2[1]-0.001;
-                    var Mak_3 = L.marker(man_gw_2, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[2].properties.W_Source_1);
+                    
+                    var Mak_3 = L.marker(man_gw_2, {icon: Icon_0, gwater_source: Manning_Groundwater.features[2].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[2].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_3);
+                    
                     man_gw_3[1] = man_gw_3[1]-0.007;
-                    var Mak_4 = L.marker(man_gw_3, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[3].properties.W_Source_1);
+                    var Mak_4 = L.marker(man_gw_3, {icon: Icon_0, gwater_source: Manning_Groundwater.features[3].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[3].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_4);
+                    
                     man_gw_4[1] =  man_gw_4[1]+0.001;
-                    var Mak_5 = L.marker(man_gw_4, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[4].properties.W_Source_1);
+                    var Mak_5 = L.marker(man_gw_4, {icon: Icon_0, gwater_source: Manning_Groundwater.features[4].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[4].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_5);
+                    
                     man_gw_5[1]=man_gw_5[1]+0.04;
                     man_gw_5[0]=man_gw_5[0]-0.005;
-                    var Mak_6 = L.marker(man_gw_5, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[5].properties.W_Source_1);
+                    var Mak_6 = L.marker(man_gw_5, {icon: Icon_0, gwater_source: Manning_Groundwater.features[5].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[5].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_6);
+                    
                     man_gw_6[1]=man_gw_6[1]+0.005;
-                    var Mak_7 = L.marker(man_gw_6, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[6].properties.W_Source_1);
+                    var Mak_7 = L.marker(man_gw_6, {icon: Icon_0, gwater_source: Manning_Groundwater.features[6].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[6].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_7);
+                    
                     man_gw_7[1] = man_gw_7[1] - 0.01 ;
-                    var Mak_8 = L.marker(man_gw_7, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[7].properties.W_Source_1);
-                    var Mak_9 = L.marker(man_gw_8, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[8].properties.W_Source_1);
-                    var Mak_10 = L.marker(man_gw_9, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[9].properties.W_Source_1);
-                    var Mak_11 = L.marker(man_gw_10, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[10].properties.W_Source_1);
-                    var Mak_12 = L.marker(man_gw_11, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[11].properties.W_Source_1);
+                    var Mak_8 = L.marker(man_gw_7, {icon: Icon_0, gwater_source: Manning_Groundwater.features[7].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[7].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_8);
+                    
+                    var Mak_9 = L.marker(man_gw_8, {icon: Icon_0, gwater_source: Manning_Groundwater.features[8].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[8].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_9);
+                    
+                    var Mak_10 = L.marker(man_gw_9, {icon: Icon_0, gwater_source: Manning_Groundwater.features[9].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[9].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_10);
+                    
+                    var Mak_11 = L.marker(man_gw_10, {icon: Icon_0, gwater_source: Manning_Groundwater.features[10].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[10].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_11);
+                    
+                    var Mak_12 = L.marker(man_gw_11, {icon: Icon_0, gwater_source: Manning_Groundwater.features[11].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[11].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_12);
+                    
                     man_gw_12[0] = man_gw_12[0] + 0.006;
-                    var Mak_13 = L.marker(man_gw_12, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[12].properties.W_Source_1);
+                    var Mak_13 = L.marker(man_gw_12, {icon: Icon_0, gwater_source: Manning_Groundwater.features[12].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[12].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_13);
+                    
                     man_gw_13[1]=man_gw_13[1]+0.015;
-                    var Mak_14 = L.marker(man_gw_13, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[13].properties.W_Source_1);
+                    var Mak_14 = L.marker(man_gw_13, {icon: Icon_0, gwater_source: Manning_Groundwater.features[13].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[13].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_14);
+                    
                     man_gw_14[0] = man_gw_14[0]-0.02;
-                    var Mak_15 = L.marker(man_gw_14, {icon: Icon_0}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[14].properties.W_Source_1);
+                    var Mak_15 = L.marker(man_gw_14, {icon: Icon_0, gwater_source: Manning_Groundwater.features[14].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+Manning_Groundwater.features[14].properties.W_Source_1+'</b>');
+                    markersLayer.addLayer(Mak_15);
             
                     displayed_gis_layer_groundwater.push(Mak_1); 
                     displayed_gis_layer_groundwater.push(Mak_2);
@@ -3475,11 +3521,16 @@ and open the template in the editor.
                     displayed_gis_layer_groundwater.push(Mak_13);
                     displayed_gis_layer_groundwater.push(Mak_14);
                     displayed_gis_layer_groundwater.push(Mak_15);
-
+                    
+                    controlSearch.on('search:locationfound', 
+                    function(e) {
+                        e.layer.addTo(map).openPopup();
+                    });
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_groundwater);
-                }                 
+                    map.removeControl(controlSearch);
+                }                
             }
             
             var displayed_gis_layer_workapproval = [];                          

@@ -1,34 +1,34 @@
 catchment_id,water_source,longterm_extraction_limit,unreg_entitlement,mean_flow,FUI,DSI,irrigable_area,wetland_area
-Macquarie,Backwater Boggy Cowal Water Source,4531.00,2627.00,145.90,4.93,83.9,12692.64787,2646.60
-Macquarie,Bell River Water Source,8115.00,8136.00,304.96,7.31,83.1,509.9266643,
-Macquarie,Bulbodney Grahway Creek Water Source,14038.00,7922.00,149.83,14.49,78.7,,1076.46
-Macquarie,Burrendong Dam Tributaries Water Source,873.00,577.00,333.54,0.47,78.8,,6473.46
-Macquarie,Campbells River Water Source,2356.00,2101.00,228.30,2.52,75.4,159.8132512,144.73
-Macquarie,Coolbaggie Creek Water Source,507.00,466.00,68.41,1.87,83.9,877.2138134,184.60
-Macquarie,Cooyal Wialdra Creek Water Source,989.00,741.00,77.64,2.61,89.0,91.25207614,4.73
-Macquarie,Ewenmar Creek Water Source,65177.00,1289.50,90.98,3.88,83.9,6160.487664,13939.93
-Macquarie,Fish River Water Source,18374.50,18071.00,257.24,19.25,85.6,18.25237449,298.69
-Macquarie,Goolma Creek Water Source,71.00,0.00,10.09,0.00,89.0,,1412.69
-Macquarie,Lawsons Creek Water Source,1632.00,1496.00,47.35,8.66,89.8,128.0991786,743.32
-Macquarie,Little River Water Source,2621.00,2270.00,97.47,6.38,82.2,636.0286631,
-Macquarie,Lower Bogan River Water Source,44021.00,41277.00,156.05,72.47,78.7,1610.27661,245215.36
-Macquarie,Lower Macquarie River Water Source,51993.50,48616.00,231.64,57.50,76.3,4394.995041,237878.17
-Macquarie,Lower Talbragar River Water Source,2009.00,2251.00,94.48,6.53,83.6,566.5158438,
-Macquarie,Macquarie River above Burrendong Water Source,25871.00,25586.00,548.27,12.79,78.0,543.6345003,1.32
-Macquarie,Marra Creek Water Source,438.50,311.50,4.91,17.40,100.0,1776.836298,46236.58
-Macquarie,Marthaguy Creek Water Source,4620.00,7608.00,204.50,10.19,81.4,3289.826898,29652.47
-Macquarie,Maryvale Geurie Creek Water Source,745.00,639.00,29.93,5.85,82.2,1092.711442,4.55
-Macquarie,Molong Creek Water Source,5663.00,5616.00,69.99,21.98,78.8,479.9319731,27.42
-Macquarie,Piambong Creek Water Source,1113.00,925.00,4.66,54.40,89.0,344.3737048,1092.51
-Macquarie,Pipeclay Creek Water Source,491.00,446.00,17.47,7.00,91.5,503.0571364,65.62
-Macquarie,Queen Charlottes Vale Evans Plains Creek Water Source,2125.00,1925.00,72.18,7.31,82.2,139.4763893,13.20
-Macquarie,Summerhill Creek Water Source,12402.00,11744.00,193.51,16.63,78.8,197.3106387,304.37
-Macquarie,Turon Crudine River Water Source,585.00,328.00,291.41,0.31,79.7,2.216484204,19.86
-Macquarie,Upper Bogan River Water Source,2182.50,1729.00,106.59,4.44,78.7,3711.695595,4412.41
-Macquarie,Upper Cudgegong River Water Source,6580.50,6452.00,151.42,11.67,75.4,11.42363833,90.41
-Macquarie,Upper Talbragar River Water Source,627.00,370.00,55.14,1.84,83.6,394.4364329,
-Macquarie,Wambangalong Whylandra Creek Water Source,220.00,169.00,45.48,1.02,82.2,834.7718922,7.56
-Macquarie,Winburndale Rivulet Water Source,1814.00,1629.00,171.03,2.61,83.1,19.14092754,24.85
+Macquarie,Backwater Boggy Cowal Water Source,4531,2627,145.9,4.93,83.9,12692.64787,2646.6
+Macquarie,Bell River Water Source,8115,8136,304.96,7.31,83.1,509.9266643,
+Macquarie,Bulbodney Grahway Creek Water Source,14038,7922,149.83,14.49,78.7,,1076.46
+Macquarie,Burrendong Dam Tributaries Water Source,873,577,333.54,0.47,78.8,,6473.46
+Macquarie,Campbells River Water Source,2356,2101,228.3,2.52,75.4,159.8132512,144.73
+Macquarie,Coolbaggie Creek Water Source,507,466,68.41,1.87,83.9,877.2138134,184.6
+Macquarie,Cooyal Wialdra Creek Water Source,989,741,77.64,2.61,89,91.25207614,4.73
+Macquarie,Ewenmar Creek Water Source,65177,1289.5,90.98,3.88,83.9,6160.487664,13939.93
+Macquarie,Fish River Water Source,18374.5,18071,257.24,19.25,85.6,18.25237449,298.69
+Macquarie,Goolma Creek Water Source,71,0,10.09,0,89,,1412.69
+Macquarie,Lawsons Creek Water Source,1632,1496,47.35,8.66,89.8,128.0991786,743.32
+Macquarie,Little River Water Source,2621,2270,97.47,6.38,82.2,636.0286631,
+Macquarie,Lower Bogan River Water Source,44021,41277,156.05,72.47,78.7,1610.27661,245215.36
+Macquarie,Lower Macquarie River Water Source,51993.5,48616,231.64,57.5,76.3,4394.995041,237878.17
+Macquarie,Lower Talbragar River Water Source,2009,2251,94.48,6.53,83.6,566.5158438,
+Macquarie,Macquarie River above Burrendong Water Source,25871,25586,548.27,12.79,78,543.6345003,1.32
+Macquarie,Marra Creek Water Source,438.5,311.5,4.91,17.4,100,1776.836298,46236.58
+Macquarie,Marthaguy Creek Water Source,4620,7608,204.5,10.19,81.4,3289.826898,29652.47
+Macquarie,Maryvale Geurie Creek Water Source,745,639,29.93,5.85,82.2,1092.711442,4.55
+Macquarie,Molong Creek Water Source,5663,5616,69.99,21.98,78.8,479.9319731,27.42
+Macquarie,Piambong Creek Water Source,1113,925,4.66,54.4,89,344.3737048,1092.51
+Macquarie,Pipeclay Creek Water Source,491,446,17.47,7,91.5,503.0571364,65.62
+Macquarie,Queen Charlottes Vale Evans Plains Creek Water Source,2125,1925,72.18,7.31,82.2,139.4763893,13.2
+Macquarie,Summerhill Creek Water Source,12402,11744,193.51,16.63,78.8,197.3106387,304.37
+Macquarie,Turon Crudine River Water Source,585,328,291.41,0.31,79.7,2.216484204,19.86
+Macquarie,Upper Bogan River Water Source,2182.5,1729,106.59,4.44,78.7,3711.695595,4412.41
+Macquarie,Upper Cudgegong River Water Source,6580.5,6452,151.42,11.67,75.4,11.42363833,90.41
+Macquarie,Upper Talbragar River Water Source,627,370,55.14,1.84,83.6,394.4364329,
+Macquarie,Wambangalong Whylandra Creek Water Source,220,169,45.48,1.02,82.2,834.7718922,7.56
+Macquarie,Winburndale Rivulet Water Source,1814,1629,171.03,2.61,83.1,19.14092754,24.85
 Manning,Avon River Water Source,1744,1736,102782.3163,0.016967899,1,1431.626195,
 Manning,Bowman River Water Source,2120,2111,45089.66632,0.047017425,0.477441203,413.0387999,
 Manning,Cooplacurripa River Water Source,800,800,146063.943,0.005477053,1,559.9880666,

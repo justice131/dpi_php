@@ -2364,7 +2364,7 @@ and open the template in the editor.
 
                     groundwater_0[1] = groundwater_0[1] - 0.03 ;
                     var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
-                    .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br>'+
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_1);
                     
@@ -2374,7 +2374,7 @@ and open the template in the editor.
                     
                     groundwater_1[0] = groundwater_1[0] - 0.02 ;
                     var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
-                    .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br>'+
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_2);
                     
@@ -2384,7 +2384,7 @@ and open the template in the editor.
                         
                     groundwater_2[0] = groundwater_2[0] - 0.01 ;
                     var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
-                    .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br>'+
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_3);
 
@@ -2393,7 +2393,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                     var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
-                    .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br>'+
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year');  
                     markersLayer.addLayer(Mak_groundwater_4);
             
@@ -3591,75 +3591,75 @@ and open the template in the editor.
                     var man_gw_14 = getCentroid(Manning_Groundwater.features[14].geometry.coordinates[0][0]);
                     
                     var Mak_1 = L.marker(man_gw_0, {icon: Icon_0, gwater_source: Manning_Groundwater.features[0].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[0].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[0].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_1);
                     
                     var Mak_2 = L.marker(man_gw_1, {icon: Icon_0, gwater_source: Manning_Groundwater.features[1].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[1].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[1].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_2);
                     man_gw_2[1] = man_gw_2[1]-0.001;
                     
                     var Mak_3 = L.marker(man_gw_2, {icon: Icon_0, gwater_source: Manning_Groundwater.features[2].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[2].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[2].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_3);
                     
                     man_gw_3[1] = man_gw_3[1]-0.007;
                     var Mak_4 = L.marker(man_gw_3, {icon: Icon_0, gwater_source: Manning_Groundwater.features[3].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[3].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[3].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_4);
                     
                     man_gw_4[1] =  man_gw_4[1]+0.001;
                     var Mak_5 = L.marker(man_gw_4, {icon: Icon_0, gwater_source: Manning_Groundwater.features[4].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[4].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[4].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_5);
                     
                     man_gw_5[1]=man_gw_5[1]+0.04;
                     man_gw_5[0]=man_gw_5[0]-0.005;
                     var Mak_6 = L.marker(man_gw_5, {icon: Icon_0, gwater_source: Manning_Groundwater.features[5].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[5].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[5].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_6);
                     
                     man_gw_6[1]=man_gw_6[1]+0.005;
                     var Mak_7 = L.marker(man_gw_6, {icon: Icon_0, gwater_source: Manning_Groundwater.features[6].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[6].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[6].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_7);
                     
                     man_gw_7[1] = man_gw_7[1] - 0.01 ;
                     var Mak_8 = L.marker(man_gw_7, {icon: Icon_0, gwater_source: Manning_Groundwater.features[7].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[7].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[7].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_8);
                     
                     var Mak_9 = L.marker(man_gw_8, {icon: Icon_0, gwater_source: Manning_Groundwater.features[8].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[8].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[8].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_9);
                     
                     var Mak_10 = L.marker(man_gw_9, {icon: Icon_0, gwater_source: Manning_Groundwater.features[9].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[9].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[9].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_10);
                     
                     var Mak_11 = L.marker(man_gw_10, {icon: Icon_0, gwater_source: Manning_Groundwater.features[10].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[10].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[10].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_11);
                     
                     var Mak_12 = L.marker(man_gw_11, {icon: Icon_0, gwater_source: Manning_Groundwater.features[11].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[11].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[11].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_12);
                     
                     man_gw_12[0] = man_gw_12[0] + 0.006;
                     var Mak_13 = L.marker(man_gw_12, {icon: Icon_0, gwater_source: Manning_Groundwater.features[12].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[12].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[12].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_13);
                     
                     man_gw_13[1]=man_gw_13[1]+0.015;
                     var Mak_14 = L.marker(man_gw_13, {icon: Icon_0, gwater_source: Manning_Groundwater.features[13].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[13].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[13].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_14);
                     
                     man_gw_14[0] = man_gw_14[0]-0.02;
                     var Mak_15 = L.marker(man_gw_14, {icon: Icon_0, gwater_source: Manning_Groundwater.features[14].properties.W_Source_1}).addTo(map)
-                    .bindPopup(Manning_Groundwater.features[14].properties.W_Source_1);
+                    .bindPopup('<b>'+Manning_Groundwater.features[14].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_15);
-            
+                    
                     displayed_gis_layer_groundwater.push(Mak_1); 
                     displayed_gis_layer_groundwater.push(Mak_2);
                     displayed_gis_layer_groundwater.push(Mak_3);
@@ -3680,39 +3680,6 @@ and open the template in the editor.
                     function(e) {
                         e.layer.addTo(map).openPopup();
                     });
-
-                    // Add site location for Rooban
-                    <?php
-                    include 'db.helper/db_connection_ini.php';
-                    if($conn!=null){
-                        $sqa_4 = "SELECT * FROM station_site WHERE catchment = 'Manning' AND site_type = 'ground water'";                             
-                        $res_4 = $conn->query($sqa_4);
-                        $manning_site_ground = array();
-                        $o = -1;
-                        while ($manning_site_4 = $res_4->fetch_assoc()){
-                            $o++;
-                            $manning_site_ground[$o] = $manning_site_4;
-                        }                      
-                    }else{
-                        include 'db.helper/db_connection_ini.php';
-                    }
-                    ?>
-
-                    <?php if(!empty($manning_site_ground)){?>;
-                        <?php for ($x=0; $x<count($manning_site_ground); $x++) {?>                                                    
-                            var lat ="<?php echo $manning_site_ground[$x]["latitude"]; ?>";
-                            var lon ="<?php echo $manning_site_ground[$x]["longitude"]; ?>";
-                            var site_name ="<?php echo $manning_site_ground[$x]["site_name"]; ?>";
-                            var site_id ="<?php echo $manning_site_ground[$x]["site_id"]; ?>";
-
-                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
-                            .bindPopup('Site Name: ' + site_name + '<br/>'
-                            + 'Site ID: ' + site_id);
-                            displayed_gis_layer_groundwater.push(M);
-                        <?php }?>;    
-                    <?php }?>;                              
-                    //Add site location for Rooban
-
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_groundwater);

@@ -67,14 +67,19 @@ and open the template in the editor.
                                                     <div id="legend">
                                                         <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
                                                         <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
-                                                        <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
-                                                        <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
+                                                        <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>                                                      
                                                         <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
                                                         <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
                                                         <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
                                                         <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
                                                         <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
                                                         <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
+                                                        <img src="lib/leaflet/images/new-marker-2.png"  width="12.5" height="22" align = "center">&nbsp; &nbsp;<br>
+                                                        <img src="lib/leaflet/images/c_1.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
+                                                        <img src="lib/leaflet/images/c_2.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
+                                                        <img src="lib/leaflet/images/c_3.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
+                                                        <img src="lib/leaflet/images/c_4.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
+                                                        <img src="lib/leaflet/images/c_5.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
                                                         <br>
                                                     </div>
                                                 </div>

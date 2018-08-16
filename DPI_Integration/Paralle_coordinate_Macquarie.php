@@ -72,7 +72,8 @@ and open the template in the editor.
                 padding-right: 10px;
                 padding-left: 10px;
                 padding-bottom: 5px;
-                font: 12px Georgia;
+                font-family: "微软雅黑";
+                font-size: 13px;
                 color: black;
                 padding: 10px;
                 line-height:135%;
@@ -82,7 +83,8 @@ and open the template in the editor.
             }
             .info h4 {
                 margin: 0 0 5px;
-                font: 14px Georgia;
+                font-family: "微软雅黑";
+                font-size: 13px;
                 font-weight: bold;
             }
             .legend {
@@ -210,7 +212,7 @@ and open the template in the editor.
             
             /*Functions section*/
             function showIt(d) {
-                    return d > 0 ? 0.75 : 0;
+                    return d > -1 ? 0.75 : 0;
             }
 
             function resetHighlight(e) {
@@ -333,7 +335,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.7,
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -578,7 +580,7 @@ and open the template in the editor.
                                     isSelected = true;
                                     gridUpdate(d);
                                     //update map
-                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
                                             lgaDict[k.water_sources].properties.FUI = k.FUI;
@@ -603,7 +605,7 @@ and open the template in the editor.
                                             geojsonLabels.getLayers().forEach(function (z) {
                                                     if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                             if (d.feature.properties.FUI > 0) {
-                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                             } else {
                                                                     z._icon.innerHTML = "";
                                                             }
@@ -641,7 +643,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.7,
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -882,7 +884,7 @@ and open the template in the editor.
                                     isSelected = true;
                                     gridUpdate(d);
                                     //update map
-                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
                                             lgaDict[k.water_sources].properties.FUI = k.FUI;
@@ -907,7 +909,7 @@ and open the template in the editor.
                                             geojsonLabels.getLayers().forEach(function (z) {
                                                     if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                             if (d.feature.properties.FUI > 0) {
-                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                             } else {
                                                                     z._icon.innerHTML = "";
                                                             }
@@ -945,7 +947,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.7,
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -1186,7 +1188,7 @@ and open the template in the editor.
                                     isSelected = true;
                                     gridUpdate(d);
                                     //update map
-                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
                                             lgaDict[k.water_sources].properties.FUI = k.FUI;
@@ -1211,7 +1213,7 @@ and open the template in the editor.
                                             geojsonLabels.getLayers().forEach(function (z) {
                                                     if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                             if (d.feature.properties.FUI > 0) {
-                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                             } else {
                                                                     z._icon.innerHTML = "";
                                                             }
@@ -1248,7 +1250,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.7,
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -1489,7 +1491,7 @@ and open the template in the editor.
                                     isSelected = true;
                                     gridUpdate(d);
                                     //update map
-                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
                                             lgaDict[k.water_sources].properties.FUI = k.FUI;
@@ -1514,7 +1516,7 @@ and open the template in the editor.
                                             geojsonLabels.getLayers().forEach(function (z) {
                                                     if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                             if (d.feature.properties.FUI > 0) {
-                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                             } else {
                                                                     z._icon.innerHTML = "";
                                                             }
@@ -1551,7 +1553,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.7,
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -1792,7 +1794,7 @@ and open the template in the editor.
                                     isSelected = true;
                                     gridUpdate(d);
                                     //update map
-                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
                                             lgaDict[k.water_sources].properties.FUI = k.FUI;
@@ -1817,7 +1819,7 @@ and open the template in the editor.
                                             geojsonLabels.getLayers().forEach(function (z) {
                                                     if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                             if (d.feature.properties.FUI > 0) {
-                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                             } else {
                                                                     z._icon.innerHTML = "";
                                                             }
@@ -1853,7 +1855,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.7,
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -2094,7 +2096,7 @@ and open the template in the editor.
                                     isSelected = true;
                                     gridUpdate(d);
                                     //update map
-                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
                                             lgaDict[k.water_sources].properties.FUI = k.FUI;
@@ -2119,7 +2121,7 @@ and open the template in the editor.
                                             geojsonLabels.getLayers().forEach(function (z) {
                                                     if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                             if (d.feature.properties.FUI > 0) {
-                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                             } else {
                                                                     z._icon.innerHTML = "";
                                                             }
@@ -2156,7 +2158,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.7,
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -2397,7 +2399,7 @@ and open the template in the editor.
                                     isSelected = true;
                                     gridUpdate(d);
                                     //update map
-                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
                                             lgaDict[k.water_sources].properties.FUI = k.FUI;
@@ -2422,7 +2424,7 @@ and open the template in the editor.
                                             geojsonLabels.getLayers().forEach(function (z) {
                                                     if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                             if (d.feature.properties.FUI > 0) {
-                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                             } else {
                                                                     z._icon.innerHTML = "";
                                                             }
@@ -2459,7 +2461,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.7,
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -2700,7 +2702,7 @@ and open the template in the editor.
                                     isSelected = true;
                                     gridUpdate(d);
                                     //update map
-                                    lgas.features.map(function (d) {d.properties.FUI = 0; });
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
                                             lgaDict[k.water_sources].properties.FUI = k.FUI;
@@ -2725,7 +2727,7 @@ and open the template in the editor.
                                             geojsonLabels.getLayers().forEach(function (z) {
                                                     if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                             if (d.feature.properties.FUI > 0) {
-                                                                    z._icon.innerHTML=d.feature.properties.FUI;
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                             } else {
                                                                     z._icon.innerHTML = "";
                                                             }

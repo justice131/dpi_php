@@ -2224,6 +2224,23 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_GW;
                 if (checkBox.checked === true){
+                    if (typeof controlSearch !== 'undefined') {
+                        map.removeControl(controlSearch);
+                    }                    
+                    var markersLayer = new L.LayerGroup();
+                    map.addLayer(markersLayer);
+                    controlSearch = new L.Control.Search({
+                        position:'topleft',
+                        layer: markersLayer,
+                        initial: false,
+                        zoom: 11,
+                        marker: false,
+                        propertyName: 'gwater_source',
+                        textPlaceholder: 'Search groundwater source',
+                        textErr: 'Groundwater source not found'
+                    }); 
+                    map.addControl(controlSearch);
+                    
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
                             return { color: getRandomColor(), weight: 1.0, fillOpacity: 0.3};
@@ -2236,29 +2253,83 @@ and open the template in the editor.
                     var groundwater_1 = getCentroid(MacquarieBogan_GW.features[1].geometry.coordinates[0]);
                     var groundwater_2 = getCentroid(MacquarieBogan_GW.features[2].geometry.coordinates[0]);
                     var groundwater_3 = getCentroid(MacquarieBogan_GW.features[3].geometry.coordinates[0]);
-                    
+
+                    <?php
+                        include 'db.helper/db_connection_ini.php';
+                        if($conn!=null){
+                            $sq_gw_1 = "SELECT * FROM ground_water WHERE groundwater = 'Bell Alluvial Groundwater Source'";                             
+                            $res_gw_1 = $conn->query($sq_gw_1);
+                            $ro_gw_1 = $res_gw_1->fetch_assoc(); 
+
+                            $sq_gw_2 = "SELECT * FROM ground_water WHERE groundwater = 'Talbragar Alluvial Groundwater Source'";                             
+                            $res_gw_2 = $conn->query($sq_gw_2);
+                            $ro_gw_2 = $res_gw_2->fetch_assoc(); 
+
+                            $sq_gw_3 = "SELECT * FROM ground_water WHERE groundwater = 'Cudgegong Alluvial Groundwater Source'";                             
+                            $res_gw_3 = $conn->query($sq_gw_3);
+                            $ro_gw_3 = $res_gw_3->fetch_assoc(); 
+
+                            $sq_gw_4 = "SELECT * FROM ground_water WHERE groundwater = 'Upper Macquarie Alluvial Groundwater Source'";                             
+                            $res_gw_4 = $conn->query($sq_gw_4);
+                            $ro_gw_4 = $res_gw_4->fetch_assoc(); 
+                        }else{
+                            include 'db.helper/db_connection_ini.php';
+                        }
+                    ?>
+                                    
+                    <?php if(!empty($ro_gw_1)){?>
+                        var lel ="<?php echo $ro_gw_1["longterm_extraction_limit"]; ?>";
+                    <?php }?> 
+
                     groundwater_0[1] = groundwater_0[1] - 0.03 ;
-                    var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_0}).addTo(map)
-                    .bindPopup(MacquarieBogan_GW.features[0].properties.W_Source_1); 
+                    var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br></br>'+
+                    'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
+                    markersLayer.addLayer(Mak_groundwater_1);
+                    
+                    <?php if(!empty($ro_gw_2)){?>
+                        var lel ="<?php echo $ro_gw_2["longterm_extraction_limit"]; ?>";
+                    <?php }?> 
                     
                     groundwater_1[0] = groundwater_1[0] - 0.02 ;
-                    var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_0}).addTo(map)
-                    .bindPopup(MacquarieBogan_GW.features[1].properties.W_Source_1); 
+                    var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br></br>'+
+                    'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
+                    markersLayer.addLayer(Mak_groundwater_2);
                     
+                    <?php if(!empty($ro_gw_3)){?>
+                        var lel ="<?php echo $ro_gw_3["longterm_extraction_limit"]; ?>";
+                    <?php }?> 
+                        
                     groundwater_2[0] = groundwater_2[0] - 0.01 ;
-                    var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_0}).addTo(map)
-                    .bindPopup(MacquarieBogan_GW.features[2].properties.W_Source_1); 
-            
-                    var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_0}).addTo(map)
-                    .bindPopup(MacquarieBogan_GW.features[3].properties.W_Source_1); 
+                    var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br></br>'+
+                    'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
+                    markersLayer.addLayer(Mak_groundwater_3);
+
+                    <?php if(!empty($ro_gw_4)){?>
+                        var lel ="<?php echo $ro_gw_4["longterm_extraction_limit"]; ?>";
+                    <?php }?> 
+                        
+                    var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br></br>'+
+                    'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year');  
+                    markersLayer.addLayer(Mak_groundwater_4);
             
                     displayed_gis_layer_groundwater.push(Mak_groundwater_1); 
                     displayed_gis_layer_groundwater.push(Mak_groundwater_2);
                     displayed_gis_layer_groundwater.push(Mak_groundwater_3);
                     displayed_gis_layer_groundwater.push(Mak_groundwater_4);
+                    
+                    controlSearch.on('search:locationfound', 
+                    function(e) {
+                        e.layer.addTo(map).openPopup();
+                    });                                  
+                    
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_groundwater);
+                    map.removeControl(controlSearch);
                 } 
             } 
             

@@ -2364,7 +2364,7 @@ and open the template in the editor.
 
                     groundwater_0[1] = groundwater_0[1] - 0.03 ;
                     var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
-                    .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br>'+
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_1);
                     
@@ -2374,7 +2374,7 @@ and open the template in the editor.
                     
                     groundwater_1[0] = groundwater_1[0] - 0.02 ;
                     var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
-                    .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br>'+
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_2);
                     
@@ -2384,7 +2384,7 @@ and open the template in the editor.
                         
                     groundwater_2[0] = groundwater_2[0] - 0.01 ;
                     var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
-                    .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br>'+
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_3);
 
@@ -2393,7 +2393,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                     var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
-                    .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br>'+
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year');  
                     markersLayer.addLayer(Mak_groundwater_4);
             

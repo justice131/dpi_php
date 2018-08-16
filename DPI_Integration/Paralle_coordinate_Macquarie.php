@@ -18,12 +18,8 @@ and open the template in the editor.
         <script type="text/javascript" src="lib/jquery.js"></script>
         <script type="text/javascript" src="lib/underscore.js"></script>
 
-                <!-- leaflet -->
-        <!--        <script src="lib/leaflet/leaflet.js"></script>
-                <link rel="stylesheet" href="lib/leaflet/leaflet.css">-->
-
-                <!-- nsw map -->
-                <script src="border/MacquarieBogan_watersource_centroids.geojson"></script>
+        <!-- nsw map -->
+        <script src="border/MacquarieBogan_watersource_centroids.geojson"></script>
 
         <!-- SlickGrid -->
         <script type="text/javascript" src="lib/slickgrid/jquery.event.drag-2.0.min.js"></script>
@@ -193,8 +189,6 @@ and open the template in the editor.
             };
             
             /*Functions section*/
-
-
             function showIt(d) {
                     return d > 0 ? 0.75 : 0;
             }
@@ -319,7 +313,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillOpacity: 0.7,
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -345,25 +339,25 @@ and open the template in the editor.
                     info.update = function (props) {
                             this._div.innerHTML = (props?
                                     '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
-                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
-                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                             'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
-                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'FUI(100%): ' + '<b>'+ props.FUI_100 + '</b>'+'<br />'
+                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'FUI(100%): ' + '<b>'+ Math.round(props.FUI_100*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -625,7 +619,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillOpacity: 0.7,
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -650,25 +644,25 @@ and open the template in the editor.
                     info.update = function (props) {
                             this._div.innerHTML = (props?
                                     '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
-                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
-                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                             'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
-                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'FUI(50)* Irrigation area potential (50%): ' + '<b>'+ props.FUI_irrigation_area_potential + '</b>'+'<br />'
+                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'FUI(50%)*Irrigation Area Potential(50%): ' + '<b>'+ Math.round(props.FUI_irrigation_area_potential*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -927,7 +921,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillOpacity: 0.7,
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -952,25 +946,25 @@ and open the template in the editor.
                     info.update = function (props) {
                             this._div.innerHTML = (props?
                                     '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
-                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
-                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                             'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
-                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'DSI(100%): ' + '<b>'+ props.DSI_100 + '</b>'+'<br />'
+                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'DSI(100%): ' + '<b>'+ Math.round(props.DSI_100*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -1228,7 +1222,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillOpacity: 0.7,
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -1253,25 +1247,25 @@ and open the template in the editor.
                     info.update = function (props) {
                             this._div.innerHTML = (props?
                                     '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
-                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
-                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                             'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
-                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'DSI_mine_production: ' + '<b>'+ props.DSI_mine_production + '</b>'+'<br />'
+                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'DSI(50%) * Mine Production(50%): ' + '<b>'+ Math.round(props.DSI_mine_production*1000)/1000 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -1529,7 +1523,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillOpacity: 0.7,
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -1554,25 +1548,25 @@ and open the template in the editor.
                     info.update = function (props) {
                             this._div.innerHTML = (props?
                                     '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
-                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
-                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                             'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
-                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'DSI_agriculture_production: ' + '<b>'+ props.DSI_agriculture_production + '</b>'+'<br />'
+                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'DSI(50%) * agriculture production(50%): ' + '<b>'+ Math.round(props.DSI_agriculture_production*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -1830,7 +1824,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillOpacity: 0.7,
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -1855,25 +1849,25 @@ and open the template in the editor.
                     info.update = function (props) {
                             this._div.innerHTML = (props?
                                     '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
-                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
-                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                             'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
-                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'Days below mean(50%) *Agriculture production (50%): ' + '<b>'+ props.days_below_mean_agriculture_production + '</b>'+'<br />'
+                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'Days Below Mean(50%) * Agriculture Production(50%): ' + '<b>'+ Math.round(props.days_below_mean_agriculture_production*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -2131,7 +2125,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillOpacity: 0.7,
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -2156,25 +2150,25 @@ and open the template in the editor.
                     info.update = function (props) {
                             this._div.innerHTML = (props?
                                     '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
-                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
-                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                             'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
-                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'Status of ecosystem (80%) X Populationm(20%): ' + '<b>'+ props.status_of_ecosystem_population + '</b>'+'<br />'
+                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'Status of Ecosystem(80%) * Populationm(20%): ' + '<b>'+ Math.round(props.status_of_ecosystem_population*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -2432,7 +2426,7 @@ and open the template in the editor.
                                     opacity: showIt(1),
                                     color: 'white',
                                     dashArray: '3',
-                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillOpacity: 0.7,
                                     fillColor: getColorScalar(feature.properties.IndexRank)
                             };
                     }
@@ -2457,25 +2451,25 @@ and open the template in the editor.
                     info.update = function (props) {
                             this._div.innerHTML = (props?
                                     '<h4>' + props.WATER_SOUR + '</h4><br />'+
-                                            'Irrigated_area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation_value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
-                                            'Mining_value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                            'Employment_irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                            'Employment_mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                            'Total_entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
-                                            'Wetland_area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved_oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean_flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days_below_mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                             'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100_yrs_flood_frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                            'Time_below_requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
-                                            'Water_scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'Health of water bodies(80%) ✖ Population(20%): ' + '<b>'+ props.health_of_water_bodies_population + '</b>'+'<br />'
+                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'Health of Water Bodies(80%) * Population(20%): ' + '<b>'+ Math.round(props.health_of_water_bodies*1000)/1000 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -2502,7 +2496,7 @@ and open the template in the editor.
                             lgas.features[j].properties.time_below_requirement=0;
                             lgas.features[j].properties.FUI=0;
                             lgas.features[j].properties.water_scarcity=0;
-                            lgas.features[j].properties.health_of_water_bodies_population=0;
+                            lgas.features[j].properties.health_of_water_bodies=0;
                             lgas.features[j].properties.IndexRank=0;
                             lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
                     }
@@ -2545,7 +2539,7 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
                                     lgaDict[water_source_name].properties.FUI=d.FUI;
                                     lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
-                                    lgaDict[water_source_name].properties.health_of_water_bodies_population=d.health_of_water_bodies_population;
+                                    lgaDict[water_source_name].properties.health_of_water_bodies=d.health_of_water_bodies;
                                     lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
                                     lga.push(water_source_name);
                             });

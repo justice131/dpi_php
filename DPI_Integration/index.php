@@ -75,7 +75,6 @@ and open the template in the editor.
                                                         <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
                                                         <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
                                                         <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
-                                                        <img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>
                                                         <br>
                                                     </div>
                                                 </div>

@@ -310,7 +310,25 @@ $sql = "CREATE TABLE IF NOT EXISTS employment_data( ".
     "PRIMARY KEY (employment_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
 mysqli_query($conn,$sql);
 
+//Create waste_water_treatment_centre
+$sql = "CREATE TABLE IF NOT EXISTS waste_water_treatment_centre( ".
+    "centre_id INT NOT NULL AUTO_INCREMENT, ".
+    "catchment VARCHAR(30), ".
+    "lga VARCHAR(50), ".
+    "treatment_plant VARCHAR(50), ".
+    "latitude FLOAT, ".
+    "longitude FLOAT, ".
+    "wwqi FLOAT, ".    
+    "treted_volume FLOAT, ". 
+    "PRIMARY KEY (centre_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
+mysqli_query($conn,$sql);
 
-
-
+//Create ground_water
+$sql = "CREATE TABLE IF NOT EXISTS ground_water( ".
+    "water_id INT NOT NULL AUTO_INCREMENT, ".
+    "catchment VARCHAR(30), ".
+    "groundwater VARCHAR(50), ".
+    "longterm_extraction_limit FLOAT, ".    
+    "PRIMARY KEY (water_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
+mysqli_query($conn,$sql);
 

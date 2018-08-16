@@ -29,15 +29,15 @@
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>catchment_id</th>
+                        <th>catchment</th>
                         <th>water_source</th>
-                        <th>all_entitlement</th>
+                        <th>longterm_extraction_limit</th>
                         <th>unreg_entitlement</th>
                         <th>mean_flow</th>
-                        <th>seasonflow</th>
                         <th>FUI</th>
                         <th>DSI</th>
                         <th>irrigable_area</th>
+                        <th>wetland_area</th>
                     <tr>
                 </thead>
                 <tbody>
@@ -49,19 +49,19 @@
                     for($i=0;$i<$dataCount;$i++){  
                         $result_arr=mysqli_fetch_assoc($result);  
                         $id=$result_arr['id'];  
-                        $catchment_id=$result_arr['catchment_id'];  
+                        $catchment=$result_arr['catchment'];  
                         $water_source=$result_arr['water_source']; 
-                        $all_entitlement=$result_arr['all_entitlement'];
+                        $longterm_extraction_limit=$result_arr['longterm_extraction_limit'];
                         $unreg_entitlement=$result_arr['unreg_entitlement'];
-                        $mean_flow=$result_arr['mean_flow'];  
-                        $seasonflow=$result_arr['seasonflow']; 
+                        $mean_flow=$result_arr['mean_flow'];                        
                         $FUI=$result_arr['FUI'];
                         $DSI=$result_arr['DSI'];   
                         $irrigable_area=$result_arr['irrigable_area'];
-                        echo "<tr><td>$id</td><td>$catchment_id</td><td>$water_source</td>"
-                            . "<td>$all_entitlement</td><td>$unreg_entitlement</td><td>$mean_flow</td>"
-                            . "<td>$seasonflow</td><td>$FUI</td><td>$DSI</td>"
-                            . "<td>$irrigable_area</td><tr>";
+                        $wetland_area=$result_arr['wetland_area'];
+                        echo "<tr><td>$id</td><td>$catchment</td><td>$water_source</td>"
+                            . "<td>$longterm_extraction_limit</td><td>$unreg_entitlement</td><td>mean_flow</td>"
+                            . "<td>$FUI</td><td>$DSI</td>"
+                            . "<td>$irrigable_area</td><td>$wetland_area</td><tr>";
                     }
                 ?>
                 </tbody>

@@ -195,15 +195,15 @@ mysqli_query($conn,$sql);
 //Create Water_source
 $sql = "CREATE TABLE IF NOT EXISTS water_source( ".
     "id INT NOT NULL AUTO_INCREMENT, ".
-    "catchment_id VARCHAR(50), ".
+    "catchment VARCHAR(50), ".
     "water_source VARCHAR(50), ".
-    "all_entitlement FLOAT, ".
+    "longterm_extraction_limit FLOAT, ".
     "unreg_entitlement FLOAT, ".
     "mean_flow FLOAT, ".
-    "seasonflow FLOAT, ".
     "FUI FLOAT, ".
     "DSI FLOAT, ".
     "irrigable_area FLOAT, ".
+    "wetland_area FLOAT, ".
     "PRIMARY KEY (id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
 mysqli_query($conn,$sql);
 

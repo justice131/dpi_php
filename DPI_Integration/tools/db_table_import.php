@@ -300,7 +300,7 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
             for($i=1;$i<$row_num;$i++){
                 $col_num = count($data[$i]);
                 if($col_num_s==$col_num){
-                    $sql="insert delayed into water_source(catchment_id,water_source,all_entitlement,unreg_entitlement,mean_flow,seasonflow,FUI,DSI,irrigable_area)values(\""
+                    $sql="insert delayed into water_source(catchment,water_source,longterm_extraction_limit,unreg_entitlement,mean_flow,FUI,DSI,irrigable_area,wetland_area)values(\""
                         .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\",\"".$data[$i][8]."\");";
                     mysqli_query($conn,$sql);
                 }

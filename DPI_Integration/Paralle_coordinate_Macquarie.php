@@ -66,20 +66,23 @@ and open the template in the editor.
                 line-height: 40px;    
             }
             .info {
-                background: #ffffff;
-                box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                background: white;
                 position: relative;
-                border-radius: 5px;
-                font: 13.5px Optima;
-                line-height: 135%;
                 padding-top: 5px;
                 padding-right: 10px;
                 padding-left: 10px;
                 padding-bottom: 5px;
+                font: 12px Georgia;
+                color: black;
+                padding: 10px;
+                line-height:135%;
+                z-index: 30;
+                border-radius: 5px;
+                box-shadow: 0 0 15px rgba(0,0,0,0.2);
             }
             .info h4 {
                 margin: 0 0 5px;
-                font: 14px Optima;
+                font: 14px Georgia;
                 font-weight: bold;
             }
             .legend {
@@ -113,6 +116,21 @@ and open the template in the editor.
                 padding-right: 100px;
                 font: 10px sans-serif;
             }
+                .title {
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        background-color: #ffffff;
+        border-color: #e7eaec;
+        border-image: none;
+        border-style: solid solid none;
+        border-width: 4px 0px 0;
+        color: inherit;
+        margin-bottom: 0;
+        padding: 14px 15px 7px;
+        height: 48px;
+}
         </style>
     </head>
     <body style="background-color:#F3F3F4;">
@@ -121,7 +139,7 @@ and open the template in the editor.
                 <ul class="nav">
                     <li class="nav-header text-center"> <a href="http://www.water.nsw.gov.au/" target="_blank" style="padding: 3px 0 10px"> <img src="images/nsw.png" alt="nsw" height="50"/> </a> </li>
                     <li class=""> <a href="index.php" target="_blank" data-toggle="tooltip" title="Home"><i class="glyphicon glyphicon-home"></i></a> </li>
-                    <li class=""> <a href="Management_zone.php" target="_blank" data-toggle="tooltip" title="Water Management Zone"><i class="glyphicon glyphicon-tint"></i></a> </li>
+<!--                    <li class=""> <a href="Management_zone.php" target="_blank" data-toggle="tooltip" title="Water Management Zone"><i class="glyphicon glyphicon-tint"></i></a> </li>-->
                     <li class=""> <a href="Irrigation_module.php" target="_blank" data-toggle="tooltip" title="Irrigation"><i class="glyphicon glyphicon-leaf"></i></a> </li>
                     <li class=""> <a href="Mining_module.php" target="_blank" data-toggle="tooltip" title="Mining"><i class="glyphicon glyphicon-fire"></i></a> </li>
                     <li class=""> <a href="Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation"><i class="glyphicon glyphicon-flash"></i></a> </li>
@@ -135,7 +153,9 @@ and open the template in the editor.
 			<div class="box-container" style="width:22%;" id="map_panel">
 				<div class="box">
 					<div class="box-title">
-						<h4><b>Water Source of Macquarie Catchment</b></h4>
+                                            <div id="s0_title">
+<!--						<h4><b>Water Source of Macquarie Catchment</b></h4>-->
+                                            </div>
 					</div>
 					<div class="box-content" role="tabpanel">
 						<div id="map"></div>
@@ -180,7 +200,7 @@ and open the template in the editor.
             $(window).load(function() {
             $(".se-pre-con").fadeOut("slow");;
             });
-            
+            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
             
             var removeLayer = function (feature) {
                 for (var i = 0; i < feature.length; i++){     
@@ -327,6 +347,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Flow Utilisation Index Opportunity'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -338,24 +359,24 @@ and open the template in the editor.
                     };
                     info.update = function (props) {
                             this._div.innerHTML = (props?
-                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
                                             'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+ '</b>' +'<br />'+
                                             'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                             'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
                                             'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'FUI(100%): ' + '<b>'+ Math.round(props.FUI_100*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
@@ -593,6 +614,7 @@ and open the template in the editor.
                     });
                 }
                 if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
                     parcoord.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
@@ -632,6 +654,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Flow Utilisation Index x Irrigation Area Potential'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -643,24 +666,24 @@ and open the template in the editor.
                     };
                     info.update = function (props) {
                             this._div.innerHTML = (props?
-                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
                                             'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+'</b>' +'<br />'+
                                             'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                             'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
                                             'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'FUI(50%)*Irrigation Area Potential(50%): ' + '<b>'+ Math.round(props.FUI_irrigation_area_potential*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
@@ -895,6 +918,7 @@ and open the template in the editor.
                     });
                 }
                 if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
                     parcoord.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
@@ -908,11 +932,11 @@ and open the template in the editor.
             function show_s3(id){
                     function getColorScalar(d) {
                         if(d<=Math.floor(max_row/3)){
-                        return myCols[0];
+                        return myCols[2];
                         }else if(d<=Math.ceil(2*max_row/3)){
                         return myCols[1];
                         }else{
-                        return myCols[2];
+                        return myCols[0];
                         }
                     }
                     function style(feature) {
@@ -934,6 +958,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Irrigation Drought Security'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -945,24 +970,24 @@ and open the template in the editor.
                     };
                     info.update = function (props) {
                             this._div.innerHTML = (props?
-                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
                                             'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
                                             'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                             'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
                                             'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'DSI(100%): ' + '<b>'+ Math.round(props.DSI_100*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
@@ -1197,6 +1222,7 @@ and open the template in the editor.
                     });
                 }
                 if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
                     parcoord.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
@@ -1209,11 +1235,11 @@ and open the template in the editor.
             function show_s4(id){
                     function getColorScalar(d) {
                         if(d<=Math.floor(max_row/3)){
-                        return myCols[0];
+                        return myCols[2];
                         }else if(d<=Math.ceil(2*max_row/3)){
                         return myCols[1];
                         }else{
-                        return myCols[2];
+                        return myCols[0];
                         }
                     }
                     function style(feature) {
@@ -1235,6 +1261,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Irrigation Drought Security × Mine Production'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -1246,24 +1273,24 @@ and open the template in the editor.
                     };
                     info.update = function (props) {
                             this._div.innerHTML = (props?
-                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
                                             'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
                                             'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                             'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
                                             'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'DSI(50%) * Mine Production(50%): ' + '<b>'+ Math.round(props.DSI_mine_production*1000)/1000 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
@@ -1498,6 +1525,7 @@ and open the template in the editor.
                     });
                 }
                 if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
                     parcoord.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
@@ -1510,11 +1538,11 @@ and open the template in the editor.
             function show_s5(id){
                     function getColorScalar(d) {
                         if(d<=Math.floor(max_row/3)){
-                        return myCols[0];
+                        return myCols[2];
                         }else if(d<=Math.ceil(2*max_row/3)){
                         return myCols[1];
                         }else{
-                        return myCols[2];
+                        return myCols[0];
                         }
                     }
                     function style(feature) {
@@ -1536,6 +1564,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Irrigation Drought Security × Agriculture Production'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -1547,26 +1576,26 @@ and open the template in the editor.
                     };
                     info.update = function (props) {
                             this._div.innerHTML = (props?
-                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
                                             'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+ '</b>' +'<br />'+
                                             'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                             'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
                                             'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'DSI(50%) * agriculture production(50%): ' + '<b>'+ Math.round(props.DSI_agriculture_production*100)/100 + '</b>'+'<br />'
+                                            'DSI(50%) * Agriculture Production(50%): ' + '<b>'+ Math.round(props.DSI_agriculture_production*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -1811,11 +1840,11 @@ and open the template in the editor.
             function show_s6(id){
                     function getColorScalar(d) {
                         if(d<=Math.floor(max_row/3)){
-                        return myCols[0];
+                        return myCols[2];
                         }else if(d<=Math.ceil(2*max_row/3)){
                         return myCols[1];
                         }else{
-                        return myCols[2];
+                        return myCols[0];
                         }
                     }
                     function style(feature) {
@@ -1837,6 +1866,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Days Below Mean × Agriculture Production'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -1848,24 +1878,24 @@ and open the template in the editor.
                     };
                     info.update = function (props) {
                             this._div.innerHTML = (props?
-                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
                                             'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen)+'% mg/L' + '</b>' +'<br />'+
                                             'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                             'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
                                             'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'Days Below Mean(50%) * Agriculture Production(50%): ' + '<b>'+ Math.round(props.days_below_mean_agriculture_production*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
@@ -2100,6 +2130,7 @@ and open the template in the editor.
                     });
                 }
                 if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
                     parcoord.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
@@ -2112,11 +2143,11 @@ and open the template in the editor.
             function show_s7(id){
                     function getColorScalar(d) {
                         if(d<=Math.floor(max_row/3)){
-                        return myCols[0];
+                        return myCols[2];
                         }else if(d<=Math.ceil(2*max_row/3)){
                         return myCols[1];
                         }else{
-                        return myCols[2];
+                        return myCols[0];
                         }
                     }
                     function style(feature) {
@@ -2138,6 +2169,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Status of Ecosystem × Population'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -2149,26 +2181,26 @@ and open the template in the editor.
                     };
                     info.update = function (props) {
                             this._div.innerHTML = (props?
-                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
                                             'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
-                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +' mg/L'+ '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + '% ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                             'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
                                             'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'Status of Ecosystem(80%) * Populationm(20%): ' + '<b>'+ Math.round(props.status_of_ecosystem_population*100)/100 + '</b>'+'<br />'
+                                            'Status of Ecosystem(80%) * Population(20%): ' + '<b>'+ Math.round(props.status_of_ecosystem_population*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -2401,6 +2433,7 @@ and open the template in the editor.
                     });
                 }
                 if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
                     parcoord.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
@@ -2413,11 +2446,11 @@ and open the template in the editor.
             function show_s8(id){
                     function getColorScalar(d) {
                         if(d<=Math.floor(max_row/3)){
-                        return myCols[0];
+                        return myCols[2];
                         }else if(d<=Math.ceil(2*max_row/3)){
                         return myCols[1];
                         }else{
-                        return myCols[2];
+                        return myCols[0];
                         }
                     }
                     function style(feature) {
@@ -2439,6 +2472,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Health of Water Bodiesm × Population'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -2450,24 +2484,24 @@ and open the template in the editor.
                     };
                     info.update = function (props) {
                             this._div.innerHTML = (props?
-                                    '<h4>' + props.WATER_SOUR + '</h4><br />'+
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ toThousands(props.irrigation_value)+' $' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
                                             'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L' + '</b>' +'<br />'+
                                             'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                            'DSI: '+ '<b>'+ toThousands(props.DSI) + '</b>'+'<br />'+
-                                            '100 Yrs Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                             'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                            'FUI: '+ '<b>'+ toThousands(props.FUI) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
                                             'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'Health of Water Bodies(80%) * Population(20%): ' + '<b>'+ Math.round(props.health_of_water_bodies*1000)/1000 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
@@ -2539,7 +2573,7 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
                                     lgaDict[water_source_name].properties.FUI=d.FUI;
                                     lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
-                                    lgaDict[water_source_name].properties.health_of_water_bodies=d.health_of_water_bodies;
+                                    lgaDict[water_source_name].properties.health_of_water_bodies=parseFloat(d['health_of_water_bodies']);
                                     lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
                                     lga.push(water_source_name);
                             });
@@ -2702,6 +2736,7 @@ and open the template in the editor.
                     });
                 }
                 if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
                     parcoord.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);

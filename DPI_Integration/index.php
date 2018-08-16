@@ -679,7 +679,7 @@ and open the template in the editor.
 //                            return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
 //                        }
                         onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color: color_fui(Fui_macquarie, feature.properties.WATER_SOUR), weight: 1.2, fillOpacity: 0.4});
+                            layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.4});
                         }
 
                     }).addTo(map);
@@ -2602,7 +2602,7 @@ and open the template in the editor.
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
+                            return { color: 'grey', weight: 0.0, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     
@@ -3871,12 +3871,10 @@ and open the template in the editor.
 //                        'Szie of Surface Water: ' + surface_water_size + '<br />'+
 //                        'Size of Groundwater: ' + groundwater_size + '<br />'
                         '<b>' + catch_name + ' Catchment' + '</b><br/><br/>' + 
-                        '<p style=\"line-height:50%\"><img src=\"images/'+index_level(overall_fui,"fui")+'\" height=\"25\" width=\"25\"> Flow Utilisation: <b>'+ overall_fui + '</b><br/><br/>' +
-                        '<img src=\"images/'+index_level(overall_idsi,"idsi")+'\" height=\"25\" width=\"25\"> Irrigation Drought Security: <b>'+ overall_idsi + '</b><br/><br/>'+
-                        '<img src=\"images/'+index_level(overall_fmi,"fmi")+'\" height=\"25\" width=\"25\"> Flood Management: <b>'+ overall_fmi + '</b><br/><br/>'+
-                        '<img src=\"images/'+index_level(overall_dei,"dei")+'\" height=\"25\" width=\"25\"> Delivery Efficiency: <b>'+ overall_dei + '</b><br/><br/>'+
-                        '<img src=\"images/surface_water.png\" height=\"25\" width=\"25\"> Size of Surface Water: <b>' + surface_water_size + '</b><br/><br />'+
-                        '<img src=\"images/ground_water.png\" height=\"25\" width=\"25\"> Size of Groundwater: <b>' + groundwater_size + '</b><br /></p>'
+                        '<p style=\"line-height:50%\"><img src=\"images/'+index_level(overall_fui,"fui")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_fui*100)/100 + '</b><br/><br/>' +
+                        '<img src=\"images/'+index_level(overall_idsi,"idsi")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_idsi*100)/100 + '</b><br/><br/>'+
+                        '<img src=\"images/'+index_level(overall_fmi,"fmi")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_fmi*100)/100 + '</b><br/><br/>'+
+                        '<img src=\"images/'+index_level(overall_dei,"dei")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_dei*100)/100 + '</b>'+'</p>'
                         : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                     );
                 <?php }?>;

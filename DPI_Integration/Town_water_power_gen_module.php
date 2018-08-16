@@ -610,12 +610,12 @@ and open the template in the editor.
                                 var wwqi = "<?php echo $wwtc_mac[$x]["wwqi"]; ?>";
                                 var treted_volume = "<?php echo $wwtc_mac[$x]["treted_volume"]; ?>";
 
-//                                var M = L.marker([lat, lon], {icon: Icon_waste_water}).addTo(map)
-//                                .bindPopup('Location: ' + treatment_plant + '<br/>'
-//                                + 'LGA: ' + lga + '<br/>'
-//                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
-//                                + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
-//                                featureCATCollection.push(M);
+                                var M = L.marker([lat, lon], {icon: Icon_waste_water}).addTo(map)
+                                .bindPopup('Location: ' + treatment_plant + '<br/>'
+                                + 'LGA: ' + lga + '<br/>'
+                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
+                                + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
+                                featureCATCollection.push(M);
                         <?php }?>;    
                     <?php }?>; 
                         
@@ -940,7 +940,7 @@ and open the template in the editor.
                 if (checkBox.checked === true){
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
+                            return { color: 'grey', weight: 0.0, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     var Reg_1 = L.geoJSON(geojsonfile_1, {
@@ -2800,7 +2800,7 @@ and open the template in the editor.
                 if (checkBox.checked === true){
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
+                            return { color: 'grey', weight: 0.0, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     

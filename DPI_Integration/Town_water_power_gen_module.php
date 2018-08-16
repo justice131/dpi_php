@@ -277,6 +277,13 @@ and open the template in the editor.
                 popupAnchor:  [0, -15] 
             });
             
+            var Icon_waste_water = L.icon({
+                iconUrl: 'lib/leaflet/images/waste_water_treatment.jpg',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
             var Icon_approval_1 = L.icon({
                 iconUrl: 'lib/leaflet/images/new-marker-3.png',
                 iconSize:     [18, 28], 
@@ -573,6 +580,45 @@ and open the template in the editor.
                             }
                         <?php }?>;    
                     <?php }?>; 
+                        
+                    <?php
+                        include 'db.helper/db_connection_ini.php';
+                        if(!empty($_GET['catchment_name'])){
+                            if($conn!=null){
+                                $sql_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Macquarie'";
+                                $result_wwtc = $conn->query($sql_wwtc);
+                                $wwtc_mac = array();
+                                $m = -1;
+                                while ($row_wwtc_mac = $result_wwtc->fetch_assoc()){
+                                    $m++;
+                                    $wwtc_mac[$m] = $row_wwtc_mac;
+                                }
+                            }else{
+                                include 'db.helper/db_connection_ini.php';
+                            }
+                        }
+                    ?>
+
+                    <?php if(!empty($wwtc_mac)){?>;
+                        WWTC_number_Macquarie = 0;
+                        <?php for ($x=0; $x<count($wwtc_mac); $x++) {?>                          
+                                WWTC_number_Macquarie = WWTC_number_Macquarie + 1;                               
+                                var lat = "<?php echo $wwtc_mac[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $wwtc_mac[$x]["longitude"]; ?>";
+                                var lga = "<?php echo $wwtc_mac[$x]["lga"]; ?>";
+                                var treatment_plant = "<?php echo $wwtc_mac[$x]["treatment_plant"]; ?>";
+                                var wwqi = "<?php echo $wwtc_mac[$x]["wwqi"]; ?>";
+                                var treted_volume = "<?php echo $wwtc_mac[$x]["treted_volume"]; ?>";
+
+//                                var M = L.marker([lat, lon], {icon: Icon_waste_water}).addTo(map)
+//                                .bindPopup('Location: ' + treatment_plant + '<br/>'
+//                                + 'LGA: ' + lga + '<br/>'
+//                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
+//                                + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
+//                                featureCATCollection.push(M);
+                        <?php }?>;    
+                    <?php }?>; 
+                        
                 } 
                 
                 if(CATName === 'ManningRiver'){

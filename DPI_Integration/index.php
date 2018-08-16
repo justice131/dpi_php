@@ -2290,63 +2290,7 @@ and open the template in the editor.
                     controlSearch.on('search:locationfound', 
                     function(e) {
                         e.layer.addTo(map).openPopup();
-                    });  
-                    
-//                    // Add site location for Rooban
-//                    <?php
-                    include 'db.helper/db_connection_ini.php';
-                    if($conn!=null){
-                        $sqa_1 = "SELECT * FROM station_site WHERE catchment = 'Macquarie' AND site_type = 'surface water'";                             
-                        $res_1 = $conn->query($sqa_1);
-                        $macquarie_site_surface = array();
-                        $o = -1;
-                        while ($macquarie_site_1 = $res_1->fetch_assoc()){
-                            $o++;
-                            $macquarie_site_surface[$o] = $macquarie_site_1;
-                        }  
-                        
-                        $sqa_2 = "SELECT * FROM macquarie_sampling_point";                             
-                        $res_2 = $conn->query($sqa_2);
-                        $macquarie_sample = array();
-                        $p = -1;
-                        while ($macquarie_site_2 = $res_2->fetch_assoc()){
-                            $p++;
-                            $macquarie_sample[$p] = $macquarie_site_2;
-                        }                        
-                    }else{
-                        include 'db.helper/db_connection_ini.php';
-                    }
-                    ?>//
-//
-//                    <?php if(!empty($macquarie_site_surface)){?>;
-//                        <?php for ($x=0; $x<count($macquarie_site_surface); $x++) {?>                                                    
-//                            var lat ="<?php echo $macquarie_site_surface[$x]["latitude"]; ?>";
-//                            var lon ="<?php echo $macquarie_site_surface[$x]["longitude"]; ?>";
-//                            var site_name ="<?php echo $macquarie_site_surface[$x]["site_name"]; ?>";
-//                            var site_id ="<?php echo $macquarie_site_surface[$x]["site_id"]; ?>";
-//
-//                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
-//                            .bindPopup('Site Name: ' + site_name + '<br/>'
-//                            + 'Site ID: ' + site_id);
-//                            displayed_gis_layer_unregulated.push(M);
-//                        <?php }?>;    
-//                    <?php }?>;  
-//                        
-//                    <?php if(!empty($macquarie_sample)){?>;
-//                        <?php for ($x=0; $x<count($macquarie_sample); $x++) {?>                                                    
-//                            var lat ="<?php echo $macquarie_sample[$x]["latitude"]; ?>";
-//                            var lon ="<?php echo $macquarie_sample[$x]["longitude"]; ?>";
-//                            var des ="<?php echo $macquarie_sample[$x]["description"]; ?>";
-//                            var site_id ="<?php echo $macquarie_sample[$x]["station_number"]; ?>";
-//
-//                            var M = L.marker([lat, lon], {icon: Icon_site_2}).addTo(map)
-//                            .bindPopup('Description: ' + des + '<br/>'
-//                            + 'Station Number: ' + site_id);
-//                            displayed_gis_layer_unregulated.push(M);
-//                        <?php }?>;    
-//                    <?php }?>;
-//                    Add site location for Rooban 
- 
+                    }); 
                     }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_unregulated);
@@ -2354,7 +2298,7 @@ and open the template in the editor.
                     link_to_parr.style.display = 'none';
                 } 
             }
-            
+
             //display groundwater info for MacquarieBogan
             var displayed_gis_layer_groundwater = [];          
             function show_gis_MacquarieBogan_groundwater(id){
@@ -2390,24 +2334,67 @@ and open the template in the editor.
                     var groundwater_1 = getCentroid(MacquarieBogan_GW.features[1].geometry.coordinates[0]);
                     var groundwater_2 = getCentroid(MacquarieBogan_GW.features[2].geometry.coordinates[0]);
                     var groundwater_3 = getCentroid(MacquarieBogan_GW.features[3].geometry.coordinates[0]);
-                    
+
+                    <?php
+                        include 'db.helper/db_connection_ini.php';
+                        if($conn!=null){
+                            $sq_gw_1 = "SELECT * FROM ground_water WHERE groundwater = 'Bell Alluvial Groundwater Source'";                             
+                            $res_gw_1 = $conn->query($sq_gw_1);
+                            $ro_gw_1 = $res_gw_1->fetch_assoc(); 
+
+                            $sq_gw_2 = "SELECT * FROM ground_water WHERE groundwater = 'Talbragar Alluvial Groundwater Source'";                             
+                            $res_gw_2 = $conn->query($sq_gw_2);
+                            $ro_gw_2 = $res_gw_2->fetch_assoc(); 
+
+                            $sq_gw_3 = "SELECT * FROM ground_water WHERE groundwater = 'Cudgegong Alluvial Groundwater Source'";                             
+                            $res_gw_3 = $conn->query($sq_gw_3);
+                            $ro_gw_3 = $res_gw_3->fetch_assoc(); 
+
+                            $sq_gw_4 = "SELECT * FROM ground_water WHERE groundwater = 'Upper Macquarie Alluvial Groundwater Source'";                             
+                            $res_gw_4 = $conn->query($sq_gw_4);
+                            $ro_gw_4 = $res_gw_4->fetch_assoc(); 
+                        }else{
+                            include 'db.helper/db_connection_ini.php';
+                        }
+                    ?>
+                                    
+                    <?php if(!empty($ro_gw_1)){?>
+                        var lel ="<?php echo $ro_gw_1["longterm_extraction_limit"]; ?>";
+                    <?php }?> 
+
                     groundwater_0[1] = groundwater_0[1] - 0.03 ;
                     var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_GW.features[0].properties.W_Source_1); 
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br>'+
+                    'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_1);
+                    
+                    <?php if(!empty($ro_gw_2)){?>
+                        var lel ="<?php echo $ro_gw_2["longterm_extraction_limit"]; ?>";
+                    <?php }?> 
                     
                     groundwater_1[0] = groundwater_1[0] - 0.02 ;
                     var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_GW.features[1].properties.W_Source_1); 
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br>'+
+                    'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_2);
                     
+                    <?php if(!empty($ro_gw_3)){?>
+                        var lel ="<?php echo $ro_gw_3["longterm_extraction_limit"]; ?>";
+                    <?php }?> 
+                        
                     groundwater_2[0] = groundwater_2[0] - 0.01 ;
                     var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_GW.features[2].properties.W_Source_1); 
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br>'+
+                    'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_3);
-            
+
+                    <?php if(!empty($ro_gw_4)){?>
+                        var lel ="<?php echo $ro_gw_4["longterm_extraction_limit"]; ?>";
+                    <?php }?> 
+                        
                     var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
-                    .bindPopup(MacquarieBogan_GW.features[3].properties.W_Source_1); 
+                    .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br>'+
+                    'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year');  
                     markersLayer.addLayer(Mak_groundwater_4);
             
                     displayed_gis_layer_groundwater.push(Mak_groundwater_1); 
@@ -2418,38 +2405,8 @@ and open the template in the editor.
                     controlSearch.on('search:locationfound', 
                     function(e) {
                         e.layer.addTo(map).openPopup();
-                    });                      
-                    // Add site location for Rooban
-                    <?php
-                    include 'db.helper/db_connection_ini.php';
-                    if($conn!=null){
-                        $sqa_2 = "SELECT * FROM station_site WHERE catchment = 'Macquarie' AND site_type = 'ground water'";                             
-                        $res_2 = $conn->query($sqa_2);
-                        $macquarie_site_ground = array();
-                        $o = -1;
-                        while ($macquarie_site_2 = $res_2->fetch_assoc()){
-                            $o++;
-                            $macquarie_site_ground[$o] = $macquarie_site_2;
-                        }                      
-                    }else{
-                        include 'db.helper/db_connection_ini.php';
-                    }
-                    ?>
-
-                    <?php if(!empty($macquarie_site_ground)){?>;
-                        <?php for ($x=0; $x<count($macquarie_site_ground); $x++) {?>                                                    
-                            var lat ="<?php echo $macquarie_site_ground[$x]["latitude"]; ?>";
-                            var lon ="<?php echo $macquarie_site_ground[$x]["longitude"]; ?>";
-                            var site_name ="<?php echo $macquarie_site_ground[$x]["site_name"]; ?>";
-                            var site_id ="<?php echo $macquarie_site_ground[$x]["site_id"]; ?>";
-
-                            var M = L.marker([lat, lon], {icon: Icon_site}).addTo(map)
-                            .bindPopup('Site Name: ' + site_name + '<br/>'
-                            + 'Site ID: ' + site_id);
-                            displayed_gis_layer_groundwater.push(M);
-                        <?php }?>;    
-                    <?php }?>;                              
-                    //Add site location for Rooban                    
+                    });                                  
+                    
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_groundwater);

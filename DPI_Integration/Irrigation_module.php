@@ -71,31 +71,29 @@ and open the template in the editor.
 						  <div class="box-content" style="height:518px;">
 							<div id="rightdiv">
                                                             <div id="legend">
-                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Regulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Unregulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Groundwater<br>
-                                                                <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Management zone<br>
-                                                                <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (groundwater)<br>
-                                                                <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (groundwater)<br>
-                                                                <img src="lib/leaflet/images/water_treatment_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp; &nbsp;Water treatment centre<br>
-                                                                <img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp; &nbsp;Power generator<br>
-                                                                <img src="images/yellow.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Cropping<br>
-                                                                <img src="images/red.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Excluded land use <br>
-                                                                <img src="images/light_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Grazing irrigated modified pastures<br>
-                                                                <img src="images/dark_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Grazing modified pastures<br>
-                                                                <img src="images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Intensive animal husbandry<br>
-                                                                <img src="images/orange.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Irrigated cropping<br>                                                                
-                                                                <img src="images/light_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Irrigated perennial hoticulture<br>
-                                                                <img src="images/dark_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Irrigated seasonal hoticulture<br>                                                                
-                                                                <img src="images/light_purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Perennial horticulture<br>                                                               
-                                                                <img src="images/olivedrab.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Perennial forestry<br>
-                                                                <img src="images/dar_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Residential and farm infrastructures<br>
-                                                                <img src="images/light_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Service<br>
-                                                                <img src="images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp; &nbsp;Mining<br>
+                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
+                                                                <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
+                                                                <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
+                                                                <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
+                                                                <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
+                                                                <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
+                                                                <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
+                                                                <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
+                                                                <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
+                                                                <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
+                                                                <img src="images/yellow.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Cropping<br>
+                                                                <img src="images/red.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Excluded land use <br>
+                                                                <img src="images/light_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing irrigated modified pastures<br>
+                                                                <img src="images/dark_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing modified pastures<br>
+                                                                <img src="images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Intensive animal husbandry<br>
+                                                                <img src="images/orange.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated cropping<br>                                                                
+                                                                <img src="images/light_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated perennial hoticulture<br>
+                                                                <img src="images/dark_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated seasonal hoticulture<br>                                                                
+                                                                <img src="images/light_purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial horticulture<br>                                                               
+                                                                <img src="images/olivedrab.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial forestry<br>
+                                                                <img src="images/dar_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Residential and farm infrastructures<br>
+                                                                <img src="images/light_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Service<br>
+                                                                <img src="images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Mining<br>
                                                                 <br>
                                                             </div>
 							</div>

@@ -31,7 +31,7 @@ and open the template in the editor.
 	</nav>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:16.5%; height:728px;" id="left_panel">
+			<div class="box-container" style="width:17.2%; height:728px;" id="left_panel">
 				<table style="width:100%">
 				  <tr>
 					<td>
@@ -69,18 +69,20 @@ and open the template in the editor.
 						  <div class="box-content" style="height:518px;">
 							<div id="rightdiv">
                                                             <div id="legend">
-                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Regulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Unregulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Groundwater<br>
-                                                                <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Management zone<br>
-                                                                <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (groundwater)<br>
-                                                                <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (groundwater)<br>
-                                                                <img src="lib/leaflet/images/water_treatment_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp; &nbsp;Water treatment centre<br>
-                                                                <img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp; &nbsp;Power generator<br>
+                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
+                                                                <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
+                                                                <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
+                                                                <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
+                                                                <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
+                                                                <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
+                                                                <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
+                                                                <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
+                                                                <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
+                                                                <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
+                                                                <img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WDSI</small>)<br>
+                                                                <img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WDSI</small>)<br>
+                                                                <img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WDSI</small>)<br>
+                                                                <img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>
                                                                 <br>
                                                             </div>
 							</div>
@@ -91,7 +93,7 @@ and open the template in the editor.
 				  </table>
 			</div>                  
 			
-			<div class="box-container" style="width:83.5%" id="map_panel">
+			<div class="box-container" style="width:82.8%" id="map_panel">
 				<div class="box">
 					<div class="box-title">
 						<h4><b>Town Water & Power Generation</b></h4>
@@ -113,7 +115,8 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Groundwater-CAT-Manning" onclick="show_gis_Manning_groundwater('Groundwater-CAT-Manning')"> <font size="2">Groundwater </font></br>
                                                 <input type="checkbox" id="Work-approvals-CAT-Manning" onclick="show_gis_Manning_workapprovals('Work-approvals-CAT-Manning')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font>
-                                        </div>                                     
+                                        </div>
+                                    
                                 </div>
 			</div>
 		</div>
@@ -380,31 +383,30 @@ and open the template in the editor.
                     }
                 }
                 Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
-                if(Fui_macquarie.length%3 === 0){
-                    var i = Fui_macquarie.length/3;
-                    var e = Fui_macquarie.length;
+                var e = Fui_macquarie.length;
+                if(e>=3 & (e%3) === 0){
+                    var i = e/3; 
                     Fui_macquarie_1 = Fui_macquarie.slice(0,i);
                     Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
                     Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
-                }else{
-                    var e = Fui_macquarie.length;
-                    var j = Math.floor(e/3); 
-                    if (j>0){
-                        Fui_macquarie_1 = Fui_macquarie.slice(0,j);
-                        Fui_macquarie_2 = Fui_macquarie.slice(j,2*j);
-                        Fui_macquarie_3 = Fui_macquarie.slice(2*j,e);
-                    }else{
-                        if (e === 2){
-                            Fui_macquarie_1 = Fui_macquarie.slice(0,1);
-                            Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                            Fui_macquarie_3 = Fui_macquarie.slice(1,e);
-                        }
-                        if (e === 1){
-                            Fui_macquarie_1 = Fui_macquarie.slice(0,e);
-                            Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                            Fui_macquarie_3 = Fui_macquarie.slice(e,e);
-                        }
-                    }
+                }else if(e>3 & (e%3) === 1){
+                    var i = Math.floor(e/3); 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
+                }else if(e>3 & (e%3) === 2){
+                    var i = Math.floor(e/3); 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
+                }else if (e===2){
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
+                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
+                }else if (e===1){
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
+                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
                 }
               
                 if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
@@ -417,6 +419,7 @@ and open the template in the editor.
                     return Icon_green;
                 }              
             }
+            
             
             var wsdi_rank_Macquarie = [];
             var wsdi_rank_Manning = [];
@@ -459,6 +462,88 @@ and open the template in the editor.
                         interactive: false
                         }).addTo(map);
                 if(CATName === 'MacquarieBogan'){
+                    var max_row = wsdi_rank_Macquarie.length;
+                    var legend = L.control({position: 'bottomright'});
+                    if (max_row>=3 & (max_row%3)===0){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row>=3 & (max_row%3)===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row>=3 & (max_row%3)===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        }; 
+                    
+                    }
+                    legend.addTo(map);
+                            
                     <?php if(!empty($town_water_supply)){?>;
                         WTC_number_Macquarie = 0;
                         WTC_population_Macquarie = 0;
@@ -491,6 +576,88 @@ and open the template in the editor.
                 } 
                 
                 if(CATName === 'ManningRiver'){
+                    var max_row=wsdi_rank_Manning.length;
+                    var legend = L.control({position: 'bottomright'});
+                    if (max_row>=3 & (max_row%3)===0){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row>=3 & (max_row%3)===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row>=3 & (max_row%3)===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        }; 
+                    
+                    }
+                    legend.addTo(map);
+                    
                     <?php if(!empty($town_water_supply)){?>;
                         WTC_number_Manning = 0;
                         WTC_population_Manning = 0;

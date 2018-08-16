@@ -240,3 +240,33 @@ and open the template in the editor.
         background: #EBCCD1;
         text-shadow: 0 0 2px #999; 
     }
+
+    .info {
+        background: #ffffff;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        position: relative;
+        border-radius: 5px;
+        font: 14px Optima;
+        line-height: 135%;
+        padding-top: 5px;
+        padding-right: 10px;
+        padding-left: 15px;
+        padding-bottom: 5px;
+    }
+    .info h4 {
+        margin: 0 0 5px;
+        font: 14.5px Optima;
+        font-weight: bold;
+    }
+    .legend {
+        text-align: left;
+        line-height: 18px;
+        color: #555;
+    }
+    .legend img {
+        width: 17px;
+        height: 17px;
+        float: left;
+        margin-right: 10px;
+        opacity: 1;
+    }

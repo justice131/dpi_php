@@ -20,7 +20,7 @@ and open the template in the editor.
                 <ul class="nav">
                     <li class="nav-header text-center"> <a href="http://www.water.nsw.gov.au/" target="_blank" style="padding: 3px 0 10px"> <img src="images/nsw.png" alt="nsw" height="50"/> </a> </li>
                     <li class=""> <a href="index.php" target="_blank" data-toggle="tooltip" title="Home"><i class="glyphicon glyphicon-home"></i></a> </li>
-                    <li class=""> <a href="Management_zone.php" target="_blank" data-toggle="tooltip" title="Water Management Zone"><i class="glyphicon glyphicon-tint"></i></a> </li>
+<!--                    <li class=""> <a href="Management_zone.php" target="_blank" data-toggle="tooltip" title="Water Management Zone"><i class="glyphicon glyphicon-tint"></i></a> </li>-->
                     <li class=""> <a href="Irrigation_module.php" target="_blank" data-toggle="tooltip" title="Irrigation"><i class="glyphicon glyphicon-leaf"></i></a> </li>
                     <li class=""> <a href="Mining_module.php" target="_blank" data-toggle="tooltip" title="Mining"><i class="glyphicon glyphicon-fire"></i></a> </li>
                     <li class=""> <a href="Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation"><i class="glyphicon glyphicon-flash"></i></a> </li>
@@ -184,7 +184,7 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");;
             });
             
-            var map = L.map('map',{zoomControl: false}).setView([-29.0, 134.7], 4.4);
+            var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
             }).addTo(map);
@@ -253,8 +253,22 @@ and open the template in the editor.
                 popupAnchor:  [0, -15] 
             });
             
-            var Icon_6 = L.icon({
-                iconUrl: 'lib/leaflet/images/water_treatment_icon.png',
+            var Icon_red = L.icon({
+                iconUrl: 'lib/leaflet/images/water_treatment_icon_red.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_orange = L.icon({
+                iconUrl: 'lib/leaflet/images/water_treatment_icon_orange.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_green = L.icon({
+                iconUrl: 'lib/leaflet/images/water_treatment_icon_green.png',
                 iconSize:     [15, 15], 
                 iconAnchor:   [7.5, 7.5],  
                 popupAnchor:  [0, -15] 
@@ -356,6 +370,72 @@ and open the template in the editor.
                 }
             }
             
+            function icon_wsdi(Fui_macquarie, feature){          
+                function compareSecondColumn(a, b) {
+                    if (a[1] === b[1]) {
+                        return 0;
+                    }
+                    else {
+                        return (a[1] > b[1]) ? -1 : 1;
+                    }
+                }
+                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
+                if(Fui_macquarie.length%3 === 0){
+                    var i = Fui_macquarie.length/3;
+                    var e = Fui_macquarie.length;
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
+                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
+                }else{
+                    var e = Fui_macquarie.length;
+                    var j = Math.floor(e/3); 
+                    if (j>0){
+                        Fui_macquarie_1 = Fui_macquarie.slice(0,j);
+                        Fui_macquarie_2 = Fui_macquarie.slice(j,2*j);
+                        Fui_macquarie_3 = Fui_macquarie.slice(2*j,e);
+                    }else{
+                        if (e === 2){
+                            Fui_macquarie_1 = Fui_macquarie.slice(0,1);
+                            Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                            Fui_macquarie_3 = Fui_macquarie.slice(1,e);
+                        }
+                        if (e === 1){
+                            Fui_macquarie_1 = Fui_macquarie.slice(0,e);
+                            Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                            Fui_macquarie_3 = Fui_macquarie.slice(e,e);
+                        }
+                    }
+                }
+              
+                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_red;
+                }
+                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_orange;
+                }
+                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_green;
+                }              
+            }
+            
+            var wsdi_rank_Macquarie = [];
+            var wsdi_rank_Manning = [];
+            <?php if(!empty($town_water_supply)){?>;
+                <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+                    var cat ="<?php echo $town_water_supply[$x]["catchment"]; ?>";
+                    if (cat === 'Macquarie'){
+                        var loc ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                        var wsdi ="<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                        wsdi_rank_Macquarie.push([loc, wsdi]);
+                    }
+                    if (cat === 'Manning'){
+                        var loc ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                        var wsdi ="<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                        wsdi_rank_Manning.push([loc, wsdi]);
+                    }
+                <?php }?>;    
+            <?php }?>;
+            
             var featureCATCollection = []; 
             var check_collection = [];
             function addCATLayer(CATName, CATValue){
@@ -395,7 +475,7 @@ and open the template in the editor.
                                 var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
                                 var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
                                 var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
-                                var M = L.marker([lat, lon], {icon: Icon_6}).addTo(map)
+                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Macquarie, location)}).addTo(map)
                                 .bindPopup('Location: ' + location + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
@@ -427,7 +507,7 @@ and open the template in the editor.
                                 var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
                                 var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
                                 var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
-                                var M = L.marker([lat, lon], {icon: Icon_6}).addTo(map)
+                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Manning, location)}).addTo(map)
                                 .bindPopup('Location: ' + location + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
@@ -3583,17 +3663,17 @@ and open the template in the editor.
 //                        props?
 //                        '<h5>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</h5>' + 
 //                        'Number of Water Treatment Centres: '+ toThousands(no_wtc) + '<br/>' +
-//                        'Population Affected: '+ toThousands(popu_wtc) + '<br />'+
+//                        'Population: '+ toThousands(popu_wtc) + '<br />'+
 //                        'Annual Power Generated: '+ overall_fmi + '<br />'+
 //                        'Annual Use of Water for Town Water and Sewerage: '+ overall_dei + '<br />'+
 //                        'Annual Use of Water for Power Generation: ' + surface_water_size + '<br />'
 //                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                           '<b>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
                           '<p style=\"line-height:50%\"><img src=\"images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centres: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Population Affected: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
+                          '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Population Served: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
+                          '<img src=\"images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + 0 + '</b><br/><br />'+
                           '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water and Sewerage: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + toThousands(popu_wtc) + '</b><br/></p>'  
+                          '<img src=\"images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + 0 + '</b><br/></p>'  
                     );
                 <?php }?>;
             };

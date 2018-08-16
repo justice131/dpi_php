@@ -15,7 +15,7 @@ and open the template in the editor.
                 <ul class="nav">
                     <li class="nav-header text-center"> <a href="http://www.water.nsw.gov.au/" target="_blank" style="padding: 3px 0 10px"> <img src="images/nsw.png" alt="nsw" height="50"/> </a> </li>
                     <li class=""> <a href="index.php" target="_blank" data-toggle="tooltip" title="Home"><i class="glyphicon glyphicon-home"></i></a> </li>
-                    <li class=""> <a href="Management_zone.php" target="_blank" data-toggle="tooltip" title="Water Management Zone"><i class="glyphicon glyphicon-tint"></i></a> </li>
+<!--                    <li class=""> <a href="Management_zone.php" target="_blank" data-toggle="tooltip" title="Water Management Zone"><i class="glyphicon glyphicon-tint"></i></a> </li>-->
                     <li class=""> <a href="Irrigation_module.php" target="_blank" data-toggle="tooltip" title="Irrigation"><i class="glyphicon glyphicon-leaf"></i></a> </li>
                     <li class=""> <a href="Mining_module.php" target="_blank" data-toggle="tooltip" title="Mining"><i class="glyphicon glyphicon-fire"></i></a> </li>
                     <li class=""> <a href="Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation"><i class="glyphicon glyphicon-flash"></i></a> </li>
@@ -177,7 +177,7 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");;
             });
             
-            var map = L.map('map',{zoomControl: false, loadingControl: true}).setView([-29.0, 134.7], 4.4);
+            var map = L.map('map',{zoomControl: false, loadingControl: true}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
             }).addTo(map);
@@ -420,6 +420,7 @@ and open the template in the editor.
                 map.removeControl(legendinfo);
                 map.removeControl(controlSearch);
                 //controlSearch.remove(map);
+                link_to_parr.style.display = 'none';
             }
                        
             // find the middle point from geojason file
@@ -627,7 +628,7 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_unregulated;
                 var geojsonfile_1 = Macquarie_Unregulatedriver;
-                var link_to_parr = document.getElementById('link_to_parallel_coordinate');
+                link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 if (checkBox.checked === true){
                     // display link icon
                     link_to_parr.style.display = 'block';

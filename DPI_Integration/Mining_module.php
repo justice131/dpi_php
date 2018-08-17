@@ -422,7 +422,12 @@ and open the template in the editor.
                         }).addTo(map);
                 } 
                 //Zooms to the layer selected
-                map.fitBounds(CAT.getBounds());
+                if (CATName==="MacquarieBogan"){
+                    map.setView([-31.8, 148.5], 8);
+                }else if (CATName==="ManningRiver"){
+                    map.setView([-31.75, 151.9],10);
+                }
+                
                 hover_info.addTo(map);
                 if (checkbox_id !== null){
                     checkbox_id.style.display = "block";

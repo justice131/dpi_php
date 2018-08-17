@@ -316,8 +316,8 @@ and open the template in the editor.
                 }
             }).addTo(map);  
             
-            map.fitBounds(Mac_unregulated.getBounds());
-                    
+//            map.fitBounds(Mac_unregulated.getBounds());
+            map.setView([-31.8, 148.5], 8);       
             displayed_s1 = [];
             function show_s1(id){
                     function getColorScalar(d) {
@@ -1263,7 +1263,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
-                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Irrigation Drought Security × Mine Production'+'</span>';
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Drought Security × Mine Production'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -2192,8 +2192,8 @@ and open the template in the editor.
                                             'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                                             'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                             'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +' mg/L'+ '</b>' +'<br />'+
-                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + '% ML/year'+'</b>' +'<br />'+
+                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                             'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
                                             'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
                                             'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+

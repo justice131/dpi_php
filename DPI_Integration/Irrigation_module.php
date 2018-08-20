@@ -2450,8 +2450,9 @@ and open the template in the editor.
             
             var displayed_gis_layer_workapproval = [];
             work_mac = [];
-            //work_mac_1 = [];
             <?php if(!empty($workapproval)){?>;
+                number_license_mac = 0;
+                number_license_man = 0;
                 <?php for ($x=0; $x<count($workapproval); $x++) {?>
                     var Lat_workapproval ="<?php echo $workapproval[$x]["Latitude"]; ?>";
                     var Lon_workapproval ="<?php echo $workapproval[$x]["Longitude"]; ?>";
@@ -2461,6 +2462,12 @@ and open the template in the editor.
                     var cat = "<?php echo $workapproval[$x]["Category"]; ?>";
                     var Basin_name = "<?php echo $workapproval[$x]["Basin_name"]; ?>";
                     var WS = "<?php echo $workapproval[$x]["WS"]; ?>";
+                    if (Basin_name === 'Macquarie' & (Purpose === 'IRRIGATION' || Purpose === 'FARMING')){
+                        number_license_mac = number_license_mac +1;
+                    }
+                    if (Basin_name === 'Manning' & (Purpose === 'IRRIGATION' || Purpose === 'FARMING')){
+                        number_license_man = number_license_man +1;
+                    }
                     work_mac.push([Lat_workapproval, Lon_workapproval, Purpose, Share_component, water_type, cat, Basin_name, WS]);
                 <?php }?>;    
             <?php }?>;
@@ -2468,6 +2475,7 @@ and open the template in the editor.
             function show_gis_MacquarieBogan_workapprovals(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){  
+                    num_marker = number_license_mac;
                     var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
                     for (i=0; i<work_mac.length; i++){
                         var Lat_workapproval = work_mac[i][0];
@@ -2523,6 +2531,8 @@ and open the template in the editor.
             var displayed_gis_layer_approval = [];
             work_approval_array = [];
             <?php if(!empty($work_approval)){?>;
+            number_approval_mac = 0;
+            number_approval_man = 0;
                 <?php for ($x=0; $x<count($work_approval); $x++) {?>
                     var Lat_approval ="<?php echo $work_approval[$x]["latitude"]; ?>";
                     var Lon_approval ="<?php echo $work_approval[$x]["longitude"]; ?>";
@@ -2531,13 +2541,20 @@ and open the template in the editor.
                     var Approval_id = "<?php echo $work_approval[$x]["approval"]; ?>";
                     var Basin_name = "<?php echo $work_approval[$x]["basin_name"]; ?>";
                     var Water_type = "<?php echo $work_approval[$x]["water_type"]; ?>";
+                    if (Basin_name === 'macquarie'){
+                        number_approval_mac = number_approval_mac +1;
+                    }
+                    if (Basin_name === 'manning'){
+                        number_approval_man = number_approval_man +1;
+                    }                   
                     work_approval_array.push([Lat_approval, Lon_approval, Work_description, So, Approval_id, Basin_name, Water_type]);
                 <?php }?>;    
-            <?php }?>; 
+            <?php }?>;  
                 
             function show_gis_MacquarieBogan_approvals(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){  
+                    num_marker = number_approval_mac;
                     var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
                     for (i=0; i<work_approval_array.length; i++){
                         var Lat_approval = work_approval_array[i][0];
@@ -3675,7 +3692,8 @@ and open the template in the editor.
             var displayed_gis_layer_workapproval = [];                          
             function show_gis_Manning_workapprovals(id){                 
                 var checkBox = document.getElementById(id);
-                if (checkBox.checked === true){  
+                if (checkBox.checked === true){ 
+                    num_marker = number_license_man;
                     var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
                     for (i=0; i<work_mac.length; i++){
                         var Lat_workapproval = work_mac[i][0];
@@ -3732,6 +3750,7 @@ and open the template in the editor.
             function show_gis_Manning_approvals(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){
+                    num_marker = number_approval_man;
                     var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
                     for (i=0; i<work_approval_array.length; i++){
                         var Lat_approval = work_approval_array[i][0];

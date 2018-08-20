@@ -2490,9 +2490,9 @@ and open the template in the editor.
             
             var displayed_gis_layer_approval = [];
             work_approval_array = [];
+            <?php if(!empty($work_approval)){?>;
             number_approval_mac = 0;
             number_approval_man = 0;
-            <?php if(!empty($work_approval)){?>;
                 <?php for ($x=0; $x<count($work_approval); $x++) {?>
                     var Lat_approval ="<?php echo $work_approval[$x]["latitude"]; ?>";
                     var Lon_approval ="<?php echo $work_approval[$x]["longitude"]; ?>";

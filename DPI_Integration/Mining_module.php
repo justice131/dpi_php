@@ -385,17 +385,17 @@ and open the template in the editor.
                        // },
                         onEachFeature: function onEach(feature, layer){
                             layer.setStyle({color: getColor(feature.properties.RESOURCE), weight: 1.0, fillOpacity: 0.8});
-                            return layer.bindPopup('TITLE_CODE: ' + feature.properties.TITLE_CODE + '<br/>' 
-                                    + 'TITLE_NO: ' + feature.properties.TITLE_NO + '<br/>' 
-                                    + 'ACT_YEAR: ' + feature.properties.ACT_YEAR + '<br/>'
-                                    + 'COMPANY: ' + feature.properties.COMPANY + '<br/>'
-                                    + 'GRANT_DATE: ' + feature.properties.GRANT_DATE + '<br/>'
-                                    + 'EXPIRY_DAT: ' + feature.properties.EXPIRY_DAT + '<br/>'
-                                    + 'LAST_RENEW: ' + feature.properties.LAST_RENEW + '<br/>'
-                                    + 'GROUPS: ' + feature.properties.GROUPS + '<br/>'
-                                    + 'MINERALS: ' + feature.properties.MINERALS + '<br/>'
-                                    + 'RESOURCE: ' + feature.properties.RESOURCE + '<br/>'
-                                    + 'OPERATION: ' + feature.properties.OPERATION);
+                            return layer.bindPopup('Title Code: ' + feature.properties.TITLE_CODE + '<br/>' 
+                                    + 'Title No: ' + feature.properties.TITLE_NO + '<br/>' 
+                                    + 'Activate Year: ' + feature.properties.ACT_YEAR + '<br/>'
+                                    + 'Company: ' + feature.properties.COMPANY + '<br/>'
+                                    + 'Grant Date: ' + feature.properties.GRANT_DATE + '<br/>'
+                                    + 'Expiry Date: ' + feature.properties.EXPIRY_DAT + '<br/>'
+                                    + 'Last Renew: ' + feature.properties.LAST_RENEW + '<br/>'
+                                    + 'Groups: ' + feature.properties.GROUPS + '<br/>'
+                                    + 'Minerals: ' + feature.properties.MINERALS + '<br/>'
+                                    + 'Resource: ' + feature.properties.RESOURCE + '<br/>'
+                                    + 'Operation: ' + feature.properties.OPERATION);
                         }
                         }).addTo(map);
                 } 
@@ -407,17 +407,17 @@ and open the template in the editor.
                         //},
                         onEachFeature: function onEach(feature, layer){
                             layer.setStyle({color: getColor(feature.properties.RESOURCE), weight: 1.0, fillOpacity: 0.8});
-                            return layer.bindPopup('TITLE_CODE: ' + feature.properties.TITLE_CODE + '<br/>' 
-                                    + 'TITLE_NO: ' + feature.properties.TITLE_NO + '<br/>' 
-                                    + 'ACT_YEAR: ' + feature.properties.ACT_YEAR + '<br/>'
-                                    + 'COMPANY: ' + feature.properties.COMPANY + '<br/>'
-                                    + 'GRANT_DATE: ' + feature.properties.GRANT_DATE + '<br/>'
-                                    + 'EXPIRY_DAT: ' + feature.properties.EXPIRY_DAT + '<br/>'
-                                    + 'LAST_RENEW: ' + feature.properties.LAST_RENEW + '<br/>'
-                                    + 'GROUPS: ' + feature.properties.GROUPS + '<br/>'
-                                    + 'MINERALS: ' + feature.properties.MINERALS + '<br/>'
-                                    + 'RESOURCE: ' + feature.properties.RESOURCE + '<br/>'
-                                    + 'OPERATION: ' + feature.properties.OPERATION);
+                            return layer.bindPopup('Title Code: ' + feature.properties.TITLE_CODE + '<br/>' 
+                                    + 'Title No: ' + feature.properties.TITLE_NO + '<br/>' 
+                                    + 'Activate Year: ' + feature.properties.ACT_YEAR + '<br/>'
+                                    + 'Company: ' + feature.properties.COMPANY + '<br/>'
+                                    + 'Grant Date: ' + feature.properties.GRANT_DATE + '<br/>'
+                                    + 'Expiry Date: ' + feature.properties.EXPIRY_DAT + '<br/>'
+                                    + 'Last Renew: ' + feature.properties.LAST_RENEW + '<br/>'
+                                    + 'Groups: ' + feature.properties.GROUPS + '<br/>'
+                                    + 'Minerals: ' + feature.properties.MINERALS + '<br/>'
+                                    + 'Resource: ' + feature.properties.RESOURCE + '<br/>'
+                                    + 'Operation: ' + feature.properties.OPERATION);
                         }
                         }).addTo(map);
                 } 

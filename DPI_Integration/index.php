@@ -3911,19 +3911,19 @@ and open the template in the editor.
                 <?php }?>;
                 for(i = 0; i < 3; i++) {
                     if(data[i] <= 0.25){
-                        bg_color.push("rgba(255, 56, 3, 1)");
+                        bg_color.push("#ff3333");
                     }else if(data[i] <= 0.4){
-                        bg_color.push("rgba(252, 157, 61, 1)");
+                        bg_color.push("#ff8533");
                     }else{
-                        bg_color.push("rgba(21, 171, 108, 1)");
+                        bg_color.push("#33ff33");
                     }
                 }
                 if(data[3] <= 0.7){
-                    bg_color.push("rgba(253, 56, 3, 1)");
+                    bg_color.push("#ff3333");
                 }else if(data[3] <= 0.8){
-                    bg_color.push("rgba(252, 157, 61, 1)");
+                    bg_color.push("#ff8533");
                 }else{
-                    bg_color.push("rgba(21, 171, 108, 1)");
+                    bg_color.push("#33ff33");
                 }
     //            bg_color.push("rgba(50, 255, 70, 1)");
     //            bg_color.push("rgba(255, 159, 64, 1)");

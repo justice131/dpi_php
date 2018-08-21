@@ -282,9 +282,9 @@ and open the template in the editor.
 
             /*overall variables*/
             var myCols = [
-                    'rgb(255, 56, 3)',//Red
-                    'rgb(252, 157, 61)',//Orange
-                    'rgb(21, 171, 108)'//Green
+                    '#ff3333',//Red
+                    '#ff8533',//Orange
+                    '#33ff33'//Green
             ];
 
 

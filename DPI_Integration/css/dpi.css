@@ -81,7 +81,7 @@ and open the template in the editor.
         top: 75px;
         left: 35px;
         background: white;
-        font: 10px Georgia;
+        font: 10px "微软雅黑";
         color: black;
         padding: 10px;
         line-height:125%;
@@ -171,11 +171,11 @@ and open the template in the editor.
         padding-bottom: 10px;
         top: 0px;
         right: 0px;
-        font: 13.5px "Times New Roman";
+        font: 13.5px "微软雅黑";
         background: #ffffff;
         box-shadow: 0 0 15px rgba(0,0,0,0.2);
         border-radius: 5px;
-        width: 240px;
+        width: 225px;
         text-align: left;
         line-height: 125%;
     }
@@ -192,12 +192,12 @@ and open the template in the editor.
     
     #map a:visited {
         color: blue;
-        font: 14px Optima;
+        font: 14px "微软雅黑";
     }
     
     #map a:hover {
         color: red;
-        font: 14px Georgia;
+        font: 14px "微软雅黑";
         text-shadow: 0 0 2px #999;
     }
 
@@ -250,7 +250,7 @@ and open the template in the editor.
         box-shadow: 0 0 15px rgba(0,0,0,0.2);
         position: relative;
         border-radius: 5px;
-        font: 10px Georgia;
+        font: 10px "微软雅黑";
         line-height: 135%;
         padding-top: 5px;
         padding-right: 10px;

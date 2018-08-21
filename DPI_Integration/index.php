@@ -3681,6 +3681,8 @@ and open the template in the editor.
                         var WT = work_mac[i][4];
                         var cat = work_mac[i][5];
                         var Basin_name = work_mac[i][6];
+                        
+                         
                         var Water_Source = work_mac[i][7];
                         if (Basin_name === 'Manning'){
                                 switch(WT){
@@ -3855,7 +3857,7 @@ and open the template in the editor.
                         '<img src=\"images/'+index_level(overall_idsi,"idsi")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_idsi*100)/100 + '</b><br/><br/>'+
                         '<img src=\"images/'+index_level(overall_fmi,"fmi")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_fmi*100)/100 + '</b><br/><br/>'+
                         '<img src=\"images/'+index_level(overall_dei,"dei")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_dei*100)/100 + '</b>'+'</p>'
-                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
+                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                     );
                 <?php }?>;
             };

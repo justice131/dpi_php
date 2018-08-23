@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data Insight of Macquarie</title>
+        <title>Irrigation Data Insight of Macquarie</title>
         <?php include("Common_Script_Import.html"); ?>
         <!--Parallel Coordinates-->
         <!-- d3 -->
@@ -343,7 +343,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
-                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Opportunity for Irrigation'+'</span>';
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Opportunity for irrigation'+'</span>';
                     parcoord.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover

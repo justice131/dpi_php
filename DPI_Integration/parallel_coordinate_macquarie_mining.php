@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data Insight of Macquarie</title>
+        <title>Mining Data Insight of Macquarie</title>
         <?php include("Common_Script_Import.html"); ?>
         <!--Parallel Coordinates-->
         <!-- d3 -->

@@ -118,7 +118,7 @@ and open the template in the editor.
                                         </div>
                                     
                                         <div id="link_to_parallel_coordinate">
-                                            <a href="Paralle_coordinate_Macquarie.php" target="_blank">Insight</a>
+                                            <a href="parallel_coordinate_macqaurie_tws.php" target="_blank">Insight</a>
                                         </div>
                                 </div>
 			</div>

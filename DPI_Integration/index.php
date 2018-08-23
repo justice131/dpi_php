@@ -65,7 +65,7 @@ and open the template in the editor.
                                           <div class="box-content" style="height:518px;">
                                                 <div id="rightdiv">
                                                     <div id="legend">
-                                                        <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
+<!--                                                        <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
                                                         <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
                                                         <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>                                                      
                                                         <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
@@ -79,7 +79,7 @@ and open the template in the editor.
                                                         <img src="lib/leaflet/images/c_2.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
                                                         <img src="lib/leaflet/images/c_3.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
                                                         <img src="lib/leaflet/images/c_4.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
-                                                        <img src="lib/leaflet/images/c_5.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>
+                                                        <img src="lib/leaflet/images/c_5.png"  width="12.8" height="22" align = "center">&nbsp; &nbsp;<br>-->
                                                         <br>
                                                     </div>
                                                 </div>
@@ -209,103 +209,69 @@ and open the template in the editor.
                     map.removeLayer(feature[i]);
                 }               
             };
-            var Icon_0 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-1.png',
-                iconSize:     [15, 27], 
-                iconAnchor:   [7.5, 27],  
-                popupAnchor:  [0, -34] 
-            });
-            
-            var Icon_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker.png',
-                iconSize:     [16, 27], 
-                iconAnchor:   [8, 27],  
-                popupAnchor:  [0, -34] 
-            });
-            
-            var Icon_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/marker-icon-2x.png',
-                iconSize:     [16, 26], 
-                iconAnchor:   [8, 26],  
-                popupAnchor:  [0, -34] 
-            });           
-            
-            var Icon_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/circle-marker.png',
-                iconSize:     [12, 12], 
-                iconAnchor:   [6, 6],  
-                popupAnchor:  [0, -15] 
-            });
-            
-            var Icon_4 = L.icon({
-                iconUrl: 'lib/leaflet/images/circle-marker-1.png',
-                iconSize:     [12, 12], 
-                iconAnchor:   [6, 6],  
-                popupAnchor:  [0, -15] 
-            });
-            
-            var Icon_5 = L.icon({
-                iconUrl: 'lib/leaflet/images/circle-marker-2.png',
-                iconSize:     [12, 12], 
-                iconAnchor:   [6, 6],  
-                popupAnchor:  [0, -15] 
-            });
-            
+                               
             var Icon_approval_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-3.png',
+                iconUrl: 'lib/leaflet/images/wa_reg.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });
             
             var Icon_approval_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-4.png',
+                iconUrl: 'lib/leaflet/images/wa_unreg.png',
                 iconSize:     [18, 28],
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });
             
             var Icon_approval_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-5.png',
+                iconUrl: 'lib/leaflet/images/wa_gw.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });  
             
             var Icon_license_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-8.png',
+                iconUrl: 'lib/leaflet/images/li_reg.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
             
             var Icon_license_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-6.png',
+                iconUrl: 'lib/leaflet/images/li_unreg.png',
                 iconSize:     [18, 28],  
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
             
             var Icon_license_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-7.png',
+                iconUrl: 'lib/leaflet/images/li_gw.png',
                 iconSize:     [18, 28],   
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
 
-            var Icon_site = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-9.png',
-                iconSize:     [28, 28],   
-                iconAnchor:   [14, 28],  
-                popupAnchor:  [0, -30] 
-            }); 
-
-            var Icon_site_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/new-marker-10.png',
-                iconSize:     [28, 28],   
-                iconAnchor:   [14, 28],  
-                popupAnchor:  [0, -30] 
-            }); 
+            var Icon_reg = L.icon({
+                iconUrl: 'lib/leaflet/images/reg.png',
+                iconSize:     [16, 27], 
+                iconAnchor:   [8, 27],  
+                popupAnchor:  [0, -34] 
+            });
+            
+            var Icon_unreg = L.icon({
+                iconUrl: 'lib/leaflet/images/unreg.png',
+                iconSize:     [16, 27], 
+                iconAnchor:   [8, 27],  
+                popupAnchor:  [0, -34] 
+            });
+            
+            var Icon_gw = L.icon({
+                iconUrl: 'lib/leaflet/images/gw.png',
+                iconSize:     [16, 27], 
+                iconAnchor:   [8, 27],  
+                popupAnchor:  [0, -34] 
+            });
             
             function inside (point, vs) {
                 var x = point[0], y = point[1];
@@ -490,7 +456,13 @@ and open the template in the editor.
             function show_gis_MacquarieBogan_regulated(id){
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_RugulatedRiver;
+                // display legend for reg river
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'reg_mac');
+                elem.innerHTML = ('<img src="lib/leaflet/images/reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>');
+                
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
                                 switch(feature.properties.OBJECTID){
@@ -528,46 +500,46 @@ and open the template in the editor.
                     var regulated_river_12 = find_middle_point(MacquarieBogan_RugulatedRiver.features[12].geometry.coordinates[0]);
                     var regulated_river_13 = find_middle_point(MacquarieBogan_RugulatedRiver.features[13].geometry.coordinates[0]);
                     
-                    var Mak_1 = L.marker(regulated_river_0, {icon: Icon_2}).addTo(map)
+                    var Mak_1 = L.marker(regulated_river_0, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[0].properties.RIVER_CREE); 
             
-                    var Mak_2 = L.marker(regulated_river_1, {icon: Icon_2}).addTo(map)
+                    var Mak_2 = L.marker(regulated_river_1, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[1].properties.RIVER_CREE); 
             
-                    var Mak_3 = L.marker(regulated_river_2, {icon: Icon_2}).addTo(map)
+                    var Mak_3 = L.marker(regulated_river_2, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[2].properties.RIVER_CREE); 
             
-                    var Mak_4 = L.marker(regulated_river_3, {icon: Icon_2}).addTo(map)
+                    var Mak_4 = L.marker(regulated_river_3, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[3].properties.RIVER_CREE); 
             
-                    var Mak_5 = L.marker(regulated_river_4, {icon: Icon_2}).addTo(map)
+                    var Mak_5 = L.marker(regulated_river_4, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[4].properties.RIVER_CREE); 
             
-                    var Mak_6 = L.marker(regulated_river_5, {icon: Icon_2}).addTo(map)
+                    var Mak_6 = L.marker(regulated_river_5, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[5].properties.RIVER_CREE);
             
-                    var Mak_7 = L.marker(regulated_river_6, {icon: Icon_2}).addTo(map)
+                    var Mak_7 = L.marker(regulated_river_6, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[6].properties.RIVER_CREE); 
             
-                    var Mak_8 = L.marker(regulated_river_7, {icon: Icon_2}).addTo(map)
+                    var Mak_8 = L.marker(regulated_river_7, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[7].properties.RIVER_CREE); 
             
-                    var Mak_9 = L.marker(regulated_river_8, {icon: Icon_2}).addTo(map)
+                    var Mak_9 = L.marker(regulated_river_8, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[8].properties.RIVER_CREE); 
             
-                    var Mak_10 = L.marker(regulated_river_9, {icon: Icon_2}).addTo(map)
+                    var Mak_10 = L.marker(regulated_river_9, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[9].properties.RIVER_CREE); 
             
-                    var Mak_11 = L.marker(regulated_river_10, {icon: Icon_2}).addTo(map)
+                    var Mak_11 = L.marker(regulated_river_10, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[10].properties.RIVER_CREE); 
             
-                    var Mak_12 = L.marker(regulated_river_11, {icon: Icon_2}).addTo(map)
+                    var Mak_12 = L.marker(regulated_river_11, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[11].properties.RIVER_CREE);
             
-                    var Mak_13 = L.marker(regulated_river_12, {icon: Icon_2}).addTo(map)
+                    var Mak_13 = L.marker(regulated_river_12, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[12].properties.RIVER_CREE); 
             
-                    var Mak_14 = L.marker(regulated_river_13, {icon: Icon_2}).addTo(map)
+                    var Mak_14 = L.marker(regulated_river_13, {icon: Icon_reg}).addTo(map)
                     .bindPopup(MacquarieBogan_RugulatedRiver.features[13].properties.RIVER_CREE); 
             
                     displayed_gis_layer_regulated.push(Mak_1);
@@ -587,6 +559,8 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_regulated);
+                    var elementToBeRemoved = document.getElementById('reg_mac');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 } 
             }
                        
@@ -597,7 +571,11 @@ and open the template in the editor.
                 var geojsonfile = MacquarieBogan_unregulated;
                 var geojsonfile_1 = Macquarie_Unregulatedriver;
                 link_to_parr = document.getElementById('link_to_parallel_coordinate');
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'unreg_mac');
+                elem.innerHTML = ('<img src="lib/leaflet/images/unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>');
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
                     // display link icon
                     link_to_parr.style.display = 'block';                                       
                                     
@@ -835,7 +813,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                     
-                    var Mak_uw_1 = L.marker(unregulated_0, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_1 = L.marker(unregulated_0, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[0].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -883,7 +861,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                     
-                    var Mak_uw_2 = L.marker(unregulated_1, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_2 = L.marker(unregulated_1, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[1].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -931,7 +909,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_3 = L.marker(unregulated_2, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_3 = L.marker(unregulated_2, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[2].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -978,7 +956,7 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
                     <?php }?> 
-                    var Mak_uw_4 = L.marker(unregulated_3, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_4 = L.marker(unregulated_3, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
@@ -1027,7 +1005,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_5 = L.marker(unregulated_4, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_5 = L.marker(unregulated_4, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[4].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1075,7 +1053,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_6 = L.marker(unregulated_5, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_6 = L.marker(unregulated_5, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[5].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1123,7 +1101,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_7 = L.marker(unregulated_6, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_7 = L.marker(unregulated_6, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[6].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1171,7 +1149,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
 
-                    var Mak_uw_8 = L.marker(unregulated_7, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_8 = L.marker(unregulated_7, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[7].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1220,7 +1198,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                         
-                    var Mak_uw_9 = L.marker(unregulated_8, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_9 = L.marker(unregulated_8, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[8].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1268,7 +1246,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>                         
                         
-                    var Mak_uw_10 = L.marker(unregulated_9, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_10 = L.marker(unregulated_9, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[9].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
@@ -1317,7 +1295,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_11 = L.marker(unregulated_10, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_11 = L.marker(unregulated_10, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[10].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1365,7 +1343,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_12 = L.marker(unregulated_11, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_12 = L.marker(unregulated_11, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[11].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1413,7 +1391,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_13 = L.marker(unregulated_12, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_13 = L.marker(unregulated_12, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[12].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1461,7 +1439,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_14 = L.marker(unregulated_13, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_14 = L.marker(unregulated_13, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[13].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1509,7 +1487,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_15 = L.marker(unregulated_14, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_15 = L.marker(unregulated_14, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[14].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1557,7 +1535,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_16 = L.marker(unregulated_15, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_16 = L.marker(unregulated_15, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[15].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1606,7 +1584,7 @@ and open the template in the editor.
                     <?php }?>           
             
             
-                    var Mak_uw_17 = L.marker(unregulated_16, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[16].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_17 = L.marker(unregulated_16, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[16].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[16].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1654,7 +1632,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_18 = L.marker(unregulated_17, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[17].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_18 = L.marker(unregulated_17, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[17].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[17].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1702,7 +1680,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_19 = L.marker(unregulated_18, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[18].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_19 = L.marker(unregulated_18, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[18].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[18].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1750,7 +1728,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_20 = L.marker(unregulated_19, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[19].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_20 = L.marker(unregulated_19, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[19].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[19].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1798,7 +1776,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_21 = L.marker(unregulated_20, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[20].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_21 = L.marker(unregulated_20, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[20].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[20].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1846,7 +1824,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_22 = L.marker(unregulated_21, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[21].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_22 = L.marker(unregulated_21, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[21].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[21].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1894,7 +1872,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_23 = L.marker(unregulated_22, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[22].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_23 = L.marker(unregulated_22, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[22].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[22].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1942,7 +1920,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_24 = L.marker(unregulated_23, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[23].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_24 = L.marker(unregulated_23, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[23].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[23].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -1990,7 +1968,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_25 = L.marker(unregulated_24, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[24].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_25 = L.marker(unregulated_24, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[24].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[24].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2038,7 +2016,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_26 = L.marker(unregulated_25, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[25].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_26 = L.marker(unregulated_25, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[25].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[25].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2086,7 +2064,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_27 = L.marker(unregulated_26, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[26].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_27 = L.marker(unregulated_26, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[26].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[26].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2134,7 +2112,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_28 = L.marker(unregulated_27, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[27].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_28 = L.marker(unregulated_27, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[27].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[27].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2182,7 +2160,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_29 = L.marker(unregulated_28, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[28].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_29 = L.marker(unregulated_28, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[28].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[28].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2230,7 +2208,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_30 = L.marker(unregulated_29, {icon: Icon_1, water_source: MacquarieBogan_unregulated.features[29].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_30 = L.marker(unregulated_29, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[29].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[29].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2286,6 +2264,8 @@ and open the template in the editor.
                     removeLayer(displayed_gis_layer_unregulated);
                     map.removeControl(controlSearch);
                     link_to_parr.style.display = 'none';
+                    var elementToBeRemoved = document.getElementById('unreg_mac');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 } 
             }
 
@@ -2294,7 +2274,11 @@ and open the template in the editor.
             function show_gis_MacquarieBogan_groundwater(id){
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_GW;
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'gw_mac');
+                elem.innerHTML = ('<img src="lib/leaflet/images/gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>');
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }                    
@@ -2353,7 +2337,7 @@ and open the template in the editor.
                     <?php }?> 
 
                     groundwater_0[1] = groundwater_0[1] - 0.03 ;
-                    var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
+                    var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_1);
@@ -2363,7 +2347,7 @@ and open the template in the editor.
                     <?php }?> 
                     
                     groundwater_1[0] = groundwater_1[0] - 0.02 ;
-                    var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
+                    var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_2);
@@ -2373,7 +2357,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                     groundwater_2[0] = groundwater_2[0] - 0.01 ;
-                    var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
+                    var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_3);
@@ -2382,7 +2366,7 @@ and open the template in the editor.
                         var lel ="<?php echo $ro_gw_4["longterm_extraction_limit"]; ?>";
                     <?php }?> 
                         
-                    var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_0, gwater_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
+                    var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year');  
                     markersLayer.addLayer(Mak_groundwater_4);
@@ -2401,6 +2385,9 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_groundwater);
                     map.removeControl(controlSearch);
+                    var elementToBeRemoved = document.getElementById('gw_mac');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+
                 } 
             } 
             
@@ -2428,10 +2415,16 @@ and open the template in the editor.
                 <?php }?>;    
             <?php }?>;
             
-            function show_gis_MacquarieBogan_workapprovals(id){
-                
+            function show_gis_MacquarieBogan_workapprovals(id){                
                 var checkBox = document.getElementById(id);
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'lices_mac');
+                elem.innerHTML = ('<img src="lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
+                        '<img src="lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
+                        '<img src="lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
+                    
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     } 
@@ -2481,10 +2474,11 @@ and open the template in the editor.
                     }
                     map.addLayer(markerClusters);
                     displayed_gis_layer_workapproval.push(markerClusters);
-                    
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_workapproval);
+                    var elementToBeRemoved = document.getElementById('lices_mac');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }            
             }           
             
@@ -2513,7 +2507,14 @@ and open the template in the editor.
                 
             function show_gis_MacquarieBogan_approvals(id){
                 var checkBox = document.getElementById(id);
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'appro_mac');
+                elem.innerHTML = ('<img src="lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
+                        '<img src="lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
+                        '<img src="lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
+
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }  
@@ -2574,6 +2575,8 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_approval);
                     map.removeControl(controlSearch);
+                    var elementToBeRemoved = document.getElementById('appro_mac');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 } 
             }
                        
@@ -2589,10 +2592,15 @@ and open the template in the editor.
             
             var displayed_gis_layer_unregulated = [];
             function show_gis_Manning_unregulated(id){
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'unreg_man');
+                elem.innerHTML = ('<img src="lib/leaflet/images/unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
                 var geojsonfile_1 = Manning_Unregulatedriver;
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }                    
@@ -2756,7 +2764,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                     //var water_source = Manning_unregulated.features[0].properties.WATER_SOUR;
-                    var Mak_1 = L.marker(man_unre_0, {icon: Icon_1, water_source: Manning_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
+                    var Mak_1 = L.marker(man_unre_0, {icon: Icon_unreg, water_source: Manning_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[0].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2804,7 +2812,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_2 = L.marker(man_unre_1, {icon: Icon_1, water_source: Manning_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
+                    var Mak_2 = L.marker(man_unre_1, {icon: Icon_unreg, water_source: Manning_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[1].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2852,7 +2860,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_3 = L.marker(man_unre_2, {icon: Icon_1, water_source: Manning_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
+                    var Mak_3 = L.marker(man_unre_2, {icon: Icon_unreg, water_source: Manning_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[2].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2900,7 +2908,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_4 = L.marker(man_unre_3, {icon: Icon_1, water_source: Manning_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
+                    var Mak_4 = L.marker(man_unre_3, {icon: Icon_unreg, water_source: Manning_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2948,7 +2956,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_5 = L.marker(man_unre_4, {icon: Icon_1, water_source: Manning_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
+                    var Mak_5 = L.marker(man_unre_4, {icon: Icon_unreg, water_source: Manning_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[4].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -2997,7 +3005,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     man_unre_5[1] = man_unre_5[1] + 0.05;
-                    var Mak_6 = L.marker(man_unre_5, {icon: Icon_1, water_source: Manning_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
+                    var Mak_6 = L.marker(man_unre_5, {icon: Icon_unreg, water_source: Manning_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[5].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3045,7 +3053,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_7 = L.marker(man_unre_6, {icon: Icon_1, water_source: Manning_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
+                    var Mak_7 = L.marker(man_unre_6, {icon: Icon_unreg, water_source: Manning_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[6].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3093,7 +3101,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_8 = L.marker(man_unre_7, {icon: Icon_1, water_source: Manning_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
+                    var Mak_8 = L.marker(man_unre_7, {icon: Icon_unreg, water_source: Manning_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[7].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3141,7 +3149,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_9 = L.marker(man_unre_8, {icon: Icon_1, water_source: Manning_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
+                    var Mak_9 = L.marker(man_unre_8, {icon: Icon_unreg, water_source: Manning_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[8].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3189,7 +3197,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_10 = L.marker(man_unre_9, {icon: Icon_1, water_source: Manning_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
+                    var Mak_10 = L.marker(man_unre_9, {icon: Icon_unreg, water_source: Manning_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[9].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3238,7 +3246,7 @@ and open the template in the editor.
                     <?php }?>
                         
                     man_unre_10[0] = man_unre_10[0] - 0.05;
-                    var Mak_11 = L.marker(man_unre_10, {icon: Icon_1, water_source: Manning_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
+                    var Mak_11 = L.marker(man_unre_10, {icon: Icon_unreg, water_source: Manning_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[10].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3286,7 +3294,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_12 = L.marker(man_unre_11, {icon: Icon_1, water_source: Manning_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
+                    var Mak_12 = L.marker(man_unre_11, {icon: Icon_unreg, water_source: Manning_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[11].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3334,7 +3342,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_13 = L.marker(man_unre_12, {icon: Icon_1, water_source: Manning_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
+                    var Mak_13 = L.marker(man_unre_12, {icon: Icon_unreg, water_source: Manning_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[12].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3382,7 +3390,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_14 = L.marker(man_unre_13, {icon: Icon_1, water_source: Manning_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
+                    var Mak_14 = L.marker(man_unre_13, {icon: Icon_unreg, water_source: Manning_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[13].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3430,7 +3438,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_15 = L.marker(man_unre_14, {icon: Icon_1, water_source: Manning_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
+                    var Mak_15 = L.marker(man_unre_14, {icon: Icon_unreg, water_source: Manning_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[14].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3478,7 +3486,7 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_16 = L.marker(man_unre_15, {icon: Icon_1, water_source: Manning_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
+                    var Mak_16 = L.marker(man_unre_15, {icon: Icon_unreg, water_source: Manning_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[15].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
@@ -3519,14 +3527,22 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_unregulated);
                     map.removeControl(controlSearch);
+                    var elementToBeRemoved = document.getElementById('unreg_man');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+
                 }             
             }
             
             var displayed_gis_layer_groundwater = [];   
             function show_gis_Manning_groundwater(id){
                 var checkBox = document.getElementById(id); 
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'gw_man');
+                elem.innerHTML = ('<img src="lib/leaflet/images/gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>');
+
                 var geojsonfile = Manning_Groundwater;
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }                    
@@ -3567,73 +3583,73 @@ and open the template in the editor.
                     var man_gw_13 = getCentroid(Manning_Groundwater.features[13].geometry.coordinates[8][0]);
                     var man_gw_14 = getCentroid(Manning_Groundwater.features[14].geometry.coordinates[0][0]);
                     
-                    var Mak_1 = L.marker(man_gw_0, {icon: Icon_0, gwater_source: Manning_Groundwater.features[0].properties.W_Source_1}).addTo(map)
+                    var Mak_1 = L.marker(man_gw_0, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[0].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[0].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_1);
                     
-                    var Mak_2 = L.marker(man_gw_1, {icon: Icon_0, gwater_source: Manning_Groundwater.features[1].properties.W_Source_1}).addTo(map)
+                    var Mak_2 = L.marker(man_gw_1, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[1].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[1].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_2);
                     man_gw_2[1] = man_gw_2[1]-0.001;
                     
-                    var Mak_3 = L.marker(man_gw_2, {icon: Icon_0, gwater_source: Manning_Groundwater.features[2].properties.W_Source_1}).addTo(map)
+                    var Mak_3 = L.marker(man_gw_2, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[2].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[2].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_3);
                     
                     man_gw_3[1] = man_gw_3[1]-0.007;
-                    var Mak_4 = L.marker(man_gw_3, {icon: Icon_0, gwater_source: Manning_Groundwater.features[3].properties.W_Source_1}).addTo(map)
+                    var Mak_4 = L.marker(man_gw_3, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[3].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[3].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_4);
                     
                     man_gw_4[1] =  man_gw_4[1]+0.001;
-                    var Mak_5 = L.marker(man_gw_4, {icon: Icon_0, gwater_source: Manning_Groundwater.features[4].properties.W_Source_1}).addTo(map)
+                    var Mak_5 = L.marker(man_gw_4, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[4].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[4].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_5);
                     
                     man_gw_5[1]=man_gw_5[1]+0.04;
                     man_gw_5[0]=man_gw_5[0]-0.005;
-                    var Mak_6 = L.marker(man_gw_5, {icon: Icon_0, gwater_source: Manning_Groundwater.features[5].properties.W_Source_1}).addTo(map)
+                    var Mak_6 = L.marker(man_gw_5, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[5].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[5].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_6);
                     
                     man_gw_6[1]=man_gw_6[1]+0.005;
-                    var Mak_7 = L.marker(man_gw_6, {icon: Icon_0, gwater_source: Manning_Groundwater.features[6].properties.W_Source_1}).addTo(map)
+                    var Mak_7 = L.marker(man_gw_6, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[6].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[6].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_7);
                     
                     man_gw_7[1] = man_gw_7[1] - 0.01 ;
-                    var Mak_8 = L.marker(man_gw_7, {icon: Icon_0, gwater_source: Manning_Groundwater.features[7].properties.W_Source_1}).addTo(map)
+                    var Mak_8 = L.marker(man_gw_7, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[7].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[7].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_8);
                     
-                    var Mak_9 = L.marker(man_gw_8, {icon: Icon_0, gwater_source: Manning_Groundwater.features[8].properties.W_Source_1}).addTo(map)
+                    var Mak_9 = L.marker(man_gw_8, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[8].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[8].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_9);
                     
-                    var Mak_10 = L.marker(man_gw_9, {icon: Icon_0, gwater_source: Manning_Groundwater.features[9].properties.W_Source_1}).addTo(map)
+                    var Mak_10 = L.marker(man_gw_9, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[9].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[9].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_10);
                     
-                    var Mak_11 = L.marker(man_gw_10, {icon: Icon_0, gwater_source: Manning_Groundwater.features[10].properties.W_Source_1}).addTo(map)
+                    var Mak_11 = L.marker(man_gw_10, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[10].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[10].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_11);
                     
-                    var Mak_12 = L.marker(man_gw_11, {icon: Icon_0, gwater_source: Manning_Groundwater.features[11].properties.W_Source_1}).addTo(map)
+                    var Mak_12 = L.marker(man_gw_11, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[11].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[11].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_12);
                     
                     man_gw_12[0] = man_gw_12[0] + 0.006;
-                    var Mak_13 = L.marker(man_gw_12, {icon: Icon_0, gwater_source: Manning_Groundwater.features[12].properties.W_Source_1}).addTo(map)
+                    var Mak_13 = L.marker(man_gw_12, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[12].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[12].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_13);
                     
                     man_gw_13[1]=man_gw_13[1]+0.015;
-                    var Mak_14 = L.marker(man_gw_13, {icon: Icon_0, gwater_source: Manning_Groundwater.features[13].properties.W_Source_1}).addTo(map)
+                    var Mak_14 = L.marker(man_gw_13, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[13].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[13].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_14);
                     
                     man_gw_14[0] = man_gw_14[0]-0.02;
-                    var Mak_15 = L.marker(man_gw_14, {icon: Icon_0, gwater_source: Manning_Groundwater.features[14].properties.W_Source_1}).addTo(map)
+                    var Mak_15 = L.marker(man_gw_14, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[14].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[14].properties.W_Source_1+'</b>');
                     markersLayer.addLayer(Mak_15);
                     
@@ -3661,13 +3677,22 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_groundwater);
                     map.removeControl(controlSearch);
+                    var elementToBeRemoved = document.getElementById('gw_man');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }                 
             }
             
             var displayed_gis_layer_workapproval = [];                        
             function show_gis_Manning_workapprovals(id){
                 var checkBox = document.getElementById(id);
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'lice_man');
+                elem.innerHTML = ('<img src="lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
+                        '<img src="lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
+                        '<img src="lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
+
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     } 
@@ -3723,13 +3748,23 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_workapproval);
+                    var elementToBeRemoved = document.getElementById('lice_man');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+
                 }  
             }
             
             var displayed_gis_layer_approval = [];
             function show_gis_Manning_approvals(id){
                 var checkBox = document.getElementById(id);
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'appro_man');
+                elem.innerHTML = ('<img src="lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
+                        '<img src="lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
+                        '<img src="lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
+
                 if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }  
@@ -3791,6 +3826,9 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_approval);
                     map.removeControl(controlSearch);
+                    var elementToBeRemoved = document.getElementById('appro_man');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+
                 } 
             }
             // display information of each catchment

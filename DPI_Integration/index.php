@@ -196,7 +196,7 @@ and open the template in the editor.
                 
             var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {
                 style: function (feature) {
-                return { color: 'red', weight: 0.3};
+                return { color: '#3399ff', weight: 0.3};
                 },
                 onEachFeature: function(feature, layer){
                 layer.on({
@@ -209,7 +209,7 @@ and open the template in the editor.
             
             var Man_bound = L.geoJSON(ManningRiver_CatchmentBoundary, {
                 style: function (feature) {
-                return { color: 'red', weight: 0.3};
+                return { color: '#3399ff', weight: 0.3};
                 },
                 onEachFeature: function(feature, layer){
                 layer.on({
@@ -356,24 +356,24 @@ and open the template in the editor.
                 });
             }
             
-            function OnChange(){
-//            function OnChange(s){
-//                var myindex = dropdown.selectedIndex;
-//                var CATName = dropdown.options[myindex].value;
-//                var CATValue = getProperty(CATName);
-//                addCATLayer(CATName, CATValue);
-                
-                //Edited by justice
-                var myselect=document.getElementById("selectCAT");
-                var selectedIndex=myselect.selectedIndex;
-                var selectValue=myselect.options[selectedIndex].value;
-                if(selectValue==="MacquarieBogan"){
-                    window.location.href = "index.php?catchment_name=MacquarieBogan";                  
-                }else if(selectValue==="ManningRiver"){
-                    window.location.href = "index.php?catchment_name=ManningRiver";
-                }
-                //Edited by justice
-            }
+//            function OnChange(){
+////            function OnChange(s){
+////                var myindex = dropdown.selectedIndex;
+////                var CATName = dropdown.options[myindex].value;
+////                var CATValue = getProperty(CATName);
+////                addCATLayer(CATName, CATValue);
+//                
+//                //Edited by justice
+//                var myselect=document.getElementById("selectCAT");
+//                var selectedIndex=myselect.selectedIndex;
+//                var selectValue=myselect.options[selectedIndex].value;
+//                if(selectValue==="MacquarieBogan"){
+//                    window.location.href = "index.php?catchment_name=MacquarieBogan";                  
+//                }else if(selectValue==="ManningRiver"){
+//                    window.location.href = "index.php?catchment_name=ManningRiver";
+//                }
+//                //Edited by justice
+//            }
 
             function idsi_color(){
                 <?php if(!empty($row)){?>; 

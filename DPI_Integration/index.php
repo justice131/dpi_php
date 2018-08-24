@@ -26,9 +26,9 @@ and open the template in the editor.
 	</nav>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:16.5%; height:728px;" id="left_panel">
+			<div class="box-container" style="width:16.5%; height:776px;" id="left_panel">
 				<table style="width:100%">
-				  <tr>
+<!--				  <tr>
 					<td>
 						<div>
 						  <div class="box-title">
@@ -55,14 +55,14 @@ and open the template in the editor.
  
 						</div>
 					</td>
-				  </tr>
+				  </tr>-->
 				  <tr>
                                     <td>
                                         <div>
                                           <div class="box-title">
                                                 <h4><b>Map Icon Legend</b></h4>
                                           </div>
-                                          <div class="box-content" style="height:518px;">
+                                          <div class="box-content" style="height:776px;">
                                                 <div id="rightdiv">
                                                     <div id="legend">
 <!--                                                        <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
@@ -113,7 +113,7 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Work-approvals-CAT-Manning" onclick="show_gis_Manning_workapprovals('Work-approvals-CAT-Manning')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font>
                                         </div> 
-                                    
+                                     
                                         <div id="link_to_parallel_coordinate">
                                             <a href="parallel_cordinate_macquarie_main.php" target="_blank">Insight</a>
                                         </div>        
@@ -126,6 +126,7 @@ and open the template in the editor.
         <script type="text/javascript">
 
         </script>
+        
         <?php
             //Edited by justice
             //purpose_des, share_component, longitude, latitude
@@ -163,6 +164,7 @@ and open the template in the editor.
         ?>
         
         <script type="text/javascript">
+            
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var ManningRiver_CatchmentBoundary = ManningRiver_CatchmentBoundary;
             var MacquarieBogan_RugulatedRiver = MacquarieBogan_RugulatedRiver;
@@ -178,6 +180,7 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");;
             });
             
+                          
             var map = L.map('map',{zoomControl: false, loadingControl: true}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
@@ -191,6 +194,63 @@ and open the template in the editor.
 			id: 'mapbox.outdoors',
 		}).addTo(map);
                 
+            var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {
+                style: function (feature) {
+                return { color: 'red', weight: 0.3};
+                },
+                onEachFeature: function(feature, layer){
+                layer.on({
+                    mouseover: highlight,
+                    mouseout: reset_mac,
+                    click: go_to_mac
+                });
+                }              
+            }).addTo(map);
+            
+            var Man_bound = L.geoJSON(ManningRiver_CatchmentBoundary, {
+                style: function (feature) {
+                return { color: 'red', weight: 0.3};
+                },
+                onEachFeature: function(feature, layer){
+                layer.on({
+                    mouseover: highlight,
+                    mouseout: reset_man,
+                    click: go_to_man
+                });
+                } 
+            }).addTo(map);
+            
+            function go_to_mac(){               
+                window.location.href = "index.php?catchment_name=MacquarieBogan";
+                
+            }
+            
+            function go_to_man(){
+                map.removeLayer(Man_bound);
+                window.location.href = "index.php?catchment_name=ManningRiver";
+            }
+            
+            function highlight(e) {
+                var layer = e.target;
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.15
+                });
+                if (!L.Browser.ie && !L.Browser.opera) {
+                    layer.bringToFront();
+                }
+            }
+            
+            function reset_mac(e) {
+                Mac_bound.resetStyle(e.target || e);
+            }
+            
+            function reset_man(e) {
+                Man_bound.resetStyle(e.target || e);
+            }
+            
             $(document).ready(function(){
                 $('[data-toggle="tooltip"]').tooltip(); 
             });
@@ -272,6 +332,7 @@ and open the template in the editor.
                 iconAnchor:   [8, 27],  
                 popupAnchor:  [0, -34] 
             });
+
             
             function inside (point, vs) {
                 var x = point[0], y = point[1];
@@ -295,7 +356,8 @@ and open the template in the editor.
                 });
             }
             
-            function OnChange(dropdown){
+            function OnChange(){
+//            function OnChange(s){
 //                var myindex = dropdown.selectedIndex;
 //                var CATName = dropdown.options[myindex].value;
 //                var CATValue = getProperty(CATName);
@@ -306,13 +368,13 @@ and open the template in the editor.
                 var selectedIndex=myselect.selectedIndex;
                 var selectValue=myselect.options[selectedIndex].value;
                 if(selectValue==="MacquarieBogan"){
-                    window.location.href = "index.php?catchment_name=MacquarieBogan";
+                    window.location.href = "index.php?catchment_name=MacquarieBogan";                  
                 }else if(selectValue==="ManningRiver"){
                     window.location.href = "index.php?catchment_name=ManningRiver";
                 }
                 //Edited by justice
             }
-            
+
             function idsi_color(){
                 <?php if(!empty($row)){?>; 
                     var overall_fui = "<?php echo $row["overall_fui"]; ?>";
@@ -329,7 +391,7 @@ and open the template in the editor.
             
             var featureCATCollection = []; 
             var check_collection = [];
-            function addCATLayer(CATName, CATValue){
+            function addCATLayer(CATName, CATValue){              
                 for (var i = 0; i < featureCATCollection.length; i++){     
                     map.removeLayer(featureCATCollection[i]);
                 }
@@ -344,14 +406,17 @@ and open the template in the editor.
                 if($.inArray(CATName, displayedCAT) === -1) {
                     CAT = L.geoJSON(CATValue, {
                         style: function (feature) {
-                                return { color: idsi_color(), weight: 0.3};
+                                return { color: 'red', weight: 0.3};
                         },
                         onEachFeature: onEachFeature
                         }).addTo(map);
                 //Zooms to the layer selected
                 if (CATName==="MacquarieBogan"){
+                    map.removeLayer(Mac_bound);
                     map.setView([-31.8, 148.5], 8);
+                    
                 }else if (CATName==="ManningRiver"){
+                    map.removeLayer(Man_bound);
                     map.setView([-31.75, 151.9],10);
                 }
 
@@ -372,6 +437,10 @@ and open the template in the editor.
                 removeLayer(displayed_gis_layer_unregulated);
                 removeLayer(displayed_gis_layer_groundwater);
                 }        
+            }
+                       
+            function show(){
+                window.location.href = "index.php?catchment_name=MacquarieBogan";
             }
             
             function clearAllLayers(){
@@ -450,7 +519,7 @@ and open the template in the editor.
                 }, "").replace(/\,$/g, ""); 
                     return mask + temp + decimal; 
             }
-                                           
+                                          
             //display regulated info for MacquarieBogan
             var displayed_gis_layer_regulated = [];          
             function show_gis_MacquarieBogan_regulated(id){
@@ -3922,9 +3991,10 @@ and open the template in the editor.
                 }
                 return '';   
             }
+            
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-                document.getElementById("selectCAT").value = catchment_name;
+//                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }
@@ -3996,7 +4066,7 @@ and open the template in the editor.
                 });
             }
             
-            //Edited by justice
+            //Edited by justice       
         </script>
     </body>
 </html>

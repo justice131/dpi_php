@@ -193,7 +193,7 @@ and open the template in the editor.
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'mapbox.outdoors',
 		}).addTo(map);
-                
+            
             var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {
                 style: function (feature) {
                 return { color:'white', fillColor: '#3399ff', weight: 0.8, dashArray: '3'};
@@ -222,7 +222,6 @@ and open the template in the editor.
             
             function go_to_mac(){               
                 window.location.href = "index.php?catchment_name=MacquarieBogan";
-                
             }
             
             function go_to_man(){
@@ -332,7 +331,27 @@ and open the template in the editor.
                 iconAnchor:   [8, 27],  
                 popupAnchor:  [0, -34] 
             });
-
+           
+           // add by justice 2018.08.24
+            var macquaireIcon = L.icon({
+                iconUrl: 'images/index_icons/macquaire.png',
+                iconSize: [60, 60]
+            });
+            var manningIcon = L.icon({
+                iconUrl: 'images/index_icons/manning.png',
+                iconSize: [60, 60]
+            });
+            L.marker([-32.2319, 148.6297], {icon: macquaireIcon}).addTo(map);
+            L.marker([-31.7304, 151.8925], {icon: manningIcon}).addTo(map);
+            //Legend
+            var ylegend = L.control({position: 'bottomright'});
+            ylegend.onAdd = function (map) {
+                    var div = L.DomUtil.create('div', 'ylegend');
+                    div.innerHTML +="<img src=\"images/index_icons/legend.png\" width=\"217px\" height=\"350px\"/>";
+                    return div;
+            };
+            ylegend.addTo(map);
+            // add by justice 2018.08.24
             
             function inside (point, vs) {
                 var x = point[0], y = point[1];

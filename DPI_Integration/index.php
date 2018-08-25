@@ -335,11 +335,11 @@ and open the template in the editor.
            // add by justice 2018.08.24
             var macquaireIcon = L.icon({
                 iconUrl: 'images/index_icons/macquaire.png',
-                iconSize: [60, 60]
+                iconSize: [45, 45]
             });
             var manningIcon = L.icon({
                 iconUrl: 'images/index_icons/manning.png',
-                iconSize: [60, 60]
+                iconSize: [45, 45]
             });
             L.marker([-32.2319, 148.6297], {icon: macquaireIcon}).addTo(map);
             L.marker([-31.7304, 151.8925], {icon: manningIcon}).addTo(map);

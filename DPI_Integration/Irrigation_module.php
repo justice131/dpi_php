@@ -225,7 +225,7 @@ and open the template in the editor.
 
             var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {
                 style: function (feature) {
-                return { color: '#3399ff', weight: 0.3};
+                return { color:'white', fillColor: '#3399ff', weight: 0.8, dashArray: '3'};
                 },
                 onEachFeature: function(feature, layer){
                 layer.on({
@@ -238,7 +238,7 @@ and open the template in the editor.
             
             var Man_bound = L.geoJSON(ManningRiver_CatchmentBoundary, {
                 style: function (feature) {
-                return { color: '#3399ff', weight: 0.3};
+                return { color:'white', fillColor: '#3399ff', weight: 0.8, dashArray: '3'};
                 },
                 onEachFeature: function(feature, layer){
                 layer.on({
@@ -743,13 +743,13 @@ and open the template in the editor.
 //                            return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
 //                        }
                         onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.4});
+                            layer.setStyle({color:'white', fillColor: '#88888', weight: 0.6, fillOpacity: 0.3, dashArray: '3'});
                         }
 
                     }).addTo(map);
                     var Reg_1 = L.geoJSON(geojsonfile_1, {
                         style: function (feature) {
-                            return { color: 'blue', weight: 1.2, fillOpacity: 0.3};
+                            return { color: 'blue', weight: 0.7, fillOpacity: 0.8};
                         }
                     }).addTo(map);                   
                     displayed_gis_layer_unregulated.push(Reg);  
@@ -2743,13 +2743,13 @@ and open the template in the editor.
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: 'grey', weight: 0.0, fillOpacity: 0.3};
+                            return { color: 'white', fillColor: '#888888', weight: 0.6, fillOpacity: 0.3, dashArray: '3'};
                         }
                     }).addTo(map);
                     
                     var Reg_1 = L.geoJSON(geojsonfile_1, {
                         style: function (feature) {
-                            return { color: 'blue', weight: 1.5, fillOpacity: 0.3};
+                            return { color: 'blue', weight: 0.7, fillOpacity: 0.8};
                         }
                     }).addTo(map);
                     

@@ -31,9 +31,9 @@ and open the template in the editor.
 	</nav>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:17.2%; height:728px;" id="left_panel">
+			<div class="box-container" style="width:17.2%; height:776px;" id="left_panel">
 				<table style="width:100%">
-				  <tr>
+<!--				  <tr>
 					<td>
 						<div>
 						  <div class="box-title">
@@ -59,14 +59,14 @@ and open the template in the editor.
 						  </div>
 						</div>
 					</td>
-				  </tr>
+				  </tr>-->
 				  <tr>
 					<td>
 						<div>
 						  <div class="box-title">
 							<h4><b>Map Icon Legend</b></h4>
 						  </div>
-						  <div class="box-content" style="height:518px;">
+						  <div class="box-content" style="height:776px;">
 							<div id="rightdiv">
                                                             <div id="legend">
 <!--                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
@@ -212,6 +212,63 @@ and open the template in the editor.
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'mapbox.outdoors',
 		}).addTo(map);
+                
+            var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {
+                style: function (feature) {
+                return { color: '#3399ff', weight: 0.3};
+                },
+                onEachFeature: function(feature, layer){
+                layer.on({
+                    mouseover: highlight,
+                    mouseout: reset_mac,
+                    click: go_to_mac
+                });
+                }              
+            }).addTo(map);
+            
+            var Man_bound = L.geoJSON(ManningRiver_CatchmentBoundary, {
+                style: function (feature) {
+                return { color: '#3399ff', weight: 0.3};
+                },
+                onEachFeature: function(feature, layer){
+                layer.on({
+                    mouseover: highlight,
+                    mouseout: reset_man,
+                    click: go_to_man
+                });
+                } 
+            }).addTo(map);
+            
+            function go_to_mac(){               
+                window.location.href = "Town_water_power_gen_module.php?catchment_name=MacquarieBogan";
+                
+            }
+            
+            function go_to_man(){
+                map.removeLayer(Man_bound);
+                window.location.href = "Town_water_power_gen_module.php?catchment_name=ManningRiver";
+            }
+            
+            function highlight(e) {
+                var layer = e.target;
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.15
+                });
+                if (!L.Browser.ie && !L.Browser.opera) {
+                    layer.bringToFront();
+                }
+            }
+            
+            function reset_mac(e) {
+                Mac_bound.resetStyle(e.target || e);
+            }
+            
+            function reset_man(e) {
+                Man_bound.resetStyle(e.target || e);
+            }
 
             var catchments = {
                 "MacquarieBogan": MacquarieBogan_CatchmentBoundary,
@@ -456,7 +513,7 @@ and open the template in the editor.
                 if($.inArray(CATName, displayedCAT) === -1) {
                     CAT = L.geoJSON(CATValue, {
                         style: function (feature) {
-                                return { color: idsi_color(), weight: 0.3};
+                                return { color: 'red', weight: 0.3};
                         },
                         onEachFeature: onEachFeature,
                         interactive: false
@@ -611,7 +668,7 @@ and open the template in the editor.
                                 featureCATCollection.push(M);
                         <?php }?>;    
                     <?php }?>; 
-                        
+                                            
                 } 
                 
                 if(CATName === 'ManningRiver'){
@@ -730,8 +787,10 @@ and open the template in the editor.
                 //Zooms to the layer selected
                 if (CATName==="MacquarieBogan"){
                     map.setView([-31.8, 148.5], 8);
+                    map.removeLayer(Mac_bound);
                 }else if (CATName==="ManningRiver"){
                     map.setView([-31.75, 151.9],10);
+                    map.removeLayer(Man_bound);
                 }
                 
                 hover_info.addTo(map);
@@ -4265,7 +4324,7 @@ and open the template in the editor.
                           '<p style=\"line-height:50%\"><img src=\"images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centres: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
                           '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Population Served: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
                           '<img src=\"images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + 0 + '</b><br/><br />'+
-                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water and Sewerage: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
+                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water and Sewerage: <b>' + 0 + '</b><br/><br />'+
                           '<img src=\"images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + 0 + '</b><br/></p>'  
                     );
                 <?php }?>;
@@ -4295,7 +4354,7 @@ and open the template in the editor.
             }
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-                document.getElementById("selectCAT").value = catchment_name;
+//                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }

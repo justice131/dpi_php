@@ -12,7 +12,7 @@ and open the template in the editor.
         <script type="text/javascript" src="border/Manning_crop.geojson"></script>
         <style>
         .hover_info {
-            width: 280px;
+            width: 330px;
         }
         </style>
     </head>
@@ -33,9 +33,9 @@ and open the template in the editor.
 	</nav>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:16.5%; height:728px;" id="left_panel">
+			<div class="box-container" style="width:16.5%; height:776px;" id="left_panel">
 				<table style="width:100%">
-				  <tr>
+<!--				  <tr>
 					<td>
 						<div>
 						  <div class="box-title">
@@ -61,14 +61,14 @@ and open the template in the editor.
 						  </div>
 						</div>
 					</td>
-				  </tr>
+				  </tr>-->
 				  <tr>
 					<td>                                                                      
 						<div>
 						  <div class="box-title">
 							<h4><b>Map Icon Legend</b></h4>
 						  </div>
-						  <div class="box-content" style="height:518px;">
+						  <div class="box-content" style="height:776px;">
 							<div id="rightdiv">
                                                             <div id="legend">
 <!--                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
@@ -222,6 +222,63 @@ and open the template in the editor.
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 			id: 'mapbox.outdoors',
 		}).addTo(map);
+
+            var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {
+                style: function (feature) {
+                return { color: '#3399ff', weight: 0.3};
+                },
+                onEachFeature: function(feature, layer){
+                layer.on({
+                    mouseover: highlight,
+                    mouseout: reset_mac,
+                    click: go_to_mac
+                });
+                }              
+            }).addTo(map);
+            
+            var Man_bound = L.geoJSON(ManningRiver_CatchmentBoundary, {
+                style: function (feature) {
+                return { color: '#3399ff', weight: 0.3};
+                },
+                onEachFeature: function(feature, layer){
+                layer.on({
+                    mouseover: highlight,
+                    mouseout: reset_man,
+                    click: go_to_man
+                });
+                } 
+            }).addTo(map);
+            
+            function go_to_mac(){               
+                window.location.href = "Irrigation_module.php?catchment_name=MacquarieBogan";
+                
+            }
+            
+            function go_to_man(){
+                map.removeLayer(Man_bound);
+                window.location.href = "Irrigation_module.php?catchment_name=ManningRiver";
+            }
+            
+            function highlight(e) {
+                var layer = e.target;
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.15
+                });
+                if (!L.Browser.ie && !L.Browser.opera) {
+                    layer.bringToFront();
+                }
+            }
+            
+            function reset_mac(e) {
+                Mac_bound.resetStyle(e.target || e);
+            }
+            
+            function reset_man(e) {
+                Man_bound.resetStyle(e.target || e);
+            }
 
             var catchments = {
                 "MacquarieBogan": MacquarieBogan_CatchmentBoundary,
@@ -402,12 +459,12 @@ and open the template in the editor.
                 if($.inArray(CATName, displayedCAT) === -1) {
                     CAT = L.geoJSON(CATValue, {
                         style: function (feature) {
-                                return { color: idsi_color(), weight: 0.3};
+                                return { color: 'red', weight: 0.3};
                         },
                         onEachFeature: onEachFeature,
                         interactive: false
                         }).addTo(map);
-                if(CATName === 'MacquarieBogan'){
+                if(CATName === 'MacquarieBogan'){                   
                     Irrigation = L.geoJSON(Macquarie_Crop, {
                         //style: function (feature) {
                                 //return { color: getColor(Color_crop), weight: 0.5, fillOpacity: 0.4};                               
@@ -423,7 +480,7 @@ and open the template in the editor.
                         }).addTo(map);
                 } 
                 
-                if(CATName === 'ManningRiver'){
+                if(CATName === 'ManningRiver'){                    
                     Irrigation = L.geoJSON(Manning_Crop, {
                         //style: function (feature) {
                         //        return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};
@@ -439,8 +496,10 @@ and open the template in the editor.
                 } 
                 //Zooms to the layer selected
                 if (CATName==="MacquarieBogan"){
+                    map.removeLayer(Mac_bound);
                     map.setView([-31.8, 148.5], 8);
                 }else if (CATName==="ManningRiver"){
+                    map.removeLayer(Man_bound);
                     map.setView([-31.75, 151.9],10);
                 }
                 
@@ -461,22 +520,22 @@ and open the template in the editor.
                 }        
             }            
             
-            function clearAllLayers(){
-                for (var i = 0; i < featureCATCollection.length; i++){     
-                    map.removeLayer(featureCATCollection[i]);
-                    if (checkbox_id !== null){
-                        checkbox_id.style.display = "none";
-                    }
-                }
-                //hover_info.style.visibility = 'hidden';
-                removeLayer(displayed_gis_layer_regulated);
-                removeLayer(displayed_gis_layer_unregulated);
-                removeLayer(displayed_gis_layer_groundwater);
-                removeLayer(displayed_gis_layer_workapproval);
-                removeLayer(displayed_gis_layer_approval);
-                document.getElementById('selectCAT').value = 'default';
-                map.removeControl(hover_info);
-            }
+//            function clearAllLayers(){
+//                for (var i = 0; i < featureCATCollection.length; i++){     
+//                    map.removeLayer(featureCATCollection[i]);
+//                    if (checkbox_id !== null){
+//                        checkbox_id.style.display = "none";
+//                    }
+//                }
+//                //hover_info.style.visibility = 'hidden';
+//                removeLayer(displayed_gis_layer_regulated);
+//                removeLayer(displayed_gis_layer_unregulated);
+//                removeLayer(displayed_gis_layer_groundwater);
+//                removeLayer(displayed_gis_layer_workapproval);
+//                removeLayer(displayed_gis_layer_approval);
+//                document.getElementById('selectCAT').value = 'default';
+//                map.removeControl(hover_info);
+//            }
                        
             // find the middle point from geojason file
             function find_middle_point(geo_coordinate){
@@ -863,7 +922,7 @@ and open the template in the editor.
                             include 'db.helper/db_connection_ini.php';
                         }
                     ?>
-                   
+                                     
                     <?php if(!empty($ro_0)){?>
                         var AE ="<?php echo $ro_0["longterm_extraction_limit"]; ?>";
                         var UE ="<?php echo $ro_0["unreg_entitlement"]; ?>";
@@ -3965,7 +4024,16 @@ and open the template in the editor.
                     while ($row_2 = $res_em_2->fetch_assoc()){
                         $m++;
                         $em_manning += $row_2['lga_prop_catchment']*$row_2['employee_count'];
-                    }                          
+                    } 
+                    
+                    $sq_em_3 = "SELECT proportion_in_macquarie_catchment, proportion_in_manning_catchment, irrigation_production FROM lga_data";                           
+                    $res_em_3 = $conn->query($sq_em_3);
+                    $em_man = Array();
+                    $m = -1;
+                    while ($row_3 = $res_em_3->fetch_assoc()){
+                        $m++;
+                        $em_man[$m]= $row_3;
+                    } 
                 }else{
                     include 'db.helper/db_connection_ini.php';
                 }
@@ -3973,6 +4041,17 @@ and open the template in the editor.
 
             hover_info.update = function (props) {
                 <?php if(!empty($row)){?>;
+                    var pv_mac = 0;
+                    var pv_man = 0;
+                        <?php for ($x=0; $x<count($em_man); $x++) {?>
+                            var mac ="<?php echo $em_man[$x]["proportion_in_macquarie_catchment"]; ?>";
+                            var man ="<?php echo $em_man[$x]["proportion_in_manning_catchment"]; ?>";
+                            var pv ="<?php echo $em_man[$x]["irrigation_production"]; ?>";
+                            pv = parseInt(pv.replace(/,/g, ''));
+                            pv_mac+=mac*pv;
+                            pv_man+=man*pv;
+                        <?php }?> 
+
                     var catch_name = "<?php echo $_GET['catchment_name']; ?>";  
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
                     var overall_dei = "<?php echo $row["overall_dei"]; ?>";
@@ -3981,9 +4060,11 @@ and open the template in the editor.
                     if (catch_name === 'MacquarieBogan'){
                         var Total_area = area_sum_1(Macquarie_Crop);
                         var Employ = "<?php echo $em_macquarie; ?>"; 
+                        var Pro_value = toThousands((Math.round(pv_mac)/1000000).toFixed(1));
                     }else if(catch_name === 'ManningRiver'){
                         var Total_area = area_sum_2(Manning_Crop);
                         var Employ = "<?php echo $em_manning; ?>";
+                        var Pro_value = toThousands((Math.round(pv_man)/1000000).toFixed(1));
                     }
 
                     this._div.innerHTML = (
@@ -3996,10 +4077,10 @@ and open the template in the editor.
 //                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
                           '<b>' + 'Irrigation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
                           '<p style=\"line-height:50%\"><img src=\"images/irrigation_area.png\" height=\"25\" width=\"25\"> Total Irrigated Areas: <b>' + toThousands(Math.round(Total_area*100)/100) + ' Ha' + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + toThousands(Math.round(Total_area*100)/100)  + '</b><br/><br />'+
+                          '<img src=\"images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + Pro_value + ' $M</b><br/><br />'+
                           '<img src=\"images/irrigation_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + toThousands(Math.round(Employ))  + '</b><br/></p>'                          
+                          '<img src=\"images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + 0  + '</b><br/><br />'+
+                          '<img src=\"images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + 0  + '</b><br/></p>'                          
                     );
                 <?php }?>;
             };
@@ -4028,7 +4109,7 @@ and open the template in the editor.
             }
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-                document.getElementById("selectCAT").value = catchment_name;
+//                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }

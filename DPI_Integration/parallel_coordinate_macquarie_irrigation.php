@@ -163,8 +163,8 @@ and open the template in the editor.
 						<div id="map"></div>
 					</div>
                                         <div id="Ck_box_para_macquarie">
-                                            <input type="checkbox" id="s2" onclick="show_s2('s2')"> <font size="2">Scenario 2 </font></br>
-                                            <input type="checkbox" id="s6" onclick="show_s6('s6')"> <font size="2">Scenario 6 </font>
+                                            <input type="checkbox" id="s2" onclick="show_s2('s2')"> <font size="2">Scenario 1 </font></br>
+                                            <input type="checkbox" id="s6" onclick="show_s6('s6')"> <font size="2">Scenario 2 </font>
                                         </div>        
                                 </div>
 			</div>

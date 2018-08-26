@@ -164,8 +164,9 @@ and open the template in the editor.
 					</div>
                                         <div id="Ck_box_para_macquarie">
                                             <input type="checkbox" id="s1" onclick="show_s1('s1')"> <font size="2">Scenario 1 </font></br> 
-                                            <input type="checkbox" id="s3" onclick="show_s3('s3')"> <font size="2">Scenario 3 </font></br>
-                                            <input type="checkbox" id="s5" onclick="show_s5('s5')"> <font size="2">Scenario 5 </font>
+                                            <input type="checkbox" id="s3" onclick="show_s3('s3')"> <font size="2">Scenario 2 </font></br>
+                                            <input type="checkbox" id="s5" onclick="show_s5('s5')"> <font size="2">Scenario 3 </font></br>
+                                            <input type="checkbox" id="s9" onclick="show_s9('s9')"> <font size="2">Scenario 4 </font>
                                         </div>        
                                 </div>
 			</div>
@@ -1218,11 +1219,315 @@ and open the template in the editor.
                     });
                 }
                 if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
                     parcoord.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
                     map.removeControl(legend);
                     removeLayer(displayed_s5);                   
+                }
+            }
+            
+            displayed_s9 = [];
+            function show_s9(id){
+                    function getColorScalar(d) {
+                        if(d<=Math.floor(max_row/3)){
+                        return myCols[0];
+                        }else if(d<=Math.ceil(2*max_row/3)){
+                        return myCols[1];
+                        }else{
+                        return myCols[2];
+                        }
+                    }
+                    function style(feature) {
+                            return {
+                                    weight: 1,
+                                    opacity: showIt(1),
+                                    color: 'white',
+                                    dashArray: '3',
+                                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                                    fillColor: getColorScalar(feature.properties.IndexRank)
+                            };
+                    }
+                    var max_row=0;//Get the row number of ranking file
+                    d3.csv("data/Flood_risk.csv", function (data) {
+                        _.each(data, function (d, i) {
+                        max_row++;
+                        });
+                    });
+                    
+                    var checkBox = document.getElementById(id); 
+                    if (checkBox.checked === true){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Flood risk'+'</span>';
+                    parcoord.style.display = 'block';
+                    grid.style.display = 'block';
+                    // control that shows state info on hover
+                    info = L.control({position: 'topright'});
+                    info.onAdd = function (map) {
+                            this._div = L.DomUtil.create('div', 'info');
+                            this.update();
+                            return this._div;
+                    };
+                    info.update = function (props) {
+                            this._div.innerHTML = (props?
+                                    '<h4>' + props.WATER_SOUR + '</h4>'+
+                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
+//                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
+//                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+//                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + ' ML/year'+ '</b>' +'<br />'+
+//                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+//                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+ '</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/day'+'</b>' +'<br />'+
+//                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+//                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+//                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+//                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+//                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
+//                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                            'Flood Risk: ' + '<b>'+ Math.round(props.flood_risk*100*10)/10 + ' %</b>'+'<br />'
+                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                    };
+                    info.addTo(map);
+
+                    var lgaDict = {};
+//                    var geojson, geojsonLabels;
+                    // initialise each property for of geojson
+                    for (j = 0; j < lgas.features.length; j++) {
+                            lgas.features[j].properties.irrigated_area=0;
+                            lgas.features[j].properties.population=0;
+                            lgas.features[j].properties.irrigation_value=0;
+                            lgas.features[j].properties.mining_value=0;
+                            lgas.features[j].properties.employment_irrigation=0;
+                            lgas.features[j].properties.employment_mining=0;
+                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.wetland_area=0;
+                            lgas.features[j].properties.dissolved_oxygen=0;
+                            lgas.features[j].properties.mean_flow=0;
+                            lgas.features[j].properties.variation=0;
+                            lgas.features[j].properties.median=0;
+                            lgas.features[j].properties.days_below_mean=0;
+                            lgas.features[j].properties.DSI=0;
+                            lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                            lgas.features[j].properties.time_below_requirement=0;
+                            lgas.features[j].properties.FUI=0;
+                            lgas.features[j].properties.water_scarcity=0;
+                            lgas.features[j].properties.flood_risk=0;
+                            lgas.features[j].properties.IndexRank=0;
+                            lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                    }
+
+                    // Create parallel Coordinate
+                    parcoords = d3.parcoords()("#parcoord")
+                            .alpha(1)
+                            .mode("queue") // progressive rendering
+                            .height(760)
+                            .width(2800)
+                            .margin({
+                                    top: 25,
+                                    left: 1,
+                                    right: 1,
+                                    bottom: 15
+                            })
+                            .color(function (d) { return getColorScalar(d.IndexRank) });
+
+
+                    //Read data for parallel coordinate
+                    d3.csv("data/Flood_risk.csv", function (data) {
+                            _.each(data, function (d, i) {
+                                    d.index = d.index || i; //unique id
+                                    var water_source_name = d.water_sources
+                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
+                                    lgaDict[water_source_name].properties.population=d.population;
+                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
+                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
+                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
+                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
+                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
+                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
+                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
+                                    lgaDict[water_source_name].properties.variation=d.variation;
+                                    lgaDict[water_source_name].properties.median=d.median;
+                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
+                                    lgaDict[water_source_name].properties.DSI=d.DSI;
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
+                                    lgaDict[water_source_name].properties.FUI=d.FUI;
+                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
+                                    lgaDict[water_source_name].properties.flood_risk=d.flood_risk;
+                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    lga.push(water_source_name);
+                            });
+
+                            // add lga layer
+                            geojson = L.geoJson(lgas, {
+                                    style: style,                            
+                                    onEachFeature: onEachFeature
+                            }).addTo(map);
+
+                            // add label layer
+                            geojsonLabels = L.geoJson(lgaCentroids, {
+                                    pointToLayer: function (feature, latlng) {
+                                            return  L.marker(latlng, {
+                                                    clickable : false,
+                                                    draggable : false,
+                                                    icon: L.divIcon({
+                                                    className: 'my-leaflet-div-icon',
+                                                    })
+                                            });
+                                    },
+                            }).addTo(map);
+                            displayed_s5.push(geojson);
+                            displayed_s5.push(geojsonLabels);                         
+
+                            // add legend
+                            legend = L.control({position: 'bottomright'});
+                            legend.onAdd = function (map) {
+                                    var div = L.DomUtil.create('div', 'info legend'),
+                                    labels = [],
+                                    from, to;
+                                    labels.push(
+                                                    '<i style="background:' + myCols[0] + '"></i> ' +
+                                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[1] + '"></i> ' +
+                                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    labels.push(
+                                                    '<i style="background:' + myCols[2] + '"></i> ' +
+                                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    return div;
+                            };
+                            legend.addTo(map);
+
+                            //Bind data to parallel coordinate
+                            parcoords.data(data)
+                                            .hideAxis(["water_sources","index"])
+                                            .render()
+                                            .reorderable()
+                                            .brushMode("1D-axes")
+                                            .rate(400);
+
+                            // setting up grid
+                            var column_keys = d3.keys(data[0]);
+                            var columns = column_keys.map(function(key,i) {
+                                    return {
+                                            id: key,
+                                            name: key,
+                                            field: key,
+                                            sortable: true}
+                            });
+
+                            var options = {
+                                    enableCellNavigation: true,
+                                    enableColumnReorder: false,
+                                    multiColumnSort: false,
+                            };
+
+                            var dataView = new Slick.Data.DataView();
+                            var grid = new Slick.Grid("#grid", dataView, columns, options);
+
+                            grid.autosizeColumns();
+
+                            // wire up model events to drive the grid
+                            dataView.onRowCountChanged.subscribe(function (e, args) {
+                                    grid.updateRowCount();
+                                    grid.render();
+                            });
+
+                            dataView.onRowsChanged.subscribe(function (e, args) {
+                                    grid.invalidateRows(args.rows);
+                                    grid.render();
+                            });
+
+                            // column sorting
+                            var sortcol = column_keys[0];
+                            var sortdir = 1;
+
+                            function comparer(a, b) {
+                                    var x = a[sortcol], y = b[sortcol];
+                                    return (x == y ? 0 : (x > y ? 1 : -1));
+                            }
+
+                            // click header to sort grid column
+                            grid.onSort.subscribe(function (e, args) {
+                                    sortdir = args.sortAsc ? 1 : -1;
+                                    sortcol = args.sortCol.field;
+
+                                    if ($.browser.msie && $.browser.version <= 8) {
+                                            dataView.fastSort(sortcol, args.sortAsc);
+                                    } else {
+                                            dataView.sort(comparer, args.sortAsc);
+                                    }
+                            });
+
+                            // highlight row in chart
+                            grid.onMouseEnter.subscribe(function(e,args) {
+                                    var i = grid.getCellFromEvent(e).row;
+                                    var d = parcoords.brushed() || data;
+                                    parcoords.highlight([d[i]]);
+                            });
+
+                            grid.onMouseLeave.subscribe(function(e,args) {
+                                    parcoords.unhighlight();
+                            });
+
+                            // fill grid with data
+                            gridUpdate(data);
+
+                            // update grid on brush
+                            parcoords.on("brush", function (d) {
+                                    filtered = d;
+                                    isSelected = true;
+                                    gridUpdate(d);
+                                    //update map
+                                    lgas.features.map(function (d) {d.properties.FUI = -1; });
+                                    geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
+                                    _.each(d, function (k, i) {
+                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                    });
+
+                                    map.removeControl(legend);
+                                    legend.addTo(map);
+                                    refreshMap(lga);
+                            });
+
+
+                            function gridUpdate(data) {
+                                    dataView.beginUpdate();
+                                    dataView.setItems(data);
+                                    dataView.endUpdate();
+                            };
+
+                            function refreshMap(updatedLGA) {
+                                    // go through updateLGA, or edit the values directly in the geojson layers
+                                    geojson.getLayers().map(function (d) {
+                                            geojson.resetStyle(d);
+                                            geojsonLabels.getLayers().forEach(function (z) {
+                                                    if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
+                                                            if (d.feature.properties.FUI > 0) {
+                                                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
+                                                            } else {
+                                                                    z._icon.innerHTML = "";
+                                                            }
+                                                    }
+                                            });
+                                    })
+                            }
+                    });
+                }
+                if (checkBox.checked === false){
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
+                    parcoord.style.display = 'none';
+                    grid.style.display = 'none';
+                    map.removeControl(info);
+                    map.removeControl(legend);
+                    removeLayer(displayed_s9);                   
                 }
             }
         </script>

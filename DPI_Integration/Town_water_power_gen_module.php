@@ -107,8 +107,8 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   
                                                 <input type="checkbox" id="Work-approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_workapprovals('Work-approvals-CAT-MacquarieBogan')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_approvals('Approvals-CAT-MacquarieBogan')"> <font size="2">Work approvals </font></br>
-                                                <input type="checkbox" id="MacquarieBogan_wts" onclick="show_MacquarieBogan_tws('MacquarieBogan_wts')"> <font size="2">Town Water </font></br>
-                                                <input type="checkbox" id="MacquarieBogan_wt" onclick="show_MacquarieBogan_tw('MacquarieBogan_wt')"> <font size="2">Waste Water </font>
+                                                <input type="checkbox" id="MacquarieBogan_wts" onclick="show_MacquarieBogan_tws('MacquarieBogan_wts')"> <font size="2">Town water </font></br>
+                                                <input type="checkbox" id="MacquarieBogan_wt" onclick="show_MacquarieBogan_tw('MacquarieBogan_wt')"> <font size="2">Waste water </font>
                                                 
                                         </div>
         
@@ -118,8 +118,8 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Groundwater-CAT-Manning" onclick="show_gis_Manning_groundwater('Groundwater-CAT-Manning')"> <font size="2">Groundwater </font></br>
                                                 <input type="checkbox" id="Work-approvals-CAT-Manning" onclick="show_gis_Manning_workapprovals('Work-approvals-CAT-Manning')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font></br>
-                                                <input type="checkbox" id="Manning_wts" onclick="show_Manning_tws('Manning_wts')"> <font size="2">Town Water </font></br>
-                                                <input type="checkbox" id="Manning_wt" onclick="show_Manning_tw('Manning_wt')"> <font size="2">Waste Water </font>
+                                                <input type="checkbox" id="Manning_wts" onclick="show_Manning_tws('Manning_wts')"> <font size="2">Town water </font></br>
+                                                <input type="checkbox" id="Manning_wt" onclick="show_Manning_tw('Manning_wt')"> <font size="2">Waste water </font>
                                         </div>
                                     
                                         <div id="link_to_parallel_coordinate">
@@ -195,16 +195,7 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");;
             });
             
-            var elem_ov = document.createElement("div");
-            elem_ov.setAttribute('id', 'tws_legend');
-            elem_ov.innerHTML = (
-                    '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WDSI</small>)<br>'+
-                    '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WDSI</small>)<br>'+
-                    '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WDSI</small>)<div style="height:2px;"><br></div>'
-//                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
-                    );
-            document.getElementById("legend").appendChild(elem_ov);
-            
+                      
             var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
@@ -723,6 +714,16 @@ and open the template in the editor.
             function show_MacquarieBogan_tws(id){
                 var checkBox = document.getElementById(id); 
                 if (checkBox.checked === true){
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tws_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+                            '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+                            '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+        //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
+            
                     var max_row = wsdi_rank_Macquarie.length;
                     legend = L.control({position: 'bottomright'});
                     if (max_row>=3 & (max_row%3)===0){
@@ -839,6 +840,8 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(featureWTSCollection);
                     map.removeControl(legend);
+                    var elementToBeRemoved = document.getElementById('tws_legend');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }
             }
             
@@ -846,6 +849,16 @@ and open the template in the editor.
             function show_MacquarieBogan_tw(id){
                 var checkBox = document.getElementById(id); 
                 if (checkBox.checked === true){
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tws_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WWQI</small>)<br>'+
+                            '<img src="lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WWQI</small>)<br>'+
+                            '<img src="lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WWQI</small>)<div style="height:2px;"><br></div>'
+        //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
+                    
                     <?php
                         include 'db.helper/db_connection_ini.php';
                         if(!empty($_GET['catchment_name'])){
@@ -978,6 +991,8 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(featureWTCollection);
                     map.removeControl(legend);
+                    var elementToBeRemoved = document.getElementById('tws_legend');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }
             }
             
@@ -3184,6 +3199,16 @@ and open the template in the editor.
             function show_Manning_tws(id){
                 var checkBox = document.getElementById(id); 
                 if (checkBox.checked === true){
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tw_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+                            '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+                            '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+        //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
+                    
                     var max_row=wsdi_rank_Manning.length;
                     legend = L.control({position: 'bottomright'});
                     if (max_row>=3 & (max_row%3)===0){
@@ -3299,6 +3324,8 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(featureTWSCollection);
                     map.removeControl(legend);
+                    var elementToBeRemoved = document.getElementById('tw_legend');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }
             }
             
@@ -3306,10 +3333,150 @@ and open the template in the editor.
             function show_Manning_tw(id){
                 var checkBox = document.getElementById(id); 
                 if (checkBox.checked === true){
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tw_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+                            '<img src="lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+                            '<img src="lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+        //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
                     
+                    <?php
+                        include 'db.helper/db_connection_ini.php';
+                        if(!empty($_GET['catchment_name'])){
+                            if($conn!=null){
+                                $sql_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Manning'";
+                                $result_wwtc = $conn->query($sql_wwtc);
+                                $wwtc_man = array();
+                                $m = -1;
+                                while ($row_wwtc_man = $result_wwtc->fetch_assoc()){
+                                    $m++;
+                                    $wwtc_man[$m] = $row_wwtc_man;
+                                }
+                            }else{
+                                include 'db.helper/db_connection_ini.php';
+                            }
+                        }
+                    ?>
+
+                    var wwqi_rank_Manning = [];
+                    <?php if(!empty($wwtc_man)){?>;
+                        <?php for ($x=0; $x<count($wwtc_man); $x++) {?>                          
+                        var loca ="<?php echo $wwtc_man[$x]["treatment_plant"]; ?>";
+                        var wwqi ="<?php echo $wwtc_man[$x]["wwqi"]; ?>";
+                        wwqi_rank_Manning.push([loca, wwqi]);                      
+                        <?php }?>;    
+                    <?php }?>;
+
+                    <?php if(!empty($wwtc_man)){?>;
+                        WWTC_number_Macquarie = 0;
+                        <?php for ($x=0; $x<count($wwtc_man); $x++) {?>                          
+                                WWTC_number_Macquarie = WWTC_number_Macquarie + 1;                               
+                                var lat = "<?php echo $wwtc_man[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $wwtc_man[$x]["longitude"]; ?>";
+                                var lga = "<?php echo $wwtc_man[$x]["lga"]; ?>";
+                                var treatment_plant = "<?php echo $wwtc_man[$x]["treatment_plant"]; ?>";
+                                var wwqi = "<?php echo $wwtc_man[$x]["wwqi"]; ?>";
+                                var treted_volume = "<?php echo $wwtc_man[$x]["treted_volume"]; ?>";
+
+                                var M = L.marker([lat, lon], {icon: icon_wwqi(wwqi_rank_Manning, treatment_plant)}).addTo(map)
+                                .bindPopup('Location: ' + treatment_plant + '<br/>'
+                                + 'LGA: ' + lga + '<br/>'
+                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
+                                + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
+                                featureWTCollection.push(M);
+                        <?php }?>;    
+                    <?php }?>; 
+                        
+                    var max_row = wwqi_rank_Manning.length;
+                    legend = L.control({position: 'bottomright'});
+                    if (max_row>=3 & (max_row%3)===0){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row>=3 & (max_row%3)===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row>=3 & (max_row%3)===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water__red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        }; 
+                    
+                    }
+                    legend.addTo(map);
                 }
                 if (checkBox.checked === false){
-                    
+                    removeLayer(featureWTCollection);
+                    map.removeControl(legend);
+                    var elementToBeRemoved = document.getElementById('tw_legend');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }
             }
             

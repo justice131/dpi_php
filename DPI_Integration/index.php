@@ -341,8 +341,8 @@ and open the template in the editor.
                 iconUrl: 'images/index_icons/manning.png',
                 iconSize: [45, 45]
             });
-            L.marker([-32.2319, 148.6297], {icon: macquaireIcon}).addTo(map);
-            L.marker([-31.7304, 151.8925], {icon: manningIcon}).addTo(map);
+            var macquaireIndexIcon = L.marker([-32.2319, 147.8097], {icon: macquaireIcon});
+            var mannningIndexIcon = L.marker([-31.7304, 151.8925], {icon: manningIcon});
             //Legend
             var ylegend = L.control({position: 'bottomright'});
             ylegend.onAdd = function (map) {
@@ -350,7 +350,7 @@ and open the template in the editor.
                     div.innerHTML +="<img src=\"images/index_icons/legend.png\" width=\"217px\" height=\"350px\"/>";
                     return div;
             };
-            ylegend.addTo(map);
+//            ylegend.addTo(map);
             // add by justice 2018.08.24
             
             function inside (point, vs) {
@@ -441,7 +441,7 @@ and open the template in the editor.
 
                 //legendinfo.addTo(map);
                 hover_info.addTo(map);
-                Add_legend();
+//                Add_legend();
                 if (checkbox_id !== null){
                     checkbox_id.style.display = "block";
                     
@@ -550,6 +550,8 @@ and open the template in the editor.
                 elem.innerHTML = ('<img src="lib/leaflet/images/reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>');
                 
                 if (checkBox.checked === true){
+                    ylegend.addTo(map);//add index icon
+                    macquaireIndexIcon.addTo(map);//add index icon
                     document.getElementById("legend").appendChild(elem);
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
@@ -646,6 +648,8 @@ and open the template in the editor.
                     displayed_gis_layer_regulated.push(Mak_14);
                 }
                 if (checkBox.checked === false){
+                    map.removeControl(ylegend);//remove index icon, justice
+                    map.removeControl(macquaireIndexIcon);//remove index icon, justice
                     removeLayer(displayed_gis_layer_regulated);
                     var elementToBeRemoved = document.getElementById('reg_mac');
                     document.getElementById('legend').removeChild(elementToBeRemoved);

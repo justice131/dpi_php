@@ -175,7 +175,10 @@ and open the template in the editor.
                                         <div class="box-title">
                                                 <h4><b>Parallel Coordinates</b></h4>                                                
                                         </div>
-                                        <div id="parcoord" class="parcoords"></div>
+                                        <div id="parcoord_1" class="parcoords"></div>
+                                        <div id="parcoord_2" class="parcoords"></div>
+                                        <div id="parcoord_3" class="parcoords"></div>
+                                        <div id="parcoord_4" class="parcoords"></div>
                                 </div>
 
 			</div>
@@ -346,7 +349,7 @@ and open the template in the editor.
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
                     document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Opportunity for additional supply'+'</span>';
-                    parcoord.style.display = 'block';
+                    parcoord_1.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
                     info = L.control({position: 'topright'});
@@ -409,7 +412,7 @@ and open the template in the editor.
                     }
 
                     // Create parallel Coordinate
-                    parcoords = d3.parcoords()("#parcoord")
+                    parcoords = d3.parcoords()("#parcoord_1")
                             .alpha(1)
                             .mode("queue") // progressive rendering
                             .height(760)
@@ -425,29 +428,30 @@ and open the template in the editor.
 
                     //Read data for parallel coordinate
                     d3.csv("data/FUI.csv", function (data) {
+                        var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id
-                                    var water_source_name = d.water_sources
-                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
-                                    lgaDict[water_source_name].properties.population=d.population;
-                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
-                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
-                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
-                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
-                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
-                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
-                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
-                                    lgaDict[water_source_name].properties.variation=d.variation;
-                                    lgaDict[water_source_name].properties.median=d.median;
-                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
-                                    lgaDict[water_source_name].properties.DSI=d.DSI;
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
-                                    lgaDict[water_source_name].properties.FUI=d.FUI;
-                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
-                                    lgaDict[water_source_name].properties.FUI_100=d.FUI_100;
-                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    var water_source_name = d[keys[0]];
+                                    lgaDict[water_source_name].properties.irrigated_area=d[keys[1]];
+                                    lgaDict[water_source_name].properties.population=d[keys[2]];
+                                    lgaDict[water_source_name].properties.irrigation_value=d[keys[3]];
+                                    lgaDict[water_source_name].properties.mining_value=d[keys[4]];
+                                    lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
+                                    lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
+                                    lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
+                                    lgaDict[water_source_name].properties.median=d[keys[12]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
+                                    lgaDict[water_source_name].properties.FUI_100=d[keys[19]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
                                     lga.push(water_source_name);
                             });
 
@@ -495,7 +499,7 @@ and open the template in the editor.
 
                             //Bind data to parallel coordinate
                             parcoords.data(data)
-                                            .hideAxis(["water_sources","index"])
+                                            .hideAxis(["Water source","index"])
                                             .render()
                                             .updateAxes()
                                             .reorderable()
@@ -579,7 +583,7 @@ and open the template in the editor.
                                     lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
-                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                            lgaDict[k[keys[0]]].properties.FUI = k.FUI;
                                     });
 
                                     map.removeControl(legend);
@@ -613,7 +617,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
-                    parcoord.style.display = 'none';
+                    parcoord_1.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
                     map.removeControl(legend);
@@ -653,7 +657,7 @@ and open the template in the editor.
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
                     document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Drought security'+'</span>';
-                    parcoord.style.display = 'block';
+                    parcoord_2.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
                     info = L.control({position: 'topright'});
@@ -716,7 +720,7 @@ and open the template in the editor.
                     }
 
                     // Create parallel Coordinate
-                    parcoords = d3.parcoords()("#parcoord")
+                    parcoords = d3.parcoords()("#parcoord_2")
                             .alpha(1)
                             .mode("queue") // progressive rendering
                             .height(760)
@@ -732,29 +736,30 @@ and open the template in the editor.
 
                     //Read data for parallel coordinate
                     d3.csv("data/DSI.csv", function (data) {
+                        var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id
-                                    var water_source_name = d.water_sources
-                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
-                                    lgaDict[water_source_name].properties.population=d.population;
-                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
-                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
-                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
-                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
-                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
-                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
-                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
-                                    lgaDict[water_source_name].properties.variation=d.variation;
-                                    lgaDict[water_source_name].properties.median=d.median;
-                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
-                                    lgaDict[water_source_name].properties.DSI=d.DSI;
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
-                                    lgaDict[water_source_name].properties.FUI=d.FUI;
-                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
-                                    lgaDict[water_source_name].properties.DSI_100=d.DSI_100;
-                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    var water_source_name = d[keys[0]];
+                                    lgaDict[water_source_name].properties.irrigated_area=d[keys[1]];
+                                    lgaDict[water_source_name].properties.population=d[keys[2]];
+                                    lgaDict[water_source_name].properties.irrigation_value=d[keys[3]];
+                                    lgaDict[water_source_name].properties.mining_value=d[keys[4]];
+                                    lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
+                                    lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
+                                    lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
+                                    lgaDict[water_source_name].properties.median=d[keys[12]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
+                                    lgaDict[water_source_name].properties.DSI_100=d[keys[19]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
                                     lga.push(water_source_name);
                             });
 
@@ -801,7 +806,7 @@ and open the template in the editor.
 
                             //Bind data to parallel coordinate
                             parcoords.data(data)
-                                            .hideAxis(["water_sources","index"])
+                                            .hideAxis(["Water source","index"])
                                             .render()
                                             .reorderable()
                                             .brushMode("1D-axes")
@@ -883,7 +888,7 @@ and open the template in the editor.
                                     lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
-                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                            lgaDict[k[keys[0]]].properties.FUI = k.FUI;
                                     });
 
                                     map.removeControl(legend);
@@ -917,7 +922,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
-                    parcoord.style.display = 'none';
+                    parcoord_2.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
                     map.removeControl(legend);
@@ -956,7 +961,7 @@ and open the template in the editor.
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
                     document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Risk to agricultural productivity from lack of water'+'</span>';
-                    parcoord.style.display = 'block';
+                    parcoord_3.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
                     info = L.control({position: 'topright'});
@@ -1019,7 +1024,7 @@ and open the template in the editor.
                     }
 
                     // Create parallel Coordinate
-                    parcoords = d3.parcoords()("#parcoord")
+                    parcoords = d3.parcoords()("#parcoord_3")
                             .alpha(1)
                             .mode("queue") // progressive rendering
                             .height(760)
@@ -1035,29 +1040,30 @@ and open the template in the editor.
 
                     //Read data for parallel coordinate
                     d3.csv("data/DSI_agriculture_production.csv", function (data) {
+                        var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id
-                                    var water_source_name = d.water_sources
-                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
-                                    lgaDict[water_source_name].properties.population=d.population;
-                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
-                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
-                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
-                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
-                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
-                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
-                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
-                                    lgaDict[water_source_name].properties.variation=d.variation;
-                                    lgaDict[water_source_name].properties.median=d.median;
-                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
-                                    lgaDict[water_source_name].properties.DSI=d.DSI;
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
-                                    lgaDict[water_source_name].properties.FUI=d.FUI;
-                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
-                                    lgaDict[water_source_name].properties.DSI_agriculture_production=d.DSI_agriculture_production;
-                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                   var water_source_name = d[keys[0]];
+                                    lgaDict[water_source_name].properties.irrigated_area=d[keys[1]];
+                                    lgaDict[water_source_name].properties.population=d[keys[2]];
+                                    lgaDict[water_source_name].properties.irrigation_value=d[keys[3]];
+                                    lgaDict[water_source_name].properties.mining_value=d[keys[4]];
+                                    lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
+                                    lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
+                                    lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
+                                    lgaDict[water_source_name].properties.median=d[keys[12]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
+                                    lgaDict[water_source_name].properties.DSI_agriculture_production=d[keys[19]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
                                     lga.push(water_source_name);
                             });
 
@@ -1104,7 +1110,7 @@ and open the template in the editor.
 
                             //Bind data to parallel coordinate
                             parcoords.data(data)
-                                            .hideAxis(["water_sources","index"])
+                                            .hideAxis(["Water source","index"])
                                             .render()
                                             .reorderable()
                                             .brushMode("1D-axes")
@@ -1186,7 +1192,7 @@ and open the template in the editor.
                                     lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
-                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                            lgaDict[k[keys[0]]].properties.FUI = k.FUI;
                                     });
 
                                     map.removeControl(legend);
@@ -1220,7 +1226,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
-                    parcoord.style.display = 'none';
+                    parcoord_3.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
                     map.removeControl(legend);
@@ -1259,7 +1265,7 @@ and open the template in the editor.
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
                     document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Flood risk (100 years return period)'+'</span>';
-                    parcoord.style.display = 'block';
+                    parcoord_4.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
                     info = L.control({position: 'topright'});
@@ -1322,7 +1328,7 @@ and open the template in the editor.
                     }
 
                     // Create parallel Coordinate
-                    parcoords = d3.parcoords()("#parcoord")
+                    parcoords = d3.parcoords()("#parcoord_4")
                             .alpha(1)
                             .mode("queue") // progressive rendering
                             .height(760)
@@ -1338,29 +1344,30 @@ and open the template in the editor.
 
                     //Read data for parallel coordinate
                     d3.csv("data/Flood_risk.csv", function (data) {
+                        var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id
-                                    var water_source_name = d.water_sources
-                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
-                                    lgaDict[water_source_name].properties.population=d.population;
-                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
-                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
-                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
-                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
-                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
-                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
-                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
-                                    lgaDict[water_source_name].properties.variation=d.variation;
-                                    lgaDict[water_source_name].properties.median=d.median;
-                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
-                                    lgaDict[water_source_name].properties.DSI=d.DSI;
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
-                                    lgaDict[water_source_name].properties.FUI=d.FUI;
-                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
-                                    lgaDict[water_source_name].properties.flood_risk=d.flood_risk;
-                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    var water_source_name = d[keys[0]];
+                                    lgaDict[water_source_name].properties.irrigated_area=d[keys[1]];
+                                    lgaDict[water_source_name].properties.population=d[keys[2]];
+                                    lgaDict[water_source_name].properties.irrigation_value=d[keys[3]];
+                                    lgaDict[water_source_name].properties.mining_value=d[keys[4]];
+                                    lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
+                                    lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
+                                    lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
+                                    lgaDict[water_source_name].properties.median=d[keys[12]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
+                                    lgaDict[water_source_name].properties.flood_risk=d[keys[19]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
                                     lga.push(water_source_name);
                             });
 
@@ -1382,8 +1389,8 @@ and open the template in the editor.
                                             });
                                     },
                             }).addTo(map);
-                            displayed_s5.push(geojson);
-                            displayed_s5.push(geojsonLabels);                         
+                            displayed_s9.push(geojson);
+                            displayed_s9.push(geojsonLabels);                         
 
                             // add legend
                             legend = L.control({position: 'bottomright'});
@@ -1407,7 +1414,7 @@ and open the template in the editor.
 
                             //Bind data to parallel coordinate
                             parcoords.data(data)
-                                            .hideAxis(["water_sources","index"])
+                                            .hideAxis(["Water source","index"])
                                             .render()
                                             .reorderable()
                                             .brushMode("1D-axes")
@@ -1489,7 +1496,7 @@ and open the template in the editor.
                                     lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
-                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                            lgaDict[k[keys[0]]].properties.FUI = k.FUI;
                                     });
 
                                     map.removeControl(legend);
@@ -1523,7 +1530,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
-                    parcoord.style.display = 'none';
+                    parcoord_4.style.display = 'none';
                     grid.style.display = 'none';
                     map.removeControl(info);
                     map.removeControl(legend);

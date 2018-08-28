@@ -1,4 +1,4 @@
-water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI,water_scarcity,DSI_mine_production,IndexRank
+Water source,Irrigated area,Population,Irrigation value,Mining value,Employment (irrigation),Employment (mining),Total entitlement,Wetland area,Dissolved oxygen,Mean flow,Variation,Median,Days below mean,DSI,100 years flood frequency,Time below requirement,FUI,Water scarcity,Risk to mining productivity index,IndexRank
 Marra Creek Water Source,1776.836298,826,29846694,0.13,116,1,311.5,46236.58,98.2,4.91,3.29,0,0.92,100,0,0,17.4,2167.48,0,1
 Pipeclay Creek Water Source,503.0571364,875,2279828,23.26,30,205,446,65.62,100.2,17.47,13.75,1.55,0.93,91.5,0.01,0.08,7,7794.94,0.07360748,2
 Ewenmar Creek Water Source,6160.487664,1778,37400805,0.96,184,10,65125,13939.93,85.9,90.98,11.09,0.4,0.93,83.9,0.01,0.08,3.88,18677.66,0.081629066,3

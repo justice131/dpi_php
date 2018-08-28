@@ -251,7 +251,7 @@ and open the template in the editor.
             
             function toThousands(num) {
                 if (isNaN(num)) { 
-//                    throw new TypeError("num is not a number"); 
+                    throw new TypeError("num is not a number"); 
                 } 
                 var groups = (/([\-\+]?)(\d*)(\.\d+)?/g).exec("" + num), 
                     mask = groups[1],

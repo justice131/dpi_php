@@ -1,4 +1,4 @@
-water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI,water_scarcity,health_of_water_bodies,IndexRank
+Water source,Irrigated area,Population,Irrigation value,Mining value,Employment (irrigation),Employment (mining),Total entitlement,Wetland area,Dissolved oxygen,Mean flow,Variation,Median,Days below mean,DSI,100 years flood frequency,Time below requirement,FUI,Water scarcity,Water related health risk index,IndexRank
 Turon Crudine River Water Source,2.216484204,8756,10842668,103.15,129,937,328,19.86,107.8,291.41,5.54,49,0.85,79.7,0.01,0,0.31,12147.67,0.04,1
 Little River Water Source,636.0286631,9302,46926529,22.61,397,204,2270,0,107,97.47,6.18,7,0.87,82.2,0.01,0.11,6.38,4132.85,0.07,2
 Winburndale Rivulet Water Source,19.14092754,8150,8944600,18.14,89,174,1629,24.85,105.2,171.03,5.6,27,0.83,83.1,0.01,0.02,2.61,7659.78,0.11,3

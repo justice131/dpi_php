@@ -1,5 +1,5 @@
-water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI,water_scarcity,days_below_mean_agriculture_production,IndexRank
-Goolma Creek Water Source,0,2939,6403979,24.4,67,217,0,1412.69,79.9,10.09,9.2,0.33,0.89,89,0.01,0,0,1253.48,0.00,1
+Water source,Irrigated area,Population,Irrigation value,Mining value,Employment (irrigation),Employment (mining),Total entitlement,Wetland area,Dissolved oxygen,Mean flow,Variation,Median,Days below mean,DSI,100 years flood frequency,Time below requirement,FUI,Water scarcity,Risk to agriculture index,IndexRank
+Goolma Creek Water Source,0,2939,6403979,24.4,67,217,0,1412.69,79.9,10.09,9.2,0.33,0.89,89,0.01,0,0,1253.48,0,1
 Fish River Water Source,18.25237449,5574,10427061,35.22,104,327,18070.5,298.69,97.1,257.24,2.69,89,0.78,85.6,0.01,0.09,19.25,16844.95,0.44,2
 Ewenmar Creek Water Source,6160.487664,1778,37400805,0.96,184,10,65125,13939.93,85.9,90.98,11.09,0.4,0.93,83.9,0.01,0.08,3.88,18677.66,0.47,3
 Summerhill Creek Water Source,197.3106387,36297,35049240,370.47,287,3369,11744,304.37,105.2,193.51,4.66,27,0.85,78.8,0,0.13,16.63,1945.95,0.54,4
@@ -15,7 +15,7 @@ Bulbodney Grahway Creek Water Source,0,2530,59113543,2.49,287,23,8816,1076.46,86
 Molong Creek Water Source,479.9319731,1646,7314969,13.25,60,120,5616,27.42,85.3,69.99,4.66,9.77,0.85,78.8,0,0.22,21.98,15521.31,0.75,14
 Wambangalong Whylandra Creek Water Source,834.7718922,6245,14709304,6.91,123,66,169,7.56,84.4,45.48,6.18,3.27,0.87,82.2,0.01,0.02,1.02,3556.9,0.77,15
 Marra Creek Water Source,1776.836298,826,29846694,0.13,116,1,311.5,46236.58,98.2,4.91,3.29,0,0.92,100,0,0,17.4,2167.48,0.79,16
-Cooyal Wialdra Creek Water Source,91.25207614,2502,6538195,66.5,85,587,741,4.73,79.9,77.64,9.2,2.54,0.89,89,0.01,0.02,2.61,11326.26,0.80,17
+Cooyal Wialdra Creek Water Source,91.25207614,2502,6538195,66.5,85,587,741,4.73,79.9,77.64,9.2,2.54,0.89,89,0.01,0.02,2.61,11326.26,0.8,17
 Bell River Water Source,509.9266643,13155,29958130,68.93,258,629,8136,0,85.3,304.96,5.12,47.71,0.85,83.1,0.01,0.08,7.31,8716.3,0.81,18
 Turon Crudine River Water Source,2.216484204,8756,10842668,103.15,129,937,328,19.86,107.8,291.41,5.54,49,0.85,79.7,0.01,0,0.31,12147.67,0.82,19
 Campbells River Water Source,159.8132512,4713,11013942,10.85,105,102,2101,144.73,97.1,228.3,4.46,48.08,0.81,75.4,0,0,2.52,17680.53,0.85,20

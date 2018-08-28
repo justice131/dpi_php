@@ -1,4 +1,4 @@
-water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI,water_scarcity,DSI_agriculture_production,IndexRank
+Water source,Irrigated area,Population,Irrigation value,Mining value,Employment (irrigation),Employment (mining),Total entitlement,Wetland area,Dissolved oxygen,Mean flow,Variation,Median,Days below mean,DSI,100 years flood frequency,Time below requirement,FUI,Water scarcity,Risk to agricultural productivity index,IndexRank
 Pipeclay Creek Water Source,503.0571364,875,2279828,23.26,30,205,446,65.62,100.2,17.47,13.75,1.55,0.93,91.5,0.01,0.08,7,7794.94,0.042372881,1
 Lawsons Creek Water Source,128.0991786,2000,5213902,53.21,68,469,1496,743.32,100.2,47.35,12.22,6.37,0.92,89.8,0.01,0.06,8.66,9121.02,0.062024379,2
 Piambong Creek Water Source,344.3737048,2332,6078416,62.03,79,547,925,1092.51,79.9,4.66,9.2,0.15,0.89,89,0.01,0.61,54.4,1212.44,0.069554908,3

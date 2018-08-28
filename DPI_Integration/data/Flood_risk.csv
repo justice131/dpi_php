@@ -1,4 +1,4 @@
-water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI,water_scarcity,flood_risk,IndexRank
+Water source,Irrigated area,Population,Irrigation value,Mining value,Employment (irrigation),Employment (mining),Total entitlement,Wetland area,Dissolved oxygen,Mean flow,Variation,Median,Days below mean,DSI,100 years flood frequency,Time below requirement,FUI,Water scarcity,Flood risk,IndexRank
 Lower Talbragar River Water Source,566.5158438,12819,34870381,14.3,304,137,2251,0,75.4,94.48,8.77,4.42,0.88,83.6,0.02,0.18,6.53,2803.54,0.027,1
 Bell River Water Source,509.9266643,13155,29958130,68.93,258,629,8136,0,85.3,304.96,5.12,47.71,0.85,83.1,0.01,0.08,7.31,8716.3,0.017,2
 Upper Bogan River Water Source,3711.695595,11491,133535736,82.31,714,852,1729,4412.41,86.3,106.59,7.01,0,0.92,78.7,0.01,0.26,4.44,3385.87,0.015,3

@@ -1,4 +1,4 @@
-water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI,water_scarcity,status_of_ecosystem_population,IndexRank
+Water source,Irrigated area,Population,Irrigation value,Mining value,Employment (irrigation),Employment (mining),Total entitlement,Wetland area,Dissolved oxygen,Mean flow,Variation,Median,Days below mean,DSI,100 years flood frequency,Time below requirement,FUI,Water scarcity,Ecosystem risk inde,IndexRank
 Pipeclay Creek Water Source,503.0571364,875,2279828,23.26,30,205,446,65.62,100.2,17.47,13.75,1.55,0.93,91.5,0.01,0.08,7,7794.94,0.001967316,1
 Molong Creek Water Source,479.9319731,1646,7314969,13.25,60,120,5616,27.42,85.3,69.99,4.66,9.77,0.85,78.8,0,0.22,21.98,15521.31,0.005339788,2
 Upper Talbragar River Water Source,394.4364329,2091,14613608,26.6,134,236,370,0,75.4,55.14,8.77,2.58,0.88,83.6,0.02,0.13,1.84,10772.52,0.007132587,3

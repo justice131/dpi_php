@@ -1,4 +1,4 @@
-water_sources,irrigated_area,population,irrigation_value,mining_value,employment_irrigation,employment_mining,total_entitlement,wetland_area,dissolved_oxygen,mean_flow,variation,median,days_below_mean,DSI,100_yrs_flood_frequency,time_below_requirement,FUI,water_scarcity,FUI_irrigation_area_potential,IndexRank
+Water source,Irrigated area,Population,Irrigation value,Mining value,Employment (irrigation),Employment (mining),Total entitlement,Wetland area,Dissolved oxygen,Mean flow,Variation,Median,Days below mean,DSI,100 years flood frequency,Time below requirement,FUI,Water scarcity,Irrigation opportunity index,IndexRank
 Lower Bogan River Water Source,1610.27661,1491,31114808,0.16,154,2,42208,245215.36,86.3,156.05,7.01,0,0.92,78.7,0.01,0.66,72.47,38201.01,0.201009398,1
 Piambong Creek Water Source,344.3737048,2332,6078416,62.03,79,547,925,1092.51,79.9,4.66,9.2,0.15,0.89,89,0.01,0.61,54.4,1212.44,0.241470854,2
 Lower Macquarie River Water Source,4394.995041,926,33632155,0.14,123,1,48616,237878.17,98.2,231.64,2.86,41.49,0.83,76.3,0.29,0.65,57.5,91305.29,0.385571502,3

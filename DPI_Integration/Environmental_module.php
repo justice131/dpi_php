@@ -124,6 +124,9 @@ and open the template in the editor.
                                         <div id="link_to_parallel_coordinate">
                                             <a href="parallel_coordinate_macquarie_environment.php" target="_blank">Insight</a>
                                         </div>
+                                       <div id="link_to_parallel_coordinate_manning">
+                                            <a href="parallel_coordinate_manning_environment.php" target="_blank">Insight</a>
+                                        </div>
                                 </div>
 			</div>
 		</div>
@@ -2658,7 +2661,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
                 var geojsonfile_1 = Manning_Unregulatedriver;
+                link_to_parr_man = document.getElementById('link_to_parallel_coordinate_manning');
                 if (checkBox.checked === true){
+                    link_to_parr_man.style.display='block';
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
@@ -3588,7 +3593,7 @@ and open the template in the editor.
                     map.removeControl(controlSearch);
                     var elementToBeRemoved = document.getElementById('unreg_man');
                     document.getElementById('legend').removeChild(elementToBeRemoved);
-
+                    link_to_parr_man.style.display='none';
                 }                       
             }
             

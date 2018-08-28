@@ -1,0 +1,18 @@
+var lgacentroids = { "type": "FeatureCollection", "features": [
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.9889972, -32.0965 ] }, "properties": { "name": "Avon River Water Source", "id": "15850" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.8512778, -31.9118417 ] }, "properties": { "name": "Bowman River Water Source", "id": "13380" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.8646333, -31.5063056 ] }, "properties": { "name": "Cooplacurripa River Water Source", "id": "18500" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 152.252575, -31.7306778 ] }, "properties": { "name": "Dingo Creek Water Source", "id": "12350" } },
+ 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.6782222, -31.7007017 ] }, "properties": { "name": "Lower Barnard River Water Source", "id": "19399" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 152.018185, -31.9627083 ] }, "properties": { "name": "Lower Barrington / Gloucester Rivers Water Source", "id": "19399" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 152.1970444, -31.9447778 ] }, "properties": { "name": "Lower Manning River Water Source", "id": "12600" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 152.5265278, -31.85001 ] }, "properties": { "name": "Manning Estuary Tributaries Water Source", "id": "17620" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.9899667, -31.8227778 ] }, "properties": { "name": "Mid Manning River Water Source", "id": "17000" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.5702778, -31.5328333 ] }, "properties": { "name": "Myall Creek Water Source", "id": "11720" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.8479861, -31.6375833 ] }, "properties": { "name": "Nowendoc River Water Source", "id": "15300" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 152.05974167, -31.5491667 ] }, "properties": { "name": "Rowleys River Water Source", "id": "12950" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.3345, -31.5882667 ] }, "properties": { "name": "Upper Barnard River Water Source", "id": "18050" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.6118111, -31.9746472 ] }, "properties": { "name": "Upper Barrington River Water Source", "id": "17950" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.7894444, -32.07777778 ] }, "properties": { "name": "Upper Gloucester River Water Source", "id": "15350" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.6820167, -31.8159167 ] }, "properties": { "name": "Upper Manning River Water Source", "id": "17200" } }
+] }

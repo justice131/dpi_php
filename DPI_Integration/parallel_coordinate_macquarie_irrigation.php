@@ -678,7 +678,7 @@ and open the template in the editor.
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
 //                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'Days Below Mean(50%) * Agriculture Production(50%): ' + '<b>'+ Math.round(props.days_below_mean_agriculture_production*100)/100 + '</b>'+'<br />'
+                                            'Risk to Argiculture Index: ' + '<b>'+ Math.round(props.days_below_mean_agriculture_production*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);

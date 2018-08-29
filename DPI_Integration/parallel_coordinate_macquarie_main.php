@@ -339,7 +339,7 @@ and open the template in the editor.
                             };
                     }
                     var max_row=0;//Get the row number of ranking file
-                        d3.csv("data/FUI.csv", function (data) {
+                        d3.csv("data/FUI_mac.csv", function (data) {
                         _.each(data, function (d, i) {
                         max_row++;
 
@@ -427,7 +427,7 @@ and open the template in the editor.
 
 
                     //Read data for parallel coordinate
-                    d3.csv("data/FUI.csv", function (data) {
+                    d3.csv("data/FUI_mac.csv", function (data) {
                         var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id
@@ -648,7 +648,7 @@ and open the template in the editor.
                             };
                     }
                     var max_row=0;//Get the row number of ranking file
-                    d3.csv("data/DSI.csv", function (data) {
+                    d3.csv("data/DSI_mac.csv", function (data) {
                         _.each(data, function (d, i) {
                         max_row++;
                         });
@@ -735,7 +735,7 @@ and open the template in the editor.
 
 
                     //Read data for parallel coordinate
-                    d3.csv("data/DSI.csv", function (data) {
+                    d3.csv("data/DSI_mac.csv", function (data) {
                         var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id
@@ -952,7 +952,7 @@ and open the template in the editor.
                             };
                     }
                     var max_row=0;//Get the row number of ranking file
-                    d3.csv("data/DSI_agriculture_production.csv", function (data) {
+                    d3.csv("data/DSI_agriculture_production_mac.csv", function (data) {
                         _.each(data, function (d, i) {
                         max_row++;
                         });
@@ -1039,7 +1039,7 @@ and open the template in the editor.
 
 
                     //Read data for parallel coordinate
-                    d3.csv("data/DSI_agriculture_production.csv", function (data) {
+                    d3.csv("data/DSI_agriculture_production_mac.csv", function (data) {
                         var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id
@@ -1256,7 +1256,7 @@ and open the template in the editor.
                             };
                     }
                     var max_row=0;//Get the row number of ranking file
-                    d3.csv("data/Flood_risk.csv", function (data) {
+                    d3.csv("data/Flood_risk_mac.csv", function (data) {
                         _.each(data, function (d, i) {
                         max_row++;
                         });
@@ -1343,7 +1343,7 @@ and open the template in the editor.
 
 
                     //Read data for parallel coordinate
-                    d3.csv("data/Flood_risk.csv", function (data) {
+                    d3.csv("data/Flood_risk_mac.csv", function (data) {
                         var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id

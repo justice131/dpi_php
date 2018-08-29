@@ -343,7 +343,7 @@ and open the template in the editor.
                             };
                     }
                     var max_row=0;//Get the row number of ranking file
-                    d3.csv("data/status_of_ecosystem_population.csv", function (data) {
+                    d3.csv("data/status_of_ecosystem_population_mac.csv", function (data) {
                         _.each(data, function (d, i) {
                         max_row++;
                         });
@@ -430,30 +430,31 @@ and open the template in the editor.
 
 
                     //Read data for parallel coordinate
-                    d3.csv("data/status_of_ecosystem_population.csv", function (data) {
+                    d3.csv("data/status_of_ecosystem_population_mac.csv", function (data) {
+                         var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id
-                                    var water_source_name = d.water_sources
-                                    lgaDict[water_source_name].properties.irrigated_area=d.irrigated_area;
-                                    lgaDict[water_source_name].properties.population=d.population;
-                                    lgaDict[water_source_name].properties.irrigation_value=d.irrigation_value;
-                                    lgaDict[water_source_name].properties.mining_value=d.mining_value;
-                                    lgaDict[water_source_name].properties.employment_irrigation=d.employment_irrigation;
-                                    lgaDict[water_source_name].properties.employment_mining=d.employment_mining;
-                                    lgaDict[water_source_name].properties.total_entitlement=d.total_entitlement;
-                                    lgaDict[water_source_name].properties.wetland_area=d.wetland_area;
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d.dissolved_oxygen;
-                                    lgaDict[water_source_name].properties.mean_flow=d.mean_flow;
-                                    lgaDict[water_source_name].properties.variation=d.variation;
-                                    lgaDict[water_source_name].properties.median=d.median;
-                                    lgaDict[water_source_name].properties.days_below_mean=d.days_below_mean;
-                                    lgaDict[water_source_name].properties.DSI=d.DSI;
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d['100_yrs_flood_frequency']);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d.time_below_requirement;
-                                    lgaDict[water_source_name].properties.FUI=d.FUI;
-                                    lgaDict[water_source_name].properties.water_scarcity=d.water_scarcity;
-                                    lgaDict[water_source_name].properties.status_of_ecosystem_population=d.status_of_ecosystem_population;
-                                    lgaDict[water_source_name].properties.IndexRank=d.IndexRank;
+                                    var water_source_name = d[keys[0]];
+                                    lgaDict[water_source_name].properties.irrigated_area=d[keys[1]];
+                                    lgaDict[water_source_name].properties.population=d[keys[2]];
+                                    lgaDict[water_source_name].properties.irrigation_value=d[keys[3]];
+                                    lgaDict[water_source_name].properties.mining_value=d[keys[4]];
+                                    lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
+                                    lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
+                                    lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
+                                    lgaDict[water_source_name].properties.median=d[keys[12]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
+                                    lgaDict[water_source_name].properties.status_of_ecosystem_population=d[keys[19]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
                                     lga.push(water_source_name);
                             });
 
@@ -500,7 +501,7 @@ and open the template in the editor.
 
                             //Bind data to parallel coordinate
                             parcoords.data(data)
-                                            .hideAxis(["water_sources","index"])
+                                            .hideAxis(["Water source","index"])
                                             .render()
                                             .reorderable()
                                             .brushMode("1D-axes")
@@ -582,7 +583,7 @@ and open the template in the editor.
                                     lgas.features.map(function (d) {d.properties.FUI = -1; });
                                     geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                                     _.each(d, function (k, i) {
-                                            lgaDict[k.water_sources].properties.FUI = k.FUI;
+                                            lgaDict[k[keys[0]]].properties.FUI = k.FUI;
                                     });
 
                                     map.removeControl(legend);

@@ -827,8 +827,8 @@ and open the template in the editor.
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
                                 + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-                                + 'Health Based Target Index: ' + HBT + '<br/>'
-                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
                                 + 'Population Served: ' + Math.round(popu));
                                 featureWTSCollection.push(M);
                                 WTC_population_Macquarie = WTC_population_Macquarie + Math.round(popu);
@@ -852,9 +852,9 @@ and open the template in the editor.
                     var elem_ov = document.createElement("div");
                     elem_ov.setAttribute('id', 'tws_legend');
                     elem_ov.innerHTML = (
-                            '<img src="lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WWQI</small>)<br>'+
-                            '<img src="lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WWQI</small>)<br>'+
-                            '<img src="lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WWQI</small>)<div style="height:2px;"><br></div>'
+                            '<img src="lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (high <small>WWQI</small>)<br>'+
+                            '<img src="lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (medium <small>WWQI</small>)<br>'+
+                            '<img src="lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (low <small>WWQI</small>)<div style="height:2px;"><br></div>'
         //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
                             );
                     document.getElementById("legend").appendChild(elem_ov);
@@ -900,7 +900,7 @@ and open the template in the editor.
                                 var M = L.marker([lat, lon], {icon: icon_wwqi(wwqi_rank_Macquarie, treatment_plant)}).addTo(map)
                                 .bindPopup('Location: ' + treatment_plant + '<br/>'
                                 + 'LGA: ' + lga + '<br/>'
-                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
+                                + 'WWQI: ' +Math.round(wwqi)/100 + '<br/>'
                                 + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
                                 featureWTCollection.push(M);
                         <?php }?>;    

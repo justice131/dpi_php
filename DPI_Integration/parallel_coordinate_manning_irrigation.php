@@ -633,11 +633,11 @@ and open the template in the editor.
             function show_s2(id){
                     function getColorScalar(d) {
                         if(d<=Math.floor(max_row/3)){
-                        return myCols[0];
+                        return myCols[2];
                         }else if(d<=Math.ceil(2*max_row/3)){
                         return myCols[1];
                         }else{
-                        return myCols[2];
+                        return myCols[0];
                         }
                     }
                     function style(feature) {

@@ -167,7 +167,7 @@ and open the template in the editor.
                                             <input type="checkbox" id="s3" onclick="show_s3('s3')"> <font size="2">Scenario 2 </font></br>
                                             <input type="checkbox" id="s5" onclick="show_s5('s5')"> <font size="2">Scenario 3 </font></br>
                                             <input type="checkbox" id="s9" onclick="show_s9('s9')"> <font size="2">Scenario 4 </font></br>
-<!--                                            <input type="checkbox" id="s10" onclick="show_s10('s10')"> <font size="2">Scenario 5 </font>-->
+                                            <input type="checkbox" id="s10" onclick="show_s10('s10')"> <font size="2">Scenario 5 </font>
                                         </div>        
                                 </div>
 			</div>
@@ -1570,7 +1570,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
-                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Flood risk (100 years return period)'+'</span>';
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Potential for new infrastructure'+'</span>';
                     parcoord_5.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover
@@ -1601,7 +1601,7 @@ and open the template in the editor.
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'Flood Risk: ' + '<b>'+ Math.round(props.flood_risk*100*10)/10 + ' %</b>'+'<br />'
+                                            'Potential for new infrastructure: ' + '<b>'+ Math.round(props.potential_infra*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Hover over a Water Source'+'</b>');
                     };
                     info.addTo(map);
@@ -1628,7 +1628,7 @@ and open the template in the editor.
                             lgas.features[j].properties.time_below_requirement=0;
                             lgas.features[j].properties.FUI=0;
                             lgas.features[j].properties.water_scarcity=0;
-                            lgas.features[j].properties.flood_risk=0;
+                            lgas.features[j].properties.potential_infra=0;
                             lgas.features[j].properties.IndexRank=0;
                             lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
                     }
@@ -1672,7 +1672,7 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
                                     lgaDict[water_source_name].properties.FUI=d[keys[17]];
                                     lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
-                                    lgaDict[water_source_name].properties.flood_risk=d[keys[19]];
+                                    lgaDict[water_source_name].properties.potential_infra=d[keys[19]];
                                     lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
                                     lga.push(water_source_name);
                             });

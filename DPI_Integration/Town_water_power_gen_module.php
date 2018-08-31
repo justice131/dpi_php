@@ -4793,10 +4793,12 @@ and open the template in the editor.
 //                        'Annual Use of Water for Power Generation: ' + surface_water_size + '<br />'
 //                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                           '<b>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
-                          '<p style=\"line-height:50%\"><img src=\"images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centres: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
+                          '<p style=\"line-height:50%\"><img src=\"images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centre: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
+                          '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Number of Waste Water Treatment Centre: <b>' + 14 + '</b><br/><br />'+
                           '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Population Served: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
                           '<img src=\"images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + 0 + '</b><br/><br />'+
-                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water and Sewerage: <b>' + 0 + '</b><br/><br />'+
+                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water: <b>' + 0 + '</b><br/><br />'+
+                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Treated Water for Waste Water: <b>' + 0 + '</b><br/><br />'+
                           '<img src=\"images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + 0 + '</b><br/></p>'  
                     );
                 <?php }?>;

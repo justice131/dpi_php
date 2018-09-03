@@ -187,8 +187,10 @@ $sql = "CREATE TABLE IF NOT EXISTS town_water_supply( ".
     "postcode INT, ".
     "volume_treated INT, ".
     "HBT_index FLOAT, ".
-    "WSDI FLOAT, ".
     "population_served FLOAT, ".
+    "WSDI FLOAT, ".
+    "water_supply_risk FLOAT, ".
+    "health_risk_dueto_poor_water_quality FLOAT, ".
     "PRIMARY KEY (tws_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
 mysqli_query($conn,$sql);
 

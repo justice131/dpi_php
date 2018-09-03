@@ -37,8 +37,10 @@
                         <th>postcode</th>
                         <th>volume_treated</th>
                         <th>HBT_index</th>
-                        <th>WSDI</th>
                         <th>population_served</th>
+                        <th>WSDI</th>
+                        <th>water_supply_risk</th>
+                        <th>health_risk_dueto_poor_water_quality</th>
                     <tr>
                 </thead>
                 <tbody>
@@ -58,12 +60,15 @@
                         $postcode=$result_arr['postcode'];  
                         $volume_treated=$result_arr['volume_treated']; 
                         $HBT_index=$result_arr['HBT_index'];
-                        $WSDI=$result_arr['WSDI'];   
                         $population_served=$result_arr['population_served'];
+                        $WSDI=$result_arr['WSDI'];  
+                        $water_supply_risk=$result_arr['water_supply_risk']; 
+                        $health_risk_dueto_poor_water_quality=$result_arr['health_risk_dueto_poor_water_quality']; 
                         echo "<tr><td>$tws_id</td><td>$catchment</td><td>$exact_location</td><td>$town_served</td>"
                             . "<td>$latitude</td><td>$longitude</td><td>$postcode</td>"
-                            . "<td>$volume_treated</td><td>$HBT_index</td><td>$WSDI</td>"
-                            . "<td>$population_served</td><tr>";
+                            . "<td>$volume_treated</td><td>$HBT_index</td>"
+                            . "<td>$population_served</td><td>$WSDI</td>"
+                            . "<td>$water_supply_risk</td><td>$health_risk_dueto_poor_water_quality</td><tr>";
                         }
                 ?>
                 </tbody>

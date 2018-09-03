@@ -587,6 +587,7 @@ and open the template in the editor.
                     <?php if(!empty($town_water_supply)){?>;
                         WTC_number_Macquarie = 0;
                         WTC_population_Macquarie = 0;
+                        WTC_volume_Macquarie = 0;
                         <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
                             var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";                           
                             if (cat === 'Macquarie'){
@@ -610,6 +611,7 @@ and open the template in the editor.
 //                                + 'Population Served: ' + Math.round(popu));
 //                                featureCATCollection.push(M);
                                 WTC_population_Macquarie = WTC_population_Macquarie + Math.round(popu);
+                                WTC_volume_Macquarie = WTC_volume_Macquarie + Math.round(vol);
                             }
                         <?php }?>;    
                     <?php }?>; 
@@ -634,6 +636,7 @@ and open the template in the editor.
 
                     <?php if(!empty($wwtc_mac)){?>;
                         WWTC_number_Macquarie = 0;
+                        WWTC_volume_Macquarie = 0;
                         <?php for ($x=0; $x<count($wwtc_mac); $x++) {?>                          
                                 WWTC_number_Macquarie = WWTC_number_Macquarie + 1;                               
                                 var lat = "<?php echo $wwtc_mac[$x]["latitude"]; ?>";
@@ -649,6 +652,7 @@ and open the template in the editor.
 //                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
 //                                + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
 //                                featureCATCollection.push(M);
+                                WWTC_volume_Macquarie = WWTC_volume_Macquarie + Math.round(treted_volume);
                         <?php }?>;    
                     <?php }?>; 
                                             
@@ -657,6 +661,7 @@ and open the template in the editor.
                 if(CATName === 'ManningRiver'){                   
                     <?php if(!empty($town_water_supply)){?>;
                         WTC_number_Manning = 0;
+                        WTC_volume_Manning = 0;
                         WTC_population_Manning = 0;
                         <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
                             var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";
@@ -680,11 +685,46 @@ and open the template in the editor.
 //                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
 //                                + 'Population Served: ' + Math.round(popu));
 //                                featureCATCollection.push(M);
+                                WTC_volume_Manning = WTC_volume_Manning + Math.round(vol);
                                 WTC_population_Manning = WTC_population_Manning + Math.round(popu);
                             }
                         <?php }?>;    
                     <?php }?>; 
-                } 
+                        
+                    <?php
+                        include 'db.helper/db_connection_ini.php';
+                        if(!empty($_GET['catchment_name'])){
+                            if($conn!=null){
+                                $sq2_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Manning'";
+                                $result_wwtc = $conn->query($sq2_wwtc);
+                                $wwtc_man = array();
+                                $m = -1;
+                                while ($row_wwtc_man = $result_wwtc->fetch_assoc()){
+                                    $m++;
+                                    $wwtc_man[$m] = $row_wwtc_man;
+                                }
+                            }else{
+                                include 'db.helper/db_connection_ini.php';
+                            }
+                        }
+                    ?>
+
+                    <?php if(!empty($wwtc_man)){?>;
+                        WWTC_number_Manning = 0;
+                        WWTC_volume_Manning = 0;
+                        <?php for ($x=0; $x<count($wwtc_man); $x++) {?>                          
+                                WWTC_number_Manning = WWTC_number_Manning + 1;                               
+                                var lat = "<?php echo $wwtc_man[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $wwtc_man[$x]["longitude"]; ?>";
+                                var lga = "<?php echo $wwtc_man[$x]["lga"]; ?>";
+                                var treatment_plant = "<?php echo $wwtc_man[$x]["treatment_plant"]; ?>";
+                                var wwqi = "<?php echo $wwtc_man[$x]["wwqi"]; ?>";
+                                var treted_volume = "<?php echo $wwtc_man[$x]["treted_volume"]; ?>";
+                                WWTC_volume_Manning = WWTC_volume_Manning + Math.round(treted_volume);
+                        <?php }?>;    
+                    <?php }?>; 
+                        
+                }
                 //Zooms to the layer selected
                 if (CATName==="MacquarieBogan"){
                     map.setView([-31.8, 148.5], 8);
@@ -4775,14 +4815,17 @@ and open the template in the editor.
                     var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     if (catch_name === 'MacquarieBogan'){
                         var no_wtc = WTC_number_Macquarie;
+                        var no_wwtc = WWTC_number_Macquarie;
+                        var waste_volume = WWTC_volume_Macquarie;
+                        var popu_wtc = WTC_population_Macquarie;
+                        var volume = WTC_volume_Macquarie;
                     }else if(catch_name === 'ManningRiver'){
                         var no_wtc = WTC_number_Manning;
-                    }    
-                    if (catch_name === 'MacquarieBogan'){
-                        var popu_wtc = WTC_population_Macquarie;
-                    }else if(catch_name === 'ManningRiver'){
+                        var no_wwtc = WWTC_number_Manning;
+                        var waste_volume = WWTC_volume_Manning;
                         var popu_wtc = WTC_population_Manning;
-                    }                     
+                        var volume = WTC_volume_Manning;
+                    }                       
                     this._div.innerHTML = (
 //                        props?
 //                        '<h5>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</h5>' + 
@@ -4794,11 +4837,11 @@ and open the template in the editor.
 //                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                           '<b>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
                           '<p style=\"line-height:50%\"><img src=\"images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centre: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Number of Waste Water Treatment Centre: <b>' + 14 + '</b><br/><br />'+
+                          '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Number of Waste Water Treatment Centre: <b>' + toThousands(no_wwtc) + '</b><br/><br />'+
                           '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Population Served: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
                           '<img src=\"images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + 0 + '</b><br/><br />'+
-                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water: <b>' + 0 + '</b><br/><br />'+
-                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Treated Water for Waste Water: <b>' + 0 + '</b><br/><br />'+
+                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water: <b>' + toThousands(volume) + ' ML</b><br/><br />'+
+                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Treated Water for Waste Water: <b>' + toThousands(waste_volume) + ' ML</b><br/><br />'+
                           '<img src=\"images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + 0 + '</b><br/></p>'  
                     );
                 <?php }?>;

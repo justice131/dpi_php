@@ -121,10 +121,10 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font>-->
                                         </div>   
                                     
-                                        <div id="link_to_parallel_coordinate">
+                                        <div id="link_to_parallel_coordinate" class="link_to_parallel">
                                             <a href="parallel_coordinate_macquarie_environment.php" target="_blank">Insight</a>
                                         </div>
-                                       <div id="link_to_parallel_coordinate_manning">
+                                       <div id="link_to_parallel_coordinate_manning" class="link_to_parallel">
                                             <a href="parallel_coordinate_manning_environment.php" target="_blank">Insight</a>
                                         </div>
                                 </div>

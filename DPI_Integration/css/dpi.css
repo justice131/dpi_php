@@ -90,7 +90,7 @@ and open the template in the editor.
         box-shadow: 0 0 15px rgba(0,0,0,0.2);
     }
     
-    #link_to_parallel_coordinate{
+    .link_to_parallel{
         position: absolute;
         top: 230px;
         left: 35px;
@@ -116,52 +116,11 @@ and open the template in the editor.
         -webkit-transition: 0.08s ease-in;
         display: none;
     }
-    #link_to_parallel_coordinate_manning{
-        position: absolute;
-        top: 230px;
-        left: 35px;
-        text-decoration: none;
-        margin: 10px 7px;
-        padding: 5px 5px;
-        font-weight: 600;
-        font-size: 13px;
-        letter-spacing: 2px;
-        color: #383736;
-        border: 2px #383736 solid;
-        border-radius: 4px;
-        text-transform: uppercase;
-        outline: 0;
-        overflow:hidden;
-        background: none;
-        z-index: 1;
-        cursor: pointer;
-        transition:         0.08s ease-in;
-        -o-transition:      0.08s ease-in;
-        -ms-transition:     0.08s ease-in;
-        -moz-transition:    0.08s ease-in;
-        -webkit-transition: 0.08s ease-in;
-        display: none;
-    }
-    #link_to_parallel_coordinate{
+
+    .link_to_parallel{
         -webkit-transition: all 150ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
     }
-    #link_to_parallel_coordinate_manning{
-        -webkit-transition: all 150ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
-    }
-
-    #link_to_parallel_coordinate:before{
-        position:absolute;  
-        content:"";
-        width:100%;
-        height:100%;
-        top:0;
-        left:0;
-        z-index:-1;
-        opacity:0;
-        -webkit-transition: all 250ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
-    }
-
-    #link_to_parallel_coordinate_manning:before{
+    .link_to_parallel:before{
         position:absolute;  
         content:"";
         width:100%;
@@ -173,7 +132,7 @@ and open the template in the editor.
         -webkit-transition: all 250ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
     }
     
-    #link_to_parallel_coordinate:after {
+    .link_to_parallel:after {
         content: "";
         position: absolute;
         background: #d19b26;
@@ -184,45 +143,24 @@ and open the template in the editor.
         z-index: -2;
         -webkit-transition: all 250ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
     }
-    
-    #link_to_parallel_coordinate_manning:after {
-        content: "";
-        position: absolute;
-        background: #d19b26;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        top: 100%;
-        z-index: -2;
-        -webkit-transition: all 250ms cubic-bezier(0.230, 1.000, 0.320, 1.000); 
-    }
-    #link_to_parallel_coordinate:hover{
+
+    .link_to_parallel:hover{
         color: white;
         border: 0px #d19b26 solid;
     }
-    #link_to_parallel_coordinate_manning:hover{
-        color: white;
-        border: 0px #d19b26 solid;
-    }
-    
-    #link_to_parallel_coordinate:hover:before {
+
+    .link_to_parallel:hover:before {
         opacity: .8;
     }
-    #link_to_parallel_coordinate_manning:hover:before {
-        opacity: .8;
-    }
-    #link_to_parallel_coordinate:hover:after {
+
+    .link_to_parallel:hover:after {
         top: 0;
     }
-    #link_to_parallel_coordinate_manning:hover:after {
-        top: 0;
-    }
-    #link_to_parallel_coordinate a:hover{
+
+    .link_to_parallel a:hover{
         color: white;
     }
-    #link_to_parallel_coordinate_manning a:hover{
-        color: white;
-    }
+
     a{
         text-decoration: none ;
     }

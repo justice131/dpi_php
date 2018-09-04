@@ -122,8 +122,14 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Manning_wt" onclick="show_Manning_tw('Manning_wt')"> <font size="2">Waste water </font>
                                         </div>
                                     
-                                        <div id="link_to_parallel_coordinate">
+                                        <div id="link_to_parallel_coordinate" class="link_to_parallel">
                                             <a href="parallel_coordinate_macqaurie_tws.php" target="_blank">Insight</a>
+                                        </div>
+                                        <div id="tws_scenario_mac" class="link_to_parallel">
+                                            <a href="tws_scenario_Mac.php" target="_blank">Insight</a>
+                                        </div>
+                                        <div id="tws_scenario_man" class="link_to_parallel">
+                                            <a href="tws_scenario_Man.php" target="_blank">Insight</a>
                                         </div>
                                 </div>
 			</div>
@@ -753,135 +759,138 @@ and open the template in the editor.
             featureWTSCollection = [];
             function show_MacquarieBogan_tws(id){
                 var checkBox = document.getElementById(id); 
+                link_to_wts = document.getElementById('tws_scenario_mac');
                 if (checkBox.checked === true){
-                    var elem_ov = document.createElement("div");
-                    elem_ov.setAttribute('id', 'tws_legend');
-                    elem_ov.innerHTML = (
-                            '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
-                            '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
-                            '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
-        //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
-                            );
-                    document.getElementById("legend").appendChild(elem_ov);
-            
-                    var max_row = wsdi_rank_Macquarie.length;
-                    legend = L.control({position: 'bottomright'});
-                    if (max_row>=3 & (max_row%3)===0){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
-                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };
-                    }else if (max_row>=3 & (max_row%3)===1){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
-                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };                       
-                    }else if (max_row>=3 & (max_row%3)===2){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
-                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };
-                    }else if (max_row===2){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
-                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };                       
-                    }else if (max_row===1){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        }; 
-                    
-                    }
-                    legend.addTo(map);
-                            
-                    <?php if(!empty($town_water_supply)){?>;
-                        WTC_number_Macquarie = 0;
-                        WTC_population_Macquarie = 0;
-                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
-                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";                           
-                            if (cat === 'Macquarie'){
-                                WTC_number_Macquarie = WTC_number_Macquarie + 1;                               
-                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
-                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
-                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
-                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
-                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
-                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
-                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
-                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
-                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
-                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Macquarie, location)}).addTo(map)
-                                .bindPopup('Location: ' + location + '<br/>'
-                                + 'Town Served: ' + town_served + '<br/>'
-                                + 'Postcode: ' + pos + '<br/>'
-                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
-                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
-                                + 'Population Served: ' + Math.round(popu));
-                                featureWTSCollection.push(M);
-                                WTC_population_Macquarie = WTC_population_Macquarie + Math.round(popu);
-                            }
-                        <?php }?>;    
-                    <?php }?>; 
+                    link_to_wts.style.display = 'block'; 
+//                    var elem_ov = document.createElement("div");
+//                    elem_ov.setAttribute('id', 'tws_legend');
+//                    elem_ov.innerHTML = (
+//                            '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+//                            '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+//                            '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+//                            '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+//                            );
+//                    document.getElementById("legend").appendChild(elem_ov);
+//            
+//                    var max_row = wsdi_rank_Macquarie.length;
+//                    legend = L.control({position: 'bottomright'});
+//                    if (max_row>=3 & (max_row%3)===0){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };
+//                    }else if (max_row>=3 & (max_row%3)===1){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };                       
+//                    }else if (max_row>=3 & (max_row%3)===2){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };
+//                    }else if (max_row===2){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };                       
+//                    }else if (max_row===1){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        }; 
+//                    
+//                    }
+//                    legend.addTo(map);
+//                            
+//                    <?php if(!empty($town_water_supply)){?>;
+//                        WTC_number_Macquarie = 0;
+//                        WTC_population_Macquarie = 0;
+//                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+//                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";                           
+//                            if (cat === 'Macquarie'){
+//                                WTC_number_Macquarie = WTC_number_Macquarie + 1;                               
+//                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+//                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+//                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+//                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+//                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+//                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+//                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+//                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+//                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+//                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Macquarie, location)}).addTo(map)
+//                                .bindPopup('Location: ' + location + '<br/>'
+//                                + 'Town Served: ' + town_served + '<br/>'
+//                                + 'Postcode: ' + pos + '<br/>'
+//                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+//                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+//                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
+//                                + 'Population Served: ' + Math.round(popu));
+//                                featureWTSCollection.push(M);
+//                                WTC_population_Macquarie = WTC_population_Macquarie + Math.round(popu);
+//                            }
+//                        <?php }?>;    
+//                    <?php }?>; 
 
                 }
                 if (checkBox.checked === false){
-                    removeLayer(featureWTSCollection);
-                    map.removeControl(legend);
-                    var elementToBeRemoved = document.getElementById('tws_legend');
-                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                    link_to_wts.style.display = 'none'; 
+//                    removeLayer(featureWTSCollection);
+//                    map.removeControl(legend);
+//                    var elementToBeRemoved = document.getElementById('tws_legend');
+//                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }
             }
             
@@ -3238,130 +3247,133 @@ and open the template in the editor.
             featureTWSCollection = [];
             function show_Manning_tws(id){
                 var checkBox = document.getElementById(id); 
+                link_to_wts_man = document.getElementById('tws_scenario_man');
                 if (checkBox.checked === true){
-                    var elem_ov = document.createElement("div");
-                    elem_ov.setAttribute('id', 'tw_legend');
-                    elem_ov.innerHTML = (
-                            '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
-                            '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
-                            '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
-        //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
-                            );
-                    document.getElementById("legend").appendChild(elem_ov);
-                    
-                    var max_row=wsdi_rank_Manning.length;
-                    legend = L.control({position: 'bottomright'});
-                    if (max_row>=3 & (max_row%3)===0){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
-                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };
-                    }else if (max_row>=3 & (max_row%3)===1){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
-                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };                       
-                    }else if (max_row>=3 & (max_row%3)===2){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
-                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };
-                    }else if (max_row===2){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
-                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };                       
-                    }else if (max_row===1){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
-                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        }; 
-                    
-                    }
-                    legend.addTo(map);
-                    
-                    <?php if(!empty($town_water_supply)){?>;
-                        WTC_number_Manning = 0;
-                        WTC_population_Manning = 0;
-                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
-                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";
-                            if (cat === 'Manning'){
-                                WTC_number_Manning = WTC_number_Manning + 1;
-                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
-                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
-                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
-                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
-                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
-                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
-                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
-                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
-                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
-                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Manning, location)}).addTo(map)
-                                .bindPopup('Location: ' + location + '<br/>'
-                                + 'Town Served: ' + town_served + '<br/>'
-                                + 'Postcode: ' + pos + '<br/>'
-                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-                                + 'Health Based Target Index: ' + HBT + '<br/>'
-                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
-                                + 'Population Served: ' + Math.round(popu));
-                                featureTWSCollection.push(M);
-                                WTC_population_Manning = WTC_population_Manning + Math.round(popu);
-                            }
-                        <?php }?>;    
-                    <?php }?>; 
+                    link_to_wts_man.style.display = "block";
+//                    var elem_ov = document.createElement("div");
+//                    elem_ov.setAttribute('id', 'tw_legend');
+//                    elem_ov.innerHTML = (
+//                            '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+//                            '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+//                            '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+//                            '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+//                            );
+//                    document.getElementById("legend").appendChild(elem_ov);
+//                    
+//                    var max_row=wsdi_rank_Manning.length;
+//                    legend = L.control({position: 'bottomright'});
+//                    if (max_row>=3 & (max_row%3)===0){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };
+//                    }else if (max_row>=3 & (max_row%3)===1){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };                       
+//                    }else if (max_row>=3 & (max_row%3)===2){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };
+//                    }else if (max_row===2){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };                       
+//                    }else if (max_row===1){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        }; 
+//                    
+//                    }
+//                    legend.addTo(map);
+//                    
+//                    <?php if(!empty($town_water_supply)){?>;
+//                        WTC_number_Manning = 0;
+//                        WTC_population_Manning = 0;
+//                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+//                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";
+//                            if (cat === 'Manning'){
+//                                WTC_number_Manning = WTC_number_Manning + 1;
+//                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+//                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+//                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+//                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+//                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+//                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+//                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+//                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+//                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+//                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Manning, location)}).addTo(map)
+//                                .bindPopup('Location: ' + location + '<br/>'
+//                                + 'Town Served: ' + town_served + '<br/>'
+//                                + 'Postcode: ' + pos + '<br/>'
+//                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+//                                + 'Health Based Target Index: ' + HBT + '<br/>'
+//                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+//                                + 'Population Served: ' + Math.round(popu));
+//                                featureTWSCollection.push(M);
+//                                WTC_population_Manning = WTC_population_Manning + Math.round(popu);
+//                            }
+//                        <?php }?>;    
+//                    <?php }?>; 
                 }
                 if (checkBox.checked === false){
+                    link_to_wts_man.style.display = "none";
                     removeLayer(featureTWSCollection);
                     map.removeControl(legend);
                     var elementToBeRemoved = document.getElementById('tw_legend');
@@ -3379,7 +3391,7 @@ and open the template in the editor.
                             '<img src="lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
                             '<img src="lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
                             '<img src="lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
-        //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+//                            '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
                             );
                     document.getElementById("legend").appendChild(elem_ov);
                     

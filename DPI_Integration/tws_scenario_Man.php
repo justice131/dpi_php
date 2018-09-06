@@ -65,8 +65,7 @@ and open the template in the editor.
 					</div>
                                         <div id="MacquarieBogan">
                                                 <input type="checkbox" id="s1" onclick="show_s1('s1')"> <font size="2">Scenario 1 </font></br>  
-                                                <input type="checkbox" id="s2" onclick="show_s2('s2')"> <font size="2">Scenario 2 </font></br>   
-                                                <input type="checkbox" id="s3" onclick="show_s3('s3')"> <font size="2">Scenario 3 </font></br>   
+                                                <input type="checkbox" id="s2" onclick="show_s2('s2')"> <font size="2">Scenario 2 </font>
                                         </div>                                   
                                 </div>
 			</div>
@@ -512,7 +511,7 @@ and open the template in the editor.
             function show_s1(id){
                 var checkBox = document.getElementById(id); 
                 if (checkBox.checked === true){
-                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Town Water Supply Insight for Manning Catchment--Water supply deficiency index'+'</span>';
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Town Water Supply Insight for Manning Catchment--Risk of insufficient water to towns'+'</span>';
                     var elem_ov = document.createElement("div");
                     elem_ov.setAttribute('id', 'tws_legend');
                     elem_ov.innerHTML = (
@@ -640,7 +639,7 @@ and open the template in the editor.
             function show_s2(id){
                 var checkBox = document.getElementById(id); 
                 if (checkBox.checked === true){
-                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Town Water Supply Insight for Manning Catchment--Water supply risk'+'</span>';
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Town Water Supply Insight for Manning Catchment--Risk of inadequate water treatment centre'+'</span>';
                     var elem_ov = document.createElement("div");
                     elem_ov.setAttribute('id', 'tws_legend');
                     elem_ov.innerHTML = (

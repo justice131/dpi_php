@@ -338,7 +338,7 @@ and open the template in the editor.
                     });
                     
 
-                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Manning Catchment--Risk to ecosystem health'+'</span>';
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Manning Catchment--Risk to wetland not receiving enough water'+'</span>';
 
                     // control that shows state info on hover
                     info = L.control({position: 'topright'});

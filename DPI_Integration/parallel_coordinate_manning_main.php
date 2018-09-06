@@ -662,7 +662,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
-                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Manning Catchment--Drought security'+'</span>';
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Manning Catchment--Water risk due to drought'+'</span>';
                     parcoord_2.style.display = 'block';
                     grid.style.display = 'block';
                     // control that shows state info on hover

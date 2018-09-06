@@ -28,8 +28,8 @@ and open the template in the editor.
     } 
     
     #clear {
-        margin-left: 5px;
-        top: 20px;
+        margin-left: 10px;
+        top: 25px;
         font-family: "微软雅黑";
         font-size: 11px;
         padding: 1.5px;
@@ -40,7 +40,7 @@ and open the template in the editor.
         color: white;
         font-weight: bold;
         text-align: center;
-        border: 1px #1a1a1a solid;
+        border: 2px #1a1a1a solid;
         border-radius: 10px;
     }
     
@@ -220,9 +220,9 @@ and open the template in the editor.
     select{
         font-family: "微软雅黑";
         left: 0px;
-        top: 20px;
+        top: 25px;
         background: #6666ff;
-        width: 160px;
+/*        width: 160px;*/
         height: 35px;
         font-size: 11px;
         color: white;
@@ -231,7 +231,7 @@ and open the template in the editor.
         border: 2px #1a1a1a solid;
         border-radius: 10px;
     }
-    
+
     option{
         color: black;
         background: white;

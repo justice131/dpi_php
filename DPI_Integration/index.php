@@ -27,20 +27,20 @@ and open the template in the editor.
 		<div class="row">
 			<div class="box-container" style="width:16.5%; height:776px;" id="left_panel">
 				<table style="width:100%">
-<!--				  <tr>
+				  <tr>
 					<td>
 						<div>
 						  <div class="box-title">
 							<h4><b>Catchment Settings</b></h4>
 						  </div>
-						  <div class="box-content" style="height:210px;">
+						  <div class="box-content" style="height:200px;">
                                                     <table>
                                                         <tr>
                                                             <th>
                                                             <form action="../">
-                                                                <select name="selectCAT" id="selectCAT"  onchange='OnChange(this.form.selectCAT);' >
-                                                                <option value="default">------CATCHMENT------</option>
-                                                                <option value="MacquarieBogan">MacquarieBogan</option>
+                                                                <select name="selectCAT" id="selectCAT" style="width:135px" onchange='OnChange(this.form.selectCAT);' >
+                                                                <option value="default">-----CATCHMENT-----</option>
+                                                                <option value="MacquarieBogan">Macquarie</option>
                                                                 <option value="ManningRiver">Manning</option>
                                                                 </select>
                                                             </form>
@@ -54,14 +54,14 @@ and open the template in the editor.
  
 						</div>
 					</td>
-				  </tr>-->
+				  </tr>
 				  <tr>
                                     <td>
                                         <div>
                                           <div class="box-title">
                                                 <h4><b>Map Icon Legend</b></h4>
                                           </div>
-                                          <div class="box-content" style="height:776px;">
+                                          <div class="box-content" style="height:528px;">
                                                 <div id="rightdiv">
                                                     <div id="legend">
 <!--                                                        <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
@@ -378,24 +378,26 @@ and open the template in the editor.
                 });
             }
             
-//            function OnChange(){
-////            function OnChange(s){
-////                var myindex = dropdown.selectedIndex;
-////                var CATName = dropdown.options[myindex].value;
-////                var CATValue = getProperty(CATName);
-////                addCATLayer(CATName, CATValue);
-//                
-//                //Edited by justice
-//                var myselect=document.getElementById("selectCAT");
-//                var selectedIndex=myselect.selectedIndex;
-//                var selectValue=myselect.options[selectedIndex].value;
-//                if(selectValue==="MacquarieBogan"){
-//                    window.location.href = "index.php?catchment_name=MacquarieBogan";                  
-//                }else if(selectValue==="ManningRiver"){
-//                    window.location.href = "index.php?catchment_name=ManningRiver";
-//                }
-//                //Edited by justice
-//            }
+            function OnChange(){
+//            function OnChange(s){
+//                var myindex = dropdown.selectedIndex;
+//                var CATName = dropdown.options[myindex].value;
+//                var CATValue = getProperty(CATName);
+//                addCATLayer(CATName, CATValue);
+                
+                //Edited by justice
+                var myselect=document.getElementById("selectCAT");
+                var selectedIndex=myselect.selectedIndex;
+                var selectValue=myselect.options[selectedIndex].value;
+                if(selectValue==="MacquarieBogan"){
+                    window.location.href = "index.php?catchment_name=MacquarieBogan";                  
+                }else if(selectValue==="ManningRiver"){
+                    window.location.href = "index.php?catchment_name=ManningRiver";
+                }else if(selectValue==="default"){
+                    window.location.href = "index.php";
+                }
+                //Edited by justice
+            }
 
             function idsi_color(){
                 <?php if(!empty($row)){?>; 
@@ -466,24 +468,30 @@ and open the template in the editor.
             }
             
             function clearAllLayers(){
-                for (var i = 0; i < featureCATCollection.length; i++){     
-                    map.removeLayer(featureCATCollection[i]);
-                    if (checkbox_id !== null){
-                        checkbox_id.style.display = "none";
-                    }
-                }
-                //hover_info.style.visibility = 'hidden';
-                removeLayer(displayed_gis_layer_regulated);
-                removeLayer(displayed_gis_layer_unregulated);
-                removeLayer(displayed_gis_layer_groundwater);
-                removeLayer(displayed_gis_layer_workapproval);
-                removeLayer(displayed_gis_layer_approval);
-                document.getElementById('selectCAT').value = 'default';
-                map.removeControl(hover_info);
-                map.removeControl(legendinfo);
-                map.removeControl(controlSearch);
-                //controlSearch.remove(map);
-                link_to_parr.style.display = 'none';
+                window.location.href = "index.php";
+//                for (var i = 0; i < featureCATCollection.length; i++){     
+//                    map.removeLayer(featureCATCollection[i]);
+//                    if (checkbox_id !== null){
+//                        checkbox_id.style.display = "none";
+//                    }
+//                }
+//                //hover_info.style.visibility = 'hidden';
+//                removeLayer(displayed_gis_layer_regulated);
+//                removeLayer(displayed_gis_layer_unregulated);
+//                removeLayer(displayed_gis_layer_groundwater);
+//                removeLayer(displayed_gis_layer_workapproval);
+//                removeLayer(displayed_gis_layer_approval);
+//                document.getElementById('selectCAT').value = 'default';
+//                map.removeControl(hover_info);
+//                if (typeof legendinfo !== 'undefined') {
+//                        map.removeControl(legendinfo);
+//                }
+//                if (typeof controlSearch !== 'undefined') {
+//                        map.removeControl(controlSearch);
+//                }
+//                if (typeof link_to_parr !== 'undefined') {
+//                        link_to_parr.style.display = 'none';
+//                }                
             }
                        
             // find the middle point from geojason file
@@ -4022,7 +4030,7 @@ and open the template in the editor.
             
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-//                document.getElementById("selectCAT").value = catchment_name;
+                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }

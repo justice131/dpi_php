@@ -31,9 +31,10 @@ and open the template in the editor.
 					<td>
 						<div>
 						  <div class="box-title">
-							<h4><b>Catchment Settings</b></h4>
+							<h4><b>Catchment</b></h4>
 						  </div>
 						  <div class="box-content" style="height:200px;">
+                                                    <h5><b>Select a Catchment for More Information</b></h5>
                                                     <table>
                                                         <tr>
                                                             <th>

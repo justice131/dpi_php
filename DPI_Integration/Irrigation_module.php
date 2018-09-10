@@ -595,6 +595,18 @@ and open the template in the editor.
                 }, "").replace(/\,$/g, ""); 
                     return mask + temp + decimal; 
             }
+            
+            // read data of annual use of water
+             
+            
+            var man_water_use_agr=0;
+            d3.csv("data/FUI_man.csv", function (data) {
+                var keys = Object.keys(data[0]);
+                _.each(data, function (d, i) {
+                    d.index = d.index || i; //unique id
+                    man_water_use_agr = man_water_use_agr + d[keys[9]];
+                });
+            }); 
                                            
             //display regulated info for MacquarieBogan
             var displayed_gis_layer_regulated = [];          
@@ -4045,6 +4057,13 @@ and open the template in the editor.
                 }
             ?>
 
+            var max_row=0;//Get the row number of ranking file
+                d3.csv("data/FUI_mac.csv", function (data) {
+                    _.each(data, function (d, i) {
+                    max_row++;
+                    });
+                }); 
+
             hover_info.update = function (props) {
                 <?php if(!empty($row)){?>;
                     var pv_mac = 0;
@@ -4057,6 +4076,8 @@ and open the template in the editor.
                             pv_mac+=mac*pv;
                             pv_man+=man*pv;
                         <?php }?> 
+                            
+                    
 
                     var catch_name = "<?php echo $_GET['catchment_name']; ?>";  
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
@@ -4067,10 +4088,12 @@ and open the template in the editor.
                         var Total_area = area_sum_1(Macquarie_Crop);
                         var Employ = "<?php echo $em_macquarie; ?>"; 
                         var Pro_value = toThousands((Math.round(pv_mac)/1000000).toFixed(1));
+                        var Water_use = max_row;
                     }else if(catch_name === 'ManningRiver'){
                         var Total_area = area_sum_2(Manning_Crop);
                         var Employ = "<?php echo $em_manning; ?>";
                         var Pro_value = toThousands((Math.round(pv_man)/1000000).toFixed(1));
+                        var Water_use = man_water_use_agr;
                     }
 
                     this._div.innerHTML = (
@@ -4085,7 +4108,7 @@ and open the template in the editor.
                           '<p style=\"line-height:50%\"><img src=\"images/irrigation_area.png\" height=\"25\" width=\"25\"> Total Irrigated Areas: <b>' + toThousands(Math.round(Total_area*100)/100) + ' Ha' + '</b><br/><br />'+
                           '<img src=\"images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + Pro_value + ' $M</b><br/><br />'+
                           '<img src=\"images/irrigation_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + 0  + '</b><br/><br />'+
+                          '<img src=\"images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + Water_use + '</b><br/><br />'+
                           '<img src=\"images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + 0  + '</b><br/></p>'                          
                     );
                 <?php }?>;

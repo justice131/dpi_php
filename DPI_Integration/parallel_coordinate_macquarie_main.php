@@ -176,7 +176,7 @@ and open the template in the editor.
                                         <div class="box-title">
                                                 <h4><b>Parallel Coordinates</b></h4>                                                
                                         </div>
-                                        <div id="parcoord_1" class="parcoords"></div>
+                                    <div id="parcoord_1" class="parcoords" style="font-size:30px;"></div>
                                         <div id="parcoord_2" class="parcoords"></div>
                                         <div id="parcoord_3" class="parcoords"></div>
                                         <div id="parcoord_4" class="parcoords"></div>
@@ -198,7 +198,7 @@ and open the template in the editor.
 	</div>
         <div class="se-pre-con"></div>
         
-                <script type="text/javascript">
+        <script type="text/javascript">
             
             // Show preloader
             $(window).load(function() {
@@ -342,7 +342,7 @@ and open the template in the editor.
                             };
                     }
                     var max_row=0;//Get the row number of ranking file
-                        d3.csv("data/FUI_mac.csv", function (data) {
+                    d3.csv("data/FUI_mac.csv", function (data) {
                         _.each(data, function (d, i) {
                         max_row++;
 
@@ -397,7 +397,9 @@ and open the template in the editor.
                             lgas.features[j].properties.mining_value=0;
                             lgas.features[j].properties.employment_irrigation=0;
                             lgas.features[j].properties.employment_mining=0;
-                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.total_entitlement=0;
+                            lgas.features[j].properties.agricultural_water_use=0;
+                            lgas.features[j].properties.mining_water_use=0;
                             lgas.features[j].properties.wetland_area=0;
                             lgas.features[j].properties.dissolved_oxygen=0;
                             lgas.features[j].properties.mean_flow=0;
@@ -442,19 +444,21 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
                                     lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
                                     lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
-                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
-                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
-                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
-                                    lgaDict[water_source_name].properties.median=d[keys[12]];
-                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
-                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
-                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
-                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
-                                    lgaDict[water_source_name].properties.FUI_100=d[keys[19]];
-                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
+                                    lgaDict[water_source_name].properties.agricultural_water_use=d[keys[8]];
+                                    lgaDict[water_source_name].properties.mining_water_use=d[keys[9]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[10]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[11]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[12]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[13]];
+                                    lgaDict[water_source_name].properties.median=d[keys[14]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[15]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[16]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[17]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[19]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
+                                    lgaDict[water_source_name].properties.FUI_100=d[keys[21]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                                     lga.push(water_source_name);
                             });
 
@@ -705,7 +709,9 @@ and open the template in the editor.
                             lgas.features[j].properties.mining_value=0;
                             lgas.features[j].properties.employment_irrigation=0;
                             lgas.features[j].properties.employment_mining=0;
-                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.total_entitlement=0;
+                            lgas.features[j].properties.agricultural_water_use=0;
+                            lgas.features[j].properties.mining_water_use=0;
                             lgas.features[j].properties.wetland_area=0;
                             lgas.features[j].properties.dissolved_oxygen=0;
                             lgas.features[j].properties.mean_flow=0;
@@ -750,19 +756,21 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
                                     lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
                                     lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
-                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
-                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
-                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
-                                    lgaDict[water_source_name].properties.median=d[keys[12]];
-                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
-                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
-                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
-                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
-                                    lgaDict[water_source_name].properties.DSI_100=d[keys[19]];
-                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
+                                    lgaDict[water_source_name].properties.agricultural_water_use=d[keys[8]];
+                                    lgaDict[water_source_name].properties.mining_water_use=d[keys[9]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[10]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[11]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[12]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[13]];
+                                    lgaDict[water_source_name].properties.median=d[keys[14]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[15]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[16]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[17]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[19]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
+                                    lgaDict[water_source_name].properties.DSI_100=d[keys[21]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                                     lga.push(water_source_name);
                             });
 
@@ -1009,7 +1017,9 @@ and open the template in the editor.
                             lgas.features[j].properties.mining_value=0;
                             lgas.features[j].properties.employment_irrigation=0;
                             lgas.features[j].properties.employment_mining=0;
-                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.total_entitlement=0;
+                            lgas.features[j].properties.agricultural_water_use=0;
+                            lgas.features[j].properties.mining_water_use=0;
                             lgas.features[j].properties.wetland_area=0;
                             lgas.features[j].properties.dissolved_oxygen=0;
                             lgas.features[j].properties.mean_flow=0;
@@ -1054,19 +1064,21 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
                                     lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
                                     lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
-                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
-                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
-                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
-                                    lgaDict[water_source_name].properties.median=d[keys[12]];
-                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
-                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
-                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
-                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
-                                    lgaDict[water_source_name].properties.DSI_agriculture_production=d[keys[19]];
-                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
+                                    lgaDict[water_source_name].properties.agricultural_water_use=d[keys[8]];
+                                    lgaDict[water_source_name].properties.mining_water_use=d[keys[9]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[10]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[11]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[12]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[13]];
+                                    lgaDict[water_source_name].properties.median=d[keys[14]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[15]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[16]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[17]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[19]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
+                                    lgaDict[water_source_name].properties.DSI_agriculture_production=d[keys[21]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                                     lga.push(water_source_name);
                             });
 
@@ -1314,6 +1326,8 @@ and open the template in the editor.
                             lgas.features[j].properties.employment_irrigation=0;
                             lgas.features[j].properties.employment_mining=0;
                             lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.agricultural_water_use=0;
+                            lgas.features[j].properties.mining_water_use=0;
                             lgas.features[j].properties.wetland_area=0;
                             lgas.features[j].properties.dissolved_oxygen=0;
                             lgas.features[j].properties.mean_flow=0;
@@ -1358,19 +1372,21 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
                                     lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
                                     lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
-                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
-                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
-                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
-                                    lgaDict[water_source_name].properties.median=d[keys[12]];
-                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
-                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
-                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
-                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
-                                    lgaDict[water_source_name].properties.flood_risk=d[keys[19]];
-                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
+                                    lgaDict[water_source_name].properties.agricultural_water_use=d[keys[8]];
+                                    lgaDict[water_source_name].properties.mining_water_use=d[keys[9]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[10]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[11]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[12]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[13]];
+                                    lgaDict[water_source_name].properties.median=d[keys[14]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[15]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[16]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[17]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[19]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
+                                    lgaDict[water_source_name].properties.flood_risk=d[keys[21]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                                     lga.push(water_source_name);
                             });
 
@@ -1617,7 +1633,9 @@ and open the template in the editor.
                             lgas.features[j].properties.mining_value=0;
                             lgas.features[j].properties.employment_irrigation=0;
                             lgas.features[j].properties.employment_mining=0;
-                            lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.total_entitlement=0;
+                            lgas.features[j].properties.agricultural_water_use=0;
+                            lgas.features[j].properties.mining_water_use=0;
                             lgas.features[j].properties.wetland_area=0;
                             lgas.features[j].properties.dissolved_oxygen=0;
                             lgas.features[j].properties.mean_flow=0;
@@ -1662,19 +1680,21 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
                                     lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
                                     lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
-                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
-                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
-                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
-                                    lgaDict[water_source_name].properties.median=d[keys[12]];
-                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
-                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
-                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
-                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
-                                    lgaDict[water_source_name].properties.potential_infra=d[keys[19]];
-                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
+                                    lgaDict[water_source_name].properties.agricultural_water_use=d[keys[8]];
+                                    lgaDict[water_source_name].properties.mining_water_use=d[keys[9]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[10]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[11]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[12]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[13]];
+                                    lgaDict[water_source_name].properties.median=d[keys[14]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[15]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[16]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[17]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[19]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
+                                    lgaDict[water_source_name].properties.potential_infra=d[keys[21]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                                     lga.push(water_source_name);
                             });
 
@@ -1875,7 +1895,7 @@ and open the template in the editor.
                     
                     var checkBox = document.getElementById(id); 
                     if (checkBox.checked === true){
-                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Water related health risk due to poor ecosystem health (measured by oxygen level)'+'</span>';
+                    document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Water related health risk due to poor ecosystem health (measured by Dissolved Oxygen level)'+'</span>';
                     parcoord_6.style.display = 'block';
                     grid.style.display = 'block';
                     //control that shows state info on hover
@@ -1922,6 +1942,8 @@ and open the template in the editor.
                             lgas.features[j].properties.employment_irrigation=0;
                             lgas.features[j].properties.employment_mining=0;
                             lgas.features[j].properties.total_entitlement=0;	
+                            lgas.features[j].properties.agricultural_water_use=0;
+                            lgas.features[j].properties.mining_water_use=0;
                             lgas.features[j].properties.wetland_area=0;
                             lgas.features[j].properties.dissolved_oxygen=0;
                             lgas.features[j].properties.mean_flow=0;
@@ -1965,19 +1987,21 @@ and open the template in the editor.
                                     lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
                                     lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
                                     lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
-                                    lgaDict[water_source_name].properties.wetland_area=d[keys[8]];
-                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[9]];
-                                    lgaDict[water_source_name].properties.mean_flow=d[keys[10]];
-                                    lgaDict[water_source_name].properties.variation=d[keys[11]];
-                                    lgaDict[water_source_name].properties.median=d[keys[12]];
-                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[13]];
-                                    lgaDict[water_source_name].properties.DSI=d[keys[14]];
-                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[15]]);
-                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[16]];
-                                    lgaDict[water_source_name].properties.FUI=d[keys[17]];
-                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[18]];
-                                    lgaDict[water_source_name].properties.health_of_water_bodies=d[keys[19]];
-                                    lgaDict[water_source_name].properties.IndexRank=d[keys[20]];
+                                    lgaDict[water_source_name].properties.agricultural_water_use=d[keys[8]];
+                                    lgaDict[water_source_name].properties.mining_water_use=d[keys[9]];
+                                    lgaDict[water_source_name].properties.wetland_area=d[keys[10]];
+                                    lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[11]];
+                                    lgaDict[water_source_name].properties.mean_flow=d[keys[12]];
+                                    lgaDict[water_source_name].properties.variation=d[keys[13]];
+                                    lgaDict[water_source_name].properties.median=d[keys[14]];
+                                    lgaDict[water_source_name].properties.days_below_mean=d[keys[15]];
+                                    lgaDict[water_source_name].properties.DSI=d[keys[16]];
+                                    lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[17]]);
+                                    lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
+                                    lgaDict[water_source_name].properties.FUI=d[keys[19]];
+                                    lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
+                                    lgaDict[water_source_name].properties.health_of_water_bodies=d[keys[21]];
+                                    lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                                     lga.push(water_source_name);
                             });
 

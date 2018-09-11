@@ -209,11 +209,13 @@ and open the template in the editor.
 
             function resetHighlight(e) {
                     geojson.resetStyle(e.target);
-                    info.update();
+                    //info.update();
             }
 
             function zoomToFeature(e) {
-                    map.fitBounds(e.target.getBounds());
+                    var layer = e.target;
+                    info.update(layer.feature.properties);
+                    //map.fitBounds(e.target.getBounds());
             }
 
             function onEachFeature(feature, layer) {
@@ -248,7 +250,7 @@ and open the template in the editor.
                             layer.bringToFront();
                     }
 
-                    info.update(layer.feature.properties);
+                    //info.update(layer.feature.properties);
             }
             /*Function section*/
             

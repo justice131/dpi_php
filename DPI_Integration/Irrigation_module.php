@@ -10,9 +10,10 @@ and open the template in the editor.
         <?php include("Common_Script_Import.html"); ?>
         <script type="text/javascript" src="border/Macquarie_crop.geojson"></script>
         <script type="text/javascript" src="border/Manning_crop.geojson"></script>
+
         <style>
         .hover_info {
-            width: 330px;
+            width: 370px;
         }
         </style>
     </head>
@@ -596,17 +597,6 @@ and open the template in the editor.
                     return mask + temp + decimal; 
             }
             
-            // read data of annual use of water
-             
-            
-            var man_water_use_agr=0;
-            d3.csv("data/FUI_man.csv", function (data) {
-                var keys = Object.keys(data[0]);
-                _.each(data, function (d, i) {
-                    d.index = d.index || i; //unique id
-                    man_water_use_agr = man_water_use_agr + d[keys[9]];
-                });
-            }); 
                                            
             //display regulated info for MacquarieBogan
             var displayed_gis_layer_regulated = [];          
@@ -4052,18 +4042,21 @@ and open the template in the editor.
                         $m++;
                         $em_man[$m]= $row_3;
                     } 
+                    
+                    $sq_em_4 = "SELECT catchment, agriculture_water_use FROM water_use_for_each_watersource";                           
+                    $res_em_4 = $conn->query($sq_em_4);
+                    $em_water = Array();
+                    $m = -1;
+                    while ($row_4 = $res_em_4->fetch_assoc()){
+                        $m++;
+                        $em_water[$m]= $row_4;
+                    }
                 }else{
                     include 'db.helper/db_connection_ini.php';
                 }
             ?>
-
-            var max_row=0;//Get the row number of ranking file
-                d3.csv("data/FUI_mac.csv", function (data) {
-                    _.each(data, function (d, i) {
-                    max_row++;
-                    });
-                }); 
-
+            
+            
             hover_info.update = function (props) {
                 <?php if(!empty($row)){?>;
                     var pv_mac = 0;
@@ -4075,9 +4068,20 @@ and open the template in the editor.
                             pv = parseInt(pv.replace(/,/g, ''));
                             pv_mac+=mac*pv;
                             pv_man+=man*pv;
-                        <?php }?> 
+                        <?php }?>
                             
-                    
+                    var water_use_mac =0;
+                    var water_use_man =0;
+                        <?php for ($x=0; $x<count($em_water); $x++) {?>
+                            var cat ="<?php echo $em_water[$x]["catchment"]; ?>";
+                            var vol ="<?php echo $em_water[$x]["agriculture_water_use"]; ?>";
+                            if (cat==='Macquarie'){
+                                water_use_mac+=Number(vol);
+                            }
+                            if (cat==='Manning'){
+                                water_use_man+=Number(vol);
+                            }
+                        <?php }?>                              
 
                     var catch_name = "<?php echo $_GET['catchment_name']; ?>";  
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
@@ -4088,12 +4092,12 @@ and open the template in the editor.
                         var Total_area = area_sum_1(Macquarie_Crop);
                         var Employ = "<?php echo $em_macquarie; ?>"; 
                         var Pro_value = toThousands((Math.round(pv_mac)/1000000).toFixed(1));
-                        var Water_use = max_row;
+                        var Water_use = water_use_mac;
                     }else if(catch_name === 'ManningRiver'){
                         var Total_area = area_sum_2(Manning_Crop);
                         var Employ = "<?php echo $em_manning; ?>";
                         var Pro_value = toThousands((Math.round(pv_man)/1000000).toFixed(1));
-                        var Water_use = man_water_use_agr;
+                        var Water_use = water_use_man;
                     }
 
                     this._div.innerHTML = (
@@ -4106,10 +4110,10 @@ and open the template in the editor.
 //                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
                           '<b>' + 'Irrigation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
                           '<p style=\"line-height:50%\"><img src=\"images/irrigation_area.png\" height=\"25\" width=\"25\"> Total Irrigated Areas: <b>' + toThousands(Math.round(Total_area*100)/100) + ' Ha' + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + Pro_value + ' $M</b><br/><br />'+
+                          '<img src=\"images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + Math.round(Pro_value*10)/10 + ' $M</b><br/><br />'+
                           '<img src=\"images/irrigation_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + Water_use + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + 0  + '</b><br/></p>'                          
+                          '<img src=\"images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Water_use)) + ' ML </b><br/><br />'+
+                          '<img src=\"images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + toThousands(Math.round(Pro_value*1000000/Water_use))  + ' $/ML </b><br/></p>'                          
                     );
                 <?php }?>;
             };

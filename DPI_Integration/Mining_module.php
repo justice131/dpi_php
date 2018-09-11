@@ -12,7 +12,7 @@ and open the template in the editor.
         <script type="text/javascript" src="border/Manning_Mining.geojson"></script>
         <style>
         .hover_info {
-            width: 300px;
+            width: 375px;
         }
         </style>
     </head>
@@ -4022,6 +4022,15 @@ and open the template in the editor.
                         $em_mine_mac += $row_3['proportion_in_macquarie_catchment']*$row_3['mining_production'];
                         $em_mine_man += $row_3['proportion_in_manning_catchment']*$row_3['mining_production'];
                     } 
+                    
+                    $sq_em_4 = "SELECT catchment, mining_water_use FROM water_use_for_each_watersource";                           
+                    $res_em_4 = $conn->query($sq_em_4);
+                    $em_water = Array();
+                    $m = -1;
+                    while ($row_4 = $res_em_4->fetch_assoc()){
+                        $m++;
+                        $em_water[$m]= $row_4;
+                    }
                 }else{
                     include 'db.helper/db_connection_ini.php';
                 }
@@ -4029,6 +4038,19 @@ and open the template in the editor.
                      
             hover_info.update = function (props) {
                 <?php if(!empty($row)){?>;
+                    var water_use_mac =0;
+                    var water_use_man =0;
+                        <?php for ($x=0; $x<count($em_water); $x++) {?>
+                            var cat ="<?php echo $em_water[$x]["catchment"]; ?>";
+                            var vol ="<?php echo $em_water[$x]["mining_water_use"]; ?>";
+                            if (cat==='Macquarie'){
+                                water_use_mac+=Number(vol);
+                            }
+                            if (cat==='Manning'){
+                                water_use_man+=Number(vol);
+                            }
+                        <?php }?>  
+                            
                     var catch_name = "<?php echo $_GET['catchment_name']; ?>";  
                     var overall_idsi = "<?php echo $row["overall_idsi"]; ?>";
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
@@ -4040,10 +4062,12 @@ and open the template in the editor.
                         var Total_no_mine = mine_sum(Macquarie_Mining);
                         var Employ = "<?php echo $em_macquarie; ?>"; 
                         var Prop = "<?php echo $em_mine_mac; ?>"; 
+                        var Water_use = water_use_mac;
                     }else if(catch_name === 'ManningRiver'){
                         var Total_no_mine = mine_sum(Manning_Mining);
                         var Employ = "<?php echo $em_manning; ?>";
                         var Prop = "<?php echo $em_mine_man; ?>"; 
+                        var Water_use = water_use_man;
                     }
                     this._div.innerHTML = (
 //                        props?
@@ -4057,8 +4081,8 @@ and open the template in the editor.
                           '<p style=\"line-height:50%\"><img src=\"images/mining_number.png\" height=\"25\" width=\"25\"> Total Number of Mines: <b>' + toThousands(Total_no_mine) + '</b><br/><br />'+
                           '<img src=\"images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + toThousands(Math.round(Prop*10)/10)  + ' $M</b><br/><br />'+
                           '<img src=\"images/mining_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
-                          '<img src=\"images/mining_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + 0  + '</b><br/><br />'+
-                          '<img src=\"images/mining_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + 0  + '</b><br/></p>'   
+                          '<img src=\"images/mining_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Water_use))  + ' ML</b><br/><br />'+
+                          '<img src=\"images/mining_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + Math.round(Prop/Water_use*100)/100  + ' $M/ML</b><br/></p>'   
                     );
                 <?php }?>;
             };

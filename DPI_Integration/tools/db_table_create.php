@@ -334,3 +334,12 @@ $sql = "CREATE TABLE IF NOT EXISTS ground_water( ".
     "PRIMARY KEY (water_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
 mysqli_query($conn,$sql);
 
+//Create water_use_for_each_watersource
+$sql = "CREATE TABLE IF NOT EXISTS water_use_for_each_watersource( ".
+    "id INT NOT NULL AUTO_INCREMENT, ".
+    "catchment VARCHAR(100), ".
+    "watersource VARCHAR(500), ".
+    "agriculture_water_use FLOAT, ".
+    "mining_water_use FLOAT,".
+    "PRIMARY KEY (id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
+mysqli_query($conn,$sql);

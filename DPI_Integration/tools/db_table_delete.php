@@ -43,6 +43,8 @@
         $sql = "truncate table waste_water_treatment_centre;";
     }else if ($table_name == "ground_water"){
         $sql = "truncate table ground_water;";
+    }else if ($table_name == "water_use_for_each_watersource"){
+        $sql = "truncate table water_use_for_each_watersource;";
     }
     $retval = mysqli_query($conn,$sql);
     if(! $retval ){

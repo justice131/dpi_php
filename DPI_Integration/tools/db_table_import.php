@@ -529,6 +529,30 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
                     mysqli_query($conn,$sql);   
                 }
             }
+        }else if ($table_name == "water_use_for_each_watersource"){
+            $sql = "truncate table water_use_for_each_watersource;";
+            mysqli_query($conn,$sql);
+            $col_num_s = 4;
+            $col_num = count($data[0]);
+            if($col_num_s!=$col_num){
+                echo "File format not valid";
+                return;
+            }
+            for($i=1;$i<$row_num;$i++){
+                $col_num = count($data[$i]);
+                if($col_num_s==$col_num){
+                    $sql="insert delayed into water_use_for_each_watersource("
+                        ."catchment,"
+                        ."watersource,"
+                        ."agriculture_water_use,"
+                        . "mining_water_use)values("
+                            . "\"".$data[$i][0]."\","
+                            . "\"".$data[$i][1]."\","
+                            . "\"".$data[$i][2]."\","
+                            . "\"".$data[$i][3]."\");";
+                    mysqli_query($conn,$sql);   
+                }
+            }
         }else{
             echo "Error in table name";
             return;

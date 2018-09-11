@@ -1133,20 +1133,20 @@ and open the template in the editor.
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
                                 switch(feature.properties.OBJECTID){
-                                    case 1: return { color: "rgb(0, 0, 125)", weight: 2}; break;
-                                    case 2: return { color: "rgb(255, 125, 0)", weight: 2}; break;
-                                    case 3: return { color: "rgb(255, 255, 0)", weight: 2}; break;
-                                    case 4: return { color: "rgb(0, 0, 0)", weight: 2}; break;
-                                    case 5: return { color: "rgb(125, 0, 0)", weight: 2}; break;
-                                    case 6: return { color: "rgb(255, 0, 125)", weight: 2}; break;
-                                    case 7: return { color: "rgb(255, 0, 255)", weight: 2}; break;
-                                    case 8: return { color: "rgb(125, 0, 125)", weight: 2}; break;
-                                    case 9: return { color: "rgb(0, 125, 0)", weight: 2}; break;
-                                    case 10: return { color: "rgb(0, 255, 0)", weight: 2}; break;
-                                    case 11: return { color: "rgb(0, 0, 255)", weight: 2}; break;
-                                    case 12: return { color: "rgb(255, 0, 0)", weight: 2}; break;
-                                    case 13: return { color: "rgb(0, 255, 125)", weight: 2}; break;
-                                    case 14: return { color: "rgb(0, 255, 255)", weight: 2}; break;
+                                    case 1: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 2: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 3: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 4: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 5: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 6: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 7: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 8: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 9: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 10: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 11: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 12: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 13: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 14: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
                                }}
                     }).addTo(map);
                     displayed_gis_layer_regulated.push(Reg);
@@ -1274,7 +1274,7 @@ and open the template in the editor.
                     }).addTo(map);
                     var Reg_1 = L.geoJSON(geojsonfile_1, {
                         style: function (feature) {
-                            return { color: 'blue', weight: 0.7, fillOpacity: 0.8};
+                            return { color: 'lightblue', weight: 1, fillOpacity: 0.9};
                         }
                     }).addTo(map);                    
                     displayed_gis_layer_unregulated.push(Reg);  
@@ -3571,13 +3571,13 @@ and open the template in the editor.
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: 'white', fillColor: '#888888', weight: 0.6, fillOpacity: 0.3, dashArray: '3'};
+                            return { color: 'white', fillColor: '#88888', weight: 0.6, fillOpacity: 0.3, dashArray: '3'};
                         }
                     }).addTo(map);
                     
                     var Reg_1 = L.geoJSON(geojsonfile_1, {
                         style: function (feature) {
-                            return { color: 'blue', weight: 0.7, fillOpacity: 0.8};
+                            return { color: 'lightblue', weight: 1, fillOpacity: 0.9};
                         }
                     }).addTo(map);
                     

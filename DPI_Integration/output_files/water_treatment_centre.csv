@@ -1,0 +1,8 @@
+wtc_id,wtc_name,belong_catchment_id,served_towns,served_population,annual_water_use,health_based_target_index,waste_water_quality_index,water_supply_deficiency_index,
+1,River_Mac1,1,11,111,2.11,3.11,4.11,5.11,
+2,River_Mac2,1,12,112,2.12,3.12,4.12,5.12,
+3,River_Mac3,1,13,113,2.13,3.13,4.13,5.13,
+4,River_Mac4,1,14,114,2.14,3.14,4.14,5.14,
+5,River_Man1,2,21,121,2.21,3.21,4.21,5.21,
+6,River_Man2,2,22,122,2.22,3.22,4.22,5.22,
+7,River_Man3,2,23,123,2.23,3.23,4.23,5.23,

@@ -25,6 +25,7 @@
                 <input id="file-3" type="file" onchange="import_data(this.files);">
             </div>
             <button type="button" class="btn btn-info btn-lg" onclick="delete_table();"><i class="layui-icon">&#xe640;</i>Delete Table</button>
+            <button type="button" class="btn btn-info btn-lg" onclick="download_table();"><i class="layui-icon">&#xe601;&nbsp;</i>Download</button>
             <table class="layui-table">
                 <thead>
                     <tr>
@@ -75,6 +76,7 @@
                     xhttp.send();
                 }
             }
+            
             function import_data(files){
                 var file = files[0];      
                 form = new FormData();
@@ -88,6 +90,21 @@
                 };
                 req.open("POST", 'tools/db_table_import.php?table_name=management_zone_indices', true);
                 req.send(form);
+            }
+            
+            function download_table(){
+                var req = new XMLHttpRequest();
+                req.onreadystatechange = function() {
+                    if(req.readyState === 4 && req.status === 200) {
+                        if(this.responseText=="1"){
+                            window.open("output_files/management_zone_indices.csv");
+                        }else{
+                            alert("Fail to output the table.");
+                        }
+                    }
+                };
+                req.open("POST", 'tools/db_table_output.php?table_name=management_zone_indices', true);
+                req.send();
             }
         </script>            
     </body>

@@ -1,0 +1,8 @@
+river_id,belong_catchment_id,river_name,river_type,lt_annual_extraction_limit,license_category_1,license_category_2,fui,idsi,
+1,1,River_Mac1,Regulated,1.11,2.11,3.11,4.11,5.11,
+2,1,River_Mac2,Regulated,1.12,2.12,3.12,4.12,5.12,
+3,1,River_Mac3,Unregulated,1.13,2.13,3.13,4.13,5.13,
+4,1,River_Mac4,Unregulated,1.14,2.14,3.14,4.14,5.14,
+5,2,River_Man1,Regulated,1.21,2.21,3.21,4.21,5.21,
+6,2,River_Man2,Regulated,1.22,2.22,3.22,4.22,5.22,
+7,3,River_Man3,Unregulated,1.23,2.23,3.23,4.23,5.23,

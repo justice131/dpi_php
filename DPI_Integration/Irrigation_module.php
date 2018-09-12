@@ -341,24 +341,24 @@ and open the template in the editor.
             }); 
 
             var Icon_reg = L.icon({
-                iconUrl: 'lib/leaflet/images/reg.png',
-                iconSize:     [16, 27], 
-                iconAnchor:   [8, 27],  
-                popupAnchor:  [0, -34] 
+                iconUrl: 'lib/leaflet/images/R.png',
+                iconSize:     [17, 18.2], 
+                iconAnchor:   [8.5, 9.1],  
+                popupAnchor:  [0, -10] 
             });
             
             var Icon_unreg = L.icon({
-                iconUrl: 'lib/leaflet/images/unreg.png',
-                iconSize:     [16, 27], 
-                iconAnchor:   [8, 27],  
-                popupAnchor:  [0, -34] 
+                iconUrl: 'lib/leaflet/images/U.png',
+                iconSize:     [17, 18.2], 
+                iconAnchor:   [8.5, 9.1],  
+                popupAnchor:  [0, -10] 
             });
             
             var Icon_gw = L.icon({
-                iconUrl: 'lib/leaflet/images/gw.png',
-                iconSize:     [16, 27], 
-                iconAnchor:   [8, 27],  
-                popupAnchor:  [0, -34] 
+                iconUrl: 'lib/leaflet/images/G.png',
+                iconSize:     [17, 18.2], 
+                iconAnchor:   [8.5, 9.1],  
+                popupAnchor:  [0, -10] 
             });
             
             function inside (point, vs) {
@@ -606,7 +606,7 @@ and open the template in the editor.
                 // display legend for reg river
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'reg_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>');
+                elem.innerHTML = ('<img src="lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
                 
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
@@ -720,7 +720,7 @@ and open the template in the editor.
                 link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unegulated river<br>');
+                elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unegulated river<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     // display link icon
@@ -2423,7 +2423,7 @@ and open the template in the editor.
                 var geojsonfile = MacquarieBogan_GW;
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater');
+                elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
@@ -2722,7 +2722,7 @@ and open the template in the editor.
             function show_gis_Manning_unregulated(id){
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+                elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
 
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
@@ -3669,7 +3669,7 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
 
                 var geojsonfile = Manning_Groundwater;
                 if (checkBox.checked === true){

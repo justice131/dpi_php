@@ -117,7 +117,7 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Unregulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_unregulated('Unregulated-CAT-MacquarieBogan')"> <font size="2">Unregulated </font></br>   
                                                 <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   
                                                 <input type="checkbox" id="Work-approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_workapprovals('Work-approvals-CAT-MacquarieBogan')"> <font size="2">License </font></br>
-                                                <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_approvals('Approvals-CAT-MacquarieBogan')"> <font size="2">Work approvals </font>
+                                                <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="aa()"> <font size="2">Work approvals </font>
                                         </div>
         
                                         <div id="ManningRiver">
@@ -135,6 +135,7 @@ and open the template in the editor.
                                         <div id="link_to_parallel_coordinate_manning" class="link_to_parallel">
                                             <a href="parallel_coordinate_manning_irrigation.php" target="_blank">Insight</a>
                                         </div>
+                                        <div id="container"></div>
                                 </div>
 			</div>
 		</div>
@@ -360,6 +361,57 @@ and open the template in the editor.
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
+            
+            function set_bar(){
+            bar = new ProgressBar.Circle(container, {
+                color: 'black',
+                trailColor: '#eee',
+                // This has to be the same size as the maximum width to
+                // prevent clipping
+                strokeWidth: 40,
+                trailWidth: 1,
+                easing: 'easeInOut',
+                duration: 2800,
+                text: {
+                  autoStyleContainer: false
+                },
+                from: { color: '#FFEA82', width: 1 },
+                to: { color: '#ED6A5A', width: 4 },
+                // Set default step function for all animate calls
+                step: function(state, circle) {
+                  circle.path.setAttribute('stroke', state.color);
+                  circle.path.setAttribute('stroke-width', state.width);
+
+                  var value = Math.round(circle.value() * 100);
+                  if (value === 0) {
+                    circle.setText('');
+                  } else {
+                    circle.setText(value);
+                  }
+
+                }
+              });
+              bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
+              bar.text.style.fontSize = '2rem';
+            }
+            
+            function grm(){
+                var a = Math.floor(Math.random() * 501)+1500; 
+                return a;
+            }
+            
+            function aa() {
+                if (document.getElementById('Approvals-CAT-MacquarieBogan').checked === true){
+                    set_bar();
+                    container.style.display='block';
+                    bar.animate(1.0);
+                }
+                setTimeout(function(){                  
+                    show_gis_MacquarieBogan_approvals('Approvals-CAT-MacquarieBogan');
+                    container.style.display='none';
+                },grm()
+                );
+            }
             
             function inside (point, vs) {
                 var x = point[0], y = point[1];
@@ -2702,6 +2754,7 @@ and open the template in the editor.
                     }
                 }
                 if (checkBox.checked === false){
+                    bar.destroy();
                     removeLayer(displayed_gis_layer_approval);
                     var elementToBeRemoved = document.getElementById('appro_mac');
                     document.getElementById('legend').removeChild(elementToBeRemoved);

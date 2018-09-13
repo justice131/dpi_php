@@ -285,3 +285,12 @@ and open the template in the editor.
         margin-bottom: 0;
         height: 48px;
     }
+    
+    #container {
+        top: 370px;
+        left: 610px;
+        width: 90px;
+        height: 90px;
+        position: absolute;
+        display: none;
+    }

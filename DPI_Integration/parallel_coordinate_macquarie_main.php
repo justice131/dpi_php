@@ -36,12 +36,8 @@ and open the template in the editor.
             .row{
                 width: 6000px;
                 height: 100%;
-            }           
-            #paracoord {
-                position: relative;
-                width: 100%;
-                height: 740px;
-	    }
+            }  
+            
             #grid {
                 position: relative;
                 width: 100%;
@@ -118,21 +114,21 @@ and open the template in the editor.
                 padding-right: 100px;
                 font: 10px sans-serif;
             }
-                .title {
-        -moz-border-bottom-colors: none;
-        -moz-border-left-colors: none;
-        -moz-border-right-colors: none;
-        -moz-border-top-colors: none;
-        background-color: #ffffff;
-        border-color: #e7eaec;
-        border-image: none;
-        border-style: solid solid none;
-        border-width: 4px 0px 0;
-        color: inherit;
-        margin-bottom: 0;
-        padding: 14px 15px 7px;
-        height: 48px;
-}
+            .title {
+                -moz-border-bottom-colors: none;
+                -moz-border-left-colors: none;
+                -moz-border-right-colors: none;
+                -moz-border-top-colors: none;
+                background-color: #ffffff;
+                border-color: #e7eaec;
+                border-image: none;
+                border-style: solid solid none;
+                border-width: 4px 0px 0;
+                color: inherit;
+                margin-bottom: 0;
+                padding: 14px 15px 7px;
+                height: 48px;
+            }
         </style>
     </head>
     <body style="background-color:#F3F3F4;">
@@ -176,7 +172,7 @@ and open the template in the editor.
                                         <div class="box-title">
                                                 <h4><b>Parallel Coordinates</b></h4>                                                
                                         </div>
-                                    <div id="parcoord_1" class="parcoords" style="font-size:30px;"></div>
+                                        <div id="parcoord_1" class="parcoords"></div>
                                         <div id="parcoord_2" class="parcoords"></div>
                                         <div id="parcoord_3" class="parcoords"></div>
                                         <div id="parcoord_4" class="parcoords"></div>
@@ -431,7 +427,6 @@ and open the template in the editor.
                                     bottom: 15
                             })
                             .color(function (d) { return getColorScalar(d.IndexRank) });
-
 
                     //Read data for parallel coordinate
                     d3.csv("data/FUI_mac.csv", function (data) {

@@ -1,14 +1,14 @@
 .parcoords > svg {
-	font: 12px/normal sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
+	font: 14px/normal sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
 }
 .parcoords > canvas {
-	font: 12px/normal sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
+	font: 14px/normal sans-serif; position: absolute; font-size-adjust: none; font-stretch: normal;
 }
 .parcoords > canvas {
 	pointer-events: none;
 }
 .parcoords text.label {
-	cursor: default;
+	cursor: default;       
 }
 .parcoords rect.background {
 	fill: transparent;
@@ -24,9 +24,11 @@
 }
 .parcoords .axis line {
 	fill: none; stroke: #222; shape-rendering: crispEdges;
+        
 }
 .parcoords .axis path {
 	fill: none; stroke: #222; shape-rendering: crispEdges;
+        
 }
 .parcoords canvas {
 	opacity: 1; -webkit-transition: opacity 0.3s; -moz-transition: opacity 0.3s; -o-transition: opacity 0.3s;

@@ -358,11 +358,11 @@ and open the template in the editor.
            // add by justice 2018.08.24
             var macquaireIcon = L.icon({
                 iconUrl: 'images/index_icons/macquaire.png',
-                iconSize: [45, 45]
+                iconSize: [70, 70]
             });
             var manningIcon = L.icon({
                 iconUrl: 'images/index_icons/manning.png',
-                iconSize: [45, 45]
+                iconSize: [70, 70]
             });
             var macquaireIndexIcon = L.marker([-32.2319, 147.8097], {icon: macquaireIcon});
             var mannningIndexIcon = L.marker([-31.7304, 151.8925], {icon: manningIcon});
@@ -630,9 +630,9 @@ and open the template in the editor.
                                     case 8: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
                                     case 9: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
                                     case 10: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
-                                    case 11: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 11: return { fillColor: "darkblue", weight: 2, fillOpacity: 1}; break;
                                     case 12: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
-                                    case 13: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
+                                    case 13: return { fillColor: "darkblue", weight: 2, fillOpacity: 1}; break;
                                     case 14: return { color: "lightblue", weight: 2, fillOpacity: 1}; break;
                                }}
                     }).addTo(map);

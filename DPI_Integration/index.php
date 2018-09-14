@@ -4022,8 +4022,12 @@ and open the template in the editor.
                 hover_info.update();
             }
             
-            function zoomToFeature(e) {
-                map.fitBounds(e.target.getBounds());
+            function zoomToFeature(e) { 
+                if (e.target.feature.properties.MAJOR_CATC === "MACQUARIE"){
+                    map.setView([-31.8, 148.5], 8);
+                }if (e.target.feature.properties.MAJOR_CATC === "MANNING RIVER"){
+                    map.setView([-31.75, 151.9],10);
+                }
             }
             
             var hover_info = L.control();

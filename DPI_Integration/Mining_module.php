@@ -478,8 +478,8 @@ and open the template in the editor.
                         style: function (feature) {
                                 return { color: 'red', weight: 0.3};
                         },
-                        onEachFeature: onEachFeature,
-                        interactive: false
+                        onEachFeature: onEachFeature
+//                        interactive: false
                         }).addTo(map);
                 if(CATName === 'MacquarieBogan'){
                     Mining = L.geoJSON(Macquarie_Mining, {
@@ -4004,8 +4004,8 @@ and open the template in the editor.
             // display information of each catchment
             function onEachFeature(feature, layer) {
                 layer.on({
-                    mouseover: highlightFeature,
-                    mouseout: resetHighlight,
+//                    mouseover: highlightFeature,
+//                    mouseout: resetHighlight,
                     click: zoomToFeature
                 });
             }
@@ -4030,8 +4030,12 @@ and open the template in the editor.
                 hover_info.update();
             }
             
-            function zoomToFeature(e) {
-                map.fitBounds(e.target.getBounds());
+            function zoomToFeature(e) { 
+                if (e.target.feature.properties.MAJOR_CATC === "MACQUARIE"){
+                    map.setView([-31.8, 148.5], 8);
+                }if (e.target.feature.properties.MAJOR_CATC === "MANNING RIVER"){
+                    map.setView([-31.75, 151.9],10);
+                }
             }
             
             function mine_sum(Crop){

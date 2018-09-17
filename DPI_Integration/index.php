@@ -370,7 +370,13 @@ and open the template in the editor.
             var ylegend = L.control({position: 'bottomright'});
             ylegend.onAdd = function (map) {
                     var div = L.DomUtil.create('div', 'ylegend');
-                    div.innerHTML +="<img src=\"images/index_icons/legend.png\" width=\"217px\" height=\"350px\"/>";
+                    div.innerHTML +="<img src=\"images/index_icons/legend.png\" width=\"136px\" height=\"100px\"/>";
+//                    var div = L.DomUtil.create('div', 'info legend'),
+//                    labels = [];
+//                    labels.push('<i style="background:#ff3333">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> &nbsp;<h5>Low</h5>');
+//                    labels.push('<i style="background:#FFFF00"></i> <h5>Medium</h5>');
+//                    labels.push('<i style="background:#33ff33"></i> <h5>High</h5>');
+//                    div.innerHTML = '<div class="clear" ><h4>Levels</h4>' + labels.join('<br>') + '</div>';
                     return div;
             };
 //            ylegend.addTo(map);

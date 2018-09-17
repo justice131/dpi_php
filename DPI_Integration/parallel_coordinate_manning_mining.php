@@ -372,7 +372,7 @@ and open the template in the editor.
 //                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'Risk to Mining Productivity Index: ' + '<b>'+ Math.round(props.DSI_mine_production*1000)/1000 + '</b>'+'<br />'
-                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                                    : '<b>'+ 'Click a Water Source'+'</b>');
                     };
                     info.addTo(map);
 

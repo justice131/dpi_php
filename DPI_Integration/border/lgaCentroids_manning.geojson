@@ -1,4 +1,4 @@
-var lgaCentroids_manning = { "type": "FeatureCollection", "features": [
+var lgaCentroids_man = { "type": "FeatureCollection", "features": [
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.143427378748, -31.91465695902955 ] }, "properties": { "name": "UPPER HUNTER", "id": "17620" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 152.5313604613461, -31.40983099458825 ] }, "properties": { "name": "PORT MACQUARIE-HASTINGS", "id": "16380" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.608279151428, -32.34956945071959 ] }, "properties": { "name": "DUNGOG", "id": "12700" } },

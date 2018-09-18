@@ -1,4 +1,4 @@
-{
+var lga_man = {
 "type": "FeatureCollection",
 "name": "lga_manning",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::4283" } },

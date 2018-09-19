@@ -189,9 +189,15 @@ and open the template in the editor.
             var elem_ov = document.createElement("div");
             elem_ov.setAttribute('id', 'mine_legend');
             elem_ov.innerHTML = (
-                    '<img src="images/mineral.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Mineral<br>'+
-                    '<img src="images/petroleum.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Petroleum<br>'+
-                    '<img src="images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coal<div style="height:2px;"><br></div'
+                    '<img src="images/mineral_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (exploring)<br>'+
+                    '<img src="images/mineral_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (mining)<br>'+
+                    '<img src="images/mineral_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (assessment)<br>'+
+                    '<img src="images/petrol_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (exploring)<br>'+
+                    '<img src="images/petrol_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (mining)<br>'+
+                    '<img src="images/petrol_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (assessment)<br>'+
+                    '<img src="images/coal_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (exploring)<br>'+
+                    '<img src="images/coal_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (mining)<br>'+
+                    '<img src="images/coal_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (assessment)<div style="height:2px;"><br></div'
                     );
             document.getElementById("legend").appendChild(elem_ov);
 
@@ -205,7 +211,7 @@ and open the template in the editor.
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'mapbox.outdoors',
+			id: 'mapbox.outdoors'
 		}).addTo(map);
 
             var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {
@@ -459,6 +465,37 @@ and open the template in the editor.
                 }
             }
             
+            // custom stript
+            function getstript(Color_crop, operation){
+                var Stript_1 = new L.StripePattern({
+                    angle: 45,
+                    color:getColor(Color_crop)
+                });
+                Stript_1.addTo(map);
+                
+                var Stript_2 = new L.StripePattern({
+                    angle: 0,
+                    color:getColor(Color_crop)
+                });
+                Stript_2.addTo(map);
+                
+                var Stript_3 = new L.StripePattern({
+                    angle: -45,
+                    color:getColor(Color_crop)
+                });
+                Stript_3.addTo(map);
+                
+                if (operation==="EXPLORING"){
+                    return Stript_1;
+                }
+                if (operation==="MINING"){
+                    return Stript_2;
+                }
+                if (operation==="ASSESSMENT"){
+                    return Stript_3;
+                }
+            }
+            
             var featureCATCollection = []; 
             var check_collection = [];
             function addCATLayer(CATName, CATValue){
@@ -487,7 +524,7 @@ and open the template in the editor.
                          //       return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};                               
                        // },
                         onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color: getColor(feature.properties.RESOURCE), weight: 1.0, fillOpacity: 0.8});
+                            layer.setStyle({color: getColor(feature.properties.RESOURCE), weight: 3.0, fillOpacity: 0.8, fillPattern: getstript(feature.properties.RESOURCE, feature.properties.OPERATION)});
                             return layer.bindPopup('Title Code: ' + feature.properties.TITLE_CODE + '<br/>' 
                                     + 'Title No: ' + feature.properties.TITLE_NO + '<br/>' 
                                     + 'Activate Year: ' + feature.properties.ACT_YEAR + '<br/>'
@@ -509,7 +546,7 @@ and open the template in the editor.
                         //        return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};
                         //},
                         onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color: getColor(feature.properties.RESOURCE), weight: 1.0, fillOpacity: 0.8});
+                            layer.setStyle({color: getColor(feature.properties.RESOURCE), weight: 3.0, fillOpacity: 0.8, fillPattern: getstript(feature.properties.RESOURCE, feature.properties.OPERATION)});
                             return layer.bindPopup('Title Code: ' + feature.properties.TITLE_CODE + '<br/>' 
                                     + 'Title No: ' + feature.properties.TITLE_NO + '<br/>' 
                                     + 'Activate Year: ' + feature.properties.ACT_YEAR + '<br/>'

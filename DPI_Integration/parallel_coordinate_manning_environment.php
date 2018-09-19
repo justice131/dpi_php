@@ -370,7 +370,7 @@ and open the template in the editor.
 //                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'Ecosystem Risk Index: ' + '<b>'+ Math.round(props.status_of_ecosystem_population*100)/100 + '</b>'+'<br />'
-                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                                    : '<b>'+ 'Click a Water Source'+'</b>');
                     };
                     info.addTo(map);
 

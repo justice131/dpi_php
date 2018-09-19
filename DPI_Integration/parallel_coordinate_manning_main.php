@@ -382,7 +382,7 @@ and open the template in the editor.
                                             'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'FAI(1-FUI): ' + '<b>'+ Math.round(props.FUI_100*100)/100 + '</b>'+'<br />'
-                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                                    : '<b>'+ 'Click a Water Source'+'</b>');
                     };
                     info.addTo(map);
 
@@ -696,7 +696,7 @@ and open the template in the editor.
                                             'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'Drought Security Index: ' + '<b>'+ Math.round(props.DSI_100*100)/100 + '</b>'+'<br />'
-                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                                    : '<b>'+ 'Click a Water Source'+'</b>');
                     };
                     info.addTo(map);
 
@@ -1010,7 +1010,7 @@ and open the template in the editor.
                                             'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'Risk to Agricultural Productivity Index: ' + '<b>'+ Math.round(props.DSI_agriculture_production*100)/100 + '</b>'+'<br />'
-                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                                    : '<b>'+ 'Click a Water Source'+'</b>');
                     };
                     info.addTo(map);
 
@@ -1323,7 +1323,7 @@ and open the template in the editor.
                                             'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                             'Flood Risk: ' + '<b>'+ Math.round(props.flood_risk*100*10)/10 + ' %</b>'+'<br />'
-                                    : '<b>'+ 'Hover over a Water Source'+'</b>');
+                                    : '<b>'+ 'Click a Water Source'+'</b>');
                     };
                     info.addTo(map);
 

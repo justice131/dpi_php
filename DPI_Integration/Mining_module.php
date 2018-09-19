@@ -211,7 +211,7 @@ and open the template in the editor.
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'mapbox.outdoors',
+			id: 'mapbox.outdoors'
 		}).addTo(map);
 
             var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {

@@ -61,13 +61,13 @@
                               <dd class="">
                                     <dd class="">
                                         <a href="javascript:;" _href="Water_Treatment_Centre.php">
-                                           <cite>Water_Treatment_Centre</cite>
+                                           <cite>Water Treatment Centre</cite>
                                         </a>
                               </dd>
                               <dd class="">
                                     <dd class="">
                                         <a href="javascript:;" _href="LGA_Data.php">
-                                           <cite>LGA_Data</cite>
+                                           <cite>LGA Data</cite>
                                         </a>
                               </dd>
                               <dd class="">

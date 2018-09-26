@@ -30,7 +30,7 @@
                                         <a href="javascript:;" _href="Whole_Catchment_Indices.php">
                                            <cite>Whole Catchment Indices</cite>
                                         </a>
-                              </dd>
+                                    </dd>
                                 </dd>
                                 <dd class="">
                                     <dd class="">
@@ -185,13 +185,11 @@
 
             </div>
             <div class="layui-tab layui-tab-card site-demo-title x-main" lay-filter="x-tab" lay-allowclose="true">
-                <div class="x-slide_left"></div>
                 <ul class="layui-tab-title">
                     <li class="layui-this">
-                        <a href="javascript:;" _href="index.php">
+                        <a href="javascript:;" _href="Data_Management_index.php">
                                            <cite>Home</cite>
-                                        </a>
-                        <i class="layui-icon layui-unselect layui-tab-close">ဆ</i>
+                                        </a>                      
                     </li>
                 </ul>
                 <div class="layui-tab-content site-demo site-demo-body">

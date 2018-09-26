@@ -29,13 +29,13 @@
 }
 
 .layui-layout-admin .layui-tab{
-	top: 0px;
+	top: -10px;
 }
 
 /*fenye*/
-.apage { height:25px; line-height:25px;  margin-top:10px; text-align:center; font-size:12px; color:#333; width:720px; float:left;}
+/*.apage { height:25px; line-height:25px;  margin-top:10px; text-align:center; font-size:12px; color:#333; width:720px; float:left;}
 .apage a { border:1px solid #d4e3e9; padding:0 5px;  margin-right:5px; text-decoration:none; color:#333;}
-.apage a:hover, .apage .cur { border:1px solid #0093dd;background-color:#0570A7; color:#fff; text-decoration:none;}
+.apage a:hover, .apage .cur { border:1px solid #0093dd;background-color:#0570A7; color:#fff; text-decoration:none;}*/
 
 /*iframe内样式*/
 
@@ -337,9 +337,9 @@ body .layui-layer-dir .layui-layer-content{padding: 10px; max-height: 280px; ove
 
 
 /* 演示 */
-body .layui-layout-admin .site-demo{bottom: 82px; padding: 0;height: 100%}
+body .layui-layout-admin .site-demo{bottom: 0px; padding: 0;height: 100%}
 .layui-tab-item{
-	height: 100%;
+	height: 108%;
 }
 .x-iframe{
 	width: 100%;

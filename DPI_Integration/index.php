@@ -22,7 +22,7 @@ and open the template in the editor.
                     <li class=""> <a href="Data_Management_Index.php" target="_blank" data-toggle="tooltip" title="Data Management" style="padding: 5px 0px 5px 13.5px"><img src="images/data_icon.png" alt="Data" height="40"/></i></a> </li>
                 </ul>
             </div>
-	</nav>
+        </nav>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
 			<div class="box-container" style="width:16.5%; height:776px;" id="left_panel">
@@ -126,12 +126,7 @@ and open the template in the editor.
 			</div>
 		</div>
 	</div>
-        <div class="se-pre-con"></div>      
-        
-        <script type="text/javascript">
-
-        </script>
-        
+        <div class="se-pre-con"></div>
         <?php
             //Edited by justice
             //purpose_des, share_component, longitude, latitude
@@ -160,7 +155,6 @@ and open the template in the editor.
                         $n++;
                         $work_approval[$n] = $row_2;
                     }                                   
-                    
                 }else{
                     include 'db.helper/db_connection_ini.php';
                 }
@@ -355,7 +349,8 @@ and open the template in the editor.
                 popupAnchor:  [0, -10] 
             });
            
-           // add by justice 2018.08.24
+            /*add by justice*/
+            // Four indices
             var macquaireIcon = L.icon({
                 iconUrl: 'images/index_icons/macquaire.png',
                 iconSize: [70, 70]
@@ -366,21 +361,34 @@ and open the template in the editor.
             });
             var macquaireIndexIcon = L.marker([-32.2319, 147.8097], {icon: macquaireIcon});
             var mannningIndexIcon = L.marker([-31.7304, 151.8925], {icon: manningIcon});
-            //Legend
-            var ylegend = L.control({position: 'bottomright'});
+            macquaireIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/macquarie_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/macquarie_fui.php\">FUI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/macquarie_fmi.php\" >FMI</a></div>").openPopup();
+            mannningIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/manning_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/manning_fui.php\">FUI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/manning_fmi.php\" >FMI</a></div>").openPopup();
+            macquaireIndexIcon.addTo(map);//add index icon
+            mannningIndexIcon.addTo(map);//add index icon
+            
+            var ylegend = L.control({position: 'bottomright'});//Legend
             ylegend.onAdd = function (map) {
-                    var div = L.DomUtil.create('div', 'ylegend');
-                    div.innerHTML +="<img src=\"images/index_icons/legend.png\" width=\"136px\" height=\"100px\"/>";
-//                    var div = L.DomUtil.create('div', 'info legend'),
-//                    labels = [];
-//                    labels.push('<i style="background:#ff3333">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i> &nbsp;<h5>Low</h5>');
-//                    labels.push('<i style="background:#FFFF00"></i> <h5>Medium</h5>');
-//                    labels.push('<i style="background:#33ff33"></i> <h5>High</h5>');
-//                    div.innerHTML = '<div class="clear" ><h4>Levels</h4>' + labels.join('<br>') + '</div>';
-                    return div;
+                var div = L.DomUtil.create('div', 'ylegend');
+                div.innerHTML +="<img src=\"images/index_icons/legend.png\" width=\"136px\" height=\"100px\"/>";
+                return div;
             };
-//            ylegend.addTo(map);
-            // add by justice 2018.08.24
+            ylegend.addTo(map);//add index icon
+            
+            //Dams
+            var burrendongIcon = L.icon({
+                iconUrl: 'images/index_icons/macquaire.png',
+                iconSize: [50, 50]
+            });
+            var burrendongIndexIcon = L.marker([ -32.924061304999952, 149.226207626000019], {icon: burrendongIcon});
+            burrendongIndexIcon.addTo(map);//add index icon
+            
+            var windamereIcon = L.icon({
+                iconUrl: 'images/index_icons/macquaire.png',
+                iconSize: [50, 50]
+            });
+            var windamereIndexIcon = L.marker([ -32.80973, 149.912125497000034], {icon: windamereIcon});
+            windamereIndexIcon.addTo(map);//add index icon
+            /*add by justice*/
             
             function inside (point, vs) {
                 var x = point[0], y = point[1];
@@ -464,7 +472,6 @@ and open the template in the editor.
                 if (CATName==="MacquarieBogan"){
                     map.removeLayer(Mac_bound);
                     map.setView([-31.8, 148.5], 8);
-                    
                 }else if (CATName==="ManningRiver"){
                     map.removeLayer(Man_bound);
                     map.setView([-31.75, 151.9],10);
@@ -619,7 +626,6 @@ and open the template in the editor.
                 elem.innerHTML = ('<img src="lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
                 
                 if (checkBox.checked === true){
-                                       
                     ylegend.addTo(map);//add index icon
                     macquaireIndexIcon.addTo(map);//add index icon
                     document.getElementById("legend").appendChild(elem);

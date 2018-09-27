@@ -110,7 +110,7 @@
                 req.onreadystatechange = function() {
                     if(req.readyState === 4 && req.status === 200) {
                         if(this.responseText=="1"){
-                            window.open("output_files/town_water_supply.csv");
+                            window.open("output.files/town_water_supply.csv");
                         }else{
                             alert("Fail to output the table.");
                         }

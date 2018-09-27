@@ -120,6 +120,7 @@ and open the template in the editor.
     .link_to_parallel{
         -webkit-transition: all 150ms cubic-bezier(0.445, 0.050, 0.550, 0.950); 
     }
+    
     .link_to_parallel:before{
         position:absolute;  
         content:"";
@@ -295,3 +296,8 @@ and open the template in the editor.
         display: none;
     }
     
+    .four_index_link{
+        font-family: "微软雅黑";
+        font-size: 15px;
+        font-weight: bold;
+    }

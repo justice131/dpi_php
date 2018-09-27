@@ -115,7 +115,7 @@
                 req.onreadystatechange = function() {
                     if(req.readyState === 4 && req.status === 200) {
                         if(this.responseText=="1"){
-                            window.open("output_files/license_data.csv");
+                            window.open("output.files/license_data.csv");
                         }else{
                             alert("Fail to output the table.");
                         }

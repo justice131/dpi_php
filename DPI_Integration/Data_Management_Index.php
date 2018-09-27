@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Template-->
         <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
-	<link href="css/style_1.css" rel="stylesheet">
+	<link href="css/navigator_style.css" rel="stylesheet">
         <link rel="stylesheet" href="css/icheck-bootstrap.min.css">
         <link rel="stylesheet" href="css/dpi.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

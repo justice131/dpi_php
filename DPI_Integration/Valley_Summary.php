@@ -96,7 +96,7 @@
                 req.onreadystatechange = function() {
                     if(req.readyState === 4 && req.status === 200) {
                         if(this.responseText=="1"){
-                            window.open("output_files/valley_summary.csv");
+                            window.open("output.files/valley_summary.csv");
                         }else{
                             alert("Fail to output the table.");
                         }

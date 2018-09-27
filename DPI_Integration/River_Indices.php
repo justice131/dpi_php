@@ -100,7 +100,7 @@
                 req.onreadystatechange = function() {
                     if(req.readyState === 4 && req.status === 200) {
                         if(this.responseText=="1"){
-                            window.open("output_files/river_indices.csv");
+                            window.open("output.files/river_indices.csv");
                         }else{
                             alert("Fail to output the table.");
                         }

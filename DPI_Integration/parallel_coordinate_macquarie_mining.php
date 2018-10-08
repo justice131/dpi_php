@@ -192,7 +192,7 @@ and open the template in the editor.
             
             // Show preloader
             $(window).load(function() {
-            $(".se-pre-con").fadeOut("slow");;
+                $(".se-pre-con").fadeOut("slow");;
             });
 //            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
             

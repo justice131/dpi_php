@@ -17,21 +17,6 @@
                 </div>
                 <div class="consul_btn1"><a href="#">Free Consultation</a></div>
                     <div class="menu">
-                        <div class="h_menu4">
-                            <ul class="nav">
-                                <li class="layui-nav-item">
-                                    <!--<a class="javascript:;" href="javascript:;" onclick=showdiv_import("")>
-                                      <i class="layui-icon" style="top: 5px;">&#xe612;</i><cite>Import Data</cite>
-                                    </a>-->
-                                </li>
-                                <li class="layui-nav-item">
-                                    <!--<a class="javascript:;" href="javascript:;" onclick=showdiv_manage("")>
-                                      <i class="layui-icon" style="top: 5px;">&#xe612;</i><cite>Delete Data</cite>
-                                    </a>-->
-                                </li>
-                            </ul>
-                            <!--<script type="text/javascript" src="js/nav.js"></script>-->
-                        </div>
                         <script type="text/javascript">
                             jQuery(document).ready(function($) {
                                 $(".scroll").click(function(event){		

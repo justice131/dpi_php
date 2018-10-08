@@ -20,6 +20,8 @@ and open the template in the editor.
                     <li class=""> <a href="Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation" style="padding: 5px 0px 5px 13.5px"><img src="images/town_water_icon.png" alt="Town Water" height="40"/></a> </li>
                     <li class=""> <a href="Environmental_module.php" target="_blank" data-toggle="tooltip" title="Critical Environmental Assets" style="padding: 5px 0px 5px 13.5px"><img src="images/environmental_icon.png" alt="Environmental" height="40"/></i></a> </li>
                     <li class=""> <a href="Data_Management_Index.php" target="_blank" data-toggle="tooltip" title="Data Management" style="padding: 5px 0px 5px 13.5px"><img src="images/data_icon.png" alt="Data" height="40"/></i></a> </li>
+                    <li class=""> <a href="risk_opportunity.php" target="_blank" data-toggle="tooltip" title="Risk & Opportunity" style="padding: 5px 0px 5px 13.5px"><img src="images/risk_opportunity_icon.png" alt="Data" height="40"/></i></a> </li>
+                    <li class=""> <a href="scenarios.php" target="_blank" data-toggle="tooltip" title="Scenarios" style="padding: 5px 0px 5px 13.5px"><img src="images/scenario_icon.png" alt="Data" height="40"/></i></a> </li>
                 </ul>
             </div>
         </nav>
@@ -99,28 +101,28 @@ and open the template in the editor.
 						<div id="map"></div>
 					</div>
                                         <div id="MacquarieBogan">
-                                                <input type="checkbox" id="Regulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_regulated('Regulated-CAT-MacquarieBogan')"> <font size="2">Regulated </font></br>       
+<!--                                                <input type="checkbox" id="Regulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_regulated('Regulated-CAT-MacquarieBogan')"> <font size="2">Regulated </font></br>       
                                                 <input type="checkbox" id="Unregulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_unregulated('Unregulated-CAT-MacquarieBogan')"> <font size="2">Unregulated </font></br>   
-                                                <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   
+                                                <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   -->
                                                 <input type="checkbox" id="Work-approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_workapprovals('Work-approvals-CAT-MacquarieBogan')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="aa()"> <font size="2">Work approvals </font>
                                         </div>
         
                                         <div id="ManningRiver">
-                                                <input type="checkbox" id="Regulated-CAT-Manning" onclick="show_gis_Manning_regulated('Regulated-CAT-Manning')"> <font size="2">Regulated </font></br>
+<!--                                                <input type="checkbox" id="Regulated-CAT-Manning" onclick="show_gis_Manning_regulated('Regulated-CAT-Manning')"> <font size="2">Regulated </font></br>
                                                 <input type="checkbox" id="Unregulated-CAT-Manning" onclick="show_gis_Manning_unregulated('Unregulated-CAT-Manning')"> <font size="2">Unregulated </font></br>
-                                                <input type="checkbox" id="Groundwater-CAT-Manning" onclick="show_gis_Manning_groundwater('Groundwater-CAT-Manning')"> <font size="2">Groundwater </font></br>
+                                                <input type="checkbox" id="Groundwater-CAT-Manning" onclick="show_gis_Manning_groundwater('Groundwater-CAT-Manning')"> <font size="2">Groundwater </font></br>-->
                                                 <input type="checkbox" id="Work-approvals-CAT-Manning" onclick="show_gis_Manning_workapprovals('Work-approvals-CAT-Manning')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font>
                                         </div> 
                                      
-                                        <div id="link_to_parallel_coordinate" class="link_to_parallel">
+<!--                                        <div id="link_to_parallel_coordinate" class="link_to_parallel">
                                             <a href="parallel_coordinate_macquarie_main.php" target="_blank">Insight</a>
                                         </div>
                                     
                                         <div id="link_to_parallel_coordinate_manning" class="link_to_parallel">
                                             <a href="parallel_coordinate_manning_main.php" target="_blank">Insight</a>
-                                        </div>
+                                        </div>-->
                                         <div id="container"></div>
                                 </div>
 			</div>
@@ -224,7 +226,7 @@ and open the template in the editor.
             }
             
             function go_to_man(){
-                map.removeLayer(Man_bound);
+//                map.removeLayer(Man_bound);
                 window.location.href = "index.php?catchment_name=ManningRiver";
             }
             
@@ -472,9 +474,15 @@ and open the template in the editor.
                 if (CATName==="MacquarieBogan"){
                     map.removeLayer(Mac_bound);
                     map.setView([-31.8, 148.5], 8);
+                    show_gis_MacquarieBogan_regulated();
+                    show_gis_MacquarieBogan_unregulated();
+                    show_gis_MacquarieBogan_groundwater();
+                    
                 }else if (CATName==="ManningRiver"){
                     map.removeLayer(Man_bound);
                     map.setView([-31.75, 151.9],10);
+                    show_gis_Manning_unregulated();
+                    show_gis_Manning_groundwater();
                 }
 
                 //legendinfo.addTo(map);
@@ -490,15 +498,15 @@ and open the template in the editor.
                 displayedCAT.push(CATName);
                 check_collection.push(checkbox_id);
                 // Remove other's layers
-                removeLayer(displayed_gis_layer_regulated);
-                removeLayer(displayed_gis_layer_unregulated);
-                removeLayer(displayed_gis_layer_groundwater);
+//                removeLayer(displayed_gis_layer_regulated);
+//                removeLayer(displayed_gis_layer_unregulated);
+//                removeLayer(displayed_gis_layer_groundwater);
                 }        
             }
                        
-            function show(){
-                window.location.href = "index.php?catchment_name=MacquarieBogan";
-            }
+//            function show(){
+//                window.location.href = "index.php?catchment_name=MacquarieBogan";
+//            }
             
             function clearAllLayers(){
                 window.location.href = "index.php";
@@ -616,16 +624,18 @@ and open the template in the editor.
               bar.text.style.fontSize = '2rem';
           }                             
             //display regulated info for MacquarieBogan
-            var displayed_gis_layer_regulated = [];          
-            function show_gis_MacquarieBogan_regulated(id){               
-                var checkBox = document.getElementById(id); 
+                     
+            function show_gis_MacquarieBogan_regulated(){  
+                var displayed_gis_layer_regulated = []; 
+//                var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_RugulatedRiver;
                 // display legend for reg river
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'reg_mac');
                 elem.innerHTML = ('<img src="lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
                 
-                if (checkBox.checked === true){
+//                if (checkBox.checked === true){
+                                       
                     ylegend.addTo(map);//add index icon
                     macquaireIndexIcon.addTo(map);//add index icon
                     document.getElementById("legend").appendChild(elem);
@@ -722,35 +732,36 @@ and open the template in the editor.
                     displayed_gis_layer_regulated.push(Mak_12);
                     displayed_gis_layer_regulated.push(Mak_13);
                     displayed_gis_layer_regulated.push(Mak_14);
-                }
-                if (checkBox.checked === false){
-                    map.removeControl(ylegend);//remove index icon, justice
-                    map.removeControl(macquaireIndexIcon);//remove index icon, justice
-                    removeLayer(displayed_gis_layer_regulated);
-                    var elementToBeRemoved = document.getElementById('reg_mac');
-                    document.getElementById('legend').removeChild(elementToBeRemoved);
-                } 
+//                }
+//                if (checkBox.checked === false){
+//                    map.removeControl(ylegend);//remove index icon, justice
+//                    map.removeControl(macquaireIndexIcon);//remove index icon, justice
+//                    removeLayer(displayed_gis_layer_regulated);
+//                    var elementToBeRemoved = document.getElementById('reg_mac');
+//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+//                } 
             }
                        
             //display unregulated info for MacquarieBogan
-            var displayed_gis_layer_unregulated = [];          
-            function show_gis_MacquarieBogan_unregulated(id){
-                var checkBox = document.getElementById(id); 
+                      
+            function show_gis_MacquarieBogan_unregulated(){
+                var displayed_gis_layer_unregulated = [];
+//                var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_unregulated;
                 var geojsonfile_1 = Macquarie_Unregulatedriver;
-                link_to_parr = document.getElementById('link_to_parallel_coordinate');
+//                link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_mac');
                 elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
-                if (checkBox.checked === true){
+//                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     // display link icon
-                    link_to_parr.style.display = 'block';                                       
+//                    link_to_parr.style.display = 'block';                                       
                                     
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }
-                    var markersLayer = new L.LayerGroup();
+                    markersLayer = new L.LayerGroup();
                     map.addLayer(markersLayer);
                     controlSearch = new L.Control.Search({
                         position:'topleft',
@@ -2423,50 +2434,51 @@ and open the template in the editor.
                     displayed_gis_layer_unregulated.push(Mak_uw_29);
                     displayed_gis_layer_unregulated.push(Mak_uw_30);
                     
-                    controlSearch.on('search:locationfound', 
-                    function(e) {
-                        e.layer.addTo(map).openPopup();
-                    }); 
-                    }
-                if (checkBox.checked === false){
-                    removeLayer(displayed_gis_layer_unregulated);
-                    map.removeControl(controlSearch);
-                    link_to_parr.style.display = 'none';
-                    var elementToBeRemoved = document.getElementById('unreg_mac');
-                    document.getElementById('legend').removeChild(elementToBeRemoved);
-                } 
+//                    controlSearch.on('search:locationfound', 
+//                    function(e) {
+//                        e.layer.addTo(map).openPopup();
+//                    }); 
+//                    }
+//                if (checkBox.checked === false){
+//                    removeLayer(displayed_gis_layer_unregulated);
+//                    map.removeControl(controlSearch);
+//                    link_to_parr.style.display = 'none';
+//                    var elementToBeRemoved = document.getElementById('unreg_mac');
+//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+//                } 
             }
 
             //display groundwater info for MacquarieBogan
-            var displayed_gis_layer_groundwater = [];          
-            function show_gis_MacquarieBogan_groundwater(id){
-                var checkBox = document.getElementById(id); 
+                   
+            function show_gis_MacquarieBogan_groundwater(){
+                var displayed_gis_layer_groundwater = [];   
+//                var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_GW;
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_mac');
                 elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
-                if (checkBox.checked === true){
+//                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }                    
-                    var markersLayer = new L.LayerGroup();
-                    map.addLayer(markersLayer);
-                    controlSearch = new L.Control.Search({
-                        position:'topleft',
-                        layer: markersLayer,
-                        initial: false,
-                        zoom: 11,
-                        marker: false,
-                        propertyName: 'gwater_source',
-                        textPlaceholder: 'Search groundwater source',
-                        textErr: 'Groundwater source not found'
-                    }); 
-                    map.addControl(controlSearch);
+//                    var markersLayer = new L.LayerGroup();
+//                    map.addLayer(markersLayer);
+//                    controlSearch = new L.Control.Search({
+//                        position:'topleft',
+//                        layer: markersLayer,
+//                        initial: false,
+//                        zoom: 11,
+//                        marker: false,
+//                        propertyName: 'gwater_source',
+//                        textPlaceholder: 'Search groundwater source',
+//                        textErr: 'Groundwater source not found'
+//                    }); 
+//                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: getRandomColor(), weight: 1.0, fillOpacity: 0.3};
+                            return { color: "yellow", weight: 0.9, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     displayed_gis_layer_groundwater.push(Reg);  
@@ -2505,7 +2517,7 @@ and open the template in the editor.
                     <?php }?> 
 
                     groundwater_0[1] = groundwater_0[1] - 0.03 ;
-                    var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
+                    var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_gw, water_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_1);
@@ -2515,7 +2527,7 @@ and open the template in the editor.
                     <?php }?> 
                     
                     groundwater_1[0] = groundwater_1[0] - 0.02 ;
-                    var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
+                    var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_gw, water_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_2);
@@ -2525,7 +2537,7 @@ and open the template in the editor.
                     <?php }?> 
                         
                     groundwater_2[0] = groundwater_2[0] - 0.01 ;
-                    var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
+                    var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_gw, water_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
                     markersLayer.addLayer(Mak_groundwater_3);
@@ -2534,7 +2546,7 @@ and open the template in the editor.
                         var lel ="<?php echo $ro_gw_4["longterm_extraction_limit"]; ?>";
                     <?php }?> 
                         
-                    var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
+                    var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_gw, water_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year');  
                     markersLayer.addLayer(Mak_groundwater_4);
@@ -2549,14 +2561,14 @@ and open the template in the editor.
                         e.layer.addTo(map).openPopup();
                     });                                  
                     
-                }
-                if (checkBox.checked === false){
-                    removeLayer(displayed_gis_layer_groundwater);
-                    map.removeControl(controlSearch);
-                    var elementToBeRemoved = document.getElementById('gw_mac');
-                    document.getElementById('legend').removeChild(elementToBeRemoved);
-
-                } 
+//                }
+//                if (checkBox.checked === false){
+//                    removeLayer(displayed_gis_layer_groundwater);
+//                    map.removeControl(controlSearch);
+//                    var elementToBeRemoved = document.getElementById('gw_mac');
+//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+//
+//                } 
             } 
             
             var displayed_gis_layer_workapproval = [];
@@ -2762,18 +2774,19 @@ and open the template in the editor.
                 }
             }        
             
-            var displayed_gis_layer_unregulated = [];
-            function show_gis_Manning_unregulated(id){
+            
+            function show_gis_Manning_unregulated(){
+                var displayed_gis_layer_unregulated = [];
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_man');
                 elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
 
-                var checkBox = document.getElementById(id); 
+//                var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
                 var geojsonfile_1 = Manning_Unregulatedriver;
-                link_to_parr_man = document.getElementById('link_to_parallel_coordinate_manning');
-                if (checkBox.checked === true){
-                    link_to_parr_man.style.display='block';
+//                link_to_parr_man = document.getElementById('link_to_parallel_coordinate_manning');
+//                if (checkBox.checked === true){
+//                    link_to_parr_man.style.display='block';
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
@@ -2790,7 +2803,7 @@ and open the template in the editor.
                         textPlaceholder: 'Search water source',
                         textErr: 'Water source not found'
                     }); 
-                    map.addControl(controlSearch);
+//                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
@@ -3697,25 +3710,26 @@ and open the template in the editor.
                     function(e) {
                         e.layer.addTo(map).openPopup();
                     });                   
-                }
-                if (checkBox.checked === false){
-                    removeLayer(displayed_gis_layer_unregulated);
-                    map.removeControl(controlSearch);
-                    var elementToBeRemoved = document.getElementById('unreg_man');
-                    document.getElementById('legend').removeChild(elementToBeRemoved);
-                    link_to_parr_man.style.display='none';
-                }             
+//                }
+//                if (checkBox.checked === false){
+//                    removeLayer(displayed_gis_layer_unregulated);
+//                    map.removeControl(controlSearch);
+//                    var elementToBeRemoved = document.getElementById('unreg_man');
+//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+//                    link_to_parr_man.style.display='none';
+//                }             
             }
             
-            var displayed_gis_layer_groundwater = [];   
-            function show_gis_Manning_groundwater(id){
-                var checkBox = document.getElementById(id); 
+               
+            function show_gis_Manning_groundwater(){
+                var displayed_gis_layer_groundwater = [];
+//                var checkBox = document.getElementById(id); 
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_man');
                 elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
 
                 var geojsonfile = Manning_Groundwater;
-                if (checkBox.checked === true){
+//                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
@@ -3732,11 +3746,11 @@ and open the template in the editor.
                         textPlaceholder: 'Search groundwater source',
                         textErr: 'Groundwater source not found'
                     }); 
-                    map.addControl(controlSearch);
+//                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: getRandomColor(), weight: 1.5, fillOpacity: 0.3};
+                            return { color: "yellow", weight: 0.9, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     displayed_gis_layer_groundwater.push(Reg); 
@@ -3847,13 +3861,13 @@ and open the template in the editor.
                     function(e) {
                         e.layer.addTo(map).openPopup();
                     });
-                }
-                if (checkBox.checked === false){
-                    removeLayer(displayed_gis_layer_groundwater);
-                    map.removeControl(controlSearch);
-                    var elementToBeRemoved = document.getElementById('gw_man');
-                    document.getElementById('legend').removeChild(elementToBeRemoved);
-                }                 
+//                }
+//                if (checkBox.checked === false){
+//                    removeLayer(displayed_gis_layer_groundwater);
+//                    map.removeControl(controlSearch);
+//                    var elementToBeRemoved = document.getElementById('gw_man');
+//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+//                }                 
             }
             
             var displayed_gis_layer_workapproval = [];                        
@@ -4008,8 +4022,8 @@ and open the template in the editor.
             // display information of each catchment
             function onEachFeature(feature, layer) {
                 layer.on({
-                    mouseover: highlightFeature,
-                    mouseout: resetHighlight,
+//                    mouseover: highlightFeature,
+//                    mouseout: resetHighlight,
                     click: zoomToFeature
                 });
             }
@@ -4060,7 +4074,7 @@ and open the template in the editor.
                     var surface_water_size = "<?php echo $row["surface_water_size"]; ?>";
                     var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     this._div.innerHTML = (
-                        props?
+//                        props?
 //                        '<h5>' + catch_name + ' Catchment' + '</h5>' + 
 //                        'Overall Flow Utilisation: '+ overall_fui + '<br/>' +
 //                        'Overall Irrigation Drought Security: '+ overall_idsi + '<br />'+
@@ -4073,7 +4087,7 @@ and open the template in the editor.
                         '<img src=\"images/'+index_level(overall_idsi,"idsi")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_idsi*100)/100 + '</b><br/><br/>'+
                         '<img src=\"images/'+index_level(overall_fmi,"fmi")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_fmi*100)/100 + '</b><br/><br/>'+
                         '<img src=\"images/'+index_level(overall_dei,"dei")+'\" height=\"25\" width=\"25\"> <b>'+'&nbsp;&nbsp;'+ Math.round(overall_dei*100)/100 + '</b>'+'</p>'
-                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
+//                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                     );
                 <?php }?>;
             };

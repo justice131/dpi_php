@@ -7,12 +7,12 @@ and open the template in the editor.
 <html>
     <head>
         <title>Data Insight of Macquarie Catchment</title>
-        <?php include("../common.scripts/all_import_scripts.html"); ?>
-        <?php include("../common.scripts/pc_import_scripts.html"); ?>
-        <script src="../border/MacquarieBogan_watersource_centroids.geojson"></script>
+        <?php include("../../common.scripts/all_import_scripts.html"); ?>
+        <?php include("../../common.scripts/pc_import_scripts.html"); ?>
+        <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
     </head>
     <body style="background-color:#F3F3F4;">
-        <?php include("../common.scripts/navigator.html"); ?>
+        <?php include("../../common.scripts/navigator.html"); ?>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
 			<div class="box-container" style="width:22%;" id="map_panel">
@@ -190,7 +190,7 @@ and open the template in the editor.
                             };
                     }
                     var max_row=0;//Get the row number of ranking file
-                    d3.csv("../pc.csv/dsi_macquaire.csv", function (data) {
+                    d3.csv("../../pc.csv/dsi_macquaire.csv", function (data) {
                         _.each(data, function (d, i) {
                         max_row++;
                         });
@@ -277,7 +277,7 @@ and open the template in the editor.
 
 
                     //Read data for parallel coordinate
-                    d3.csv("../pc.csv/dsi_macquaire.csv", function (data) {
+                    d3.csv("../../pc.csv/dsi_macquaire.csv", function (data) {
                         var keys = Object.keys(data[0]);
                             _.each(data, function (d, i) {
                                     d.index = d.index || i; //unique id

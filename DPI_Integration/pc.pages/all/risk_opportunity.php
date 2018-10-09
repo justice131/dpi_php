@@ -4,17 +4,17 @@
     <head>
         <title>Data Insight</title>
         <meta charset="UTF-8">
-        <link href="../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
-        <link href="../css/navigator_style.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/dpi.css">
-        <script type="text/javascript" src="../common.scripts/settings.js"></script>
+        <link href="../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="../../css/navigator_style.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/dpi.css">
+        <script type="text/javascript" src="../../common.scripts/settings.js"></script>
         <script>
             window.onload=function(){
                 pageHeight = window.screen.height*heightRatio;
-                document.getElementById("visualization").style.height = pageHeight + "px";//设置右侧visualization高度
-                var settingHeight = document.getElementById("setting").offsetHeight;//获取设置高度
-                var legendTitleHeight = document.getElementById("legend_title").offsetHeight;//获取map legend title高度
-                document.getElementById("legend_content").style.height = (pageHeight - settingHeight - legendTitleHeight) + "px";//设置map legend content高度
+                document.getElementById("visualization").style.height = pageHeight + "px";
+                var settingHeight = document.getElementById("setting").offsetHeight;
+                var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
+                document.getElementById("legend_content").style.height = (pageHeight - settingHeight - legendTitleHeight) + "px";
             }
             
             //module selection onchange function
@@ -23,7 +23,7 @@
                 var cm_index=cm_ele.selectedIndex;
                 var cm=cm_ele.options[cm_index].value;
                 
-                var module_ele=document.getElementById("select_module");
+                var module_ele=document.getElementById("module");
                 var module_index=module_ele.selectedIndex ;
                 var module=module_ele.options[module_index].value;
                 if(cm=="MacquarieBogan"){
@@ -38,14 +38,14 @@
                     alert("Please select a module to explore.");
                     return;
                 }
-                document.getElementById("iframe").src = catchment + "_" + module + ".php";
+                document.getElementById("iframe").src = "../" + catchment + "/"+ catchment + "_" + module + ".php";
             }
         </script>
     </head>
     <body style="background-color:#F3F3F4;">
-        <?php include("../common.scripts/navigator.html"); ?>
+        <?php include("../../common.scripts/navigator.html"); ?>
         <div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
-            <div class="row" style="width: 6500px;">
+            <div class="row" style="width: 8200px;">
                 <div id="left_panel" class="box-container" style="width:5.5%;">
                     <table style="width:100%">
                         <tr>
@@ -98,7 +98,7 @@
                     </table>
                 </div>
                 <div id="visualization" class="box-container" style="width:94.5%;">
-                    <iframe src="macquarie_irrigation.php" style="width:100%; height: 100%;" frameborder="no" scrolling="no"/>
+                    <iframe id="iframe" style="width:100%; height: 100%;" frameborder="no" scrolling="no"/>
                 </div>
             </div>
         </div>

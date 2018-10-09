@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>DPI Data Management System</title>
-        <link href="lib/bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-        <script src="js/jquery.min.js"></script>
-        <link href="css/db_style.css" rel='stylesheet' type='text/css' />
+        <script src="../../lib/js/jquery-3.3.1.min"></script>
+        <link href="../../lib/bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+        <link href="../../css/db_style.css" rel='stylesheet' type='text/css' />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600,700,800' rel='stylesheet' type='text/css'>
@@ -50,7 +50,6 @@
                             </article>
                         </div>
             </div>
-            <!--<script src="js/jquery.wmuSlider.js"></script>--> 	           	      
            </div>
        </div>
 
@@ -61,9 +60,6 @@
                  </div>
              </div>
          </div>
-<!--         <script type="text/javascript">
-             $('.example1').wmuSlider();    
-         </script>-->
          <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
     </body>
 </html>

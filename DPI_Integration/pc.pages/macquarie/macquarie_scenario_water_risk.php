@@ -6,106 +6,114 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data Insight of Macquarie Catchment</title>
-        <?php include("../common.scripts/all_import_scripts.html"); ?>
-        <?php include("../common.scripts/pc_import_scripts.html"); ?>
-        <script src="../border/MacquarieBogan_watersource_centroids.geojson"></script>
+        <title>Data Insight</title>
+        <?php include("../../common.scripts/all_import_scripts.html"); ?>
+        <?php include("../../common.scripts/pc_import_scripts.html"); ?>
+        <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
+        <script type="text/javascript" src="../../common.scripts/settings.js"></script>
     </head>
-    <body style="background-color:#F3F3F4;">
-        <?php include("../common.scripts/navigator.html"); ?>
-	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
-            <div class="row">
-                <div class="box-container" style="width:22%;" id="map_panel">
-                    <div class="box">
-                        <div class="box-title">
-                            <div id="s0_title">
-                            </div>
+    <body style="background-color:#F3F3F4;">        
+        <div class="row" style="width: 6500px;">
+            <div id="map_panel" class="box-container" style="width:20%;" >
+                <div class="box">
+                    <div class="box-title">
+                        <div id="s0_title">
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Macquarie Catchment--Water related health risk due to poor ecosystem health (measured by Dissolved Oxygen level)</span>
                         </div>
-                        <div class="box-content" role="tabpanel">
-                                <div id="map"></div>
-                        </div>    
+                    </div>
+                    <div class="box-content" style="padding: 10px 10px 10px 20px;">
+                        <div id="map"></div>
                     </div>
                 </div>
-                <div class="box-container" style="width:46.5%;">
-                    <div class="box">
-                        <div class="box-title">
-                                <h4><b>Parallel Coordinates</b></h4>                                                
-                        </div>
-                        <div id="parcoord_1" class="parcoords"></div>
-                    </div>
-                </div>
-                <div class="box-container" style="width:31.5%;">
-                    <div class="box">
-                            <div class="box-title">
-                                    <h4><b>Water Source List</b></h4>                                               
-                            </div>  
-                            <div id="grid" class="box-content"></div>
-                    </div>
-                </div>                   
             </div>
-	</div>
+            <div id="pc_panel" class="box-container" style="width:44.5%;">
+                <div class="box">
+                        <div class="box-title">
+                            <h4><b>Parallel Coordinates</b></h4>                                                
+                        </div>
+                    <div class="box-content" role="tabpanel">
+                        <div id="parrallel_coordinate" class="parcoords"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="data_table_panel" class="box-container" style="width:30%;">
+                <div class="box">
+                    <div class="box-title">
+                        <h4><b>Water Source List</b></h4>                                               
+                    </div>
+                    <div class="box-content">
+                        <div id="grid"></div>
+                    </div>
+                </div>
+            </div>     
+        </div>
         <div class="se-pre-con"></div>
         
         <script type="text/javascript">
-            // Show preloader
-            $(window).load(function() {
-            $(".se-pre-con").fadeOut("slow");;
+            $(window).load(function() {// Show preloader
+                $(".se-pre-con").fadeOut("slow");;
             });
-            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
+            
+            pageHeight = window.screen.height*heightRatio;//get the page height
+            window.onload=function(){
+                document.getElementById("map").style.height = (pageHeight*0.95) + "px";//set height of map
+                document.getElementById("parrallel_coordinate").style.height = pageHeight + "px";
+                document.getElementById("grid").style.height = pageHeight + "px";
+            }
             
             var removeLayer = function (feature) {
                 for (var i = 0; i < feature.length; i++){     
                     map.removeLayer(feature[i]);
-                }               
+                }
             };
             
             /*Functions section*/
             function showIt(d) {
-                    return d > -1 ? 0.75 : 0;
+                return d > -1 ? 0.75 : 0;
             }
 
             function resetHighlight(e) {
-                    geojson.resetStyle(e.target);
-                    //info.update();
+                geojson.resetStyle(e.target);
+                //info.update();
             }
 
             function zoomToFeature(e) {
-                    var layer = e.target;
-                    info.update(layer.feature.properties);
-                    //map.fitBounds(e.target.getBounds());
+                var layer = e.target;
+                info.update(layer.feature.properties);
+                //map.fitBounds(e.target.getBounds());
             }
 
             function onEachFeature(feature, layer) {
-                    layer.on({
-                            mouseover: highlightFeature,
-                            mouseout: resetHighlight,
-                            click: zoomToFeature
-                    });
+                layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: zoomToFeature
+                });
             }
 
             function highlightFeature(e) {
-                    var layer = e.target;
-                    if (layer._layers) {
-                            console.log(layer);
-                            layer.eachLayer(function (myLayer) {
-                                    console.log(myLayer);
-                                    myLayer.setStyle({
-                                            weight: myLayer.options ? (myLayer.options.opacity > 0 ? 3 : 0) : 0,
-                                            color: '#666',
-                                            dashArray: '',
-                                    });
-                            });
-                    } else {
-                            layer.setStyle({
-                                    weight: layer.options ? (layer.options.opacity > 0 ? 3 : 0) : 0,
-                                    color: '#666',
-                                    dashArray: '',
-                            });
-                    }
+                var layer = e.target;
+                if (layer._layers) {
+                        console.log(layer);
+                        layer.eachLayer(function (myLayer) {
+                                console.log(myLayer);
+                                myLayer.setStyle({
+                                        weight: myLayer.options ? (myLayer.options.opacity > 0 ? 3 : 0) : 0,
+                                        color: '#666',
+                                        dashArray: '',
+                                });
+                        });
+                } else {
+                        layer.setStyle({
+                                weight: layer.options ? (layer.options.opacity > 0 ? 3 : 0) : 0,
+                                color: '#666',
+                                dashArray: '',
+                        });
+                }
 
-                    if (!L.Browser.ie && !L.Browser.opera) {
-                            layer.bringToFront();
-                    }
+                if (!L.Browser.ie && !L.Browser.opera) {
+                        layer.bringToFront();
+                }
             }
             
             /*Function section*/
@@ -128,12 +136,12 @@ and open the template in the editor.
                 }, "").replace(/\,$/g, ""); 
                     return mask + temp + decimal; 
             }
-
+          
             /*overall variables*/
             var myCols = [
-                    '#ff3333',//Red
-                    '#ff8533',//Orange
-                    '#33ff33'//Green
+                '#ff3333',//Red
+                '#ff8533',//Orange
+                '#33ff33'//Green
             ];
 
             var lgas = MacquarieBogan_unregulated;
@@ -142,8 +150,8 @@ and open the template in the editor.
             var filtered;
             var isSelected = false;
             var lga = new Array();
+            
             /*overall variables*/
-                        
             var map = L.map('map',{zoomControl: false}).setView([-29.0, 134.7], 4.4);
             L.control.zoom({
                 position:'bottomleft'
@@ -162,17 +170,17 @@ and open the template in the editor.
                 onEachFeature: function onEach(feature, layer){
                     layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.1});
                 }
-            }).addTo(map);  
+            }).addTo(map);
+            map.setView([-31.8, 148.5], 8);  
             
-            map.setView([-31.8, 148.5], 8);       
-            displayed_s1 = [];
+            displayed_s11 = [];
             function getColorScalar(d) {
                 if(d<=Math.floor(max_row/3)){
-                return myCols[0];
+                return myCols[2];
                 }else if(d<=Math.ceil(2*max_row/3)){
                 return myCols[1];
                 }else{
-                return myCols[2];
+                return myCols[0];
                 }
             }
             function style(feature) {
@@ -186,17 +194,15 @@ and open the template in the editor.
                     };
             }
             var max_row=0;//Get the row number of ranking file
-            d3.csv("../pc.csv/fui_macquaire.csv", function (data) {
+            d3.csv("../../pc.csv/health_of_water_bodies_population_macquaire.csv", function (data) {
                 _.each(data, function (d, i) {
                 max_row++;
-
                 });
             });
 
-            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Opportunity for additional supply'+'</span>';
-            parcoord_1.style.display = 'block';
+            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Water related health risk due to poor ecosystem health (measured by Dissolved Oxygen level)'+'</span>';
             grid.style.display = 'block';
-            // control that shows state info on hover
+            //control that shows state info on hover
             info = L.control({position: 'topright'});
             info.onAdd = function (map) {
                     this._div = L.DomUtil.create('div', 'info');
@@ -206,31 +212,31 @@ and open the template in the editor.
             info.update = function (props) {
                     this._div.innerHTML = (props?
                             '<h4>' + props.WATER_SOUR + '</h4>'+
-    //                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
+//                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                     'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-    //                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
-    //                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-    //                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-    //                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                    'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + ' ML/year'+'</b>' +'<br />'+
-    //                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-    //                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+ '</b>' +'<br />'+
-                                    'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10)/10) + ' ML/day'+'</b>' +'<br />'+
-    //                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
-    //                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-    //                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                    'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
-    //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-    //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                    'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
-    //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                    'FAI(1-FUI): ' + '<b>'+ Math.round(props.FUI_100*100)/100 + '</b>'+'<br />'
+//                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
+//                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+//                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+//                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+//                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                                    'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+//                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L' + '</b>' +'<br />'+
+                                    'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
+//                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+//                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
+//                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+//                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+//                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+//                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+//                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
+//                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+                                    'Water Related Health Risk Index: ' + '<b>'+ Math.round(props.health_of_water_bodies*1000)/1000 + '</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
 
             var lgaDict = {};
-    //                    var geojson, geojsonLabels;
+//                    var geojson, geojsonLabels;
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
                     lgas.features[j].properties.irrigated_area=0;
@@ -239,7 +245,7 @@ and open the template in the editor.
                     lgas.features[j].properties.mining_value=0;
                     lgas.features[j].properties.employment_irrigation=0;
                     lgas.features[j].properties.employment_mining=0;
-                    lgas.features[j].properties.total_entitlement=0;
+                    lgas.features[j].properties.total_entitlement=0;	
                     lgas.features[j].properties.agricultural_water_use=0;
                     lgas.features[j].properties.mining_water_use=0;
                     lgas.features[j].properties.wetland_area=0;
@@ -253,28 +259,28 @@ and open the template in the editor.
                     lgas.features[j].properties.time_below_requirement=0;
                     lgas.features[j].properties.FUI=0;
                     lgas.features[j].properties.water_scarcity=0;
-                    lgas.features[j].properties.FUI_100=0;
+                    lgas.features[j].properties.health_of_water_bodies=0;
                     lgas.features[j].properties.IndexRank=0;
                     lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
             }
 
             // Create parallel Coordinate
-            parcoords = d3.parcoords()("#parcoord_1")
-                    .alpha(1)
-                    .mode("queue") // progressive rendering
-                    .height(760)
-                    .width(2800)
-                    .margin({
-                            top: 25,
-                            left: 1,
-                            right: 1,
-                            bottom: 15
-                    })
-                    .color(function (d) { return getColorScalar(d.IndexRank) });
+            parcoords = d3.parcoords()("#parrallel_coordinate")
+            .alpha(1)
+            .mode("queue") // progressive rendering
+            .height(pageHeight-100)
+            .width(document.getElementById("parrallel_coordinate").clientWidth)
+            .margin({
+                    top: 25,
+                    left: 1,
+                    right: 1,
+                    bottom: 15
+            })
+            .color(function (d) { return getColorScalar(d.IndexRank) });
 
             //Read data for parallel coordinate
-            d3.csv("../pc.csv/fui_macquaire.csv", function (data) {
-                var keys = Object.keys(data[0]);
+            d3.csv("../../pc.csv/health_of_water_bodies_population_macquaire.csv", function (data) {
+                 var keys = Object.keys(data[0]);
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d[keys[0]];
@@ -298,7 +304,7 @@ and open the template in the editor.
                             lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
                             lgaDict[water_source_name].properties.FUI=d[keys[19]];
                             lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
-                            lgaDict[water_source_name].properties.FUI_100=d[keys[21]];
+                            lgaDict[water_source_name].properties.health_of_water_bodies=d[keys[21]];
                             lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                             lga.push(water_source_name);
                     });
@@ -321,8 +327,8 @@ and open the template in the editor.
                                     });
                             },
                     }).addTo(map);
-                    displayed_s1.push(geojson);
-                    displayed_s1.push(geojsonLabels);                         
+                    displayed_s11.push(geojson);
+                    displayed_s11.push(geojsonLabels);                         
 
                     // add legend
                     legend = L.control({position: 'bottomright'});
@@ -344,16 +350,13 @@ and open the template in the editor.
                     };
                     legend.addTo(map);
 
-
                     //Bind data to parallel coordinate
                     parcoords.data(data)
-                                    .hideAxis(["Water source","index"])
-                                    .render()
-                                    .updateAxes()
-                                    .reorderable()
-                                    .brushMode("1D-axes")
-                                    .rate(400);
-
+                        .hideAxis(["Water source","index"])
+                        .render()
+                        .reorderable()
+                        .brushMode("1D-axes")
+                        .rate(400);
 
                     // setting up grid
                     var column_keys = d3.keys(data[0]);
@@ -373,7 +376,6 @@ and open the template in the editor.
 
                     var dataView = new Slick.Data.DataView();
                     var grid = new Slick.Grid("#grid", dataView, columns, options);
-
                     grid.autosizeColumns();
 
                     // wire up model events to drive the grid
@@ -400,7 +402,6 @@ and open the template in the editor.
                     grid.onSort.subscribe(function (e, args) {
                             sortdir = args.sortAsc ? 1 : -1;
                             sortcol = args.sortCol.field;
-
                             if ($.browser.msie && $.browser.version <= 8) {
                                     dataView.fastSort(sortcol, args.sortAsc);
                             } else {

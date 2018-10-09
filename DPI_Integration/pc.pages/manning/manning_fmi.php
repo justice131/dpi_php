@@ -7,12 +7,12 @@ and open the template in the editor.
 <html>
     <head>
         <title>Data Insight of Manning Catchment</title>
-        <?php include("../common.scripts/all_import_scripts.html"); ?>
-        <?php include("../common.scripts/pc_import_scripts.html"); ?>
-        <script src="../border/Manning_watersource_centroids.geojson"></script>
+        <?php include("../../common.scripts/all_import_scripts.html"); ?>
+        <?php include("../../common.scripts/pc_import_scripts.html"); ?>
+        <script src="../../border/Manning_watersource_centroids.geojson"></script>
     </head>
     <body style="background-color:#F3F3F4;">
-        <?php include("../common.scripts/navigator.html"); ?>
+        <?php include("../../common.scripts/navigator.html"); ?>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
             <div class="row">
                 <div class="box-container" style="width:22%;" id="map_panel">
@@ -31,7 +31,7 @@ and open the template in the editor.
                             <div class="box-title">
                                     <h4><b>Parallel Coordinates</b></h4>                                                
                             </div>
-                            <div id="parcoord_1" class="parcoords"></div>
+                            <div id="parcoord_4" class="parcoords"></div>
                     </div>
                 </div>
                 <div class="box-container" style="width:31.5%;">
@@ -163,11 +163,9 @@ and open the template in the editor.
                     layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.1});
                 }
             }).addTo(map);  
-            
-//            map.fitBounds(Mac_unregulated.getBounds());
             map.setView([-31.75, 151.9],10);  
             
-            displayed_s1 = [];
+            displayed_s4 = [];
             function getColorScalar(d) {
                 if(d<=Math.floor(max_row/3)){
                 return myCols[0];
@@ -188,14 +186,15 @@ and open the template in the editor.
                     };
             }
             var max_row=0;//Get the row number of ranking file
-                d3.csv("../pc.csv/fui_manning.csv", function (data) {
+                d3.csv("../../pc.csv/fmi_manning.csv", function (data) {
                 _.each(data, function (d, i) {
                 max_row++;
 
                 });
             });
-            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Manning Catchment--Opportunity for additional supply'+'</span>';
-            parcoord_1.style.display = 'block';
+            
+            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Manning Catchment--Flood risk (100 years return period)'+'</span>';
+            parcoord_4.style.display = 'block';
             grid.style.display = 'block';
             // control that shows state info on hover
             info = L.control({position: 'topright'});
@@ -207,13 +206,13 @@ and open the template in the editor.
             info.update = function (props) {
                     this._div.innerHTML = (props?
                             '<h4>' + props.WATER_SOUR + '</h4>'+
-//                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
-                                    'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-//                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
+//                                           'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
+//                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                    'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
 //                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-//                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                    'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
 //                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                    'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + ' ML/year'+'</b>' +'<br />'+
+                                    'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + ' ML/year'+ '</b>' +'<br />'+
 //                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
 //                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+ '</b>' +'<br />'+
                                     'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10)/10) + ' ML/day'+'</b>' +'<br />'+
@@ -223,9 +222,9 @@ and open the template in the editor.
                                     'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                    'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
+                                    'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                    'FAI(1-FUI): ' + '<b>'+ Math.round(props.FUI_100*100)/100 + '</b>'+'<br />'
+                                    'Flood Risk: ' + '<b>'+ Math.round(props.flood_risk*100*10)/10 + ' %</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
@@ -234,7 +233,6 @@ and open the template in the editor.
 //                    var geojson, geojsonLabels;
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
-                    lgas.features[j].properties.total_unregulated_requirement=0;
                     lgas.features[j].properties.irrigated_area=0;
                     lgas.features[j].properties.population=0;
                     lgas.features[j].properties.irrigation_value=0;
@@ -245,22 +243,23 @@ and open the template in the editor.
                     lgas.features[j].properties.agriculture_water_use=0;
                     lgas.features[j].properties.mining_water_use=0;
                     lgas.features[j].properties.wetland_area=0;
+                    lgas.features[j].properties.dissolved_oxygen=0;
                     lgas.features[j].properties.mean_flow=0;
                     lgas.features[j].properties.variation=0;
                     lgas.features[j].properties.median=0;
                     lgas.features[j].properties.days_below_mean=0;
                     lgas.features[j].properties.DSI=0;
                     lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
-                    lgas.features[j].properties.normalized_flood_exposure=0;
                     lgas.features[j].properties.time_below_requirement=0;
                     lgas.features[j].properties.FUI=0;
-                    lgas.features[j].properties.FUI_100=0;
+                    lgas.features[j].properties.water_scarcity=0;
+                    lgas.features[j].properties.flood_risk=0;
                     lgas.features[j].properties.IndexRank=0;
                     lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
             }
 
             // Create parallel Coordinate
-            parcoords = d3.parcoords()("#parcoord_1")
+            parcoords = d3.parcoords()("#parcoord_4")
                     .alpha(1)
                     .mode("queue") // progressive rendering
                     .height(760)
@@ -275,12 +274,12 @@ and open the template in the editor.
 
 
             //Read data for parallel coordinate
-            d3.csv("../pc.csv/fui_manning.csv", function (data) {
+            d3.csv("../../pc.csv/fmi_manning.csv", function (data) {
                 var keys = Object.keys(data[0]);
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d[keys[0]];
-                            lgaDict[water_source_name].properties.total_unregulated_requirement=d[keys[1]];
+                             lgaDict[water_source_name].properties.total_unregulated_requirement=d[keys[1]];
                             lgaDict[water_source_name].properties.irrigated_area=d[keys[2]];
                             lgaDict[water_source_name].properties.population=d[keys[3]];
                             lgaDict[water_source_name].properties.irrigation_value=d[keys[4]];
@@ -301,7 +300,7 @@ and open the template in the editor.
                             lgaDict[water_source_name].properties.normalized_flood_exposure=d[keys[18]];
                             lgaDict[water_source_name].properties.time_below_requirement=d[keys[19]];
                             lgaDict[water_source_name].properties.FUI=d[keys[20]];
-                            lgaDict[water_source_name].properties.FUI_100=d[keys[21]];
+                            lgaDict[water_source_name].properties.flood_risk=d[keys[21]];
                             lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                             lga.push(water_source_name);
                     });
@@ -324,8 +323,8 @@ and open the template in the editor.
                                     });
                             },
                     }).addTo(map);
-                    displayed_s1.push(geojson);
-                    displayed_s1.push(geojsonLabels);                         
+                    displayed_s4.push(geojson);
+                    displayed_s4.push(geojsonLabels);                         
 
                     // add legend
                     legend = L.control({position: 'bottomright'});

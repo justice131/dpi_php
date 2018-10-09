@@ -7,10 +7,10 @@ and open the template in the editor.
 <html>
     <head>
         <title>Data Insight</title>
-        <?php include("../common.scripts/all_import_scripts.html"); ?>
-        <?php include("../common.scripts/pc_import_scripts.html"); ?>
-        <script src="../border/MacquarieBogan_watersource_centroids.geojson"></script>
-        <script type="text/javascript" src="../common.scripts/settings.js"></script>
+        <?php include("../../common.scripts/all_import_scripts.html"); ?>
+        <?php include("../../common.scripts/pc_import_scripts.html"); ?>
+        <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
+        <script type="text/javascript" src="../../common.scripts/settings.js"></script>
     </head>
     <body style="background-color:#F3F3F4;">
         <div class="row" style="width: 6500px;">
@@ -53,11 +53,11 @@ and open the template in the editor.
             $(window).load(function() {// Show preloader
                 $(".se-pre-con").fadeOut("slow");;
             });
-            pageHeight = window.screen.height*heightRatio;//获取页面高度
+            pageHeight = window.screen.height*heightRatio;//get the page height
             window.onload=function(){
-                document.getElementById("map").style.height = (pageHeight*0.95) + "px";//设置map高度
-                document.getElementById("parrallel_coordinate").style.height = pageHeight + "px";//设置map高度
-                document.getElementById("grid").style.height = pageHeight + "px";//设置map高度
+                document.getElementById("map").style.height = (pageHeight*0.95) + "px";//set height of map
+                document.getElementById("parrallel_coordinate").style.height = pageHeight + "px";
+                document.getElementById("grid").style.height = pageHeight + "px";
             }
             
             var removeLayer = function (feature) {
@@ -194,7 +194,7 @@ and open the template in the editor.
                 };
             }
             var max_row=0;//Get the row number of ranking file
-            d3.csv("../pc.csv/potential_for_new_infrastucture_macquaire.csv", function (data) {
+            d3.csv("../../pc.csv/potential_for_new_infrastucture_macquaire.csv", function (data) {
                 _.each(data, function (d, i) {
                 max_row++;
                 });
@@ -276,7 +276,7 @@ and open the template in the editor.
             .color(function (d) { return getColorScalar(d.IndexRank) });
 
             //Read data for parallel coordinate
-            d3.csv("../pc.csv/potential_for_new_infrastucture_macquaire.csv", function (data) {
+            d3.csv("../../pc.csv/potential_for_new_infrastucture_macquaire.csv", function (data) {
                 var keys = Object.keys(data[0]);
                 _.each(data, function (d, i) {
                         d.index = d.index || i; //unique id

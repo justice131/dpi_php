@@ -6,13 +6,13 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data Insight of Manning Catchment</title>
-        <?php include("../common.scripts/all_import_scripts.html"); ?>
-        <?php include("../common.scripts/pc_import_scripts.html"); ?>
-        <script src="../border/Manning_watersource_centroids.geojson"></script>
+        <title>Data Insight of Macquarie Catchment</title>
+        <?php include("../../common.scripts/all_import_scripts.html"); ?>
+        <?php include("../../common.scripts/pc_import_scripts.html"); ?>
+        <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
     </head>
     <body style="background-color:#F3F3F4;">
-        <?php include("../common.scripts/navigator.html"); ?>
+        <?php include("../../common.scripts/navigator.html"); ?>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
             <div class="row">
                 <div class="box-container" style="width:22%;" id="map_panel">
@@ -22,22 +22,22 @@ and open the template in the editor.
                             </div>
                         </div>
                         <div class="box-content" role="tabpanel">
-                                <div id="map"></div>
-                        </div>    
+                            <div id="map"></div>
+                        </div>       
                     </div>
                 </div>
                 <div class="box-container" style="width:46.5%;">
                     <div class="box">
-                            <div class="box-title">
-                                    <h4><b>Parallel Coordinates</b></h4>                                                
-                            </div>
-                            <div id="parcoord_2" class="parcoords"></div>
+                        <div class="box-title">
+                            <h4><b>Parallel Coordinates</b></h4>                                                
+                        </div>
+                        <div id="parcoord_4" class="parcoords"></div>
                     </div>
                 </div>
                 <div class="box-container" style="width:31.5%;">
                     <div class="box">
                         <div class="box-title">
-                                <h4><b>Water Source List</b></h4>                                               
+                            <h4><b>Water Source List</b></h4>                                               
                         </div>  
                         <div id="grid" class="box-content"></div>
                     </div>
@@ -51,7 +51,7 @@ and open the template in the editor.
             $(window).load(function() {
             $(".se-pre-con").fadeOut("slow");;
             });
-            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Manning Catchment'+'</span>';
+            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
             
             var removeLayer = function (feature) {
                 for (var i = 0; i < feature.length; i++){     
@@ -59,17 +59,20 @@ and open the template in the editor.
                 }               
             };
             
+            /*Functions section*/
             function showIt(d) {
                     return d > -1 ? 0.75 : 0;
             }
 
             function resetHighlight(e) {
                     geojson.resetStyle(e.target);
+                    //info.update();
             }
 
             function zoomToFeature(e) {
                     var layer = e.target;
                     info.update(layer.feature.properties);
+                    //map.fitBounds(e.target.getBounds());
             }
 
             function onEachFeature(feature, layer) {
@@ -81,32 +84,29 @@ and open the template in the editor.
             }
 
             function highlightFeature(e) {
-                    var layer = e.target;
-                    if (layer._layers) {
-                            console.log(layer);
-                            layer.eachLayer(function (myLayer) {
-                                    console.log(myLayer);
-                                    myLayer.setStyle({
-                                            weight: myLayer.options ? (myLayer.options.opacity > 0 ? 3 : 0) : 0,
-                                            color: '#666',
-                                            dashArray: '',
-                                    });
-                            });
-                    } else {
-                            layer.setStyle({
-                                    weight: layer.options ? (layer.options.opacity > 0 ? 3 : 0) : 0,
-                                    color: '#666',
-                                    dashArray: '',
-                            });
-                    }
+                var layer = e.target;
+                if (layer._layers) {
+                        console.log(layer);
+                        layer.eachLayer(function (myLayer) {
+                                console.log(myLayer);
+                                myLayer.setStyle({
+                                        weight: myLayer.options ? (myLayer.options.opacity > 0 ? 3 : 0) : 0,
+                                        color: '#666',
+                                        dashArray: '',
+                                });
+                        });
+                } else {
+                        layer.setStyle({
+                                weight: layer.options ? (layer.options.opacity > 0 ? 3 : 0) : 0,
+                                color: '#666',
+                                dashArray: '',
+                        });
+                }
 
-                    if (!L.Browser.ie && !L.Browser.opera) {
-                            layer.bringToFront();
-                    }
-
-                    //info.update(layer.feature.properties);
+                if (!L.Browser.ie && !L.Browser.opera) {
+                        layer.bringToFront();
+                }
             }
-            /*Function section*/
             
             function toThousands(num) {
                 if (isNaN(num)) { 
@@ -135,8 +135,7 @@ and open the template in the editor.
                     '#33ff33'//Green
             ];
 
-
-            var lgas = Manning_unregulated;
+            var lgas = MacquarieBogan_unregulated;
             var padding = 35;
             var layer, overlay;
             var filtered;
@@ -163,9 +162,9 @@ and open the template in the editor.
                     layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.1});
                 }
             }).addTo(map);  
-            map.setView([-31.75, 151.9],10);  
             
-            displayed_s2 = [];
+            map.setView([-31.8, 148.5], 8);
+            displayed_s9 = [];
             function getColorScalar(d) {
                 if(d<=Math.floor(max_row/3)){
                 return myCols[0];
@@ -186,15 +185,14 @@ and open the template in the editor.
                     };
             }
             var max_row=0;//Get the row number of ranking file
-                d3.csv("../pc.csv/dsi_manning.csv", function (data) {
+            d3.csv("../../pc.csv/fmi_macquaire.csv", function (data) {
                 _.each(data, function (d, i) {
                 max_row++;
-
                 });
             });
 
-            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Manning Catchment--Water risk due to drought'+'</span>';
-            parcoord_2.style.display = 'block';
+            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Flood risk (100 years return period)'+'</span>';
+            parcoord_4.style.display = 'block';
             grid.style.display = 'block';
             // control that shows state info on hover
             info = L.control({position: 'topright'});
@@ -206,34 +204,32 @@ and open the template in the editor.
             info.update = function (props) {
                     this._div.innerHTML = (props?
                             '<h4>' + props.WATER_SOUR + '</h4>'+
-//                                             'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
-                                    'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-//                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
+                                    'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
+//                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                    'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
 //                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-//                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                    'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
 //                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                    'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) +' ML/year'+ '</b>' +'<br />'+
+                                    'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + ' ML/year'+ '</b>' +'<br />'+
 //                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-//                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
+//                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+ '</b>' +'<br />'+
                                     'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10)/10) + ' ML/day'+'</b>' +'<br />'+
 //                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
 //                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                    'Days Below Mean: '+ '<b>'+ toThousands(Math.round(props.days_below_mean*100)/100) + '</b>' +'<br />'+
+//                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                     'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                     'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                    'Drought Security Index: ' + '<b>'+ Math.round(props.DSI_100*100)/100 + '</b>'+'<br />'
+                                    'Flood Risk: ' + '<b>'+ Math.round(props.flood_risk*100*10)/10 + ' %</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
 
             var lgaDict = {};
-//                    var geojson, geojsonLabels;
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
-                    lgas.features[j].properties.total_unregulated_requirement=0;
                     lgas.features[j].properties.irrigated_area=0;
                     lgas.features[j].properties.population=0;
                     lgas.features[j].properties.irrigation_value=0;
@@ -241,25 +237,26 @@ and open the template in the editor.
                     lgas.features[j].properties.employment_irrigation=0;
                     lgas.features[j].properties.employment_mining=0;
                     lgas.features[j].properties.total_entitlement=0;	
-                     lgas.features[j].properties.agriculture_water_use=0;
+                    lgas.features[j].properties.agricultural_water_use=0;
                     lgas.features[j].properties.mining_water_use=0;
                     lgas.features[j].properties.wetland_area=0;
+                    lgas.features[j].properties.dissolved_oxygen=0;
                     lgas.features[j].properties.mean_flow=0;
                     lgas.features[j].properties.variation=0;
                     lgas.features[j].properties.median=0;
                     lgas.features[j].properties.days_below_mean=0;
                     lgas.features[j].properties.DSI=0;
                     lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
-                    lgas.features[j].properties.normalized_flood_exposure=0;
                     lgas.features[j].properties.time_below_requirement=0;
                     lgas.features[j].properties.FUI=0;
-                    lgas.features[j].properties.DSI_100=0;
+                    lgas.features[j].properties.water_scarcity=0;
+                    lgas.features[j].properties.flood_risk=0;
                     lgas.features[j].properties.IndexRank=0;
                     lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
             }
 
             // Create parallel Coordinate
-            parcoords = d3.parcoords()("#parcoord_2")
+            parcoords = d3.parcoords()("#parcoord_4")
                     .alpha(1)
                     .mode("queue") // progressive rendering
                     .height(760)
@@ -274,33 +271,32 @@ and open the template in the editor.
 
 
             //Read data for parallel coordinate
-            d3.csv("../pc.csv/dsi_manning.csv", function (data) {
+            d3.csv("../../pc.csv/fmi_macquaire.csv", function (data) {
                 var keys = Object.keys(data[0]);
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d[keys[0]];
-                          lgaDict[water_source_name].properties.total_unregulated_requirement=d[keys[1]];
-                            lgaDict[water_source_name].properties.irrigated_area=d[keys[2]];
-                            lgaDict[water_source_name].properties.population=d[keys[3]];
-                            lgaDict[water_source_name].properties.irrigation_value=d[keys[4]];
-                            lgaDict[water_source_name].properties.mining_value=d[keys[5]];
-                            lgaDict[water_source_name].properties.employment_irrigation=d[keys[6]];
-                            lgaDict[water_source_name].properties.employment_mining=d[keys[7]];
-                            lgaDict[water_source_name].properties.total_entitlement=d[keys[8]];
-                            lgaDict[water_source_name].properties.agriculture_water_use=d[keys[9]];
-                            lgaDict[water_source_name].properties.mining_water_use=d[keys[10]];
-
-                            lgaDict[water_source_name].properties.wetland_area=d[keys[11]];
+                            lgaDict[water_source_name].properties.irrigated_area=d[keys[1]];
+                            lgaDict[water_source_name].properties.population=d[keys[2]];
+                            lgaDict[water_source_name].properties.irrigation_value=d[keys[3]];
+                            lgaDict[water_source_name].properties.mining_value=d[keys[4]];
+                            lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
+                            lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
+                            lgaDict[water_source_name].properties.total_entitlement=d[keys[7]];
+                            lgaDict[water_source_name].properties.agricultural_water_use=d[keys[8]];
+                            lgaDict[water_source_name].properties.mining_water_use=d[keys[9]];
+                            lgaDict[water_source_name].properties.wetland_area=d[keys[10]];
+                            lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[11]];
                             lgaDict[water_source_name].properties.mean_flow=d[keys[12]];
                             lgaDict[water_source_name].properties.variation=d[keys[13]];
                             lgaDict[water_source_name].properties.median=d[keys[14]];
                             lgaDict[water_source_name].properties.days_below_mean=d[keys[15]];
                             lgaDict[water_source_name].properties.DSI=d[keys[16]];
                             lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[17]]);
-                            lgaDict[water_source_name].properties.normalized_flood_exposure=d[keys[18]];
-                            lgaDict[water_source_name].properties.time_below_requirement=d[keys[19]];
-                            lgaDict[water_source_name].properties.FUI=d[keys[20]];
-                            lgaDict[water_source_name].properties.DSI_100=d[keys[21]];
+                            lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
+                            lgaDict[water_source_name].properties.FUI=d[keys[19]];
+                            lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
+                            lgaDict[water_source_name].properties.flood_risk=d[keys[21]];
                             lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                             lga.push(water_source_name);
                     });
@@ -312,7 +308,7 @@ and open the template in the editor.
                     }).addTo(map);
 
                     // add label layer
-                    geojsonLabels = L.geoJson(lgacentroids, {
+                    geojsonLabels = L.geoJson(lgaCentroids, {
                             pointToLayer: function (feature, latlng) {
                                     return  L.marker(latlng, {
                                             clickable : false,
@@ -323,8 +319,8 @@ and open the template in the editor.
                                     });
                             },
                     }).addTo(map);
-                    displayed_s2.push(geojson);
-                    displayed_s2.push(geojsonLabels);                         
+                    displayed_s9.push(geojson);
+                    displayed_s9.push(geojsonLabels);                         
 
                     // add legend
                     legend = L.control({position: 'bottomright'});
@@ -346,16 +342,13 @@ and open the template in the editor.
                     };
                     legend.addTo(map);
 
-
                     //Bind data to parallel coordinate
                     parcoords.data(data)
                                     .hideAxis(["Water source","index"])
                                     .render()
-                                    .updateAxes()
                                     .reorderable()
                                     .brushMode("1D-axes")
                                     .rate(400);
-
 
                     // setting up grid
                     var column_keys = d3.keys(data[0]);
@@ -455,7 +448,7 @@ and open the template in the editor.
                                     geojsonLabels.getLayers().forEach(function (z) {
                                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                     if (d.feature.properties.FUI > 0) {
-                                                            z._icon.innerHTML=Math.round(d.feature.properties.FUI*100)/100;
+                                                            z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
                                                     } else {
                                                             z._icon.innerHTML = "";
                                                     }
@@ -467,5 +460,3 @@ and open the template in the editor.
         </script>
     </body>
 </html>
-
-

@@ -8,8 +8,8 @@ and open the template in the editor.
     <head>
         <title>Water Management Zone</title>
         <?php include("Common_Script_Import.html"); ?>
-        <script type="text/javascript" src="border/Macquarie_Management_Zone.geojson"></script>
-        <script type="text/javascript" src="border/Manning_Management_Zone.geojson"></script>
+        <script type="text/javascript" src="../../border/Macquarie_Management_Zone.geojson"></script>
+        <script type="text/javascript" src="../../border/Manning_Management_Zone.geojson"></script>
         <style>
             .hover_info {
                 display: none;

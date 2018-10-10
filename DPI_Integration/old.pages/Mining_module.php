@@ -4221,9 +4221,6 @@ and open the template in the editor.
                 addCATLayer(catchment_name, CATValue);
             }
             //Edited by justice
-            //L.geoJSON(MacquarieBogan_CatchmentBoundary).addTo(map).getBounds();
-
-    
         </script>
     </body>
 </html>

@@ -6,14 +6,12 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Mining</title>
+        <title>Town Water & Power Generation</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <script type="text/javascript" src="../../common.scripts/settings.js"></script>
-        <script type="text/javascript" src="../../border/Macquarie_Mining.geojson"></script>
-        <script type="text/javascript" src="../../border/Manning_Mining.geojson"></script>
         <style>
             .hover_info {
-                width: 375px;
+                width: 380px;
             }
         </style>
     </head>
@@ -21,7 +19,7 @@ and open the template in the editor.
         <?php include("../../common.scripts/navigator.html"); ?>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:16.5%;" id="left_panel">
+			<div class="box-container" style="width:17.2%;" id="left_panel">
 				<table style="width:100%">
 <!--				  <tr>
 					<td>
@@ -69,9 +67,10 @@ and open the template in the editor.
                                                                 <img src="../../lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
                                                                 <img src="../../lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
                                                                 <img src="../../lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
-                                                                <img src="../../images/mineral.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Mineral<br>
-                                                                <img src="../../images/petroleum.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Petroleum<br>
-                                                                <img src="../../images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coal<br>-->
+                                                                <img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WDSI</small>)<br>
+                                                                <img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WDSI</small>)<br>
+                                                                <img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WDSI</small>)<br>
+                                                                <img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>-->
                                                                 <br>
                                                             </div>
 							</div>
@@ -82,36 +81,44 @@ and open the template in the editor.
 				  </table>
 			</div>                  
 			
-			<div class="box-container" style="width:83.5%" id="map_panel">
+			<div class="box-container" style="width:82.8%" id="map_panel">
 				<div class="box">
 					<div id="map_title" class="box-title">
-						<h4><b>Mining</b></h4>
+						<h4><b>Town Water & Power Generation</b></h4>
 					</div>
 					<div class="box-content">
 						<div id="map"></div>
 					</div>
                                         <div id="MacquarieBogan">
-<!--                                                <input type="checkbox" id="Regulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_regulated('Regulated-CAT-MacquarieBogan')"> <font size="2">Regulated </font></br>       
+                                                <input type="checkbox" id="Regulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_regulated('Regulated-CAT-MacquarieBogan')"> <font size="2">Regulated </font></br>       
                                                 <input type="checkbox" id="Unregulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_unregulated('Unregulated-CAT-MacquarieBogan')"> <font size="2">Unregulated </font></br>   
-                                                <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   -->
+                                                <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   
                                                 <input type="checkbox" id="Work-approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_workapprovals('Work-approvals-CAT-MacquarieBogan')"> <font size="2">License </font></br>
-                                                <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="aa()"> <font size="2">Work approvals </font>
+                                                <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="aa()"> <font size="2">Work approvals </font></br>
+                                                <input type="checkbox" id="MacquarieBogan_wts" onclick="show_MacquarieBogan_tws('MacquarieBogan_wts')"> <font size="2">Town water </font></br>
+                                                <input type="checkbox" id="MacquarieBogan_wt" onclick="show_MacquarieBogan_tw('MacquarieBogan_wt')"> <font size="2">Waste water </font>
+                                                
                                         </div>
         
                                         <div id="ManningRiver">
-<!--                                                <input type="checkbox" id="Regulated-CAT-Manning" onclick="show_gis_Manning_regulated('Regulated-CAT-Manning')"> <font size="2">Regulated </font></br>
+                                                <input type="checkbox" id="Regulated-CAT-Manning" onclick="show_gis_Manning_regulated('Regulated-CAT-Manning')"> <font size="2">Regulated </font></br>
                                                 <input type="checkbox" id="Unregulated-CAT-Manning" onclick="show_gis_Manning_unregulated('Unregulated-CAT-Manning')"> <font size="2">Unregulated </font></br>
-                                                <input type="checkbox" id="Groundwater-CAT-Manning" onclick="show_gis_Manning_groundwater('Groundwater-CAT-Manning')"> <font size="2">Groundwater </font></br>-->
+                                                <input type="checkbox" id="Groundwater-CAT-Manning" onclick="show_gis_Manning_groundwater('Groundwater-CAT-Manning')"> <font size="2">Groundwater </font></br>
                                                 <input type="checkbox" id="Work-approvals-CAT-Manning" onclick="show_gis_Manning_workapprovals('Work-approvals-CAT-Manning')"> <font size="2">License </font></br>
-                                                <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font>
-                                        </div>  
+                                                <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font></br>
+                                                <input type="checkbox" id="Manning_wts" onclick="show_Manning_tws('Manning_wts')"> <font size="2">Town water </font></br>
+                                                <input type="checkbox" id="Manning_wt" onclick="show_Manning_tw('Manning_wt')"> <font size="2">Waste water </font>
+                                        </div>
                                     
 <!--                                        <div id="link_to_parallel_coordinate" class="link_to_parallel">
-                                            <a href="parallel_coordinate_macquarie_mining.php" target="_blank">Insight</a>
-                                        </div>
-                                        <div id="link_to_parallel_coordinate_manning" class="link_to_parallel">
-                                            <a href="parallel_coordinate_manning_mining.php" target="_blank">Insight</a>
+                                            <a href="parallel_coordinate_macqaurie_tws.php" target="_blank">Insight</a>
                                         </div>-->
+                                        <div id="tws_scenario_mac" class="link_to_parallel">
+                                            <a href="tws_scenario_Mac.php" target="_blank">Insight</a>
+                                        </div>
+                                        <div id="tws_scenario_man" class="link_to_parallel">
+                                            <a href="tws_scenario_Man.php" target="_blank">Insight</a>
+                                        </div>
                                         <div id="container"></div>
                                 </div>
 			</div>
@@ -127,9 +134,11 @@ and open the template in the editor.
                     $sql_0 = "SELECT * FROM whole_catchment_indices WHERE catchment_name='".$_GET['catchment_name']."'";
                     $sql_1 = "SELECT * FROM license_data";
                     $sql_2 = "SELECT * FROM work_approval";
+                    $sql_3 = "SELECT * FROM town_water_supply";
                     $result = $conn->query($sql_0);
                     $result_1 = $conn->query($sql_1);
                     $result_2 = $conn->query($sql_2);
+                    $result_3 = $conn->query($sql_3);
                     $row = $result->fetch_assoc();
                     $workapproval = array();
                     $m = -1;
@@ -142,7 +151,13 @@ and open the template in the editor.
                     while ($row_2 = $result_2->fetch_assoc()){
                         $n++;
                         $work_approval[$n] = $row_2;
-                    }                    
+                    } 
+                    $town_water_supply = array();
+                    $o = -1;
+                    while ($row_3 = $result_3->fetch_assoc()){
+                        $o++;
+                        $town_water_supply[$o] = $row_3;
+                    }
                 }else{
                     include '../../db.helper/db_connection_ini.php';
                 }
@@ -176,22 +191,7 @@ and open the template in the editor.
             $(window).load(function() {
             $(".se-pre-con").fadeOut("slow");;
             });
-
-            var elem_ov = document.createElement("div");
-            elem_ov.setAttribute('id', 'mine_legend');
-            elem_ov.innerHTML = (
-                    '<img src="../../images/mineral_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (exploring)<br>'+
-                    '<img src="../../images/mineral_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (mining)<br>'+
-                    '<img src="../../images/mineral_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (assessment)<br>'+
-                    '<img src="../../images/petrol_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (exploring)<br>'+
-                    '<img src="../../images/petrol_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (mining)<br>'+
-                    '<img src="../../images/petrol_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (assessment)<br>'+
-                    '<img src="../../images/coal_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (exploring)<br>'+
-                    '<img src="../../images/coal_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (mining)<br>'+
-                    '<img src="../../images/coal_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (assessment)<div style="height:2px;"><br></div'
-                    );
-            document.getElementById("legend").appendChild(elem_ov);
-
+            
             var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
@@ -202,9 +202,9 @@ and open the template in the editor.
 			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
 				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'mapbox.outdoors'
+			id: 'mapbox.outdoors',
 		}).addTo(map);
-
+                
             var Mac_bound = L.geoJSON(MacquarieBogan_CatchmentBoundary, {
                 style: function (feature) {
                 return { color:'white', fillColor: '#3399ff', weight: 0.8, dashArray: '3'};
@@ -232,12 +232,14 @@ and open the template in the editor.
             }).addTo(map);
             
             function go_to_mac(){               
-                window.location.href = "Mining_module.php?catchment_name=MacquarieBogan";
-                
+                window.location.href = "Town_water_power_gen_module.php?catchment_name=MacquarieBogan";
+                setTimeout(function(){ map.invalidateSize()}, 500);
             }
             
             function go_to_man(){
-                window.location.href = "Mining_module.php?catchment_name=ManningRiver";
+                map.removeLayer(Man_bound);
+                window.location.href = "Town_water_power_gen_module.php?catchment_name=ManningRiver";
+                setTimeout(function(){ map.invalidateSize()}, 500);
             }
             
             function highlight(e) {
@@ -275,6 +277,7 @@ and open the template in the editor.
                     map.removeLayer(feature[i]);
                 }               
             };
+            
             var Icon_approval_1 = L.icon({
                 iconUrl: '../../lib/leaflet/images/wa_reg.png',
                 iconSize:     [18, 28], 
@@ -318,6 +321,13 @@ and open the template in the editor.
             }); 
 
             var Icon_reg = L.icon({
+                iconUrl: '../../lib/leaflet/images/reg.png',
+                iconSize:     [16, 27], 
+                iconAnchor:   [8, 27],  
+                popupAnchor:  [0, -34] 
+            });
+            
+            var Icon_reg = L.icon({
                 iconUrl: '../../lib/leaflet/images/R.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
@@ -336,6 +346,49 @@ and open the template in the editor.
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
+            });
+            
+            var Icon_orange = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_orange.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_green = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_green.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_waste_green = L.icon({
+                iconUrl: '../../lib/leaflet/images/waste_water_green.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_waste_red = L.icon({
+                iconUrl: '../../lib/leaflet/images/waste_water_red.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_waste_orange = L.icon({
+                iconUrl: '../../lib/leaflet/images/waste_water_orange.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            
+            var Icon_waste_water = L.icon({
+                iconUrl: '../../lib/leaflet/images/waste_water_treatment.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
             });
             
             function set_bar(){
@@ -369,26 +422,8 @@ and open the template in the editor.
               });
               bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
               bar.text.style.fontSize = '2rem';
-             }
-             
-             function grm(){
-                var a = Math.floor(Math.random() * 501)+1500; 
-                return a;
             }
-            
-            function aa() {
-                if (document.getElementById('Approvals-CAT-MacquarieBogan').checked === true){
-                    set_bar();
-                    container.style.display='block';
-                    bar.animate(1.0);
-                }
-                setTimeout(function(){                  
-                    show_gis_MacquarieBogan_approvals('Approvals-CAT-MacquarieBogan');
-                    container.style.display='none';
-                },grm()
-                );
-            }
-            
+                     
             function inside (point, vs) {
                 var x = point[0], y = point[1];
                 var inside = false;
@@ -422,23 +457,11 @@ and open the template in the editor.
                 var selectedIndex=myselect.selectedIndex;
                 var selectValue=myselect.options[selectedIndex].value;
                 if(selectValue==="MacquarieBogan"){
-                    window.location.href = "Mining_module.php?catchment_name=MacquarieBogan";
+                    window.location.href = "Town_water_power_gen_module.php?catchment_name=MacquarieBogan";
                 }else if(selectValue==="ManningRiver"){
-                    window.location.href = "Mining_module.php?catchment_name=ManningRiver";
+                    window.location.href = "Town_water_power_gen_module.php?catchment_name=ManningRiver";
                 }
                 //Edited by justice
-            }
-            
-            function getColor(Color_crop){
-                if (Color_crop === "MINERALS"){
-                    return '#DAA520';
-                }else if (Color_crop === "PETROLEUM"){
-                    return '#b3b3b3';
-                }else if (Color_crop === "COAL"){
-                    return 'black';
-                }else {
-                    return 'blue';
-                }
             }
             
             function idsi_color(){
@@ -455,36 +478,118 @@ and open the template in the editor.
                 }
             }
             
-            // custom stript
-            function getstript(Color_crop, operation){
-                var Stript_1 = new L.StripePattern({
-                    angle: 45,
-                    color:getColor(Color_crop)
-                });
-                Stript_1.addTo(map);
-                
-                var Stript_2 = new L.StripePattern({
-                    angle: 0,
-                    color:getColor(Color_crop)
-                });
-                Stript_2.addTo(map);
-                
-                var Stript_3 = new L.StripePattern({
-                    angle: -45,
-                    color:getColor(Color_crop)
-                });
-                Stript_3.addTo(map);
-                
-                if (operation==="EXPLORING"){
-                    return Stript_1;
+            function icon_wsdi(Fui_macquarie, feature){          
+                function compareSecondColumn(a, b) {
+                    if (a[1] === b[1]) {
+                        return 0;
+                    }
+                    else {
+                        return (a[1] > b[1]) ? -1 : 1;
+                    }
                 }
-                if (operation==="MINING"){
-                    return Stript_2;
+                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
+                var e = Fui_macquarie.length;
+                if(e>=3 & (e%3) === 0){
+                    var i = e/3; 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
+                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
+                }else if(e>3 & (e%3) === 1){
+                    var i = Math.floor(e/3); 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
+                }else if(e>3 & (e%3) === 2){
+                    var i = Math.floor(e/3); 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
+                }else if (e===2){
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
+                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
+                }else if (e===1){
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
+                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
                 }
-                if (operation==="ASSESSMENT"){
-                    return Stript_3;
+              
+                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_red;
                 }
+                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_orange;
+                }
+                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_green;
+                }              
             }
+
+            function icon_wwqi(Fui_macquarie, feature){          
+                function compareSecondColumn(a, b) {
+                    if (a[1] === b[1]) {
+                        return 0;
+                    }
+                    else {
+                        return (a[1] > b[1]) ? -1 : 1;
+                    }
+                }
+                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
+                var e = Fui_macquarie.length;
+                if(e>=3 & (e%3) === 0){
+                    var i = e/3; 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
+                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
+                }else if(e>3 & (e%3) === 1){
+                    var i = Math.floor(e/3); 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
+                }else if(e>3 & (e%3) === 2){
+                    var i = Math.floor(e/3); 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
+                }else if (e===2){
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
+                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
+                }else if (e===1){
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
+                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
+                }
+              
+                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_waste_red;
+                }
+                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_waste_orange;
+                }
+                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_waste_green;
+                }              
+            }
+            
+            var wsdi_rank_Macquarie = [];
+            var wsdi_rank_Manning = [];
+            <?php if(!empty($town_water_supply)){?>;
+                <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+                    var cat ="<?php echo $town_water_supply[$x]["catchment"]; ?>";
+                    if (cat === 'Macquarie'){
+                        var loc ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                        var wsdi ="<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                        wsdi_rank_Macquarie.push([loc, wsdi]);
+                    }
+                    if (cat === 'Manning'){
+                        var loc ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                        var wsdi ="<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                        wsdi_rank_Manning.push([loc, wsdi]);
+                    }
+                <?php }?>;    
+            <?php }?>;
+                              
             
             var featureCATCollection = []; 
             var check_collection = [];
@@ -508,63 +613,155 @@ and open the template in the editor.
                         onEachFeature: onEachFeature
 //                        interactive: false
                         }).addTo(map);
-                if(CATName === 'MacquarieBogan'){
-                    show_gis_MacquarieBogan_regulated();
-                    show_gis_MacquarieBogan_unregulated();
-                    show_gis_MacquarieBogan_groundwater();
-                    
-                    Mining = L.geoJSON(Macquarie_Mining, {
-                        //style: function (feature) {
-                         //       return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};                               
-                       // },
-                        onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color: getColor(feature.properties.RESOURCE), weight: 3.0, fillOpacity: 0.8, fillPattern: getstript(feature.properties.RESOURCE, feature.properties.OPERATION)});
-                            return layer.bindPopup('Title Code: ' + feature.properties.TITLE_CODE + '<br/>' 
-                                    + 'Title No: ' + feature.properties.TITLE_NO + '<br/>' 
-                                    + 'Activate Year: ' + feature.properties.ACT_YEAR + '<br/>'
-                                    + 'Company: ' + feature.properties.COMPANY + '<br/>'
-                                    + 'Grant Date: ' + feature.properties.GRANT_DATE + '<br/>'
-                                    + 'Expiry Date: ' + feature.properties.EXPIRY_DAT + '<br/>'
-                                    + 'Last Renew: ' + feature.properties.LAST_RENEW + '<br/>'
-                                    + 'Groups: ' + feature.properties.GROUPS + '<br/>'
-                                    + 'Minerals: ' + feature.properties.MINERALS + '<br/>'
-                                    + 'Resource: ' + feature.properties.RESOURCE + '<br/>'
-                                    + 'Operation: ' + feature.properties.OPERATION);
+                if(CATName === 'MacquarieBogan'){                          
+                    <?php if(!empty($town_water_supply)){?>;
+                        WTC_number_Macquarie = 0;
+                        WTC_population_Macquarie = 0;
+                        WTC_volume_Macquarie = 0;
+                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";                           
+                            if (cat === 'Macquarie'){
+                                WTC_number_Macquarie = WTC_number_Macquarie + 1;                               
+                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+//                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Macquarie, location)}).addTo(map)
+//                                .bindPopup('Location: ' + location + '<br/>'
+//                                + 'Town Served: ' + town_served + '<br/>'
+//                                + 'Postcode: ' + pos + '<br/>'
+//                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+//                                + 'Health Based Target Index: ' + HBT + '<br/>'
+//                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+//                                + 'Population Served: ' + Math.round(popu));
+//                                featureCATCollection.push(M);
+                                WTC_population_Macquarie = WTC_population_Macquarie + Math.round(popu);
+                                WTC_volume_Macquarie = WTC_volume_Macquarie + Math.round(vol);
+                            }
+                        <?php }?>;    
+                    <?php }?>; 
+                        
+                    <?php
+                        include '../../db.helper/db_connection_ini.php';
+                        if(!empty($_GET['catchment_name'])){
+                            if($conn!=null){
+                                $sql_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Macquarie'";
+                                $result_wwtc = $conn->query($sql_wwtc);
+                                $wwtc_mac = array();
+                                $m = -1;
+                                while ($row_wwtc_mac = $result_wwtc->fetch_assoc()){
+                                    $m++;
+                                    $wwtc_mac[$m] = $row_wwtc_mac;
+                                }
+                            }else{
+                                include '../../db.helper/db_connection_ini.php';
+                            }
                         }
-                        }).addTo(map);
+                    ?>
+
+                    <?php if(!empty($wwtc_mac)){?>;
+                        WWTC_number_Macquarie = 0;
+                        WWTC_volume_Macquarie = 0;
+                        <?php for ($x=0; $x<count($wwtc_mac); $x++) {?>                          
+                                WWTC_number_Macquarie = WWTC_number_Macquarie + 1;                               
+                                var lat = "<?php echo $wwtc_mac[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $wwtc_mac[$x]["longitude"]; ?>";
+                                var lga = "<?php echo $wwtc_mac[$x]["lga"]; ?>";
+                                var treatment_plant = "<?php echo $wwtc_mac[$x]["treatment_plant"]; ?>";
+                                var wwqi = "<?php echo $wwtc_mac[$x]["wwqi"]; ?>";
+                                var treted_volume = "<?php echo $wwtc_mac[$x]["treted_volume"]; ?>";
+
+//                                var M = L.marker([lat, lon], {icon: Icon_waste_water}).addTo(map)
+//                                .bindPopup('Location: ' + treatment_plant + '<br/>'
+//                                + 'LGA: ' + lga + '<br/>'
+//                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
+//                                + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
+//                                featureCATCollection.push(M);
+                                WWTC_volume_Macquarie = WWTC_volume_Macquarie + Math.round(treted_volume);
+                        <?php }?>;    
+                    <?php }?>; 
+                                            
                 } 
                 
-                if(CATName === 'ManningRiver'){
-                    show_gis_Manning_unregulated();
-                    show_gis_Manning_groundwater();
-                    
-                    Mining = L.geoJSON(Manning_Mining, {
-                        //style: function (feature) {
-                        //        return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};
-                        //},
-                        onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color: getColor(feature.properties.RESOURCE), weight: 3.0, fillOpacity: 0.8, fillPattern: getstript(feature.properties.RESOURCE, feature.properties.OPERATION)});
-                            return layer.bindPopup('Title Code: ' + feature.properties.TITLE_CODE + '<br/>' 
-                                    + 'Title No: ' + feature.properties.TITLE_NO + '<br/>' 
-                                    + 'Activate Year: ' + feature.properties.ACT_YEAR + '<br/>'
-                                    + 'Company: ' + feature.properties.COMPANY + '<br/>'
-                                    + 'Grant Date: ' + feature.properties.GRANT_DATE + '<br/>'
-                                    + 'Expiry Date: ' + feature.properties.EXPIRY_DAT + '<br/>'
-                                    + 'Last Renew: ' + feature.properties.LAST_RENEW + '<br/>'
-                                    + 'Groups: ' + feature.properties.GROUPS + '<br/>'
-                                    + 'Minerals: ' + feature.properties.MINERALS + '<br/>'
-                                    + 'Resource: ' + feature.properties.RESOURCE + '<br/>'
-                                    + 'Operation: ' + feature.properties.OPERATION);
+                if(CATName === 'ManningRiver'){                   
+                    <?php if(!empty($town_water_supply)){?>;
+                        WTC_number_Manning = 0;
+                        WTC_volume_Manning = 0;
+                        WTC_population_Manning = 0;
+                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";
+                            if (cat === 'Manning'){
+                                WTC_number_Manning = WTC_number_Manning + 1;
+                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+//                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Manning, location)}).addTo(map)
+//                                .bindPopup('Location: ' + location + '<br/>'
+//                                + 'Town Served: ' + town_served + '<br/>'
+//                                + 'Postcode: ' + pos + '<br/>'
+//                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+//                                + 'Health Based Target Index: ' + HBT + '<br/>'
+//                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+//                                + 'Population Served: ' + Math.round(popu));
+//                                featureCATCollection.push(M);
+                                WTC_volume_Manning = WTC_volume_Manning + Math.round(vol);
+                                WTC_population_Manning = WTC_population_Manning + Math.round(popu);
+                            }
+                        <?php }?>;    
+                    <?php }?>; 
+                        
+                    <?php
+                        include '../../db.helper/db_connection_ini.php';
+                        if(!empty($_GET['catchment_name'])){
+                            if($conn!=null){
+                                $sq2_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Manning'";
+                                $result_wwtc = $conn->query($sq2_wwtc);
+                                $wwtc_man = array();
+                                $m = -1;
+                                while ($row_wwtc_man = $result_wwtc->fetch_assoc()){
+                                    $m++;
+                                    $wwtc_man[$m] = $row_wwtc_man;
+                                }
+                            }else{
+                                include '../../db.helper/db_connection_ini.php';
+                            }
                         }
-                        }).addTo(map);
-                } 
+                    ?>
+
+                    <?php if(!empty($wwtc_man)){?>;
+                        WWTC_number_Manning = 0;
+                        WWTC_volume_Manning = 0;
+                        <?php for ($x=0; $x<count($wwtc_man); $x++) {?>                          
+                                WWTC_number_Manning = WWTC_number_Manning + 1;                               
+                                var lat = "<?php echo $wwtc_man[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $wwtc_man[$x]["longitude"]; ?>";
+                                var lga = "<?php echo $wwtc_man[$x]["lga"]; ?>";
+                                var treatment_plant = "<?php echo $wwtc_man[$x]["treatment_plant"]; ?>";
+                                var wwqi = "<?php echo $wwtc_man[$x]["wwqi"]; ?>";
+                                var treted_volume = "<?php echo $wwtc_man[$x]["treted_volume"]; ?>";
+                                WWTC_volume_Manning = WWTC_volume_Manning + Math.round(treted_volume);
+                        <?php }?>;    
+                    <?php }?>; 
+                        
+                }
                 //Zooms to the layer selected
                 if (CATName==="MacquarieBogan"){
-                    map.removeLayer(Mac_bound);
                     map.setView([-31.8, 148.5], 8);
+                    map.removeLayer(Mac_bound);
                 }else if (CATName==="ManningRiver"){
-                    map.removeLayer(Man_bound);
                     map.setView([-31.75, 151.9],10);
+                    map.removeLayer(Man_bound);
                 }
                 
                 hover_info.addTo(map);
@@ -574,7 +771,6 @@ and open the template in the editor.
                 //Reset to default checkbox
                 $("input[type=checkbox]").each(function() { this.checked=false; });
                 featureCATCollection.push(CAT);
-                featureCATCollection.push(Mining);
                 displayedCAT.push(CATName);
                 check_collection.push(checkbox_id);
                 // Remove other's layers
@@ -582,6 +778,295 @@ and open the template in the editor.
                 removeLayer(displayed_gis_layer_unregulated);
                 removeLayer(displayed_gis_layer_groundwater);
                 }        
+            }
+            
+            featureWTSCollection = [];
+            function show_MacquarieBogan_tws(id){
+                var checkBox = document.getElementById(id); 
+                link_to_wts = document.getElementById('tws_scenario_mac');
+                if (checkBox.checked === true){
+                    link_to_wts.style.display = 'block'; 
+//                    var elem_ov = document.createElement("div");
+//                    elem_ov.setAttribute('id', 'tws_legend');
+//                    elem_ov.innerHTML = (
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+//                            '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+//                            );
+//                    document.getElementById("legend").appendChild(elem_ov);
+//            
+//                    var max_row = wsdi_rank_Macquarie.length;
+//                    legend = L.control({position: 'bottomright'});
+//                    if (max_row>=3 & (max_row%3)===0){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };
+//                    }else if (max_row>=3 & (max_row%3)===1){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };                       
+//                    }else if (max_row>=3 & (max_row%3)===2){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };
+//                    }else if (max_row===2){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };                       
+//                    }else if (max_row===1){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        }; 
+//                    
+//                    }
+//                    legend.addTo(map);
+//                            
+//                    <?php if(!empty($town_water_supply)){?>;
+//                        WTC_number_Macquarie = 0;
+//                        WTC_population_Macquarie = 0;
+//                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+//                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";                           
+//                            if (cat === 'Macquarie'){
+//                                WTC_number_Macquarie = WTC_number_Macquarie + 1;                               
+//                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+//                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+//                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+//                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+//                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+//                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+//                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+//                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+//                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+//                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Macquarie, location)}).addTo(map)
+//                                .bindPopup('Location: ' + location + '<br/>'
+//                                + 'Town Served: ' + town_served + '<br/>'
+//                                + 'Postcode: ' + pos + '<br/>'
+//                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+//                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+//                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
+//                                + 'Population Served: ' + Math.round(popu));
+//                                featureWTSCollection.push(M);
+//                                WTC_population_Macquarie = WTC_population_Macquarie + Math.round(popu);
+//                            }
+//                        <?php }?>;    
+//                    <?php }?>; 
+
+                }
+                if (checkBox.checked === false){
+                    link_to_wts.style.display = 'none'; 
+//                    removeLayer(featureWTSCollection);
+//                    map.removeControl(legend);
+//                    var elementToBeRemoved = document.getElementById('tws_legend');
+//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                }
+            }
+            
+            featureWTCollection = [];
+            function show_MacquarieBogan_tw(id){
+                var checkBox = document.getElementById(id); 
+                if (checkBox.checked === true){
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tws_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="../../lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (high <small>WWQI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (medium <small>WWQI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (low <small>WWQI</small>)<div style="height:2px;"><br></div>'
+        //                    '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
+                    
+                    <?php
+                        include '../../db.helper/db_connection_ini.php';
+                        if(!empty($_GET['catchment_name'])){
+                            if($conn!=null){
+                                $sql_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Macquarie'";
+                                $result_wwtc = $conn->query($sql_wwtc);
+                                $wwtc_mac = array();
+                                $m = -1;
+                                while ($row_wwtc_mac = $result_wwtc->fetch_assoc()){
+                                    $m++;
+                                    $wwtc_mac[$m] = $row_wwtc_mac;
+                                }
+                            }else{
+                                include '../../db.helper/db_connection_ini.php';
+                            }
+                        }
+                    ?>
+
+                    var wwqi_rank_Macquarie = [];
+                    <?php if(!empty($wwtc_mac)){?>;
+                        <?php for ($x=0; $x<count($wwtc_mac); $x++) {?>                          
+                        var loca ="<?php echo $wwtc_mac[$x]["treatment_plant"]; ?>";
+                        var wwqi ="<?php echo $wwtc_mac[$x]["wwqi"]; ?>";
+                        wwqi_rank_Macquarie.push([loca, wwqi]);                      
+                        <?php }?>;    
+                    <?php }?>;
+
+                    <?php if(!empty($wwtc_mac)){?>;
+                        WWTC_number_Macquarie = 0;
+                        <?php for ($x=0; $x<count($wwtc_mac); $x++) {?>                          
+                                WWTC_number_Macquarie = WWTC_number_Macquarie + 1;                               
+                                var lat = "<?php echo $wwtc_mac[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $wwtc_mac[$x]["longitude"]; ?>";
+                                var lga = "<?php echo $wwtc_mac[$x]["lga"]; ?>";
+                                var treatment_plant = "<?php echo $wwtc_mac[$x]["treatment_plant"]; ?>";
+                                var wwqi = "<?php echo $wwtc_mac[$x]["wwqi"]; ?>";
+                                var treted_volume = "<?php echo $wwtc_mac[$x]["treted_volume"]; ?>";
+
+                                var M = L.marker([lat, lon], {icon: icon_wwqi(wwqi_rank_Macquarie, treatment_plant)}).addTo(map)
+                                .bindPopup('Location: ' + treatment_plant + '<br/>'
+                                + 'LGA: ' + lga + '<br/>'
+                                + 'WWQI: ' +Math.round(wwqi)/100 + '<br/>'
+                                + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
+                                featureWTCollection.push(M);
+                        <?php }?>;    
+                    <?php }?>; 
+                        
+                    var max_row = wwqi_rank_Macquarie.length;
+                    legend = L.control({position: 'bottomright'});
+                    if (max_row>=3 & (max_row%3)===0){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row>=3 & (max_row%3)===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row>=3 & (max_row%3)===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water__red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
+                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        }; 
+                    
+                    }
+                    legend.addTo(map);
+                }
+                if (checkBox.checked === false){
+                    removeLayer(featureWTCollection);
+                    map.removeControl(legend);
+                    var elementToBeRemoved = document.getElementById('tws_legend');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                }
             }
             
             
@@ -643,7 +1128,7 @@ and open the template in the editor.
                     throw new TypeError("num is not a number"); 
                 } 
                 var groups = (/([\-\+]?)(\d*)(\.\d+)?/g).exec("" + num), 
-                    mask = groups[1], 
+                    mask = groups[1],
                     integers = (groups[2] || "").split(""),
                     decimal = groups[3] || "",
                     remain = integers.length % 3; 
@@ -657,19 +1142,36 @@ and open the template in the editor.
                 }, "").replace(/\,$/g, ""); 
                     return mask + temp + decimal; 
             }
-                                           
+            
+            function grm(){
+                var a = Math.floor(Math.random() * 501)+1500; 
+                return a;
+            }
+            
+            function aa() {
+                if (document.getElementById('Approvals-CAT-MacquarieBogan').checked === true){
+                    set_bar();
+                    container.style.display='block';
+                    bar.animate(1.0);
+                }
+                setTimeout(function(){                  
+                    show_gis_MacquarieBogan_approvals('Approvals-CAT-MacquarieBogan');
+                    container.style.display='none';
+                },grm()
+                );
+            } 
+            
             //display regulated info for MacquarieBogan
-                     
-            function show_gis_MacquarieBogan_regulated(){
-                var displayed_gis_layer_regulated = []; 
-//                var checkBox = document.getElementById(id); 
+            var displayed_gis_layer_regulated = [];          
+            function show_gis_MacquarieBogan_regulated(id){
+                var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_RugulatedRiver;
                 // display legend for reg river
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'reg_mac');
                 elem.innerHTML = ('<img src="../../lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
                 
-//                if (checkBox.checked === true){
+                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
@@ -764,26 +1266,25 @@ and open the template in the editor.
                     displayed_gis_layer_regulated.push(Mak_12);
                     displayed_gis_layer_regulated.push(Mak_13);
                     displayed_gis_layer_regulated.push(Mak_14);
-//                }
-//                if (checkBox.checked === false){
-//                    removeLayer(displayed_gis_layer_regulated);
-//                    var elementToBeRemoved = document.getElementById('reg_mac');
-//                    document.getElementById('legend').removeChild(elementToBeRemoved);
-//                } 
+                }
+                if (checkBox.checked === false){
+                    removeLayer(displayed_gis_layer_regulated);
+                    var elementToBeRemoved = document.getElementById('reg_mac');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                }
             }
             
             //display unregulated info for MacquarieBogan
-                    
-            function show_gis_MacquarieBogan_unregulated(){
-                var displayed_gis_layer_unregulated = [];  
-//               var checkBox = document.getElementById(id); 
+            var displayed_gis_layer_unregulated = [];          
+            function show_gis_MacquarieBogan_unregulated(id){
+                var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_unregulated;
                 var geojsonfile_1 = Macquarie_Unregulatedriver;
 //                link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_mac');
-                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
-//                if (checkBox.checked === true){
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.5" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     // display link icon
 //                    link_to_parr.style.display = 'block';                                       
@@ -803,7 +1304,7 @@ and open the template in the editor.
                         textPlaceholder: 'Search water source',
                         textErr: 'Water source not found'
                     }); 
-//                    map.addControl(controlSearch);
+                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
 //                        style: function (feature) {
@@ -818,7 +1319,7 @@ and open the template in the editor.
                         style: function (feature) {
                             return { color: 'lightblue', weight: 1, fillOpacity: 0.9};
                         }
-                    }).addTo(map);                   
+                    }).addTo(map);                    
                     displayed_gis_layer_unregulated.push(Reg);  
                     displayed_gis_layer_unregulated.push(Reg_1);  
                     
@@ -2468,26 +2969,25 @@ and open the template in the editor.
                     function(e) {
                         e.layer.addTo(map).openPopup();
                     }); 
-//                    }
-//                if (checkBox.checked === false){
-//                    removeLayer(displayed_gis_layer_unregulated);
-//                    map.removeControl(controlSearch);
+                    }
+                if (checkBox.checked === false){
+                    removeLayer(displayed_gis_layer_unregulated);
+                    map.removeControl(controlSearch);
 //                    link_to_parr.style.display = 'none';
-//                    var elementToBeRemoved = document.getElementById('unreg_mac');
-//                    document.getElementById('legend').removeChild(elementToBeRemoved);
-//                } 
+                    var elementToBeRemoved = document.getElementById('unreg_mac');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                } 
             }
             
             //display groundwater info for MacquarieBogan
-                    
-            function show_gis_MacquarieBogan_groundwater(){
-                var displayed_gis_layer_groundwater = [];  
-//                var checkBox = document.getElementById(id); 
+            var displayed_gis_layer_groundwater = [];          
+            function show_gis_MacquarieBogan_groundwater(id){
+                var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_GW;
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_mac');
-                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.5" align = "center">&nbsp; &nbsp;Groundwater<br>');
-//                if (checkBox.checked === true){
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
@@ -2504,11 +3004,11 @@ and open the template in the editor.
                         textPlaceholder: 'Search groundwater source',
                         textErr: 'Groundwater source not found'
                     }); 
-//                    map.addControl(controlSearch);
+                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: "yellow", weight: 0.9, fillOpacity: 0.3};
+                            return { color: getRandomColor(), weight: 1.0, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     displayed_gis_layer_groundwater.push(Reg);  
@@ -2591,14 +3091,13 @@ and open the template in the editor.
                         e.layer.addTo(map).openPopup();
                     });                                  
                     
-//                }
-//                if (checkBox.checked === false){
-//                    removeLayer(displayed_gis_layer_groundwater);
-//                    map.removeControl(controlSearch);
-//                    var elementToBeRemoved = document.getElementById('gw_mac');
-//                    document.getElementById('legend').removeChild(elementToBeRemoved);
-//
-//                }
+                }
+                if (checkBox.checked === false){
+                    removeLayer(displayed_gis_layer_groundwater);
+                    map.removeControl(controlSearch);
+                    var elementToBeRemoved = document.getElementById('gw_mac');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                } 
             } 
             
             var displayed_gis_layer_workapproval = [];
@@ -2615,10 +3114,10 @@ and open the template in the editor.
                     var cat = "<?php echo $workapproval[$x]["Category"]; ?>";
                     var Basin_name = "<?php echo $workapproval[$x]["Basin_name"]; ?>";
                     var WS = "<?php echo $workapproval[$x]["WS"]; ?>";
-                    if (Basin_name === 'Macquarie'& (Purpose === 'INDUSTRIAL' || Purpose === 'MINING' || Purpose === 'MINING [LOW SECURITY]')){
+                    if (Basin_name === 'Macquarie'& Purpose === 'TOWN WATER SUPPLY'){
                         number_license_mac = number_license_mac +1;
                     }
-                    if (Basin_name === 'Manning'& (Purpose === 'INDUSTRIAL' || Purpose === 'MINING' || Purpose === 'MINING [LOW SECURITY]')){
+                    if (Basin_name === 'Manning'& Purpose === 'TOWN WATER SUPPLY'){
                         number_license_man = number_license_man +1;
                     }
                     work_mac.push([Lat_workapproval, Lon_workapproval, Purpose, Share_component, water_type, cat, Basin_name, WS]);
@@ -2632,8 +3131,7 @@ and open the template in the editor.
                 elem.innerHTML = ('<img src="../../lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
                         '<img src="../../lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
                         '<img src="../../lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
-                
-                if (checkBox.checked === true){  
+                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     num_marker = number_license_mac;
                     var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
@@ -2646,7 +3144,7 @@ and open the template in the editor.
                         var cat = work_mac[i][5];
                         var Basin_name = work_mac[i][6];
                         var Water_Source = work_mac[i][7];
-                        if (Basin_name === 'Macquarie' & (Purpose === 'INDUSTRIAL' || Purpose === 'MINING' || Purpose === 'MINING [LOW SECURITY]')){
+                        if (Basin_name === 'Macquarie' & Purpose === 'TOWN WATER SUPPLY'){
                                 switch(WT){
                                     case 'REG': 
                                     var M = L.marker([Lat_workapproval, Lon_workapproval], {icon: Icon_license_1})
@@ -2687,7 +3185,7 @@ and open the template in the editor.
                     removeLayer(displayed_gis_layer_workapproval);
                     var elementToBeRemoved = document.getElementById('lices_mac');
                     document.getElementById('legend').removeChild(elementToBeRemoved);
-                }           
+                }  
             }           
             
             var displayed_gis_layer_approval = [];
@@ -2711,7 +3209,7 @@ and open the template in the editor.
                     }                   
                     work_approval_array.push([Lat_approval, Lon_approval, Work_description, So, Approval_id, Basin_name, Water_type]);
                 <?php }?>;    
-            <?php }?>; 
+            <?php }?>;  
                 
             function show_gis_MacquarieBogan_approvals(id){
                 var checkBox = document.getElementById(id);
@@ -2788,7 +3286,295 @@ and open the template in the editor.
                     document.getElementById('legend').removeChild(elementToBeRemoved);
                 } 
             }
+            
+            featureTWSCollection = [];
+            function show_Manning_tws(id){
+                var checkBox = document.getElementById(id); 
+                link_to_wts_man = document.getElementById('tws_scenario_man');
+                if (checkBox.checked === true){
+                    link_to_wts_man.style.display = "block";
+//                    var elem_ov = document.createElement("div");
+//                    elem_ov.setAttribute('id', 'tw_legend');
+//                    elem_ov.innerHTML = (
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+//                            '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+//                            );
+//                    document.getElementById("legend").appendChild(elem_ov);
+//                    
+//                    var max_row=wsdi_rank_Manning.length;
+//                    legend = L.control({position: 'bottomright'});
+//                    if (max_row>=3 & (max_row%3)===0){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };
+//                    }else if (max_row>=3 & (max_row%3)===1){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };                       
+//                    }else if (max_row>=3 & (max_row%3)===2){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };
+//                    }else if (max_row===2){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        };                       
+//                    }else if (max_row===1){
+//                        legend.onAdd = function (map) {
+//                                var div = L.DomUtil.create('div', 'info legend'),
+//                                labels = [],
+//                                from, to;
+//                                labels.push(
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+//                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
+//                                return div;
+//                        }; 
+//                    
+//                    }
+//                    legend.addTo(map);
+//                    
+//                    <?php if(!empty($town_water_supply)){?>;
+//                        WTC_number_Manning = 0;
+//                        WTC_population_Manning = 0;
+//                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+//                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";
+//                            if (cat === 'Manning'){
+//                                WTC_number_Manning = WTC_number_Manning + 1;
+//                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+//                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+//                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+//                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+//                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+//                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+//                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+//                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+//                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+//                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Manning, location)}).addTo(map)
+//                                .bindPopup('Location: ' + location + '<br/>'
+//                                + 'Town Served: ' + town_served + '<br/>'
+//                                + 'Postcode: ' + pos + '<br/>'
+//                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+//                                + 'Health Based Target Index: ' + HBT + '<br/>'
+//                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+//                                + 'Population Served: ' + Math.round(popu));
+//                                featureTWSCollection.push(M);
+//                                WTC_population_Manning = WTC_population_Manning + Math.round(popu);
+//                            }
+//                        <?php }?>;    
+//                    <?php }?>; 
+                }
+                if (checkBox.checked === false){
+                    link_to_wts_man.style.display = "none";
+//                    removeLayer(featureTWSCollection);
+//                    map.removeControl(legend);
+//                    var elementToBeRemoved = document.getElementById('tw_legend');
+//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                }
+            }
+            
+            featureWTCollection = [];
+            function show_Manning_tw(id){
+                var checkBox = document.getElementById(id); 
+                if (checkBox.checked === true){
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tw_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="../../lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+//                            '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
+                    
+                    <?php
+                        include '../../db.helper/db_connection_ini.php';
+                        if(!empty($_GET['catchment_name'])){
+                            if($conn!=null){
+                                $sql_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Manning'";
+                                $result_wwtc = $conn->query($sql_wwtc);
+                                $wwtc_man = array();
+                                $m = -1;
+                                while ($row_wwtc_man = $result_wwtc->fetch_assoc()){
+                                    $m++;
+                                    $wwtc_man[$m] = $row_wwtc_man;
+                                }
+                            }else{
+                                include '../../db.helper/db_connection_ini.php';
+                            }
+                        }
+                    ?>
+
+                    var wwqi_rank_Manning = [];
+                    <?php if(!empty($wwtc_man)){?>;
+                        <?php for ($x=0; $x<count($wwtc_man); $x++) {?>                          
+                        var loca ="<?php echo $wwtc_man[$x]["treatment_plant"]; ?>";
+                        var wwqi ="<?php echo $wwtc_man[$x]["wwqi"]; ?>";
+                        wwqi_rank_Manning.push([loca, wwqi]);                      
+                        <?php }?>;    
+                    <?php }?>;
+
+                    <?php if(!empty($wwtc_man)){?>;
+                        WWTC_number_Macquarie = 0;
+                        <?php for ($x=0; $x<count($wwtc_man); $x++) {?>                          
+                                WWTC_number_Macquarie = WWTC_number_Macquarie + 1;                               
+                                var lat = "<?php echo $wwtc_man[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $wwtc_man[$x]["longitude"]; ?>";
+                                var lga = "<?php echo $wwtc_man[$x]["lga"]; ?>";
+                                var treatment_plant = "<?php echo $wwtc_man[$x]["treatment_plant"]; ?>";
+                                var wwqi = "<?php echo $wwtc_man[$x]["wwqi"]; ?>";
+                                var treted_volume = "<?php echo $wwtc_man[$x]["treted_volume"]; ?>";
+
+                                var M = L.marker([lat, lon], {icon: icon_wwqi(wwqi_rank_Manning, treatment_plant)}).addTo(map)
+                                .bindPopup('Location: ' + treatment_plant + '<br/>'
+                                + 'LGA: ' + lga + '<br/>'
+                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
+                                + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
+                                featureWTCollection.push(M);
+                        <?php }?>;    
+                    <?php }?>; 
                         
+                    var max_row = wwqi_rank_Manning.length;
+                    legend = L.control({position: 'bottomright'});
+                    if (max_row>=3 & (max_row%3)===0){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row>=3 & (max_row%3)===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row>=3 & (max_row%3)===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
+                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
+                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };
+                    }else if (max_row===2){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water__red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
+                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        };                       
+                    }else if (max_row===1){
+                        legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
+                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
+                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
+                                return div;
+                        }; 
+                    
+                    }
+                    legend.addTo(map);
+                }
+                if (checkBox.checked === false){
+                    removeLayer(featureWTCollection);
+                    map.removeControl(legend);
+                    var elementToBeRemoved = document.getElementById('tw_legend');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                }
+            }
+            
             function show_gis_Manning_regulated(id){
                 var checkBox = document.getElementById(id); 
                 if (checkBox.checked === true){
@@ -2799,20 +3585,16 @@ and open the template in the editor.
                 }
             }        
             
-           
+            var displayed_gis_layer_unregulated = [];
             function show_gis_Manning_unregulated(id){
-                var displayed_gis_layer_unregulated = [];
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_man');
                 elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
 
-//                var checkBox = document.getElementById(id); 
+                var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
                 var geojsonfile_1 = Manning_Unregulatedriver;
-//                link_to_parr_man = document.getElementById('link_to_parallel_coordinate_manning');
-                
-//                if (checkBox.checked === true){
-//                    link_to_parr_man.style.display='block';
+                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
@@ -2829,7 +3611,7 @@ and open the template in the editor.
                         textPlaceholder: 'Search water source',
                         textErr: 'Water source not found'
                     }); 
-//                    map.addControl(controlSearch);
+                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
@@ -3736,26 +4518,25 @@ and open the template in the editor.
                     function(e) {
                         e.layer.addTo(map).openPopup();
                     });                   
-//                }
-//                if (checkBox.checked === false){
-//                    removeLayer(displayed_gis_layer_unregulated);
-//                    map.removeControl(controlSearch);
-//                    var elementToBeRemoved = document.getElementById('unreg_man');
-//                    document.getElementById('legend').removeChild(elementToBeRemoved);
-//                    link_to_parr_man.style.display='none';
-//                }                      
+                }
+                if (checkBox.checked === false){
+                    removeLayer(displayed_gis_layer_unregulated);
+                    map.removeControl(controlSearch);
+                    var elementToBeRemoved = document.getElementById('unreg_man');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+
+                }                 
             }
             
-            
-            function show_gis_Manning_groundwater(){
-                var displayed_gis_layer_groundwater = [];   
-//                var checkBox = document.getElementById(id); 
+            var displayed_gis_layer_groundwater = [];   
+            function show_gis_Manning_groundwater(id){
+                var checkBox = document.getElementById(id); 
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_man');
                 elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
 
                 var geojsonfile = Manning_Groundwater;
-//                if (checkBox.checked === true){
+                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
@@ -3772,11 +4553,11 @@ and open the template in the editor.
                         textPlaceholder: 'Search groundwater source',
                         textErr: 'Groundwater source not found'
                     }); 
-//                    map.addControl(controlSearch);
+                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: "yellow", weight: 0.9, fillOpacity: 0.3};
+                            return { color: getRandomColor(), weight: 1.5, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     displayed_gis_layer_groundwater.push(Reg); 
@@ -3887,17 +4668,17 @@ and open the template in the editor.
                     function(e) {
                         e.layer.addTo(map).openPopup();
                     });
-//                }
-//                if (checkBox.checked === false){
-//                    removeLayer(displayed_gis_layer_groundwater);
-//                    map.removeControl(controlSearch);
-//                    var elementToBeRemoved = document.getElementById('gw_man');
-//                    document.getElementById('legend').removeChild(elementToBeRemoved);
-//
-//                }           
+                }
+                if (checkBox.checked === false){
+                    removeLayer(displayed_gis_layer_groundwater);
+                    map.removeControl(controlSearch);
+                    var elementToBeRemoved = document.getElementById('gw_man');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+
+                }            
             }
             
-            var displayed_gis_layer_workapproval = [];                                           
+            var displayed_gis_layer_workapproval = [];                                        
             function show_gis_Manning_workapprovals(id){
                 var checkBox = document.getElementById(id);
                 var elem = document.createElement("div");
@@ -3906,7 +4687,7 @@ and open the template in the editor.
                         '<img src="../../lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
                         '<img src="../../lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
 
-                if (checkBox.checked === true){ 
+                if (checkBox.checked === true){  
                     document.getElementById("legend").appendChild(elem);
                     num_marker = number_license_man;
                     var markerClusters = new L.MarkerClusterGroup({disableClusteringAtZoom: 13});
@@ -3919,7 +4700,7 @@ and open the template in the editor.
                         var cat = work_mac[i][5];
                         var Basin_name = work_mac[i][6];
                         var Water_Source = work_mac[i][7];
-                        if (Basin_name === 'Manning' & (Purpose === 'INDUSTRIAL' || Purpose === 'MINING' || Purpose === 'MINING [LOW SECURITY]')){
+                        if (Basin_name === 'Manning' & Purpose === 'TOWN WATER SUPPLY'){
                                 switch(WT){
                                     case 'REG': 
                                     var M = L.marker([Lat_workapproval, Lon_workapproval], {icon: Icon_license_1})
@@ -3960,7 +4741,7 @@ and open the template in the editor.
                     removeLayer(displayed_gis_layer_workapproval);
                     var elementToBeRemoved = document.getElementById('lice_man');
                     document.getElementById('legend').removeChild(elementToBeRemoved);
-                }   
+                }  
             }
             
             var displayed_gis_layer_approval = [];
@@ -4037,8 +4818,7 @@ and open the template in the editor.
                     map.removeControl(controlSearch);
                     var elementToBeRemoved = document.getElementById('appro_man');
                     document.getElementById('legend').removeChild(elementToBeRemoved);
-
-                }  
+                } 
             }
             // display information of each catchment
             function onEachFeature(feature, layer) {
@@ -4077,108 +4857,51 @@ and open the template in the editor.
                 }
             }
             
-            function mine_sum(Crop){
-                var num = Crop.features.length;
-                return num;
-            }
-            
             var hover_info = L.control();
             hover_info.onAdd = function (map) {
                 this._div = L.DomUtil.create('div', 'hover_info');
                 this.update();
                 return this._div;
             };
-            
-            <?php
-                include '../../db.helper/db_connection_ini.php';
-                if($conn!=null){
-                    $sq_em_1 = "SELECT * FROM employment_data WHERE catchment_name = 'macquarie' AND industry_code = 'B'";                             
-                    $res_em_1 = $conn->query($sq_em_1);
-                    $em_macquarie = 0;
-                    $n = -1;
-                    while ($row_1 = $res_em_1->fetch_assoc()){
-                        $n++;
-                        $em_macquarie += $row_1['lga_prop_catchment']*$row_1['employee_count'];
-                    } 
-
-                    $sq_em_2 = "SELECT * FROM employment_data WHERE catchment_name = 'manning' AND industry_code = 'B'";                           
-                    $res_em_2 = $conn->query($sq_em_2);
-                    $em_manning = 0;
-                    $m = -1;
-                    while ($row_2 = $res_em_2->fetch_assoc()){
-                        $m++;
-                        $em_manning += $row_2['lga_prop_catchment']*$row_2['employee_count'];
-                    }   
-                    
-                    $sq_em_3 = "SELECT proportion_in_macquarie_catchment, proportion_in_manning_catchment, mining_production FROM lga_data";                           
-                    $res_em_3 = $conn->query($sq_em_3);
-                    $em_mine_mac = 0;
-                    $em_mine_man = 0;
-                    while ($row_3 = $res_em_3->fetch_assoc()){
-                        $em_mine_mac += $row_3['proportion_in_macquarie_catchment']*$row_3['mining_production'];
-                        $em_mine_man += $row_3['proportion_in_manning_catchment']*$row_3['mining_production'];
-                    } 
-                    
-                    $sq_em_4 = "SELECT catchment, mining_water_use FROM water_use_for_each_watersource";                           
-                    $res_em_4 = $conn->query($sq_em_4);
-                    $em_water = Array();
-                    $m = -1;
-                    while ($row_4 = $res_em_4->fetch_assoc()){
-                        $m++;
-                        $em_water[$m]= $row_4;
-                    }
-                }else{
-                    include '../../db.helper/db_connection_ini.php';
-                }
-            ?>
                      
             hover_info.update = function (props) {
                 <?php if(!empty($row)){?>;
-                    var water_use_mac =0;
-                    var water_use_man =0;
-                        <?php for ($x=0; $x<count($em_water); $x++) {?>
-                            var cat ="<?php echo $em_water[$x]["catchment"]; ?>";
-                            var vol ="<?php echo $em_water[$x]["mining_water_use"]; ?>";
-                            if (cat==='Macquarie'){
-                                water_use_mac+=Number(vol);
-                            }
-                            if (cat==='Manning'){
-                                water_use_man+=Number(vol);
-                            }
-                        <?php }?>  
-                            
                     var catch_name = "<?php echo $_GET['catchment_name']; ?>";  
-                    var overall_idsi = "<?php echo $row["overall_idsi"]; ?>";
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
                     var overall_dei = "<?php echo $row["overall_dei"]; ?>";
                     var catchment_size = "<?php echo $row["catchment_size"]; ?>";
                     var surface_water_size = "<?php echo $row["surface_water_size"]; ?>";
                     var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     if (catch_name === 'MacquarieBogan'){
-                        var Total_no_mine = mine_sum(Macquarie_Mining);
-                        var Employ = "<?php echo $em_macquarie; ?>"; 
-                        var Prop = "<?php echo $em_mine_mac; ?>"; 
-                        var Water_use = water_use_mac;
+                        var no_wtc = WTC_number_Macquarie;
+                        var no_wwtc = WWTC_number_Macquarie;
+                        var waste_volume = WWTC_volume_Macquarie;
+                        var popu_wtc = WTC_population_Macquarie;
+                        var volume = WTC_volume_Macquarie;
                     }else if(catch_name === 'ManningRiver'){
-                        var Total_no_mine = mine_sum(Manning_Mining);
-                        var Employ = "<?php echo $em_manning; ?>";
-                        var Prop = "<?php echo $em_mine_man; ?>"; 
-                        var Water_use = water_use_man;
-                    }
+                        var no_wtc = WTC_number_Manning;
+                        var no_wwtc = WWTC_number_Manning;
+                        var waste_volume = WWTC_volume_Manning;
+                        var popu_wtc = WTC_population_Manning;
+                        var volume = WTC_volume_Manning;
+                    }                       
                     this._div.innerHTML = (
 //                        props?
-//                        '<h5>' + 'Mining Sector within ' + catch_name + ' Catchment' + '</h5>' + 
-//                        'Total Number of Mines: '+ toThousands(Total_no_mine) + '<br/>' +
-//                        'Annual Production Value: '+ catchment_size + '<br />'+
-//                        'Annual Employment Number: '+ toThousands(Math.round(Employ)) + '<br />'+
-//                        'Annual Use of Water: '+ overall_dei + '<br />'+
-//                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
-                          '<b>' + 'Mining Sector within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
-                          '<p style=\"line-height:50%\"><img src=\"../../images/mining_number.png\" height=\"25\" width=\"25\"> Total Number of Mines: <b>' + toThousands(Total_no_mine) + '</b><br/><br />'+
-                          '<img src=\"../../images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + toThousands(Math.round(Prop*10)/10)  + ' $M</b><br/><br />'+
-                          '<img src=\"../../images/mining_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
-                          '<img src=\"../../images/mining_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Water_use))  + ' ML</b><br/><br />'+
-                          '<img src=\"../../images/mining_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + Math.round(Prop/Water_use*100)/100  + ' $M/ML</b><br/></p>'   
+//                        '<h5>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</h5>' + 
+//                        'Number of Water Treatment Centres: '+ toThousands(no_wtc) + '<br/>' +
+//                        'Population: '+ toThousands(popu_wtc) + '<br />'+
+//                        'Annual Power Generated: '+ overall_fmi + '<br />'+
+//                        'Annual Use of Water for Town Water and Sewerage: '+ overall_dei + '<br />'+
+//                        'Annual Use of Water for Power Generation: ' + surface_water_size + '<br />'
+//                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
+                          '<b>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
+                          '<p style=\"line-height:50%\"><img src=\"../../images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centre: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
+                          '<img src=\"../../images/waste_water_number.png\" height=\"25\" width=\"25\"> Number of Waste Water Treatment Centre: <b>' + toThousands(no_wwtc) + '</b><br/><br />'+
+                          '<img src=\"../../images/water_population.png\" height=\"25\" width=\"25\"> Population Served: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
+                          '<img src=\"../../images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + 0 + '</b><br/><br />'+
+                          '<img src=\"../../images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water: <b>' + toThousands(volume) + ' ML</b><br/><br />'+
+                          '<img src=\"../../images/waste_water_usage.png\" height=\"25\" width=\"25\"> Annual Treated Water for Waste Water: <b>' + toThousands(waste_volume) + ' ML</b><br/><br />'+
+                          '<img src=\"../../images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + 0 + '</b><br/></p>'  
                     );
                 <?php }?>;
             };
@@ -4207,14 +4930,11 @@ and open the template in the editor.
             }
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-//                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }
             //Edited by justice
-            //L.geoJSON(MacquarieBogan_CatchmentBoundary).addTo(map).getBounds();
-
-    
+            setTimeout(function(){ map.invalidateSize()}, 500);
         </script>
     </body>
 </html>

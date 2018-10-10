@@ -5,11 +5,11 @@
             Whole Catchment Indices
         </title>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="./css/x-admin.css" media="all">
-        <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="lib/bootstrap/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="../../css/x-admin.css" media="all">
+        <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../lib/bootstrap/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
-        <script src="lib/layui/layui.js" charset="utf-8"></script>
+        <script src="../../lib/layui/layui.js" charset="utf-8"></script>
     </head>
     <body>
         <div class="x-nav">
@@ -53,7 +53,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    include 'db.helper/db_connection_ini.php';
+                    include '../../db.helper/db_connection_ini.php';
                     mysqli_select_db($conn, "dpi_project"); 
                     $result=mysqli_query($conn,"SELECT * FROM whole_catchment_indices");  
                     $dataCount=mysqli_num_rows($result); 
@@ -101,7 +101,7 @@
                             location.reload();
                         }
                     };
-                    xhttp.open("POST", "tools/db_table_delete.php?table_name=whole_catchment_indices", true);
+                    xhttp.open("POST", "../../tools/db_table_delete.php?table_name=whole_catchment_indices", true);
                     xhttp.send();
                 }
             }
@@ -117,7 +117,7 @@
                         location.reload();
                     }
                 };
-                req.open("POST", 'tools/db_table_import.php?table_name=whole_catchment_indices', true);
+                req.open("POST", '../../tools/db_table_import.php?table_name=whole_catchment_indices', true);
                 req.send(form);
             }
             
@@ -132,7 +132,7 @@
                         }
                     }
                 };
-                req.open("POST", 'tools/db_table_output.php?table_name=whole_catchment_indices', true);
+                req.open("POST", '../../tools/db_table_output.php?table_name=whole_catchment_indices', true);
                 req.send();
             }
         </script>

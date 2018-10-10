@@ -37,7 +37,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    include 'db.helper/db_connection_ini.php';
+                    include '../../db.helper/db_connection_ini.php';
                     mysqli_select_db($conn, "dpi_project"); 
                     $result=mysqli_query($conn,"SELECT * FROM ground_water");  
                     $dataCount=mysqli_num_rows($result);   
@@ -65,7 +65,7 @@
                             location.reload();
                         }
                     };
-                    xhttp.open("POST", "tools/db_table_delete.php?table_name=ground_water", true);
+                    xhttp.open("POST", "../../tools/db_table_delete.php?table_name=ground_water", true);
                     xhttp.send();
                 }
             }
@@ -80,7 +80,7 @@
                         location.reload();
                     }
                 };
-                req.open("POST", 'tools/db_table_import.php?table_name=ground_water', true);
+                req.open("POST", '../../tools/db_table_import.php?table_name=ground_water', true);
                 req.send(form);
             }
             
@@ -95,7 +95,7 @@
                         }
                     }
                 };
-                req.open("POST", 'tools/db_table_output.php?table_name=ground_water', true);
+                req.open("POST", '../../tools/db_table_output.php?table_name=ground_water', true);
                 req.send();
             }
         </script>            

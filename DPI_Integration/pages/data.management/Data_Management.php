@@ -22,7 +22,7 @@
                     <!--Raw Data-->
                         <li class="layui-nav-item">
                             <a class="javascript:;" href="javascript:;" _href="Data_Management_Home.php">
-                               <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>RAW DATA</cite>
+                               <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>Raw Data</cite>
                             </a>
                       <dl class="layui-nav-child">
                                 <dd class="">
@@ -82,7 +82,7 @@
                         <!--Macquarie Valley and Dam Data-->
                         <li class="layui-nav-item">
                             <a class="javascript:;" href="javascript:;">
-                                <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>Macquarie Valley and Dam Data</cite>
+                                <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>Valley and Dam in Macquarie</cite>
                             </a>
                             <dl class="layui-nav-child">
                                 <dd class="">
@@ -126,7 +126,7 @@
                         <!--Data in Visualization-->
                         <li class="layui-nav-item">
                             <a class="javascript:;" href="javascript:;">
-                                <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>Data in Visualization</cite>
+                                <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>Visualization Data</cite>
                             </a>
                             <dl class="layui-nav-child">
                                 <dd class="">
@@ -182,7 +182,7 @@
                                 <dd class="">
                                     <dd class="">
                                         <a href="javascript:;" _href="Water_Use_Watersource.php">
-                                            <i class="layui-icon"></i><cite>Water Use for Each Watersource</cite>
+                                            <i class="layui-icon"></i><cite>Water Use of Watersource</cite>
                                         </a>
                                     </dd>
                                 </dd>

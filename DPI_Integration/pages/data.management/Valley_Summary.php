@@ -38,7 +38,7 @@
                 </thead>
                 <tbody>
                 <?php
-                    include 'db.helper/db_connection_ini.php';
+                    include '../../db.helper/db_connection_ini.php';
                     mysqli_select_db($conn, "dpi_project"); 
                     $result=mysqli_query($conn,"SELECT * FROM valley_summary");  
                     $dataCount=mysqli_num_rows($result);   
@@ -72,7 +72,7 @@
                             location.reload();
                         }
                     };
-                    xhttp.open("POST", "tools/db_table_delete.php?table_name=valley_summary", true);
+                    xhttp.open("POST", "../../tools/db_table_delete.php?table_name=valley_summary", true);
                     xhttp.send();
                 }
             }
@@ -87,7 +87,7 @@
                         location.reload();
                     }
                 };
-                req.open("POST", 'tools/db_table_import.php?table_name=valley_summary', true);
+                req.open("POST", '../../tools/db_table_import.php?table_name=valley_summary', true);
                 req.send(form);
             }
             
@@ -102,7 +102,7 @@
                         }
                     }
                 };
-                req.open("POST", 'tools/db_table_output.php?table_name=valley_summary', true);
+                req.open("POST", '../../tools/db_table_output.php?table_name=valley_summary', true);
                 req.send();
             }
         </script>            

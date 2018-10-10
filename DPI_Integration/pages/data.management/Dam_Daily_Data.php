@@ -75,7 +75,7 @@
                             location.reload();
                         }
                     };
-                    xhttp.open("POST", "tools/db_table_delete.php?table_name=dam_daily_data", true);
+                    xhttp.open("POST", "../../tools/db_table_delete.php?table_name=dam_daily_data", true);
                     xhttp.send();
                 }
             }
@@ -91,7 +91,7 @@
                         location.reload();
                     }
                 };
-                req.open("POST", 'tools/db_table_import.php?table_name=dam_daily_data', true);
+                req.open("POST", '../../tools/db_table_import.php?table_name=dam_daily_data', true);
                 req.send(form);
             }
             
@@ -106,7 +106,7 @@
                         }
                     }
                 };
-                req.open("POST", 'tools/db_table_output.php?table_name=dam_daily_data', true);
+                req.open("POST", '../../tools/db_table_output.php?table_name=dam_daily_data', true);
                 req.send();
             }
         </script>            

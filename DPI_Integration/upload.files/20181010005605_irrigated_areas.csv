@@ -1,0 +1,9 @@
+irrigated_area_name,belong_catchment_id,annual_production_value,annual_water_use,cotton_plantation
+IA_Mac1,1,0.01,1.11,2.11
+IA_Mac2,1,0.02,1.12,2.12
+IA_Mac3,1,0.03,1.13,2.13
+IA_Mac4,1,0.04,1.14,2.14
+IA_Mac5,1,0.05,1.15,2.15
+IA_Man1,2,0.21,1.21,2.21
+IA_Man2,2,0.22,1.22,2.22
+IA_Man3,2,0.23,1.23,2.23

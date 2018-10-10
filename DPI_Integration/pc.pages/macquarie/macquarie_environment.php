@@ -10,7 +10,6 @@ and open the template in the editor.
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
         <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
-        <script type="text/javascript" src="../../common.scripts/settings.js"></script>
     </head>
     <body style="background-color:#F3F3F4;">
         <div class="row" style="width: 100%;">

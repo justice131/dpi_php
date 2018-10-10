@@ -7,20 +7,21 @@ and open the template in the editor.
 <html>
     <head>
         <title>Critical Environmental Assets</title>
-        <?php include("Common_Script_Import.html"); ?>
+        <?php include("../../common.scripts/all_import_scripts.html"); ?>
+        <script type="text/javascript" src="../../border/Macquarie_Wetland.geojson"></script>
+        <script type="text/javascript" src="../../border/Manning_Wetland.geojson"></script>
+        <script type="text/javascript" src="../../common.scripts/settings.js"></script>
         <style>
-        .hover_info {
-            width: 280px;
-        }
-        </style>      
-        <script type="text/javascript" src="border/Macquarie_Wetland.geojson"></script>
-        <script type="text/javascript" src="border/Manning_Wetland.geojson"></script>
+            .hover_info {
+                width: 280px;
+            }
+        </style>  
     </head>
     <body style="background-color:#F3F3F4;">
         <?php include("../../common.scripts/navigator.html"); ?>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:16.5%; height:776px;" id="left_panel">
+			<div class="box-container" style="width:16.5%;" id="left_panel">
 				<table style="width:100%">
 <!--				  <tr>
 					<td>
@@ -53,27 +54,27 @@ and open the template in the editor.
 				  <tr>
 					<td>
 						<div>
-						  <div class="box-title">
+						  <div id="legend_title" class="box-title">
 							<h4><b>Map Icon Legend</b></h4>
 						  </div>
-						  <div class="box-content" style="height:776px;">
+						  <div class="box-content">
 							<div id="rightdiv">
                                                             <div id="legend">
-<!--                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
-                                                                <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
-                                                                <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (groundwater)<br>
-                                                                <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (groundwater)<br>
-                                                                <img src="images/green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Floodplain wetland<br>
-                                                                <img src="images/blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Reservoir<br>
-                                                                <img src="images/purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Freshwater lake<br>
-                                                                <img src="images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coastal lagoons and lakes<br>
-                                                                <img src="images/cyan.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Estuarine wetland<br>-->
+<!--                                                                <img src="../../lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
+                                                                <img src="../../lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (regulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (unregulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;License (groundwater)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (regulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (unregulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp; &nbsp;Work approval (groundwater)<br>
+                                                                <img src="../../images/green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Floodplain wetland<br>
+                                                                <img src="../../images/blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Reservoir<br>
+                                                                <img src="../../images/purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Freshwater lake<br>
+                                                                <img src="../../images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coastal lagoons and lakes<br>
+                                                                <img src="../../images/cyan.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Estuarine wetland<br>-->
                                                                 <br>
                                                             </div>
 							</div>
@@ -86,11 +87,11 @@ and open the template in the editor.
 			
 			<div class="box-container" style="width:83.5%" id="map_panel">
 				<div class="box">
-					<div class="box-title">
+					<div id="map_title" class="box-title">
 						<h4><b>Critical Environmental Assets</b></h4>
 					</div>
-					<div class="box-content" role="tabpanel">
-						<div id="map"></div>
+					<div class="box-content">
+                                            <div id="map"></div>
 					</div>
                                         <div id="MacquarieBogan">
                                                 <input type="checkbox" id="Regulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_regulated('Regulated-CAT-MacquarieBogan')"> <font size="2">Regulated </font></br>       
@@ -119,14 +120,10 @@ and open the template in the editor.
 		</div>
 	</div>
         <div class="se-pre-con"></div>
-                
-        <script type="text/javascript">
-
-        </script>
         <?php
             //Edited by justice
-        //purpose_des, share_component, longitude, latitude
-            include 'db.helper/db_connection_ini.php';
+            //purpose_des, share_component, longitude, latitude
+            include '../../db.helper/db_connection_ini.php';
             if(!empty($_GET['catchment_name'])){
                 if($conn!=null){
                     $sql_0 = "SELECT * FROM whole_catchment_indices WHERE catchment_name='".$_GET['catchment_name']."'";
@@ -149,13 +146,20 @@ and open the template in the editor.
                         $work_approval[$n] = $row_2;
                     }                    
                 }else{
-                    include 'db.helper/db_connection_ini.php';
+                    include '../../db.helper/db_connection_ini.php';
                 }
             }
             //Edited by justice
         ?>
         
         <script type="text/javascript">
+            window.onload=function(){//Set the height
+                pageHeight = window.screen.height*heightRatio;
+                var mapTitleHeight = document.getElementById("map_title").offsetHeight;
+                document.getElementById("map").style.height = (pageHeight-mapTitleHeight) + "px";
+                var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
+                document.getElementById("legend").style.height = (pageHeight - legendTitleHeight) + "px";
+            }
             //var lga = lgaBorders;
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var MacquarieBogan_CatchmentBoundary_1 = MacquarieBogan_CatchmentBoundary;
@@ -179,11 +183,11 @@ and open the template in the editor.
             var elem_ov = document.createElement("div");
             elem_ov.setAttribute('id', 'irr_legend');
             elem_ov.innerHTML = (
-                    '<img src="images/green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Floodplain wetland<br>'+
-                    '<img src="images/blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Reservoir<br>'+
-                    '<img src="images/purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Freshwater lake<br>'+
-                    '<img src="images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coastal lagoons and lakes<br>'+
-                    '<img src="images/cyan.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Estuarine wetland<div style="height:2px;"><br></div'
+                    '<img src="../../images/green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Floodplain wetland<br>'+
+                    '<img src="../../images/blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Reservoir<br>'+
+                    '<img src="../../images/purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Freshwater lake<br>'+
+                    '<img src="../../images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coastal lagoons and lakes<br>'+
+                    '<img src="../../images/cyan.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Estuarine wetland<div style="height:2px;"><br></div'
                     );
             document.getElementById("legend").appendChild(elem_ov);
             
@@ -228,12 +232,13 @@ and open the template in the editor.
             
             function go_to_mac(){               
                 window.location.href = "Environmental_module.php?catchment_name=MacquarieBogan";
-                
+                setTimeout(function(){ map.invalidateSize()}, 500);
             }
             
             function go_to_man(){
                 map.removeLayer(Man_bound);
                 window.location.href = "Environmental_module.php?catchment_name=ManningRiver";
+                setTimeout(function(){ map.invalidateSize()}, 500);
             }
             
             function highlight(e) {
@@ -273,63 +278,63 @@ and open the template in the editor.
             };
             
             var Icon_approval_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_reg.png',
+                iconUrl: '../../lib/leaflet/images/wa_reg.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });
             
             var Icon_approval_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_unreg.png',
+                iconUrl: '../../lib/leaflet/images/wa_unreg.png',
                 iconSize:     [18, 28],
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });
             
             var Icon_approval_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_gw.png',
+                iconUrl: '../../lib/leaflet/images/wa_gw.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });  
             
             var Icon_license_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_reg.png',
+                iconUrl: '../../lib/leaflet/images/li_reg.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
             
             var Icon_license_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_unreg.png',
+                iconUrl: '../../lib/leaflet/images/li_unreg.png',
                 iconSize:     [18, 28],  
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
             
             var Icon_license_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_gw.png',
+                iconUrl: '../../lib/leaflet/images/li_gw.png',
                 iconSize:     [18, 28],   
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
 
             var Icon_reg = L.icon({
-                iconUrl: 'lib/leaflet/images/R.png',
+                iconUrl: '../../lib/leaflet/images/R.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_unreg = L.icon({
-                iconUrl: 'lib/leaflet/images/U.png',
+                iconUrl: '../../lib/leaflet/images/U.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_gw = L.icon({
-                iconUrl: 'lib/leaflet/images/G.png',
+                iconUrl: '../../lib/leaflet/images/G.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
@@ -561,7 +566,7 @@ and open the template in the editor.
                 // display legend for reg river
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'reg_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
                 
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
@@ -675,7 +680,7 @@ and open the template in the editor.
                 link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     // display link icon
@@ -748,7 +753,7 @@ and open the template in the editor.
                     var unregulated_29 = getCentroid(MacquarieBogan_unregulated.features[29].geometry.coordinates[0][0]);
                     
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_0 = "SELECT * FROM water_source WHERE water_source = 'Backwater Boggy Cowal Water Source'";                             
                             $res_0 = $conn->query($sq_0);
@@ -879,7 +884,7 @@ and open the template in the editor.
                                 $lga_1[$o] = $ro_30;
                             }                         
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                    
@@ -2378,7 +2383,7 @@ and open the template in the editor.
                 var geojsonfile = MacquarieBogan_GW;
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
@@ -2412,7 +2417,7 @@ and open the template in the editor.
                     var groundwater_3 = getCentroid(MacquarieBogan_GW.features[3].geometry.coordinates[0]);
 
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_gw_1 = "SELECT * FROM ground_water WHERE groundwater = 'Bell Alluvial Groundwater Source'";                             
                             $res_gw_1 = $conn->query($sq_gw_1);
@@ -2430,7 +2435,7 @@ and open the template in the editor.
                             $res_gw_4 = $conn->query($sq_gw_4);
                             $ro_gw_4 = $res_gw_4->fetch_assoc(); 
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                                     
@@ -2643,7 +2648,7 @@ and open the template in the editor.
             function show_gis_Manning_unregulated(id){
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
 
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
@@ -2702,7 +2707,7 @@ and open the template in the editor.
                     var man_unre_15 = getCentroid(Manning_unregulated.features[15].geometry.coordinates[0]);
                     
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_1 = "SELECT * FROM water_source WHERE water_source = 'Avon River Water Source'";                             
                             $res_1 = $conn->query($sq_1);
@@ -2778,7 +2783,7 @@ and open the template in the editor.
                             } 
                         
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                    
@@ -3589,7 +3594,7 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
 
                 var geojsonfile = Manning_Groundwater;
                 if (checkBox.checked === true){
@@ -3920,8 +3925,8 @@ and open the template in the editor.
 //                        'Total Area of Asset: ' + toThousands(Math.round(Total_area*100)/100) + ' Ha'
                         
                         '<b>' + 'Critical Environmental Assets within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
-                        '<p style=\"line-height:50%\"><img src=\"images/environmental_number.png\" height=\"25\" width=\"25\"> Total Number of Asset: <b>' + Total_no + '</b><br/><br />'+
-                        '<img src=\"images/environmental_area.png\" height=\"25\" width=\"25\"> Total Area of Asset: <b>' + toThousands(Math.round(Total_area*10)/10) + ' Ha' + '</b><br/></p>'     
+                        '<p style=\"line-height:50%\"><img src=\"../../images/environmental_number.png\" height=\"25\" width=\"25\"> Total Number of Asset: <b>' + Total_no + '</b><br/><br />'+
+                        '<img src=\"../../images/environmental_area.png\" height=\"25\" width=\"25\"> Total Area of Asset: <b>' + toThousands(Math.round(Total_area*10)/10) + ' Ha' + '</b><br/></p>'     
                     );
                 <?php }?>;
             };
@@ -3944,18 +3949,17 @@ and open the template in the editor.
                    paraValue = pos[1];           
                    if(paraName === name) {       
                         return decodeURIComponent(paraValue.replace(/\+/g, " "));           
-                   }     
+                   }
                 }
                 return '';   
             }
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-//                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }
             //Edited by justice
-            //L.geoJSON(MacquarieBogan_CatchmentBoundary).addTo(map).getBounds();
+            setTimeout(function(){ map.invalidateSize()}, 500);
         </script>
     </body>
 </html>

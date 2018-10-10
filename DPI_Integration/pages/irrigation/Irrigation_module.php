@@ -7,33 +7,22 @@ and open the template in the editor.
 <html>
     <head>
         <title>Irrigation</title>
-        <?php include("Common_Script_Import.html"); ?>
-        <script type="text/javascript" src="border/Macquarie_crop.geojson"></script>
-        <script type="text/javascript" src="border/Manning_crop.geojson"></script>
+        <?php include("../../common.scripts/all_import_scripts.html"); ?>
+        <script type="text/javascript" src="../../common.scripts/settings.js"></script>
+        <script type="text/javascript" src="../../border/Macquarie_crop.geojson"></script>
+        <script type="text/javascript" src="../../border/Manning_crop.geojson"></script>
 
         <style>
-        .hover_info {
-            width: 370px;
-        }
+            .hover_info {
+                width: 370px;
+            }
         </style>
     </head>
     <body style="background-color:#F3F3F4;">
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav">
-                    <li class="nav-header text-center"> <a href="http://www.water.nsw.gov.au/" target="_blank" style="padding: 3px 0 10px"> <img src="images/nsw.png" alt="nsw" height="50"/> </a> </li>
-                    <li class=""> <a href="index.php" target="_blank" data-toggle="tooltip" title="Home" style="padding: 5px 0px 5px 13.5px"><img src="images/home_icon.jpg" alt="irrigation" height="40"/></a> </li>
-                    <li class=""> <a href="Irrigation_module.php" target="_blank" data-toggle="tooltip" title="Irrigation" style="padding: 5px 0px 5px 13.5px"><img src="images/irrigation_icon.jpg" alt="irrigation" height="40"/></a> </li>
-                    <li class=""> <a href="Mining_module.php" target="_blank" data-toggle="tooltip" title="Mining" style="padding: 5px 0px 5px 13.5px"><img src="images/mining_icon.png" alt="Mining" height="40"/></a> </li>
-                    <li class=""> <a href="Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation" style="padding: 5px 0px 5px 13.5px"><img src="images/town_water_icon.png" alt="Town Water" height="40"/></a> </li>
-                    <li class=""> <a href="Environmental_module.php" target="_blank" data-toggle="tooltip" title="Critical Environmental Assets" style="padding: 5px 0px 5px 13.5px"><img src="images/environmental_icon.png" alt="Environmental" height="40"/></i></a> </li>
-                    <li class=""> <a href="Data_Management_Index.php" target="_blank" data-toggle="tooltip" title="Data Management" style="padding: 5px 0px 5px 13.5px"><img src="images/data_icon.png" alt="Data" height="40"/></i></a> </li>
-                </ul>
-            </div>
-	</nav>
+        <?php include("../../common.scripts/navigator.html"); ?>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:16.5%; height:776px;" id="left_panel">
+			<div class="box-container" style="width:16.5%;" id="left_panel">
 				<table style="width:100%">
 <!--				  <tr>
 					<td>
@@ -65,35 +54,35 @@ and open the template in the editor.
 				  <tr>
 					<td>                                                                      
 						<div>
-						  <div class="box-title">
+						  <div id="legend_title" class="box-title">
 							<h4><b>Map Icon Legend</b></h4>
 						  </div>
-						  <div class="box-content" style="height:776px;">
+						  <div class="box-content">
 							<div id="rightdiv">
                                                             <div id="legend">
-<!--                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
-                                                                <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
-                                                                <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
-                                                                <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>-->
-<!--                                                                <img src="images/yellow.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Cropping<br>
-                                                                <img src="images/red.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Excluded land use <br>
-                                                                <img src="images/light_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing irrigated modified pastures<br>
-                                                                <img src="images/dark_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing modified pastures<br>
-                                                                <img src="images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Intensive animal husbandry<br>
-                                                                <img src="images/orange.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated cropping<br>                                                                
-                                                                <img src="images/light_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated perennial hoticulture<br>
-                                                                <img src="images/dark_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated seasonal hoticulture<br>                                                                
-                                                                <img src="images/light_purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial horticulture<br>                                                               
-                                                                <img src="images/olivedrab.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial forestry<br>
-                                                                <img src="images/dar_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Residential and farm infrastructures<br>
-                                                                <img src="images/light_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Service<br>
-                                                                <img src="images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Mining<br>-->
+<!--                                                                <img src="../../lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
+                                                                <img src="../../lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>-->
+<!--                                                                <img src="../../images/yellow.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Cropping<br>
+                                                                <img src="../../images/red.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Excluded land use <br>
+                                                                <img src="../../images/light_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing irrigated modified pastures<br>
+                                                                <img src="../../images/dark_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing modified pastures<br>
+                                                                <img src="../../images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Intensive animal husbandry<br>
+                                                                <img src="../../images/orange.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated cropping<br>                                                                
+                                                                <img src="../../images/light_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated perennial hoticulture<br>
+                                                                <img src="../../images/dark_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated seasonal hoticulture<br>                                                                
+                                                                <img src="../../images/light_purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial horticulture<br>                                                               
+                                                                <img src="../../images/olivedrab.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial forestry<br>
+                                                                <img src="../../images/dar_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Residential and farm infrastructures<br>
+                                                                <img src="../../images/light_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Service<br>
+                                                                <img src="../../images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Mining<br>-->
                                                                 <br>
                                                             </div>
 							</div>
@@ -106,10 +95,10 @@ and open the template in the editor.
 			
 			<div class="box-container" style="width:83.5%" id="map_panel">
 				<div class="box">
-					<div class="box-title">
+					<div id="map_title" class="box-title">
 						<h4><b>Irrigation</b></h4>
 					</div>
-					<div class="box-content" role="tabpanel">
+					<div class="box-content">
 						<div id="map"></div>
 					</div>
                                         <div id="MacquarieBogan">
@@ -141,14 +130,10 @@ and open the template in the editor.
 		</div>
 	</div>
         <div class="se-pre-con"></div>
-                
-        <script type="text/javascript">
-
-        </script>
         <?php
             //Edited by justice
         //purpose_des, share_component, longitude, latitude
-            include 'db.helper/db_connection_ini.php';
+            include '../../db.helper/db_connection_ini.php';
             if(!empty($_GET['catchment_name'])){
                 if($conn!=null){
                     $sql_0 = "SELECT * FROM whole_catchment_indices WHERE catchment_name='".$_GET['catchment_name']."'";
@@ -171,14 +156,20 @@ and open the template in the editor.
                         $work_approval[$n] = $row_2;
                     }                  
                 }else{
-                    include 'db.helper/db_connection_ini.php';
+                    include '../../db.helper/db_connection_ini.php';
                 }
             }
             //Edited by justice
         ?>
         
         <script type="text/javascript">
-            //var lga = lgaBorders;
+           window.onload=function(){//Set the height
+                pageHeight = window.screen.height*heightRatio;
+                var mapTitleHeight = document.getElementById("map_title").offsetHeight;
+                document.getElementById("map").style.height = (pageHeight-mapTitleHeight) + "px";
+                var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
+                document.getElementById("legend").style.height = (pageHeight - legendTitleHeight) + "px";
+            }
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var MacquarieBogan_CatchmentBoundary_1 = MacquarieBogan_CatchmentBoundary;
             var ManningRiver_CatchmentBoundary = ManningRiver_CatchmentBoundary;
@@ -200,19 +191,19 @@ and open the template in the editor.
             
             var elem_ov = document.createElement("div");
             elem_ov.setAttribute('id', 'irr_legend');
-            elem_ov.innerHTML = ('<img src="images/yellow.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Cropping<br>'+
-                    '<img src="images/red.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Excluded land use <br>'+
-                    '<img src="images/light_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing irrigated modified pastures<br>'+
-                    '<img src="images/dark_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing modified pastures<br>'+
-                    '<img src="images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Intensive animal husbandry<br>'+
-                    '<img src="images/orange.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated cropping<br>'+                                                                
-                    '<img src="images/light_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated perennial hoticulture<br>'+
-                    '<img src="images/dark_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated seasonal hoticulture<br>'+                                                                
-                    '<img src="images/light_purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial horticulture<br>'+                                                            
-                    '<img src="images/olivedrab.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial forestry<br>'+
-                    '<img src="images/dar_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Residential and farm infrastructures<br>'+
-                    '<img src="images/light_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Service<br>'+
-                    '<img src="images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Mining<div style="height:2px;"><br></div');
+            elem_ov.innerHTML = ('<img src="../../images/yellow.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Cropping<br>'+
+                    '<img src="../../images/red.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Excluded land use <br>'+
+                    '<img src="../../images/light_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing irrigated modified pastures<br>'+
+                    '<img src="../../images/dark_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing modified pastures<br>'+
+                    '<img src="../../images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Intensive animal husbandry<br>'+
+                    '<img src="../../images/orange.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated cropping<br>'+                                                                
+                    '<img src="../../images/light_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated perennial hoticulture<br>'+
+                    '<img src="../../images/dark_blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Irrigated seasonal hoticulture<br>'+                                                                
+                    '<img src="../../images/light_purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial horticulture<br>'+                                                            
+                    '<img src="../../images/olivedrab.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Perennial forestry<br>'+
+                    '<img src="../../images/dar_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Residential and farm infrastructures<br>'+
+                    '<img src="../../images/light_grey.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Service<br>'+
+                    '<img src="../../images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Mining<div style="height:2px;"><br></div');
             document.getElementById("legend").appendChild(elem_ov);
             
             var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
@@ -256,12 +247,13 @@ and open the template in the editor.
             
             function go_to_mac(){               
                 window.location.href = "Irrigation_module.php?catchment_name=MacquarieBogan";
-                
+                setTimeout(function(){ map.invalidateSize()}, 500);
             }
             
             function go_to_man(){
                 map.removeLayer(Man_bound);
                 window.location.href = "Irrigation_module.php?catchment_name=ManningRiver";
+                setTimeout(function(){ map.invalidateSize()}, 500);
             }
             
             function highlight(e) {
@@ -300,63 +292,63 @@ and open the template in the editor.
                 }               
             };
             var Icon_approval_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_reg.png',
+                iconUrl: '../../lib/leaflet/images/wa_reg.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });
             
             var Icon_approval_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_unreg.png',
+                iconUrl: '../../lib/leaflet/images/wa_unreg.png',
                 iconSize:     [18, 28],
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });
             
             var Icon_approval_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_gw.png',
+                iconUrl: '../../lib/leaflet/images/wa_gw.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });  
             
             var Icon_license_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_reg.png',
+                iconUrl: '../../lib/leaflet/images/li_reg.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
             
             var Icon_license_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_unreg.png',
+                iconUrl: '../../lib/leaflet/images/li_unreg.png',
                 iconSize:     [18, 28],  
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
             
             var Icon_license_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_gw.png',
+                iconUrl: '../../lib/leaflet/images/li_gw.png',
                 iconSize:     [18, 28],   
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
 
             var Icon_reg = L.icon({
-                iconUrl: 'lib/leaflet/images/R.png',
+                iconUrl: '../../lib/leaflet/images/R.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_unreg = L.icon({
-                iconUrl: 'lib/leaflet/images/U.png',
+                iconUrl: '../../lib/leaflet/images/U.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_gw = L.icon({
-                iconUrl: 'lib/leaflet/images/G.png',
+                iconUrl: '../../lib/leaflet/images/G.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
@@ -658,7 +650,7 @@ and open the template in the editor.
                 // display legend for reg river
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'reg_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
                 
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
@@ -772,7 +764,7 @@ and open the template in the editor.
                 link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unegulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unegulated river<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     // display link icon
@@ -845,7 +837,7 @@ and open the template in the editor.
                     var unregulated_29 = getCentroid(MacquarieBogan_unregulated.features[29].geometry.coordinates[0][0]);
                     
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_0 = "SELECT * FROM water_source WHERE water_source = 'Backwater Boggy Cowal Water Source'";                             
                             $res_0 = $conn->query($sq_0);
@@ -976,7 +968,7 @@ and open the template in the editor.
                                 $lga_1[$o] = $ro_30;
                             }                         
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                                      
@@ -2475,7 +2467,7 @@ and open the template in the editor.
                 var geojsonfile = MacquarieBogan_GW;
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
@@ -2509,7 +2501,7 @@ and open the template in the editor.
                     var groundwater_3 = getCentroid(MacquarieBogan_GW.features[3].geometry.coordinates[0]);
 
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_gw_1 = "SELECT * FROM ground_water WHERE groundwater = 'Bell Alluvial Groundwater Source'";                             
                             $res_gw_1 = $conn->query($sq_gw_1);
@@ -2527,7 +2519,7 @@ and open the template in the editor.
                             $res_gw_4 = $conn->query($sq_gw_4);
                             $ro_gw_4 = $res_gw_4->fetch_assoc(); 
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                                     
@@ -2617,9 +2609,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'lices_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
-                        '<img src="lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
-                        '<img src="lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     num_marker = number_license_mac;
@@ -2704,9 +2696,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'appro_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
-                        '<img src="lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
-                        '<img src="lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
 
                 if (checkBox.checked === true){  
                     document.getElementById("legend").appendChild(elem);
@@ -2775,7 +2767,7 @@ and open the template in the editor.
             function show_gis_Manning_unregulated(id){
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
 
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
@@ -2835,7 +2827,7 @@ and open the template in the editor.
                     var man_unre_15 = getCentroid(Manning_unregulated.features[15].geometry.coordinates[0]);
                     
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_1 = "SELECT * FROM water_source WHERE water_source = 'Avon River Water Source'";                             
                             $res_1 = $conn->query($sq_1);
@@ -2911,7 +2903,7 @@ and open the template in the editor.
                             } 
                         
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                    
@@ -3722,7 +3714,7 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
 
                 var geojsonfile = Manning_Groundwater;
                 if (checkBox.checked === true){
@@ -3871,9 +3863,9 @@ and open the template in the editor.
             function show_gis_Manning_workapprovals(id){  
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'lice_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
-                        '<img src="lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
-                        '<img src="lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
 
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){ 
@@ -3938,9 +3930,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'appro_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
-                        '<img src="lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
-                        '<img src="lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
 
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
@@ -4071,7 +4063,7 @@ and open the template in the editor.
             }
 
             <?php
-                include 'db.helper/db_connection_ini.php';
+                include '../../db.helper/db_connection_ini.php';
                 if($conn!=null){
                     $sq_em_1 = "SELECT * FROM employment_data WHERE catchment_name = 'macquarie' AND industry_code = 'A'";                             
                     $res_em_1 = $conn->query($sq_em_1);
@@ -4109,7 +4101,7 @@ and open the template in the editor.
                         $em_water[$m]= $row_4;
                     }
                 }else{
-                    include 'db.helper/db_connection_ini.php';
+                    include '../../db.helper/db_connection_ini.php';
                 }
             ?>
             
@@ -4166,11 +4158,11 @@ and open the template in the editor.
 //                        'Annual Use of Water: '+ overall_dei + '<br />'+
 //                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
                           '<b>' + 'Irrigation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
-                          '<p style=\"line-height:50%\"><img src=\"images/irrigation_area.png\" height=\"25\" width=\"25\"> Total Irrigated Areas: <b>' + toThousands(Math.round(Total_area*100)/100) + ' Ha' + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + Math.round(Pro_value*10)/10 + ' $M</b><br/><br />'+
-                          '<img src=\"images/irrigation_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
-                          '<img src=\"images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Water_use)) + ' ML </b><br/><br />'+
-                          '<img src=\"images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + toThousands(Math.round(Pro_value*1000000/Water_use))  + ' $/ML </b><br/></p>'                          
+                          '<p style=\"line-height:50%\"><img src=\"../../images/irrigation_area.png\" height=\"25\" width=\"25\"> Total Irrigated Areas: <b>' + toThousands(Math.round(Total_area*100)/100) + ' Ha' + '</b><br/><br />'+
+                          '<img src=\"../../images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + Math.round(Pro_value*10)/10 + ' $M</b><br/><br />'+
+                          '<img src=\"../../images/irrigation_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
+                          '<img src=\"../../images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Water_use)) + ' ML </b><br/><br />'+
+                          '<img src=\"../../images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + toThousands(Math.round(Pro_value*1000000/Water_use))  + ' $/ML </b><br/></p>'                          
                     );
                 <?php }?>;
             };
@@ -4204,9 +4196,7 @@ and open the template in the editor.
                 addCATLayer(catchment_name, CATValue);
             }
             //Edited by justice
-            //L.geoJSON(MacquarieBogan_CatchmentBoundary).addTo(map).getBounds();
-
-    
+            setTimeout(function(){ map.invalidateSize()}, 500);
         </script>
     </body>
 </html>

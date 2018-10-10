@@ -7,30 +7,19 @@ and open the template in the editor.
 <html>
     <head>
         <title>Town Water & Power Generation</title>
-        <?php include("Common_Script_Import.html"); ?>
+        <?php include("../../common.scripts/all_import_scripts.html"); ?>
+        <script type="text/javascript" src="../../common.scripts/settings.js"></script>
         <style>
-        .hover_info {
-            width: 380px;
-        }
+            .hover_info {
+                width: 380px;
+            }
         </style>
     </head>
     <body style="background-color:#F3F3F4;">
-        <nav class="navbar-default navbar-static-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav">
-                    <li class="nav-header text-center"> <a href="http://www.water.nsw.gov.au/" target="_blank" style="padding: 3px 0 10px"> <img src="images/nsw.png" alt="nsw" height="50"/> </a> </li>
-                    <li class=""> <a href="index.php" target="_blank" data-toggle="tooltip" title="Home" style="padding: 5px 0px 5px 13.5px"><img src="images/home_icon.jpg" alt="irrigation" height="40"/></a> </li>
-                    <li class=""> <a href="Irrigation_module.php" target="_blank" data-toggle="tooltip" title="Irrigation" style="padding: 5px 0px 5px 13.5px"><img src="images/irrigation_icon.jpg" alt="irrigation" height="40"/></a> </li>
-                    <li class=""> <a href="Mining_module.php" target="_blank" data-toggle="tooltip" title="Mining" style="padding: 5px 0px 5px 13.5px"><img src="images/mining_icon.png" alt="Mining" height="40"/></a> </li>
-                    <li class=""> <a href="Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation" style="padding: 5px 0px 5px 13.5px"><img src="images/town_water_icon.png" alt="Town Water" height="40"/></a> </li>
-                    <li class=""> <a href="Environmental_module.php" target="_blank" data-toggle="tooltip" title="Critical Environmental Assets" style="padding: 5px 0px 5px 13.5px"><img src="images/environmental_icon.png" alt="Environmental" height="40"/></i></a> </li>
-                    <li class=""> <a href="Data_Management_Index.php" target="_blank" data-toggle="tooltip" title="Data Management" style="padding: 5px 0px 5px 13.5px"><img src="images/data_icon.png" alt="Data" height="40"/></i></a> </li>
-                </ul>
-            </div>
-	</nav>
+        <?php include("../../common.scripts/navigator.html"); ?>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:17.2%; height:776px;" id="left_panel">
+			<div class="box-container" style="width:17.2%;" id="left_panel">
 				<table style="width:100%">
 <!--				  <tr>
 					<td>
@@ -62,26 +51,26 @@ and open the template in the editor.
 				  <tr>
 					<td>
 						<div>
-						  <div class="box-title">
+						  <div id="legend_title" class="box-title">
 							<h4><b>Map Icon Legend</b></h4>
 						  </div>
-						  <div class="box-content" style="height:776px;">
+						  <div class="box-content">
 							<div id="rightdiv">
                                                             <div id="legend">
-<!--                                                                <img src="lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
-                                                                <img src="lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
-                                                                <img src="lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
-                                                                <img src="lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
-                                                                <img src="lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
-                                                                <img src="lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
-                                                                <img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WDSI</small>)<br>
-                                                                <img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WDSI</small>)<br>
-                                                                <img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WDSI</small>)<br>
-                                                                <img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>-->
+<!--                                                                <img src="../../lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
+                                                                <img src="../../lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
+                                                                <img src="../../lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
+                                                                <img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WDSI</small>)<br>
+                                                                <img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WDSI</small>)<br>
+                                                                <img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WDSI</small>)<br>
+                                                                <img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>-->
                                                                 <br>
                                                             </div>
 							</div>
@@ -94,10 +83,10 @@ and open the template in the editor.
 			
 			<div class="box-container" style="width:82.8%" id="map_panel">
 				<div class="box">
-					<div class="box-title">
+					<div id="map_title" class="box-title">
 						<h4><b>Town Water & Power Generation</b></h4>
 					</div>
-					<div class="box-content" role="tabpanel">
+					<div class="box-content">
 						<div id="map"></div>
 					</div>
                                         <div id="MacquarieBogan">
@@ -136,14 +125,10 @@ and open the template in the editor.
 		</div>
 	</div>
         <div class="se-pre-con"></div>
-                
-        <script type="text/javascript">
-
-        </script>
         <?php
             //Edited by justice
         //purpose_des, share_component, longitude, latitude
-            include 'db.helper/db_connection_ini.php';
+            include '../../db.helper/db_connection_ini.php';
             if(!empty($_GET['catchment_name'])){
                 if($conn!=null){
                     $sql_0 = "SELECT * FROM whole_catchment_indices WHERE catchment_name='".$_GET['catchment_name']."'";
@@ -174,14 +159,20 @@ and open the template in the editor.
                         $town_water_supply[$o] = $row_3;
                     }
                 }else{
-                    include 'db.helper/db_connection_ini.php';
+                    include '../../db.helper/db_connection_ini.php';
                 }
             }
             //Edited by justice
         ?>
         
         <script type="text/javascript">
-            //var lga = lgaBorders;
+            window.onload=function(){//Set the height
+                pageHeight = window.screen.height*heightRatio;
+                var mapTitleHeight = document.getElementById("map_title").offsetHeight;
+                document.getElementById("map").style.height = (pageHeight-mapTitleHeight) + "px";
+                var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
+                document.getElementById("legend").style.height = (pageHeight - legendTitleHeight) + "px";
+            }
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var MacquarieBogan_CatchmentBoundary_1 = MacquarieBogan_CatchmentBoundary;
             var ManningRiver_CatchmentBoundary = ManningRiver_CatchmentBoundary;
@@ -201,7 +192,6 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");;
             });
             
-                      
             var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
@@ -243,12 +233,13 @@ and open the template in the editor.
             
             function go_to_mac(){               
                 window.location.href = "Town_water_power_gen_module.php?catchment_name=MacquarieBogan";
-                
+                setTimeout(function(){ map.invalidateSize()}, 500);
             }
             
             function go_to_man(){
                 map.removeLayer(Man_bound);
                 window.location.href = "Town_water_power_gen_module.php?catchment_name=ManningRiver";
+                setTimeout(function(){ map.invalidateSize()}, 500);
             }
             
             function highlight(e) {
@@ -288,105 +279,105 @@ and open the template in the editor.
             };
             
             var Icon_approval_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_reg.png',
+                iconUrl: '../../lib/leaflet/images/wa_reg.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });
             
             var Icon_approval_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_unreg.png',
+                iconUrl: '../../lib/leaflet/images/wa_unreg.png',
                 iconSize:     [18, 28],
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });
             
             var Icon_approval_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/wa_gw.png',
+                iconUrl: '../../lib/leaflet/images/wa_gw.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             });  
             
             var Icon_license_1 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_reg.png',
+                iconUrl: '../../lib/leaflet/images/li_reg.png',
                 iconSize:     [18, 28], 
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
             
             var Icon_license_2 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_unreg.png',
+                iconUrl: '../../lib/leaflet/images/li_unreg.png',
                 iconSize:     [18, 28],  
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
             
             var Icon_license_3 = L.icon({
-                iconUrl: 'lib/leaflet/images/li_gw.png',
+                iconUrl: '../../lib/leaflet/images/li_gw.png',
                 iconSize:     [18, 28],   
                 iconAnchor:   [9, 28],  
                 popupAnchor:  [0, -30] 
             }); 
 
             var Icon_reg = L.icon({
-                iconUrl: 'lib/leaflet/images/reg.png',
+                iconUrl: '../../lib/leaflet/images/reg.png',
                 iconSize:     [16, 27], 
                 iconAnchor:   [8, 27],  
                 popupAnchor:  [0, -34] 
             });
             
             var Icon_reg = L.icon({
-                iconUrl: 'lib/leaflet/images/R.png',
+                iconUrl: '../../lib/leaflet/images/R.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_unreg = L.icon({
-                iconUrl: 'lib/leaflet/images/U.png',
+                iconUrl: '../../lib/leaflet/images/U.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_gw = L.icon({
-                iconUrl: 'lib/leaflet/images/G.png',
+                iconUrl: '../../lib/leaflet/images/G.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_orange = L.icon({
-                iconUrl: 'lib/leaflet/images/water_treatment_icon_orange.png',
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_orange.png',
                 iconSize:     [15, 15], 
                 iconAnchor:   [7.5, 7.5],  
                 popupAnchor:  [0, -15] 
             });
             
             var Icon_green = L.icon({
-                iconUrl: 'lib/leaflet/images/water_treatment_icon_green.png',
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_green.png',
                 iconSize:     [15, 15], 
                 iconAnchor:   [7.5, 7.5],  
                 popupAnchor:  [0, -15] 
             });
             
             var Icon_waste_green = L.icon({
-                iconUrl: 'lib/leaflet/images/waste_water_green.png',
+                iconUrl: '../../lib/leaflet/images/waste_water_green.png',
                 iconSize:     [15, 15], 
                 iconAnchor:   [7.5, 7.5],  
                 popupAnchor:  [0, -15] 
             });
             
             var Icon_waste_red = L.icon({
-                iconUrl: 'lib/leaflet/images/waste_water_red.png',
+                iconUrl: '../../lib/leaflet/images/waste_water_red.png',
                 iconSize:     [15, 15], 
                 iconAnchor:   [7.5, 7.5],  
                 popupAnchor:  [0, -15] 
             });
             
             var Icon_waste_orange = L.icon({
-                iconUrl: 'lib/leaflet/images/waste_water_orange.png',
+                iconUrl: '../../lib/leaflet/images/waste_water_orange.png',
                 iconSize:     [15, 15], 
                 iconAnchor:   [7.5, 7.5],  
                 popupAnchor:  [0, -15] 
@@ -394,7 +385,7 @@ and open the template in the editor.
             
             
             var Icon_waste_water = L.icon({
-                iconUrl: 'lib/leaflet/images/waste_water_treatment.png',
+                iconUrl: '../../lib/leaflet/images/waste_water_treatment.png',
                 iconSize:     [15, 15], 
                 iconAnchor:   [7.5, 7.5],  
                 popupAnchor:  [0, -15] 
@@ -656,7 +647,7 @@ and open the template in the editor.
                     <?php }?>; 
                         
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if(!empty($_GET['catchment_name'])){
                             if($conn!=null){
                                 $sql_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Macquarie'";
@@ -668,7 +659,7 @@ and open the template in the editor.
                                     $wwtc_mac[$m] = $row_wwtc_mac;
                                 }
                             }else{
-                                include 'db.helper/db_connection_ini.php';
+                                include '../../db.helper/db_connection_ini.php';
                             }
                         }
                     ?>
@@ -731,7 +722,7 @@ and open the template in the editor.
                     <?php }?>; 
                         
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if(!empty($_GET['catchment_name'])){
                             if($conn!=null){
                                 $sq2_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Manning'";
@@ -743,7 +734,7 @@ and open the template in the editor.
                                     $wwtc_man[$m] = $row_wwtc_man;
                                 }
                             }else{
-                                include 'db.helper/db_connection_ini.php';
+                                include '../../db.helper/db_connection_ini.php';
                             }
                         }
                     ?>
@@ -798,10 +789,10 @@ and open the template in the editor.
 //                    var elem_ov = document.createElement("div");
 //                    elem_ov.setAttribute('id', 'tws_legend');
 //                    elem_ov.innerHTML = (
-//                            '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
-//                            '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
-//                            '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
-//                            '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+//                            '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
 //                            );
 //                    document.getElementById("legend").appendChild(elem_ov);
 //            
@@ -813,13 +804,13 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
 //                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
 //                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -830,13 +821,13 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
 //                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
 //                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -847,13 +838,13 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
 //                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
 //                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -864,10 +855,10 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
 //                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -878,7 +869,7 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -934,15 +925,15 @@ and open the template in the editor.
                     var elem_ov = document.createElement("div");
                     elem_ov.setAttribute('id', 'tws_legend');
                     elem_ov.innerHTML = (
-                            '<img src="lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (high <small>WWQI</small>)<br>'+
-                            '<img src="lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (medium <small>WWQI</small>)<br>'+
-                            '<img src="lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (low <small>WWQI</small>)<div style="height:2px;"><br></div>'
-        //                    '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+                            '<img src="../../lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (high <small>WWQI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (medium <small>WWQI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (low <small>WWQI</small>)<div style="height:2px;"><br></div>'
+        //                    '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
                             );
                     document.getElementById("legend").appendChild(elem_ov);
                     
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if(!empty($_GET['catchment_name'])){
                             if($conn!=null){
                                 $sql_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Macquarie'";
@@ -954,7 +945,7 @@ and open the template in the editor.
                                     $wwtc_mac[$m] = $row_wwtc_mac;
                                 }
                             }else{
-                                include 'db.helper/db_connection_ini.php';
+                                include '../../db.helper/db_connection_ini.php';
                             }
                         }
                     ?>
@@ -996,13 +987,13 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
                                                 1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
                                                 2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
                                                 3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -1013,13 +1004,13 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
                                                 1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
                                                 2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
                                                 3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -1030,13 +1021,13 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
                                                 1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
                                                 2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
                                                 3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -1047,10 +1038,10 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water__red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water__red.png"> ' +
                                                 1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
                                                 2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -1061,7 +1052,7 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
                                                 1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -1178,7 +1169,7 @@ and open the template in the editor.
                 // display legend for reg river
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'reg_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
                 
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
@@ -1292,7 +1283,7 @@ and open the template in the editor.
 //                link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.5" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.5" align = "center">&nbsp; &nbsp;Unregulated river<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     // display link icon
@@ -1365,7 +1356,7 @@ and open the template in the editor.
                     var unregulated_29 = getCentroid(MacquarieBogan_unregulated.features[29].geometry.coordinates[0][0]);
                     
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_0 = "SELECT * FROM water_source WHERE water_source = 'Backwater Boggy Cowal Water Source'";                             
                             $res_0 = $conn->query($sq_0);
@@ -1496,7 +1487,7 @@ and open the template in the editor.
                                 $lga_1[$o] = $ro_30;
                             }                         
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                    
@@ -2995,7 +2986,7 @@ and open the template in the editor.
                 var geojsonfile = MacquarieBogan_GW;
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
@@ -3029,7 +3020,7 @@ and open the template in the editor.
                     var groundwater_3 = getCentroid(MacquarieBogan_GW.features[3].geometry.coordinates[0]);
 
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_gw_1 = "SELECT * FROM ground_water WHERE groundwater = 'Bell Alluvial Groundwater Source'";                             
                             $res_gw_1 = $conn->query($sq_gw_1);
@@ -3047,7 +3038,7 @@ and open the template in the editor.
                             $res_gw_4 = $conn->query($sq_gw_4);
                             $ro_gw_4 = $res_gw_4->fetch_assoc(); 
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                                     
@@ -3137,9 +3128,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'lices_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
-                        '<img src="lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
-                        '<img src="lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     num_marker = number_license_mac;
@@ -3224,9 +3215,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'appro_mac');
-                elem.innerHTML = ('<img src="lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
-                        '<img src="lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
-                        '<img src="lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
 
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
@@ -3305,10 +3296,10 @@ and open the template in the editor.
 //                    var elem_ov = document.createElement("div");
 //                    elem_ov.setAttribute('id', 'tw_legend');
 //                    elem_ov.innerHTML = (
-//                            '<img src="lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
-//                            '<img src="lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
-//                            '<img src="lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
-//                            '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+//                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+//                            '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
 //                            );
 //                    document.getElementById("legend").appendChild(elem_ov);
 //                    
@@ -3320,13 +3311,13 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
 //                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
 //                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -3337,13 +3328,13 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
 //                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
 //                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -3354,13 +3345,13 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_orange.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +
 //                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
 //                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -3371,10 +3362,10 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_green.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' +
 //                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -3385,7 +3376,7 @@ and open the template in the editor.
 //                                labels = [],
 //                                from, to;
 //                                labels.push(
-//                                                '<img src="lib/leaflet/images/water_treatment_icon_red.png"> ' +
+//                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +
 //                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
 //                                div.innerHTML = '<h5>Index (WSDI) Rank</h5>' + labels.join('<br>');
 //                                return div;
@@ -3440,15 +3431,15 @@ and open the template in the editor.
                     var elem_ov = document.createElement("div");
                     elem_ov.setAttribute('id', 'tw_legend');
                     elem_ov.innerHTML = (
-                            '<img src="lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
-                            '<img src="lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
-                            '<img src="lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
-//                            '<img src="lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
+                            '<img src="../../lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+//                            '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
                             );
                     document.getElementById("legend").appendChild(elem_ov);
                     
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if(!empty($_GET['catchment_name'])){
                             if($conn!=null){
                                 $sql_wwtc = "SELECT * FROM waste_water_treatment_centre WHERE catchment='Manning'";
@@ -3460,7 +3451,7 @@ and open the template in the editor.
                                     $wwtc_man[$m] = $row_wwtc_man;
                                 }
                             }else{
-                                include 'db.helper/db_connection_ini.php';
+                                include '../../db.helper/db_connection_ini.php';
                             }
                         }
                     ?>
@@ -3502,13 +3493,13 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
                                                 1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
                                                 2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
                                                 3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -3519,13 +3510,13 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
                                                 1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
                                                 2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
                                                 3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -3536,13 +3527,13 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
                                                 1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_orange.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
                                                 2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
                                                 3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -3553,10 +3544,10 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water__red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water__red.png"> ' +
                                                 1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_green.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
                                                 2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -3567,7 +3558,7 @@ and open the template in the editor.
                                 labels = [],
                                 from, to;
                                 labels.push(
-                                                '<img src="lib/leaflet/images/waste_water_red.png"> ' +
+                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
                                                 1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
                                 div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
                                 return div;
@@ -3598,7 +3589,7 @@ and open the template in the editor.
             function show_gis_Manning_unregulated(id){
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
 
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
@@ -3655,7 +3646,7 @@ and open the template in the editor.
                     var man_unre_15 = getCentroid(Manning_unregulated.features[15].geometry.coordinates[0]);
                     
                     <?php
-                        include 'db.helper/db_connection_ini.php';
+                        include '../../db.helper/db_connection_ini.php';
                         if($conn!=null){
                             $sq_1 = "SELECT * FROM water_source WHERE water_source = 'Avon River Water Source'";                             
                             $res_1 = $conn->query($sq_1);
@@ -3731,7 +3722,7 @@ and open the template in the editor.
                             } 
                         
                         }else{
-                            include 'db.helper/db_connection_ini.php';
+                            include '../../db.helper/db_connection_ini.php';
                         }
                     ?>
                    
@@ -4542,7 +4533,7 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
 
                 var geojsonfile = Manning_Groundwater;
                 if (checkBox.checked === true){
@@ -4692,9 +4683,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'lice_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
-                        '<img src="lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
-                        '<img src="lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/li_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/li_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/li_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>');
 
                 if (checkBox.checked === true){  
                     document.getElementById("legend").appendChild(elem);
@@ -4758,9 +4749,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'appro_man');
-                elem.innerHTML = ('<img src="lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
-                        '<img src="lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
-                        '<img src="lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/wa_reg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/wa_unreg.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>'+
+                        '<img src="../../lib/leaflet/images/wa_gw.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>');
 
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
@@ -4904,13 +4895,13 @@ and open the template in the editor.
 //                        'Annual Use of Water for Power Generation: ' + surface_water_size + '<br />'
 //                        : '<b>' + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Hover over a catchment' + '</b>'
                           '<b>' + 'Water Treatment and Power Generation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
-                          '<p style=\"line-height:50%\"><img src=\"images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centre: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/waste_water_number.png\" height=\"25\" width=\"25\"> Number of Waste Water Treatment Centre: <b>' + toThousands(no_wwtc) + '</b><br/><br />'+
-                          '<img src=\"images/water_population.png\" height=\"25\" width=\"25\"> Population Served: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
-                          '<img src=\"images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + 0 + '</b><br/><br />'+
-                          '<img src=\"images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water: <b>' + toThousands(volume) + ' ML</b><br/><br />'+
-                          '<img src=\"images/waste_water_usage.png\" height=\"25\" width=\"25\"> Annual Treated Water for Waste Water: <b>' + toThousands(waste_volume) + ' ML</b><br/><br />'+
-                          '<img src=\"images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + 0 + '</b><br/></p>'  
+                          '<p style=\"line-height:50%\"><img src=\"../../images/water_treatment_number.png\" height=\"25\" width=\"25\"> Number of Water Treatment Centre: <b>' + toThousands(no_wtc) + '</b><br/><br />'+
+                          '<img src=\"../../images/waste_water_number.png\" height=\"25\" width=\"25\"> Number of Waste Water Treatment Centre: <b>' + toThousands(no_wwtc) + '</b><br/><br />'+
+                          '<img src=\"../../images/water_population.png\" height=\"25\" width=\"25\"> Population Served: <b>' + toThousands(popu_wtc) + '</b><br/><br />'+
+                          '<img src=\"../../images/power_generated.png\" height=\"25\" width=\"25\"> Annual Power Generated: <b>' + 0 + '</b><br/><br />'+
+                          '<img src=\"../../images/water_treatment_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Town Water: <b>' + toThousands(volume) + ' ML</b><br/><br />'+
+                          '<img src=\"../../images/waste_water_usage.png\" height=\"25\" width=\"25\"> Annual Treated Water for Waste Water: <b>' + toThousands(waste_volume) + ' ML</b><br/><br />'+
+                          '<img src=\"../../images/power_generated_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water for Power Generation: <b>' + 0 + '</b><br/></p>'  
                     );
                 <?php }?>;
             };
@@ -4939,14 +4930,11 @@ and open the template in the editor.
             }
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-//                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }
             //Edited by justice
-            //L.geoJSON(MacquarieBogan_CatchmentBoundary).addTo(map).getBounds();
-
-    
+            setTimeout(function(){ map.invalidateSize()}, 500);
         </script>
     </body>
 </html>

@@ -13,7 +13,7 @@
         <div class="header_bottom">
           <div class="container">
                 <div class="logo">
-                   <a href="main.php"><img src="../../images/logo.png" width="45%" alt=""/></a>
+                   <a href="https://www.industry.nsw.gov.au/water"><img src="../../images/logo.png" width="45%" alt=""/></a>
                 </div>
                 <div class="consul_btn1"><a href="#">Free Consultation</a></div>
                     <div class="menu">

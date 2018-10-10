@@ -7,20 +7,75 @@ and open the template in the editor.
 <html>
     <head>
         <title>DPI Water</title>
-        <?php include("Common_Script_Import.html"); ?>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- nsw map -->
+        <script type="text/javascript" src="border/MacquarieBogan_CatchmentBoundary.geojson"></script> 
+        <script type="text/javascript" src="border/ManningRiver_CatchmentBoundary.geojson"></script> 
+
+        <!-- MacquarieBogan water dataset-->
+        <script type="text/javascript" src="border/MacquarieBogan_GroundWaterSources.geojson"></script>
+        <script type="text/javascript" src="border/Macquarie_RegulatedRiver.geojson"></script>
+        <script type="text/javascript" src="border/MacquarieBogan_unregulated.geojson"></script>
+        <script type="text/javascript" src="border/Macquarie_Unregulatedriver.geojson"></script>
+
+        <!-- Manning water dataset -->
+        <script type="text/javascript" src="border/Manning_unregulated.geojson"></script>
+        <script type="text/javascript" src="border/Manning_Groundwater.geojson"></script>
+        <script type="text/javascript" src="border/Manning_Unregulatedriver.geojson"></script>
+
+        <!--Leaflet-->
+        <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+        <script src="lib/leaflet/leaflet.js"></script>
+        <script src="lib/js/jquery-3.3.1.min.js"></script>
+
+        <!--Easyui-->
+        <link rel="stylesheet" type="text/css" href="lib/jquery-easyui-1.5.5.1/themes/default/easyui.css">
+        <link rel="stylesheet" type="text/css" href="lib/jquery-easyui-1.5.5.1/themes/icon.css">
+        <link rel="stylesheet" type="text/css" href="lib/jquery-easyui-1.5.5.1/demo/demo.css">
+        <script type="text/javascript" src="lib/jquery-easyui-1.5.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/jquery-easyui-1.5.5.1/jquery.easyui.min.js"></script> 
+        <script type="text/javascript" src="lib/js/wise-leaflet-pip.js"></script>
+
+        <!--mp3-->
+        <audio id="error" src="lib/mp3/Error.mp3" preload="auto"></audio>
+
+        <!--MarkerCluster-->
+        <script type="text/javascript" src="lib/Leaflet.markercluster-1.3.0/dist/leaflet.markercluster-src.js"></script>
+        <link rel="stylesheet" href="lib/Leaflet.markercluster-1.3.0/dist/MarkerCluster.Default.css">
+        <link rel="stylesheet" href="lib/Leaflet.markercluster-1.3.0/dist/MarkerCluster.css">
+
+        <!--Controlsearch-->
+        <script type="text/javascript" src="lib/leaflet-search-master/src/leaflet-search.js"></script>
+        <link rel="stylesheet" href="lib/leaflet-search-master/src/leaflet-search.css" />
+
+        <!--Template-->
+        <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+        <link href="css/navigator_style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/icheck-bootstrap.min.css">
+        <link rel="stylesheet" href="css/dpi.css">
+        <script src="lib/js/bootstrap-3.3.7.min.js"></script>
+
+        <script type="text/javascript" src="lib/js/Chart.min.js"></script>
+        <script type="text/javascript" src="lib/js/dpi.js"></script>
+
+        <script type="text/javascript" src="lib/progressbar.js-master/dist/progressbar.js"></script>
+
+        <!--Leaflet pattern-->
+        <script src="lib/Leaflet.pattern-master/dist/leaflet.pattern-src.js"></script>
         <script type="text/javascript" src="common.scripts/settings.js"></script>
     </head>
     <body style="background-color:#F3F3F4;">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav">
-                    <li class="nav-header text-center"> <a href="http://www.water.nsw.gov.au/" target="_blank" style="padding: 3px 0 10px"> <img src="images/nsw.png" alt="nsw" height="50"/> </a> </li>
+                    <li class="nav-header text-center"> <a href="https://www.industry.nsw.gov.au/water" target="_blank" style="padding: 3px 0 10px"> <img src="images/nsw.png" alt="nsw" height="50"/> </a> </li>
                     <li class=""> <a href="index.php" target="_blank" data-toggle="tooltip" title="Home" style="padding: 5px 0px 5px 13.5px"><img src="images/home_icon.jpg" alt="irrigation" height="40"/></a> </li>
-                    <li class=""> <a href="Irrigation_module.php" target="_blank" data-toggle="tooltip" title="Irrigation" style="padding: 5px 0px 5px 13.5px"><img src="images/irrigation_icon.jpg" alt="irrigation" height="40"/></a> </li>
-                    <li class=""> <a href="Mining_module.php" target="_blank" data-toggle="tooltip" title="Mining" style="padding: 5px 0px 5px 13.5px"><img src="images/mining_icon.png" alt="Mining" height="40"/></a> </li>
-                    <li class=""> <a href="Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation" style="padding: 5px 0px 5px 13.5px"><img src="images/town_water_icon.png" alt="Town Water" height="40"/></a> </li>
-                    <li class=""> <a href="Environmental_module.php" target="_blank" data-toggle="tooltip" title="Critical Environmental Assets" style="padding: 5px 0px 5px 13.5px"><img src="images/environmental_icon.png" alt="Environmental" height="40"/></i></a> </li>
-                    <li class=""> <a href="Data_Management_Index.php" target="_blank" data-toggle="tooltip" title="Data Management" style="padding: 5px 0px 5px 13.5px"><img src="images/data_icon.png" alt="Data" height="40"/></i></a> </li>
+                    <li class=""> <a href="pages/irrigation/Irrigation_module.php" target="_blank" data-toggle="tooltip" title="Irrigation" style="padding: 5px 0px 5px 13.5px"><img src="images/irrigation_icon.jpg" alt="irrigation" height="40"/></a> </li>
+                    <li class=""> <a href="pages/mining/Mining_module.php" target="_blank" data-toggle="tooltip" title="Mining" style="padding: 5px 0px 5px 13.5px"><img src="images/mining_icon.png" alt="Mining" height="40"/></a> </li>
+                    <li class=""> <a href="pages/town.water/Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation" style="padding: 5px 0px 5px 13.5px"><img src="images/town_water_icon.png" alt="Town Water" height="40"/></a> </li>
+                    <li class=""> <a href="pages/environment/Environmental_module.php" target="_blank" data-toggle="tooltip" title="Critical Environmental Assets" style="padding: 5px 0px 5px 13.5px"><img src="images/environmental_icon.png" alt="Environmental" height="40"/></i></a> </li>
+                    <li class=""> <a href="pages/data.management/Data_Management_Index.php" target="_blank" data-toggle="tooltip" title="Data Management" style="padding: 5px 0px 5px 13.5px"><img src="images/data_icon.png" alt="Data" height="40"/></i></a> </li>
                     <li class=""> <a href="pc.pages/all/risk_opportunity.php" target="_blank" data-toggle="tooltip" title="Risk & Opportunity" style="padding: 5px 0px 5px 13.5px"><img src="images/risk_opportunity_icon.png" alt="Data" height="40"/></i></a> </li>
                     <li class=""> <a href="pc.pages/all/scenarios.php" target="_blank" data-toggle="tooltip" title="Scenarios" style="padding: 5px 0px 5px 13.5px"><img src="images/scenario_icon.png" alt="Data" height="40"/></i></a> </li>
                 </ul>
@@ -346,8 +401,8 @@ and open the template in the editor.
             });
             var macquaireIndexIcon = L.marker([-32.2319, 147.8097], {icon: macquaireIcon});
             var mannningIndexIcon = L.marker([-31.7304, 151.8925], {icon: manningIcon});
-            macquaireIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/macquarie_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/macquarie_fui.php\">FUI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/macquarie_fmi.php\" >FMI</a></div>").openPopup();
-            mannningIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/manning_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/manning_fui.php\">FUI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/manning_fmi.php\" >FMI</a></div>").openPopup();
+            macquaireIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/macquarie/macquarie_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/macquarie/macquarie_fui.php\">FUI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/macquarie/macquarie_fmi.php\" >FMI</a></div>").openPopup();
+            mannningIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/manning/manning_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/manning/manning_fui.php\">FUI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/manning/manning_fmi.php\" >FMI</a></div>").openPopup();
             macquaireIndexIcon.addTo(map);//add index icon
             mannningIndexIcon.addTo(map);//add index icon
             
@@ -4165,7 +4220,7 @@ and open the template in the editor.
                     }
                 });
             }
-            setTimeout(function(){ map.invalidateSize()}, 800);
+            setTimeout(function(){ map.invalidateSize()}, 1000);
             //Edited by justice       
         </script>
     </body>

@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Data Insight of Macquarie Catchment</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
+        <script type="text/javascript" src="../../common.scripts/settings.js"></script>
         <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
     </head>
     <body style="background-color:#F3F3F4;">
@@ -19,9 +20,10 @@ and open the template in the editor.
                     <div class="box">
                         <div class="box-title">
                             <div id="s0_title">
+                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Macquarie Catchment--Opportunity for additional supply</span>
                             </div>
                         </div>
-                        <div class="box-content" role="tabpanel">
+                        <div class="box-content">
                                 <div id="map"></div>
                         </div>    
                     </div>
@@ -31,15 +33,19 @@ and open the template in the editor.
                         <div class="box-title">
                                 <h4><b>Parallel Coordinates</b></h4>                                                
                         </div>
-                        <div id="parcoord_1" class="parcoords"></div>
+                        <div class="box-content">
+                            <div id="parrallel_coordinate" class="parcoords"></div>
+                        </div>
                     </div>
                 </div>
                 <div class="box-container" style="width:31.5%;">
                     <div class="box">
-                            <div class="box-title">
-                                    <h4><b>Water Source List</b></h4>                                               
-                            </div>  
-                            <div id="grid" class="box-content"></div>
+                        <div class="box-title">
+                            <h4><b>Water Source List</b></h4>                                               
+                        </div>
+                        <div class="box-content">
+                            <div id="grid"></div>
+                        </div>
                     </div>
                 </div>                   
             </div>
@@ -51,7 +57,14 @@ and open the template in the editor.
             $(window).load(function() {
             $(".se-pre-con").fadeOut("slow");;
             });
-            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment'+'</span>';
+            
+            // Set the page and component height
+            pageHeight = window.screen.height*heightRatio*0.95;//get the page height
+            window.onload=function(){
+                document.getElementById("map").style.height = pageHeight + "px";//set height of map
+                document.getElementById("parrallel_coordinate").style.height = pageHeight + "px";
+                document.getElementById("grid").style.height = pageHeight + "px";
+            }
             
             var removeLayer = function (feature) {
                 for (var i = 0; i < feature.length; i++){     
@@ -165,7 +178,6 @@ and open the template in the editor.
             }).addTo(map);  
             
             map.setView([-31.8, 148.5], 8);       
-            displayed_s1 = [];
             function getColorScalar(d) {
                 if(d<=Math.floor(max_row/3)){
                 return myCols[0];
@@ -193,8 +205,7 @@ and open the template in the editor.
                 });
             });
 
-            document.getElementById('s0_title').innerHTML = '<span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">'+'Water Source of Macquarie Catchment--Opportunity for additional supply'+'</span>';
-            parcoord_1.style.display = 'block';
+            parrallel_coordinate.style.display = 'block';
             grid.style.display = 'block';
             // control that shows state info on hover
             info = L.control({position: 'topright'});
@@ -259,11 +270,11 @@ and open the template in the editor.
             }
 
             // Create parallel Coordinate
-            parcoords = d3.parcoords()("#parcoord_1")
+            parcoords = d3.parcoords()("#parrallel_coordinate")
                     .alpha(1)
                     .mode("queue") // progressive rendering
-                    .height(760)
-                    .width(2800)
+                    .height(pageHeight)
+                    .width(document.getElementById("parrallel_coordinate").clientWidth - 10)
                     .margin({
                             top: 25,
                             left: 1,
@@ -321,8 +332,6 @@ and open the template in the editor.
                                     });
                             },
                     }).addTo(map);
-                    displayed_s1.push(geojson);
-                    displayed_s1.push(geojsonLabels);                         
 
                     // add legend
                     legend = L.control({position: 'bottomright'});
@@ -462,6 +471,7 @@ and open the template in the editor.
                             })
                     }
             });
+            setTimeout(function(){ map.invalidateSize()}, 500);
         </script>
     </body>
 </html>

@@ -120,12 +120,12 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font>-->
                                         </div>   
                                     
-                                        <div id="link_to_parallel_coordinate" class="link_to_parallel">
+<!--                                        <div id="link_to_parallel_coordinate" class="link_to_parallel">
                                             <a href="parallel_coordinate_macquarie_environment.php" target="_blank">Insight</a>
                                         </div>
                                        <div id="link_to_parallel_coordinate_manning" class="link_to_parallel">
                                             <a href="parallel_coordinate_manning_environment.php" target="_blank">Insight</a>
-                                        </div>
+                                        </div>-->
                                 </div>
 			</div>
 		</div>
@@ -684,14 +684,14 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_unregulated;
                 var geojsonfile_1 = Macquarie_Unregulatedriver;
-                link_to_parr = document.getElementById('link_to_parallel_coordinate');
+//                link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_mac');
                 elem.innerHTML = ('<img src="lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
                 if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     // display link icon
-                    link_to_parr.style.display = 'block';                                       
+//                    link_to_parr.style.display = 'block';                                       
                                     
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
@@ -2377,7 +2377,7 @@ and open the template in the editor.
                 if (checkBox.checked === false){
                     removeLayer(displayed_gis_layer_unregulated);
                     map.removeControl(controlSearch);
-                    link_to_parr.style.display = 'none';
+//                    link_to_parr.style.display = 'none';
                     var elementToBeRemoved = document.getElementById('unreg_mac');
                     document.getElementById('legend').removeChild(elementToBeRemoved);
                 } 
@@ -2660,9 +2660,9 @@ and open the template in the editor.
                 var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
                 var geojsonfile_1 = Manning_Unregulatedriver;
-                link_to_parr_man = document.getElementById('link_to_parallel_coordinate_manning');
+//                link_to_parr_man = document.getElementById('link_to_parallel_coordinate_manning');
                 if (checkBox.checked === true){
-                    link_to_parr_man.style.display='block';
+//                    link_to_parr_man.style.display='block';
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
@@ -3592,7 +3592,7 @@ and open the template in the editor.
                     map.removeControl(controlSearch);
                     var elementToBeRemoved = document.getElementById('unreg_man');
                     document.getElementById('legend').removeChild(elementToBeRemoved);
-                    link_to_parr_man.style.display='none';
+//                    link_to_parr_man.style.display='none';
                 }                       
             }
             

@@ -126,7 +126,7 @@
                 req.onreadystatechange = function() {
                     if(req.readyState === 4 && req.status === 200) {
                         if(this.responseText=="1"){
-                            window.open("output.files/whole_catchment_indices.csv");
+                            window.open("../../files/export.files/whole_catchment_indices.csv");
                         }else{
                             alert("Fail to output the table.");
                         }

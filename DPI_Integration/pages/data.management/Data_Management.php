@@ -196,8 +196,8 @@
                 <ul class="layui-tab-title">
                     <li class="layui-this">
                         <a href="javascript:;" _href="Data_Management_index.php">
-                                           <cite>Home</cite>
-                                        </a>                      
+                                <cite>Home</cite>
+                             </a>                      
                     </li>
                 </ul>
                 <div class="layui-tab-content site-demo site-demo-body">

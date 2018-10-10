@@ -4,7 +4,7 @@
     $table_name = $_GET['table_name'];
     $result=mysqli_query($conn,"SELECT * FROM ".$table_name);  
     $record_num=mysqli_num_rows($result);
-    $output_file = fopen("../output.files/".$table_name.".csv", "w") or die("Unable to open file!");
+    $output_file = fopen("../files/export.files/".$table_name.".csv", "w") or die("Unable to open file!");
     
     /*Initiate the title*/
     $fields = array();

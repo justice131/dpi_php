@@ -6,7 +6,7 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
         echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
     }else{
         //Save the uploaded file
-        $save_path = "../upload.files/".date("YmdHis",time())."_".$_FILES["file"]["name"];
+        $save_path = "../files/upload.files/".date("YmdHis",time())."_".$_FILES["file"]["name"];
         move_uploaded_file($_FILES["file"]["tmp_name"],$save_path);
         //Read the file
         $data = file_list_reader($save_path);       

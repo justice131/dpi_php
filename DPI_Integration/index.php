@@ -58,7 +58,6 @@ and open the template in the editor.
 
         <script type="text/javascript" src="lib/js/Chart.min.js"></script>
         <script type="text/javascript" src="lib/js/dpi.js"></script>
-
         <script type="text/javascript" src="lib/progressbar.js-master/dist/progressbar.js"></script>
 
         <!--Leaflet pattern-->

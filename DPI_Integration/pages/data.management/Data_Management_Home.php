@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>DPI Data Management System</title>
         <script src="../../lib/js/jquery-3.3.1.min"></script>
         <link href="../../lib/bootstrap/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
         <link href="../../css/db_style.css" rel='stylesheet' type='text/css' />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:100,300,400,600,700,800' rel='stylesheet' type='text/css'>
     </head>

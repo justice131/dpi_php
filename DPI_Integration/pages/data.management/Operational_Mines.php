@@ -92,7 +92,7 @@
                 req.onreadystatechange = function() {
                     if(req.readyState === 4 && req.status === 200) {
                         if(this.responseText=="1"){
-                            window.open("output.files/operational_mines.csv");
+                            window.open("../../files/export.files/operational_mines.csv");
                         }else{
                             alert("Fail to output the table.");
                         }

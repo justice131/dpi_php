@@ -89,7 +89,7 @@
                 req.onreadystatechange = function() {
                     if(req.readyState === 4 && req.status === 200) {
                         if(this.responseText=="1"){
-                            window.open("output.files/ground_water.csv");
+                            window.open("../../files/export.files/ground_water.csv");
                         }else{
                             alert("Fail to output the table.");
                         }

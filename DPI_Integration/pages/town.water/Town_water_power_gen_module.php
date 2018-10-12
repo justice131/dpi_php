@@ -113,12 +113,12 @@ and open the template in the editor.
 <!--                                        <div id="link_to_parallel_coordinate" class="link_to_parallel">
                                             <a href="parallel_coordinate_macqaurie_tws.php" target="_blank">Insight</a>
 -->                                        </div>
-                                        <div id="tws_scenario_mac" class="link_to_parallel">
+<!--                                        <div id="tws_scenario_mac" class="link_to_parallel">
                                             <a href="tws_scenario_Mac.php" target="_blank">Insight</a>
                                         </div>
                                         <div id="tws_scenario_man" class="link_to_parallel">
                                             <a href="tws_scenario_Man.php" target="_blank">Insight</a>
-                                        </div>
+                                        </div>-->
                                         <div id="container"></div>
                                 </div>
 			</div>
@@ -789,9 +789,9 @@ and open the template in the editor.
             featureWTSCollection = [];
             function show_MacquarieBogan_tws(id){
                 var checkBox = document.getElementById(id); 
-                link_to_wts = document.getElementById('tws_scenario_mac');
+//                link_to_wts = document.getElementById('tws_scenario_mac');
                 if (checkBox.checked === true){
-                    link_to_wts.style.display = 'block'; 
+//                    link_to_wts.style.display = 'block'; 
 //                    var elem_ov = document.createElement("div");
 //                    elem_ov.setAttribute('id', 'tws_legend');
 //                    elem_ov.innerHTML = (
@@ -916,7 +916,7 @@ and open the template in the editor.
 
                 }
                 if (checkBox.checked === false){
-                    link_to_wts.style.display = 'none'; 
+//                    link_to_wts.style.display = 'none'; 
 //                    removeLayer(featureWTSCollection);
 //                    map.removeControl(legend);
 //                    var elementToBeRemoved = document.getElementById('tws_legend');
@@ -3299,9 +3299,9 @@ and open the template in the editor.
             featureTWSCollection = [];
             function show_Manning_tws(id){
                 var checkBox = document.getElementById(id); 
-                link_to_wts_man = document.getElementById('tws_scenario_man');
+//                link_to_wts_man = document.getElementById('tws_scenario_man');
                 if (checkBox.checked === true){
-                    link_to_wts_man.style.display = "block";
+//                    link_to_wts_man.style.display = "block";
 //                    var elem_ov = document.createElement("div");
 //                    elem_ov.setAttribute('id', 'tw_legend');
 //                    elem_ov.innerHTML = (
@@ -3425,7 +3425,7 @@ and open the template in the editor.
 //                    <?php }?>; 
                 }
                 if (checkBox.checked === false){
-                    link_to_wts_man.style.display = "none";
+//                    link_to_wts_man.style.display = "none";
 //                    removeLayer(featureTWSCollection);
 //                    map.removeControl(legend);
 //                    var elementToBeRemoved = document.getElementById('tw_legend');

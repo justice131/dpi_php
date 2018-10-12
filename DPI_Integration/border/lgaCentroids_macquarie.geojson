@@ -19,6 +19,7 @@ var lgaCentroids_mac = { "type": "FeatureCollection", "features": [
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 146.9607850845841, -29.7917745598224 ] }, "properties": { "name": "BREWARRINA", "id": "11200" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 149.8113800239206, -33.88326677857648 ] }, "properties": { "name": "OBERON", "id": "16100" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 149.4557088950801, -34.4177415280844 ] }, "properties": { "name": "UPPER LACHLAN", "id": "17640" } },
+        { "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 149.4557088950801, -34.4177415280844 ] }, "properties": { "name": "LACHLAN", "id": "17640" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 148.2905500416323, -30.85494387057855 ] }, "properties": { "name": "COONAMBLE", "id": "12150" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 146.9061601741995, -31.50813944476327 ] }, "properties": { "name": "BOGAN", "id": "10950" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 150.1789364790297, -33.27768493590731 ] }, "properties": { "name": "LITHGOW", "id": "14870" } },

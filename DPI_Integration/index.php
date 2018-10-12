@@ -220,7 +220,7 @@ and open the template in the editor.
             $(".se-pre-con").fadeOut("slow");
             });
 
-            var map = L.map('map',{zoomControl: false, loadingControl: true}).setView([-32.4, 148.1], 6.5);
+            var map = L.map('map',{zoomControl: false, loadingControl: true}).setView([-32.4, 150.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
             }).addTo(map);
@@ -482,7 +482,7 @@ and open the template in the editor.
             
             var featureCATCollection = []; 
             var check_collection = [];
-            function addCATLayer(CATName, CATValue){              
+            function addCATLayer(CATName, CATValue){
                 for (var i = 0; i < featureCATCollection.length; i++){     
                     map.removeLayer(featureCATCollection[i]);
                 }
@@ -532,7 +532,8 @@ and open the template in the editor.
 //                removeLayer(displayed_gis_layer_regulated);
 //                removeLayer(displayed_gis_layer_unregulated);
 //                removeLayer(displayed_gis_layer_groundwater);
-                }        
+                }
+                setTimeout(function(){ map.invalidateSize()}, 1000);
             }
                        
 //            function show(){

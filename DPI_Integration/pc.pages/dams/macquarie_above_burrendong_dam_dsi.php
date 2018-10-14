@@ -174,7 +174,7 @@ and open the template in the editor.
                     layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.1});
                 }
             }).addTo(map);
-            map.setView([-31.8, 148.5], 8);       
+            map.setView([-33.230530, 149.576937], 9.45);       
             
             function getColorScalar(d) {
                 if(d<=Math.floor(max_row/3)){
@@ -462,9 +462,7 @@ and open the template in the editor.
                             })
                     }
             });
-            setTimeout(function(){ map.invalidateSize()}, 1000);
+            setTimeout(function(){ map.invalidateSize()}, 2000);
         </script>
     </body>
 </html>
-
-

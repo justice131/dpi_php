@@ -419,6 +419,7 @@ and open the template in the editor.
                 iconSize: [50, 50]
             });
             var burrendongIndexIcon = L.marker([ -32.924061304999952, 149.226207626000019], {icon: burrendongIcon});
+            burrendongIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/dams/macquarie_above_burrendong_dam_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/dams/macquarie_above_burrendong_dam_fui.php\">FUI</a></div>").openPopup();
             burrendongIndexIcon.addTo(map);//add index icon
             
             var windamereIcon = L.icon({
@@ -426,6 +427,7 @@ and open the template in the editor.
                 iconSize: [50, 50]
             });
             var windamereIndexIcon = L.marker([ -32.80973, 149.912125497000034], {icon: windamereIcon});
+            windamereIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/dams/macquarie_above_upper_talbragar_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/dams/macquarie_above_upper_talbragar_fui.php\">FUI</a></div>").openPopup();
             windamereIndexIcon.addTo(map);//add index icon
             /*add by justice*/
             

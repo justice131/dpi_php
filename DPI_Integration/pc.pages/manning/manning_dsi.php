@@ -232,7 +232,7 @@ and open the template in the editor.
                                     'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                    'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
+                                    'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                     'Drought Security Index: ' + '<b>'+ Math.round(props.DSI_100*100)/100 + '</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
@@ -476,5 +476,3 @@ and open the template in the editor.
         </script>
     </body>
 </html>
-
-

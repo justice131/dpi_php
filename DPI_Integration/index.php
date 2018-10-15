@@ -74,9 +74,9 @@ and open the template in the editor.
                     <li class=""> <a href="pages/mining/Mining_module.php" target="_blank" data-toggle="tooltip" title="Mining" style="padding: 5px 0px 5px 13.5px"><img src="images/mining_icon.png" alt="Mining" height="40"/></a> </li>
                     <li class=""> <a href="pages/town.water/Town_water_power_gen_module.php" target="_blank" data-toggle="tooltip" title="Town Water & Power Generation" style="padding: 5px 0px 5px 13.5px"><img src="images/town_water_icon.png" alt="Town Water" height="40"/></a> </li>
                     <li class=""> <a href="pages/environment/Environmental_module.php" target="_blank" data-toggle="tooltip" title="Critical Environmental Assets" style="padding: 5px 0px 5px 13.5px"><img src="images/environmental_icon.png" alt="Environmental" height="40"/></i></a> </li>
-                    <li class=""> <a href="pages/data.management/Data_Management_Index.php" target="_blank" data-toggle="tooltip" title="Data Management" style="padding: 5px 0px 5px 13.5px"><img src="images/data_icon.png" alt="Data" height="40"/></i></a> </li>
                     <li class=""> <a href="pc.pages/all/risk_opportunity.php" target="_blank" data-toggle="tooltip" title="Risk & Opportunity" style="padding: 5px 0px 5px 13.5px"><img src="images/risk_opportunity_icon.png" alt="Data" height="40"/></i></a> </li>
                     <li class=""> <a href="pc.pages/all/scenarios.php" target="_blank" data-toggle="tooltip" title="Scenarios" style="padding: 5px 0px 5px 13.5px"><img src="images/scenario_icon.png" alt="Data" height="40"/></i></a> </li>
+                    <li class=""> <a href="pages/data.management/Data_Management_Index.php" target="_blank" data-toggle="tooltip" title="Data Management" style="padding: 5px 0px 5px 13.5px"><img src="images/data_icon.png" alt="Data" height="40"/></i></a> </li>
                 </ul>
             </div>
         </nav>
@@ -1158,7 +1158,7 @@ and open the template in the editor.
                             Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
                             Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
                         <?php }?> 
-                    <?php }?> 
+                    <?php }?>
             
                     <?php if(!empty($ro_3)){?>
                         var AE ="<?php echo $ro_3["longterm_extraction_limit"]; ?>";
@@ -2479,11 +2479,10 @@ and open the template in the editor.
 //                    link_to_parr.style.display = 'none';
 //                    var elementToBeRemoved = document.getElementById('unreg_mac');
 //                    document.getElementById('legend').removeChild(elementToBeRemoved);
-//                } 
+//                }
             }
 
             //display groundwater info for MacquarieBogan
-                   
             function show_gis_MacquarieBogan_groundwater(){
                 var displayed_gis_layer_groundwater = [];   
 //                var checkBox = document.getElementById(id); 

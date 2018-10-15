@@ -231,7 +231,7 @@ and open the template in the editor.
                                     'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                    'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
+                                    'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
                                     'Flood Risk: ' + '<b>'+ Math.round(props.flood_risk*100*10)/10 + ' %</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');

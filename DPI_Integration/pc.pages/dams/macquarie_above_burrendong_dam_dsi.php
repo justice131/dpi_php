@@ -19,7 +19,7 @@ and open the template in the editor.
 				<div class="box">
 					<div class="box-title">
                                             <div id="s0_title">
-                                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Burrendong--Opportunity for additional supply</span>
+                                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Burrendong--Water risk due to drought</span>
                                             </div>
 					</div>
 					<div class="box-content">
@@ -146,7 +146,6 @@ and open the template in the editor.
                     '#33ff33'//Green
             ];
 
-
             var lgas = MacquarieBogan_unregulated;
             var padding = 35;
             var layer, overlay;
@@ -223,10 +222,10 @@ and open the template in the editor.
                                 'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
                                 'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
                                 'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+                                'DSI: '+ '<b>'+ props.DSI + '</b>'+'<br />'+
                                 '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                 'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
+                                'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'+
                                 'Risk to Agriculture: ' + '<b>'+ props.risk_to_agriculture + '</b>'+'<br />'+
                                 'Risk to Mining: ' + '<b>'+ props.risk_to_mining + '</b>'+'<br />'+
                                 'Opportunity to Agriculture: ' + '<b>'+ props.opportunity_to_agriculture + '</b>'+'<br />'+

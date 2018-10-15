@@ -10,11 +10,6 @@ and open the template in the editor.
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
         <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
-        <style>
-            .hover_info {
-                width: 370px;
-            }
-        </style>
     </head>
     <body style="background-color:#F3F3F4;">
         <?php include("../../common.scripts/navigator.html"); ?>
@@ -24,7 +19,7 @@ and open the template in the editor.
 				<div class="box">
 					<div class="box-title">
                                             <div id="s0_title">
-                                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Burrendong--Opportunity for additional supply</span>
+                                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Talbragar--Water risk due to drought</span>
                                             </div>
 					</div>
 					<div class="box-content">
@@ -160,7 +155,7 @@ and open the template in the editor.
             var lga = new Array();
             /*overall variables*/
                         
-            var map = L.map('map',{zoomControl: false}).setView([-29.0, 134.7], 4.4);
+            var map = L.map('map',{zoomControl: false});
             L.control.zoom({
                 position:'bottomleft'
             }).addTo(map);
@@ -179,7 +174,7 @@ and open the template in the editor.
                     layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.1});
                 }
             }).addTo(map);
-            map.setView([-33.230530, 149.576937], 9.45);        
+            map.setView([-32, 149.67], 10);       
             
             function getColorScalar(d) {
                 if(d<=Math.floor(max_row/3)){
@@ -197,11 +192,11 @@ and open the template in the editor.
                             color: 'white',
                             dashArray: '3',
                             fillOpacity: 0.8 * showIt(feature.properties.DSI_org),
-                            fillColor: getColorScalar(feature.properties.FUIIndexRank)
+                            fillColor: getColorScalar(feature.properties.DSIIndexRank)
                     };
             }
             var max_row=0;//Get the row number of ranking file
-            d3.csv("../../pc.csv/macquarie_above_burrendong_dam.csv", function (data) {
+            d3.csv("../../pc.csv/macquarie_above_upper_talbragar.csv", function (data) {
                 _.each(data, function (d, i) {
                 max_row++;
                 });
@@ -228,7 +223,7 @@ and open the template in the editor.
                                 'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
                                 'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
                                 'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                'DSI: '+ '<b>'+ props.DSI + '</b>'+'<br />'+
+                                'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
                                 '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
                                 'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                 'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'+
@@ -280,11 +275,11 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d.FUIIndexRank) });
+                    .color(function (d) { return getColorScalar(d.DSIIndexRank) });
 
 
             //Read data for parallel coordinate
-            d3.csv("../../pc.csv/macquarie_above_burrendong_dam.csv", function (data) {
+            d3.csv("../../pc.csv/macquarie_above_upper_talbragar.csv", function (data) {
                 var keys = Object.keys(data[0]);
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
@@ -458,7 +453,7 @@ and open the template in the editor.
                                     geojsonLabels.getLayers().forEach(function (z) {
                                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                     if (d.feature.properties.DSI_org > 0) {
-                                                            z._icon.innerHTML=d.feature.properties.FUI;
+                                                            z._icon.innerHTML=d.feature.properties.DSI;
                                                     } else {
                                                             z._icon.innerHTML = "";
                                                     }
@@ -471,5 +466,3 @@ and open the template in the editor.
         </script>
     </body>
 </html>
-
-

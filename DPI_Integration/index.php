@@ -415,7 +415,7 @@ and open the template in the editor.
             
             //Dams
             var burrendongIcon = L.icon({
-                iconUrl: 'images/index_icons/macquaire.png',
+                iconUrl: 'images/index_icons/macquaire_burrendong.png',
                 iconSize: [50, 50]
             });
             var burrendongIndexIcon = L.marker([ -32.924061304999952, 149.226207626000019], {icon: burrendongIcon});
@@ -423,7 +423,7 @@ and open the template in the editor.
             burrendongIndexIcon.addTo(map);//add index icon
             
             var windamereIcon = L.icon({
-                iconUrl: 'images/index_icons/macquaire.png',
+                iconUrl: 'images/index_icons/macquaire_talbragar.png',
                 iconSize: [50, 50]
             });
             var windamereIndexIcon = L.marker([ -32.80973, 149.912125497000034], {icon: windamereIcon});

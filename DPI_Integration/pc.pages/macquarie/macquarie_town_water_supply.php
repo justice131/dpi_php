@@ -62,6 +62,23 @@ and open the template in the editor.
             </div>                   
         </div>
         <div class="se-pre-con"></div>
+        <?php
+            include '../../db.helper/db_connection_ini.php';
+            //if(!empty($_GET['catchment_name'])){
+                if($conn!=null){
+                    $sql_3 = "SELECT * FROM town_water_supply WHERE catchment = 'Macquarie'";
+                    $result_3 = $conn->query($sql_3);
+                    $town_water_supply = array();
+                    $o = -1;
+                    while ($row_3 = $result_3->fetch_assoc()){
+                        $o++;
+                        $town_water_supply[$o] = $row_3;
+                    }
+                }else{
+                    include '../../db.helper/db_connection_ini.php';
+                }
+           // }
+        ?>
         
         <script type="text/javascript">
             // Show preloader
@@ -125,7 +142,76 @@ and open the template in the editor.
                 } 
                 }, "").replace(/\,$/g, ""); 
                     return mask + temp + decimal; 
-            }            
+            } 
+            
+            function icon_wsdi(Fui_macquarie, feature){          
+                function compareSecondColumn(a, b) {
+                    if (a[1] === b[1]) {
+                        return 0;
+                    }
+                    else {
+                        return (a[1] > b[1]) ? -1 : 1;
+                    }
+                }
+                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
+                var e = Fui_macquarie.length;
+                if(e>=3 & (e%3) === 0){
+                    var i = e/3; 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
+                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
+                }else if(e>3 & (e%3) === 1){
+                    var i = Math.floor(e/3); 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
+                }else if(e>3 & (e%3) === 2){
+                    var i = Math.floor(e/3); 
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
+                }else if (e===2){
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
+                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
+                }else if (e===1){
+                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
+                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
+                }
+              
+                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_red;
+                }
+                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_orange;
+                }
+                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
+                    return Icon_green;
+                }              
+            }
+            
+            var Icon_red = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_red.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_orange = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_orange.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_green = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_green.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
             /*Function section end*/
 
             /*overall variables beginning*/
@@ -547,8 +633,48 @@ and open the template in the editor.
                     });
                 }
             });
+            
             setTimeout(function(){ map1.invalidateSize()}, 500);
             setTimeout(function(){ map2.invalidateSize()}, 500);
+            
+            //
+            var hbt_rank_Macquarie = [];
+            var tws_marker_collection = [];
+            <?php if(!empty($town_water_supply)){?>;
+                    <?php for ($x=0; $x<count($town_water_supply); $x++) {?>                              
+                            var loca ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                            var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+                            var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+                            var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+                            var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+                            var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+                            var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+                            var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                            var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+                            hbt_rank_Macquarie.push([loca, HBT]);
+                                var M_1 = L.marker([lat, lon], {icon: icon_wsdi(hbt_rank_Macquarie, loca)}).addTo(map1)
+                                .bindPopup('Location: ' + loca + '<br/>'
+                                + 'Town Served: ' + town_served + '<br/>'
+                                + 'Postcode: ' + pos + '<br/>'
+                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+                                + 'Health Based Target Index: ' + HBT + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Population Served: ' + Math.round(popu));
+                                tws_marker_collection.push(M_1); 
+                                
+                                var M_2 = L.marker([lat, lon], {icon: icon_wsdi(hbt_rank_Macquarie, loca)}).addTo(map2)
+                                .bindPopup('Location: ' + loca + '<br/>'
+                                + 'Town Served: ' + town_served + '<br/>'
+                                + 'Postcode: ' + pos + '<br/>'
+                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+                                + 'Health Based Target Index: ' + HBT + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Population Served: ' + Math.round(popu));
+                                tws_marker_collection.push(M_2);                     
+                    <?php }?>;    
+            <?php }?>; 
+            //
+            
         </script>
     </body>
 </html>

@@ -347,6 +347,13 @@ and open the template in the editor.
                 popupAnchor:  [0, -10] 
             });
             
+            var Icon_red = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_red.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
             var Icon_orange = L.icon({
                 iconUrl: '../../lib/leaflet/images/water_treatment_icon_orange.png',
                 iconSize:     [15, 15], 

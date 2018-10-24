@@ -191,9 +191,9 @@ and open the template in the editor.
 //            }
             
             function getColorScalar(d) {
-                if(0<=d<=0.3){
+                if(d >= 0 && d <= 0.3){
                 return myCols[0];
-                }else if(0.3<d<=0.55){
+                }else if(d > 0.3 && d <= 0.55){
                 return myCols[1];
                 }else{
                 return myCols[2];
@@ -201,9 +201,9 @@ and open the template in the editor.
             }
             
             function getColorScalar_1(d) {
-                if(0<=d<=0.25){
+                if(d >= 0 && d <= 0.25){
                 return myCols[0];
-                }else if(0.25<d<=0.4){
+                }else if(d > 0.25 && d <= 0.4){
                 return myCols[1];
                 }else{
                 return myCols[2];

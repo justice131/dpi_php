@@ -177,16 +177,18 @@ and open the template in the editor.
                 }
             }).addTo(map);  
             
-            map.setView([-31.8, 148.5], 8);       
+            map.setView([-31.8, 148.5], 8);   
+            
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
-                return myCols[0];
-                }else if(d<=Math.ceil(2*max_row/3)){
+                if(d >= 0 && d <= 0.2){
+                return myCols[2];
+                }else if(d > 0.2 && d <= 0.4){
                 return myCols[1];
                 }else{
-                return myCols[2];
+                return myCols[0];
                 }
             }
+            
             function style(feature) {
                     return {
                             weight: 1,
@@ -194,7 +196,7 @@ and open the template in the editor.
                             color: 'white',
                             dashArray: '3',
                             fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                            fillColor: getColorScalar(feature.properties.IndexRank)
+                            fillColor: getColorScalar(feature.properties.FUI/100)
                     };
             }
             var max_row=0;//Get the row number of ranking file
@@ -281,7 +283,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d.IndexRank) });
+                    .color(function (d) { return getColorScalar(d.FUI/100) });
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/fui_macquaire.csv", function (data) {
@@ -340,15 +342,15 @@ and open the template in the editor.
                             labels = [],
                             from, to;
                             labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' +
-                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                            '<i style="background:' + myCols[0] + '"></i> ' + '[0, 0.2]');
+//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' +
-                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                            '<i style="background:' + myCols[1] + '"></i> ' + '(0.2, 0.4]');
+//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' +
-                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                            div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                            '<i style="background:' + myCols[2] + '"></i> ' + '(0.4, 1]');
+//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            div.innerHTML = '<h4>Index Rank (FUI)</h4>' + labels.join('<br>');
                             return div;
                     };
                     legend.addTo(map);

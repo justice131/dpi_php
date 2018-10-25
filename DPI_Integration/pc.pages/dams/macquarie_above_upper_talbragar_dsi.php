@@ -179,6 +179,7 @@ and open the template in the editor.
             function getColorScalar(d) {
                 return myCols[0];
             }
+            
             function style(feature) {
                     if(feature.properties.DSIIndexRank !== 0){
                     return {

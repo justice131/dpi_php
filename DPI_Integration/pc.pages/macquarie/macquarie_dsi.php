@@ -216,8 +216,8 @@ and open the template in the editor.
                             opacity: showIt(1),
                             color: 'white',
                             dashArray: '3',
-                            fillOpacity: 0.8 * showIt(feature.properties.DSI),
-                            fillColor: getColorScalar(feature.properties.DSI)
+                            fillOpacity: 0.8 * showIt(feature.properties.DSI/100),
+                            fillColor: getColorScalar(feature.properties.DSI/100)
                     };
             }
             var max_row=0;//Get the row number of ranking file
@@ -303,7 +303,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar_1(d.DSI) });
+                    .color(function (d) { return getColorScalar_1(d.DSI/100) });
 
 
             //Read data for parallel coordinate
@@ -457,7 +457,7 @@ and open the template in the editor.
                             isSelected = true;
                             gridUpdate(d);
                             //update map
-                            lgas.features.map(function (d) {d.properties.DSI = -1; });
+                            lgas.features.map(function (d) {d.properties.DSI = -100; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
                                     lgaDict[k[keys[0]]].properties.DSI = k.DSI;

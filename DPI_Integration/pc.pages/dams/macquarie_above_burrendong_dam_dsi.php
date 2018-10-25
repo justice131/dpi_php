@@ -177,22 +177,33 @@ and open the template in the editor.
             map.setView([-31.8, 148.5], 8);       
             
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
-                return myCols[2];
-                }else if(d<=Math.ceil(2*max_row/3)){
+                if(d >= 0 && d <= 0.3){
+                return myCols[0];
+                }else if(d > 0.3 && d <= 0.55){
                 return myCols[1];
                 }else{
-                return myCols[0];
+                return myCols[2];
                 }
             }
+            
+            function getColorScalar_1(d) {
+                if(d >= 0 && d <= 0.25){
+                return myCols[0];
+                }else if(d > 0.25 && d <= 0.4){
+                return myCols[1];
+                }else{
+                return myCols[2];
+                }
+            }
+            
             function style(feature) {
                     return {
                             weight: 1,
                             opacity: showIt(1),
                             color: 'white',
                             dashArray: '3',
-                            fillOpacity: 0.8 * showIt(feature.properties.DSI_org),
-                            fillColor: getColorScalar(feature.properties.DSIIndexRank)
+                            fillOpacity: 0.8 * showIt(feature.properties.DSI),
+                            fillColor: getColorScalar(feature.properties.DSI)
                     };
             }
             var max_row=0;//Get the row number of ranking file
@@ -275,7 +286,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d.DSIIndexRank) });
+                    .color(function (d) { return getColorScalar_1(d.DSI) });
 
 
             //Read data for parallel coordinate
@@ -428,10 +439,10 @@ and open the template in the editor.
                             isSelected = true;
                             gridUpdate(d);
                             //update map
-                            lgas.features.map(function (d) {d.properties.DSI_org = -1; });
+                            lgas.features.map(function (d) {d.properties.DSI = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k[keys[0]]].properties.DSI_org = k.DSI_org;
+                                    lgaDict[k[keys[0]]].properties.DSI = k.DSI;
                             });
 
                             map.removeControl(legend);
@@ -452,7 +463,7 @@ and open the template in the editor.
                                     geojson.resetStyle(d);
                                     geojsonLabels.getLayers().forEach(function (z) {
                                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
-                                                    if (d.feature.properties.DSI_org > 0) {
+                                                    if (d.feature.properties.DSI > 0) {
                                                             z._icon.innerHTML=d.feature.properties.DSI;
                                                     } else {
                                                             z._icon.innerHTML = "";

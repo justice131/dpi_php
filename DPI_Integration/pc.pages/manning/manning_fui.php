@@ -179,14 +179,15 @@ and open the template in the editor.
             map.setView([-31.75, 151.9],10);  
             
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
-                return myCols[0];
-                }else if(d<=Math.ceil(2*max_row/3)){
+                if(d >= 0 && d <= 0.2){
+                return myCols[2];
+                }else if(d > 0.2 && d <= 0.4){
                 return myCols[1];
                 }else{
-                return myCols[2];
+                return myCols[0];
                 }
             }
+            
             function style(feature) {
                     return {
                             weight: 1,
@@ -194,9 +195,10 @@ and open the template in the editor.
                             color: 'white',
                             dashArray: '3',
                             fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                            fillColor: getColorScalar(feature.properties.IndexRank)
+                            fillColor: getColorScalar(feature.properties.FUI)
                     };
             }
+            
             var max_row=0;//Get the row number of ranking file
                 d3.csv("../../pc.csv/fui_manning.csv", function (data) {
                 _.each(data, function (d, i) {
@@ -280,7 +282,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d.IndexRank) });
+                    .color(function (d) { return getColorScalar(d.FUI) });
 
 
             //Read data for parallel coordinate

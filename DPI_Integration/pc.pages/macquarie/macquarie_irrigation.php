@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Irrigation Data Insight</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
         <script type="text/javascript" src="../../common.scripts/settings.js"></script>
     </head>
@@ -201,11 +202,56 @@ and open the template in the editor.
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                         'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
+//                        'Opportunity Array: '+ '<b>'+ props.irrigation_opportunity_sequence + '</b>'+'<br />'+
                         'Irrigation Opportunity Index: ' + '<b>'+ Math.round(props.irrigation_opportunity_index*100)/100 + '</b>'+'<br />'
                 : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info1.addTo(map1);
             
+            // control that shows state info on hover
+            info3 = L.control({position: 'topright'});
+            info3.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            info3.update = function (props) {
+                if(props != undefined){
+                    var trace = {
+                        y: props.irrigation_opportunity_sequence,
+                        marker: {color: '#3D9970'},
+                        name: 'Irrigation Opportunity',
+                        type: 'box'
+                    };
+                    this._div.innerHTML = (props?
+                        '<div id=\"myDiv1\" style=\"height: 300px;width:250px;\"></div>'
+                    : '<b>'+ 'Click a Water Source'+'</b>');
+                    layout = {
+                            yaxis: {
+                                autorange: true,
+                                showgrid: true,
+                                zeroline: true,
+                                dtick: 5,
+                                gridcolor: 'rgb(255, 255, 255)',
+                                gridwidth: 1,
+                                zerolinecolor: 'rgb(255, 255, 255)',
+                                zerolinewidth: 2
+                            },
+                            margin: {
+                                l: 20,
+                                r: 10,
+                                b: 40,
+                                t: 50
+                            },
+                            paper_bgcolor: 'rgb(243, 243, 243)',
+                            plot_bgcolor: 'rgb(243, 243, 243)',
+                            showlegend: false
+                    };
+                    Plotly.newPlot('myDiv1', [trace], layout);
+                }
+            };
+            info3.addTo(map1);
+
             //map2
             var map2 = L.map('map2',{zoomControl: false}).setView([-29.0, 134.7], 4.4);
             L.control.zoom({
@@ -258,34 +304,81 @@ and open the template in the editor.
             };
             info2.addTo(map2);
             
+            
+            // control that shows state info on hover
+            info4 = L.control({position: 'topright'});
+            info4.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            info4.update = function (props) {
+                if(props != undefined){
+                    var trace = {
+                        y: props.irrigation_risk_sequence,
+                        marker: {color: '#3D9970'},
+                        name: 'Irrigation Risk',
+                        type: 'box'
+                    };
+                    this._div.innerHTML = (props?
+                        '<div id=\"myDiv2\" style=\"height: 300px;width:250px;\"></div>'
+                    : '<b>'+ 'Click a Water Source'+'</b>');
+                    layout = {
+                            yaxis: {
+                                autorange: true,
+                                showgrid: true,
+                                zeroline: true,
+                                dtick: 5,
+                                gridcolor: 'rgb(255, 255, 255)',
+                                gridwidth: 1,
+                                zerolinecolor: 'rgb(255, 255, 255)',
+                                zerolinewidth: 2
+                            },
+                            margin: {
+                                l: 20,
+                                r: 10,
+                                b: 40,
+                                t: 50
+                            },
+                            paper_bgcolor: 'rgb(243, 243, 243)',
+                            plot_bgcolor: 'rgb(243, 243, 243)',
+                            showlegend: false
+                    };
+                    Plotly.newPlot('myDiv2', [trace], layout);
+                }
+            };
+            info4.addTo(map2);
+            
             var lgaDict = {};
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
-                    lgas.features[j].properties.irrigated_area=0;
-                    lgas.features[j].properties.population=0;
-                    lgas.features[j].properties.irrigation_value=0;
-                    lgas.features[j].properties.mining_value=0;
-                    lgas.features[j].properties.employment_irrigation=0;
-                    lgas.features[j].properties.employment_mining=0;
-                    lgas.features[j].properties.total_entitlement=0;	
-                    lgas.features[j].properties.agricultural_water_use=0;
-                    lgas.features[j].properties.mining_water_use=0;
-                    lgas.features[j].properties.wetland_area=0;
-                    lgas.features[j].properties.dissolved_oxygen=0;
-                    lgas.features[j].properties.mean_flow=0;
-                    lgas.features[j].properties.variation=0;
-                    lgas.features[j].properties.median=0;
-                    lgas.features[j].properties.days_below_mean=0;
-                    lgas.features[j].properties.DSI=0;
-                    lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
-                    lgas.features[j].properties.time_below_requirement=0;
-                    lgas.features[j].properties.FUI=0;
-                    lgas.features[j].properties.water_scarcity=0;
-                    lgas.features[j].properties.irrigation_opportunity_index=0;
-                    lgas.features[j].properties.opportunity_index_rank=0;
-                    lgas.features[j].properties.agricluture_risk_index=0;
-                    lgas.features[j].properties.risk_index_rank=0;
-                    lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                lgas.features[j].properties.irrigated_area=0;
+                lgas.features[j].properties.population=0;
+                lgas.features[j].properties.irrigation_value=0;
+                lgas.features[j].properties.mining_value=0;
+                lgas.features[j].properties.employment_irrigation=0;
+                lgas.features[j].properties.employment_mining=0;
+                lgas.features[j].properties.total_entitlement=0;	
+                lgas.features[j].properties.agricultural_water_use=0;
+                lgas.features[j].properties.mining_water_use=0;
+                lgas.features[j].properties.wetland_area=0;
+                lgas.features[j].properties.dissolved_oxygen=0;
+                lgas.features[j].properties.mean_flow=0;
+                lgas.features[j].properties.variation=0;
+                lgas.features[j].properties.median=0;
+                lgas.features[j].properties.days_below_mean=0;
+                lgas.features[j].properties.DSI=0;
+                lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                lgas.features[j].properties.time_below_requirement=0;
+                lgas.features[j].properties.FUI=0;
+                lgas.features[j].properties.water_scarcity=0;
+                lgas.features[j].properties.irrigation_opportunity_index=0;
+                lgas.features[j].properties.opportunity_index_rank=0;
+                lgas.features[j].properties.agricluture_risk_index=0;
+                lgas.features[j].properties.risk_index_rank=0;
+                lgas.features[j].properties.irrigation_risk_sequence=new Array();
+                lgas.features[j].properties.irrigation_opportunity_sequence=new Array();
+                lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
             }
 
             // Create parallel Coordinate
@@ -334,7 +427,7 @@ and open the template in the editor.
                     lgaDict[water_source_name].properties.risk_index_rank=d[keys[24]];
                     lga.push(water_source_name);
                 });
-                
+                                
                 // add lga layer
                 // map1
                 function resetHighlight1(e) {
@@ -343,6 +436,7 @@ and open the template in the editor.
                 function zoomToFeature1(e) {
                     var layer = e.target;
                     info1.update(layer.feature.properties);
+                    info3.update(layer.feature.properties);
                 }
                 function onEachFeature1(feature, layer) {
                     layer.on({
@@ -362,8 +456,8 @@ and open the template in the editor.
                     };
                 }
                 geojson1 = L.geoJson(lgas, {
-                        style: style1,                            
-                        onEachFeature: onEachFeature1
+                    style: style1,                            
+                    onEachFeature: onEachFeature1
                 }).addTo(map1);
                 // map2
                 function resetHighlight2(e) {
@@ -372,6 +466,7 @@ and open the template in the editor.
                 function zoomToFeature2(e) {
                     var layer = e.target;
                     info2.update(layer.feature.properties);
+                    info4.update(layer.feature.properties);
                 }
                 function onEachFeature2(feature, layer) {
                     layer.on({
@@ -589,6 +684,33 @@ and open the template in the editor.
                     });
                 }
             });
+            
+            d3.csv("../../pc.csv/irrigation_risk_history_macquaire.csv", function (data) {
+                var keys = Object.keys(data[0]);
+                _.each(data, function (d, i) {
+                    d.index = d.index || i; //unique id
+                    var water_source_name = d["Water Sources"];                    
+                    var irs = new Array(119);
+                    for(var i=0;i<119;i++){
+                        irs[i] = d[keys[i+1]];
+                    }
+                    lgaDict[water_source_name].properties.irrigation_risk_sequence=irs;
+                });
+            });
+                
+            d3.csv("../../pc.csv/irrigation_opportunity_history_macquaire.csv", function (data) {
+                var keys = Object.keys(data[0]);
+                _.each(data, function (d, i) {
+                    d.index = d.index || i; //unique id
+                    var water_source_name = d["Water Sources"];
+                    var ios = new Array(119);
+                    for(var i=0;i<119;i++){
+                        ios[i] = d[keys[i+1]];
+                    }
+                    lgaDict[water_source_name].properties.irrigation_opportunity_sequence=ios;
+                });
+            });
+                
             setTimeout(function(){ map1.invalidateSize()}, 500);
             setTimeout(function(){ map2.invalidateSize()}, 500);
         </script>

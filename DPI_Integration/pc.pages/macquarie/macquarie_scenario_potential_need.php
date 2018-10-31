@@ -174,23 +174,25 @@ and open the template in the editor.
 
             displayed_s10 = [];
             document.getElementById('map').style.visibility="visible";
+            
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
-                    return myCols[2];
-                }else if(d<=Math.ceil(2*max_row/3)){
-                    return myCols[1];
+                if(d >= 0 && d <= 0.5){
+                return myCols[2];
+                }else if(d > 0.5 && d <= 0.8){
+                return myCols[1];
                 }else{
-                    return myCols[0];
+                return myCols[0];
                 }
             }
+            
             function style(feature) {
                 return {
                     weight: 1,
                     opacity: showIt(1),
                     color: 'white',
                     dashArray: '3',
-                    fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                    fillColor: getColorScalar(feature.properties.IndexRank)
+                    fillOpacity: 0.8 * showIt(feature.properties.potential_infra),
+                    fillColor: getColorScalar(feature.properties.potential_infra)
                 };
             }
             var max_row=0;//Get the row number of ranking file
@@ -273,11 +275,11 @@ and open the template in the editor.
                     right: 1,
                     bottom: 15
             })
-            .color(function (d) { return getColorScalar(d.IndexRank) });
+            .color(function (d) { return getColorScalar(d[keys[21]]) });
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/potential_for_new_infrastucture_macquaire.csv", function (data) {
-                var keys = Object.keys(data[0]);
+                keys = Object.keys(data[0]);
                 _.each(data, function (d, i) {
                         d.index = d.index || i; //unique id
                         var water_source_name = d[keys[0]];
@@ -334,15 +336,15 @@ and open the template in the editor.
                         labels = [],
                         from, to;
                         labels.push(
-                            '<i style="background:' + myCols[0] + '"></i> ' +
-                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                            '<i style="background:' + myCols[2] + '"></i> ' + '[0, 0.5]');
+//                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                         labels.push(
-                            '<i style="background:' + myCols[1] + '"></i> ' +
-                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                            '<i style="background:' + myCols[1] + '"></i> ' + '(0.5, 0.8]');
+//                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                         labels.push(
-                            '<i style="background:' + myCols[2] + '"></i> ' +
-                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                            '<i style="background:' + myCols[0] + '"></i> ' + '(0.8, 1]');
+//                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                        div.innerHTML = '<h4><h4>Index Rank (Potential'+'</br>'+'for new infrastructure)</h4></h4>' + labels.join('<br>');
                         return div;
                 };
                 legend.addTo(map);
@@ -427,10 +429,10 @@ and open the template in the editor.
                         isSelected = true;
                         gridUpdate(d);
                         //update map
-                        lgas.features.map(function (d) {d.properties.FUI = -1; });
+                        lgas.features.map(function (d) {d.properties.potential_infra = -1; });
                         geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                         _.each(d, function (k, i) {
-                                lgaDict[k[keys[0]]].properties.FUI = k.FUI;
+                                lgaDict[k[keys[0]]].properties.potential_infra = k[keys[21]];
                         });
 
                         map.removeControl(legend);
@@ -450,8 +452,8 @@ and open the template in the editor.
                                 geojson.resetStyle(d);
                                 geojsonLabels.getLayers().forEach(function (z) {
                                         if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
-                                                if (d.feature.properties.FUI > 0) {
-                                                        z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
+                                                if (d.feature.properties.potential_infra > 0) {
+                                                        z._icon.innerHTML=Math.round(d.feature.properties.potential_infra*100)/100;
                                                 } else {
                                                         z._icon.innerHTML = "";
                                                 }

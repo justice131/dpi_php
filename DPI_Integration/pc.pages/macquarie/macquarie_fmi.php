@@ -176,23 +176,26 @@ and open the template in the editor.
             }).addTo(map);  
             
             map.setView([-31.8, 148.5], 8);
+            
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
-                return myCols[0];
-                }else if(d<=Math.ceil(2*max_row/3)){
-                return myCols[1];
-                }else{
+                if(d >= 0 && d <= 0.2){
                 return myCols[2];
+                }else if(d > 0.2 && d <= 0.4){
+                return myCols[1];
+                }else if(d > 0.4 && d <= 1){
+                return myCols[0];
                 }
             }
+            
+            
             function style(feature) {
                     return {
                             weight: 1,
                             opacity: showIt(1),
                             color: 'white',
                             dashArray: '3',
-                            fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                            fillColor: getColorScalar(feature.properties.IndexRank)
+                            fillOpacity: 0.8 * showIt(feature.properties.flood_risk),
+                            fillColor: getColorScalar(feature.properties.flood_risk)
                     };
             }
             var max_row=0;//Get the row number of ranking file
@@ -277,12 +280,14 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d.IndexRank) });
+                    .color(function (d) { 
+                        return getColorScalar(d[keys[21]])
+                    });
 
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/fmi_macquaire.csv", function (data) {
-                var keys = Object.keys(data[0]);
+                keys = Object.keys(data[0]);
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d[keys[0]];
@@ -337,15 +342,15 @@ and open the template in the editor.
                             labels = [],
                             from, to;
                             labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' +
-                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                            '<i style="background:' + myCols[2] + '"></i> ' + '[0, 20%]');
+//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' +
-                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                            '<i style="background:' + myCols[1] + '"></i> ' + '(20%, 40%]');
+//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' +
-                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                            div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                            '<i style="background:' + myCols[0] + '"></i> ' + '(40%, 100%]');
+//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            div.innerHTML = '<h4>Index Rank (FRI)</h4>' + labels.join('<br>');
                             return div;
                     };
                     legend.addTo(map);
@@ -431,10 +436,10 @@ and open the template in the editor.
                             isSelected = true;
                             gridUpdate(d);
                             //update map
-                            lgas.features.map(function (d) {d.properties.FUI = -1; });
+                            lgas.features.map(function (d) {d.properties.flood_risk = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k[keys[0]]].properties.FUI = k.FUI;
+                                    lgaDict[k[keys[0]]].properties.flood_risk = k[keys[21]];;
                             });
 
                             map.removeControl(legend);
@@ -455,8 +460,8 @@ and open the template in the editor.
                                     geojson.resetStyle(d);
                                     geojsonLabels.getLayers().forEach(function (z) {
                                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
-                                                    if (d.feature.properties.FUI > 0) {
-                                                            z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
+                                                    if (d.feature.properties.flood_risk > 0) {
+                                                            z._icon.innerHTML=Math.round(d.feature.properties.flood_risk*100*10)/10 + '%';
                                                     } else {
                                                             z._icon.innerHTML = "";
                                                     }

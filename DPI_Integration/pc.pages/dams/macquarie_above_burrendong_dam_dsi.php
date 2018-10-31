@@ -185,17 +185,7 @@ and open the template in the editor.
                 return myCols[2];
                 }
             }
-            
-            function getColorScalar_1(d) {
-                if(d >= 0 && d <= 0.25){
-                return myCols[0];
-                }else if(d > 0.25 && d <= 0.4){
-                return myCols[1];
-                }else{
-                return myCols[2];
-                }
-            }
-            
+                        
             function style(feature) {
                     return {
                             weight: 1,
@@ -286,7 +276,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar_1(d.DSI) });
+                    .color(function (d) { return getColorScalar(d.DSI) });
 
 
             //Read data for parallel coordinate

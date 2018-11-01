@@ -68,7 +68,7 @@ and open the template in the editor.
 				  </table>
 			</div>                  
 			
-			<div class="box-container" style="width:83.%" id="map_panel">
+			<div class="box-container" style="width:83.5%" id="map_panel">
 				<div class="box">
 					<div  id="map_title" class="box-title">
 						<h4><b>Town Water & Power Generation</b></h4>

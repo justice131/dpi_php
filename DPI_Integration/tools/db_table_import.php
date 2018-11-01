@@ -172,7 +172,7 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
         }else if ($table_name == "town_water_supply"){
             $sql = "truncate table town_water_supply;";
             mysqli_query($conn,$sql);
-            $col_num_s = 12;
+            $col_num_s = 13;
             $col_num = count($data[0]);
             if($col_num_s!=$col_num){
                 echo "File format not valid";
@@ -181,8 +181,8 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
             for($i=1;$i<$row_num;$i++){
                 $col_num = count($data[$i]);
                 if($col_num_s==$col_num){
-                    $sql="insert delayed into town_water_supply(catchment,exact_location,town_served,latitude,longitude,postcode,volume_treated,HBT_index,population_served,WSDI,Risk,Opportunity)values(\""
-                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\",\"".$data[$i][8]."\",\"".$data[$i][9]."\",\"".$data[$i][10]."\",\"".$data[$i][11]."\");";
+                    $sql="insert delayed into town_water_supply(catchment,exact_location,town_served,latitude,longitude,postcode,volume_treated,HBT_index,population_served,gross_regional_product,WSDI,Risk,Opportunity)values(\""
+                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\",\"".$data[$i][8]."\",\"".$data[$i][9]."\",\"".$data[$i][10]."\",\"".$data[$i][11]."\",\"".$data[$i][12]."\");";
                     mysqli_query($conn,$sql);
                 }
             }

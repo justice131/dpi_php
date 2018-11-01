@@ -1,4 +1,4 @@
-catchment,exact_location,town_served,latitude,longitude,postcode,volume_treated(ML),HBT_index,population_served(No),Gross Regional product,WSDI,Risk,Opportunity
+catchment,exact_location,town_served,latitude,longitude,postcode,volume_treated(ML),HBT_index,population_served(No),Gross Regional product ($M),WSDI,Risk,Opportunity
 Macquarie,BATHURST,BATHURST,-33.4192822,149.5775008,2795,6757,0.14,42231,1963,34,93.4388,110.0241815
 Macquarie,NYNGAN,BOGAN,-31.5662057,147.0707349,2825,737,0.45,2906.05,187,60,50.49,37.79735208
 Macquarie,BREWARRINA,BREWARRINA,-29.9611741,146.8606479,2839,184,0.48,1629.45,57,30,8.208,5.206535211

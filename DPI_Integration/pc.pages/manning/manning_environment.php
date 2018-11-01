@@ -220,16 +220,16 @@ and open the template in the editor.
 //                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
 //                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
                                     'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area/10000*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                    'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10)/10) + ' ML/day'+'</b>' +'<br />'+
+                                    'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/day'+'</b>' +'<br />'+
 //                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
 //                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                    'Days Below Mean: '+ '<b>'+ toThousands(Math.round(props.days_below_mean*100)/100) + '</b>' +'<br />'+
+                                    'Days Below Mean Flow: '+ '<b>'+ toThousands(Math.round(props.days_below_mean*100)/100) + '</b>' +'<br />'+
 //                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
 //                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                    'Benefit From Environment: ' + '<b>'+ Math.round(props.benefit_from_environment*100)/100 + '</b>'+'<br />'
+                                    'Benefit From Environment: ' + '<b>$'+ Math.round(props.benefit_from_environment*100)/100 + 'M</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);

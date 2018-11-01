@@ -35,21 +35,7 @@
                         <th>overall_idsi</th>
                         <th>overall_fmi</th>
                         <th>overall_dei</th>
-                        <th>catchment_size</th>
-                        <th>surface_water_size</th>
-                        <th>groundwater_size</th>
-                        <th>total_irrigated_areas</th>
-                        <th>annual_production_value</th>
-                        <th>annual_employment_number</th>
-                        <th>annual_water_use</th>
-                        <th>production_value_per_water_drop</th>
-                        <th>total_mine_number</th>
-                        <th>water_treatment_centre_number</th>
-                        <th>affected_population</th>
-                        <th>annual_power_generated</th>
-                        <th>annual_town_water_sewerage_use</th>
-                        <th>power_generation_water_use</th>
-                    </tr>
+                        </tr>
                 </thead>
                 <tbody>
                 <?php
@@ -65,26 +51,8 @@
                         $overall_idsi=$result_arr['overall_idsi'];
                         $overall_fmi=$result_arr['overall_fmi'];  
                         $overall_dei=$result_arr['overall_dei']; 
-                        $catchment_size=$result_arr['catchment_size'];
-                        $surface_water_size=$result_arr['surface_water_size'];
-                        $groundwater_size=$result_arr['groundwater_size'];  
-                        $total_irrigated_areas=$result_arr['total_irrigated_areas']; 
-                        $annual_production_value=$result_arr['annual_production_value'];
-                        $annual_employment_number=$result_arr['annual_employment_number'];
-                        $annual_water_use=$result_arr['annual_water_use'];  
-                        $production_value_per_water_drop=$result_arr['production_value_per_water_drop']; 
-                        $total_mine_number=$result_arr['total_mine_number'];
-                        $water_treatment_centre_number=$result_arr['water_treatment_centre_number'];
-                        $affected_population=$result_arr['affected_population'];  
-                        $annual_power_generated=$result_arr['annual_power_generated']; 
-                        $annual_town_water_sewerage_use=$result_arr['annual_town_water_sewerage_use'];
-                        $power_generation_water_use=$result_arr['power_generation_water_use'];
                         echo"<tr><td>$catchment_id</td><td>$catchment_name</td><td>$overall_fui</td><td>"
-                            . "$overall_idsi</td><td>$overall_fmi</td><td>$overall_dei</td><td>$catchment_size</td><td>"
-                            . "$surface_water_size</td><td>$groundwater_size</td><td>$total_irrigated_areas</td><td>"
-                            . "$annual_production_value</td><td>$annual_employment_number</td><td>$annual_water_use</td><td>"
-                            . "$production_value_per_water_drop</td><td>$total_mine_number</td><td>$water_treatment_centre_number</td><td>"
-                            . "$affected_population</td><td>$annual_power_generated</td><td>$annual_town_water_sewerage_use</td><td>$power_generation_water_use</td></tr>"; 
+                            . "$overall_idsi</td><td>$overall_fmi</td><td>$overall_dei</td></tr>"; 
                     }
                 ?>
                 </tbody>

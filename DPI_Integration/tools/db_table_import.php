@@ -21,57 +21,6 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
         if ($table_name == "whole_catchment_indices"){
             $sql = "truncate table whole_catchment_indices;";
             mysqli_query($conn,$sql);
-            $col_num_s = 19;
-            $col_num = count($data[0]);
-            if($col_num_s!=$col_num){
-                echo "File format not valid";
-                return;
-            }
-            for($i=1;$i<$row_num;$i++){
-                $col_num = count($data[$i]);
-                if($col_num_s==$col_num){
-                    $sql="insert delayed into whole_catchment_indices(catchment_name,overall_fui,overall_idsi,overall_fmi,overall_dei,catchment_size,surface_water_size,groundwater_size,total_irrigated_areas,annual_production_value,annual_employment_number,annual_water_use,production_value_per_water_drop,total_mine_number,water_treatment_centre_number,affected_population,annual_power_generated,annual_town_water_sewerage_use,power_generation_water_use)values(\""
-                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\",\"".$data[$i][8]."\",\"".$data[$i][9]."\",\"".$data[$i][10]."\",\"".$data[$i][11]."\",\"".$data[$i][12]."\",\"".$data[$i][13]."\",\"".$data[$i][14]."\",\"".$data[$i][15]."\",\"".$data[$i][16]."\",\"".$data[$i][17]."\",\"".$data[$i][18]."\");";
-                    mysqli_query($conn,$sql);
-                }
-            }
-        }else if ($table_name == "river_indices"){
-            $sql = "truncate table river_indices;";
-            mysqli_query($conn,$sql);
-            $col_num_s = 8;
-            $col_num = count($data[0]);
-            if($col_num_s!=$col_num){
-                echo "File format not valid";
-                return;
-            }
-            for($i=1;$i<$row_num;$i++){
-                $col_num = count($data[$i]);
-                if($col_num_s==$col_num){
-                    $sql="insert delayed into river_indices(belong_catchment_id,river_name,river_type,lt_annual_extraction_limit,license_category_1,license_category_2,fui,idsi)values(\""
-                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\");";
-                    mysqli_query($conn,$sql);
-                }
-            }       
-        }else if ($table_name == "management_zone_indices"){
-            $sql = "truncate table management_zone_indicess;";
-            mysqli_query($conn,$sql);
-            $col_num_s = 6;
-            $col_num = count($data[0]);
-            if($col_num_s!=$col_num){
-                echo "File format not valid";
-                return;
-            }
-            for($i=1;$i<$row_num;$i++){
-                $col_num = count($data[$i]);
-                if($col_num_s==$col_num){
-                    $sql="insert delayed into management_zone_indices(belong_river_id,belong_catchment_id,management_zone_name,lt_annual_extraction_limit,license_category_1,license_category_2)values(\""
-                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\");";
-                    mysqli_query($conn,$sql);
-                }
-            }
-        }else if ($table_name == "irrigated_areas"){
-            $sql = "truncate table irrigated_areas;";
-            mysqli_query($conn,$sql);
             $col_num_s = 5;
             $col_num = count($data[0]);
             if($col_num_s!=$col_num){
@@ -81,42 +30,8 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
             for($i=1;$i<$row_num;$i++){
                 $col_num = count($data[$i]);
                 if($col_num_s==$col_num){
-                    $sql="insert delayed into irrigated_areas(irrigated_area_name,belong_catchment_id,annual_production_value,annual_water_use,cotton_plantation)values(\""
+                    $sql="insert delayed into whole_catchment_indices(catchment_name,overall_fui,overall_idsi,overall_fmi,overall_dei)values(\""
                         .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\");";
-                    mysqli_query($conn,$sql);
-                }
-            }
-        }else if ($table_name == "operational_mines"){
-            $sql = "truncate table operational_mines;";
-            mysqli_query($conn,$sql);
-            $col_num_s = 4;
-            $col_num = count($data[0]);
-            if($col_num_s!=$col_num){
-                echo "File format not valid";
-                return;
-            }
-            for($i=1;$i<$row_num;$i++){
-                $col_num = count($data[$i]);
-                if($col_num_s==$col_num){
-                    $sql="insert delayed into operational_mines(operational_mine_name,belong_catchment_id,mineral_type,annual_water_use)values(\""
-                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\");";
-                    mysqli_query($conn,$sql);
-                }
-            }
-        }else if ($table_name == "water_treatment_centre"){
-            $sql = "truncate table water_treatment_centre;";
-            mysqli_query($conn,$sql);
-            $col_num_s = 8;
-            $col_num = count($data[0]);
-            if($col_num_s!=$col_num){
-                echo "File format not valid";
-                return;
-            }
-            for($i=1;$i<$row_num;$i++){
-                $col_num = count($data[$i]);
-                if($col_num_s==$col_num){
-                    $sql="insert delayed into water_treatment_centre(wtc_name,belong_catchment_id,served_towns,served_population,annual_water_use,health_based_target_index,waste_water_quality_index,water_supply_deficiency_index)values(\""
-                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\");";
                     mysqli_query($conn,$sql);
                 }
             }
@@ -254,23 +169,6 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
                     mysqli_query($conn,$sql);   
                 }
             }
-        }else if ($table_name == "manning_flow_data"){
-            $sql = "truncate table manning_flow_data;";
-            mysqli_query($conn,$sql);
-            $col_num_s = 3;
-            $col_num = count($data[0]);
-            if($col_num_s!=$col_num){
-                echo "File format not valid";
-                return;
-            }
-            for($i=1;$i<$row_num;$i++){
-                $col_num = count($data[$i]);
-                if($col_num_s==$col_num){
-                    $sql="insert delayed into manning_flow_data(station_code,date,flow)values(\""
-                        .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\");";
-                    mysqli_query($conn,$sql);
-                }
-            }
         }else if ($table_name == "town_water_supply"){
             $sql = "truncate table town_water_supply;";
             mysqli_query($conn,$sql);
@@ -283,13 +181,14 @@ if($_FILES["file"]["type"] == "application/vnd.ms-excel"){
             for($i=1;$i<$row_num;$i++){
                 $col_num = count($data[$i]);
                 if($col_num_s==$col_num){
-                    $sql="insert delayed into town_water_supply(catchment,exact_location,town_served,latitude,longitude,postcode,volume_treated,HBT_index,population_served,WSDI,water_supply_risk,health_risk_dueto_poor_water_quality)values(\""
+                    $sql="insert delayed into town_water_supply(catchment,exact_location,town_served,latitude,longitude,postcode,volume_treated,HBT_index,population_served,WSDI,Risk,Opportunity)values(\""
                         .$data[$i][0]."\",\"".$data[$i][1]."\",\"".$data[$i][2]."\",\"".$data[$i][3]."\",\"".$data[$i][4]."\",\"".$data[$i][5]."\",\"".$data[$i][6]."\",\"".$data[$i][7]."\",\"".$data[$i][8]."\",\"".$data[$i][9]."\",\"".$data[$i][10]."\",\"".$data[$i][11]."\");";
                     mysqli_query($conn,$sql);
                 }
             }
         }else if ($table_name == "water_source"){
-            $sql = "truncate table water_source;";
+            $sql = "truncate table "
+                    . ";";
             mysqli_query($conn,$sql);
             $col_num_s = 9;
             $col_num = count($data[0]);

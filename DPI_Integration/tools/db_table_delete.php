@@ -5,20 +5,8 @@
     mysqli_select_db($conn, "dpi_project");
     if ($table_name == "whole_catchment_indices"){
         $sql = "truncate table whole_catchment_indices;";
-    }else if ($table_name == "river_indices"){
-        $sql = "truncate table river_indices;";
-    }else if ($table_name == "management_zone_indices"){
-        $sql = "truncate table management_zone_indices;";
-    }else if ($table_name == "irrigated_areas"){
-        $sql = "truncate table irrigated_areas;";
-    }else if ($table_name == "operational_mines"){
-        $sql = "truncate table operational_mines;";
-    }else if ($table_name == "water_treatment_centre"){
-        $sql = "truncate table water_treatment_centre;";
     }else if ($table_name == "lga_data"){
         $sql = "truncate table lga_data;";
-    }else if ($table_name == "manning_flow_data"){
-        $sql = "truncate table manning_flow_data;";
     }else if ($table_name == "town_water_supply"){
         $sql = "truncate table town_water_supply;";
     }else if ($table_name == "water_source"){

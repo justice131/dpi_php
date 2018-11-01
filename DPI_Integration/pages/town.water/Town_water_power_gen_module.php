@@ -21,20 +21,21 @@ and open the template in the editor.
 		<div class="row">
 			<div class="box-container" style="width:17.2%;" id="left_panel">
 				<table style="width:100%">
-<!--				  <tr>
+				  <tr>
 					<td>
-						<div>
+						<div id="setting">
 						  <div class="box-title">
 							<h4><b>Catchment Settings</b></h4>
 						  </div>
-						  <div class="box-content" style="height:210px;">
+						  <div class="box-content" style="height:200px;">
+                                                    <h5><b>Select a Catchment for More Information</b></h5>
                                                     <table>
                                                         <tr>
                                                             <th>
                                                             <form action="../">
-                                                                <select name="selectCAT" id="selectCAT"  onchange='OnChange(this.form.selectCAT);' >
-                                                                <option value="default">------CATCHMENT------</option>
-                                                                <option value="MacquarieBogan">MacquarieBogan</option>
+                                                                <select name="selectCAT" id="selectCAT"  style="width:135px" onchange='OnChange(this.form.selectCAT);' >
+                                                                <option value="default">-----CATCHMENT-----</option>
+                                                                <option value="MacquarieBogan">Macquarie</option>
                                                                 <option value="ManningRiver">Manning</option>
                                                                 </select>
                                                             </form>
@@ -47,7 +48,7 @@ and open the template in the editor.
 						  </div>
 						</div>
 					</td>
-				  </tr>-->
+				  </tr>
 				  <tr>
 					<td>
 						<div>
@@ -57,20 +58,6 @@ and open the template in the editor.
 						  <div class="box-content"">
 							<div id="rightdiv">
                                                             <div id="legend">
-<!--                                                                <img src="../../lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
-                                                                <img src="../../lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
-                                                                <img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WDSI</small>)<br>
-                                                                <img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WDSI</small>)<br>
-                                                                <img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WDSI</small>)<br>
-                                                                <img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>-->
                                                                 <br>
                                                             </div>
 							</div>
@@ -170,9 +157,11 @@ and open the template in the editor.
                 pageHeight = window.screen.height*heightRatio;
                 var mapTitleHeight = document.getElementById("map_title").offsetHeight;
                 document.getElementById("map").style.height = (pageHeight-mapTitleHeight) + "px";
+                var settingHeight = document.getElementById("setting").offsetHeight;
                 var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
-                document.getElementById("legend").style.height = (pageHeight - legendTitleHeight) + "px";
-            }
+                document.getElementById("legend").style.height = (pageHeight - settingHeight - legendTitleHeight) + "px";
+            };
+            
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var MacquarieBogan_CatchmentBoundary_1 = MacquarieBogan_CatchmentBoundary;
             var ManningRiver_CatchmentBoundary = ManningRiver_CatchmentBoundary;
@@ -452,12 +441,7 @@ and open the template in the editor.
                 });
             }
             
-            function OnChange(dropdown){
-//                var myindex = dropdown.selectedIndex;
-//                var CATName = dropdown.options[myindex].value;
-//                var CATValue = getProperty(CATName);
-//                addCATLayer(CATName, CATValue);
-                
+            function OnChange(dropdown){               
                 //Edited by justice
                 var  myselect=document.getElementById("selectCAT");
                 var selectedIndex=myselect.selectedIndex;
@@ -466,6 +450,8 @@ and open the template in the editor.
                     window.location.href = "Town_water_power_gen_module.php?catchment_name=MacquarieBogan";
                 }else if(selectValue==="ManningRiver"){
                     window.location.href = "Town_water_power_gen_module.php?catchment_name=ManningRiver";
+                }else if(selectValue==="default"){
+                    window.location.href = "Town_water_power_gen_module.php";
                 }
                 //Edited by justice
             }
@@ -1084,20 +1070,21 @@ and open the template in the editor.
             
             
             function clearAllLayers(){
-                for (var i = 0; i < featureCATCollection.length; i++){     
-                    map.removeLayer(featureCATCollection[i]);
-                    if (checkbox_id !== null){
-                        checkbox_id.style.display = "none";
-                    }
-                }
-                //hover_info.style.visibility = 'hidden';
-                removeLayer(displayed_gis_layer_regulated);
-                removeLayer(displayed_gis_layer_unregulated);
-                removeLayer(displayed_gis_layer_groundwater);
-                removeLayer(displayed_gis_layer_workapproval);
-                removeLayer(displayed_gis_layer_approval);
-                document.getElementById('selectCAT').value = 'default';
-                map.removeControl(hover_info);
+                 window.location.href = "Town_water_power_gen_module.php";
+//                for (var i = 0; i < featureCATCollection.length; i++){     
+//                    map.removeLayer(featureCATCollection[i]);
+//                    if (checkbox_id !== null){
+//                        checkbox_id.style.display = "none";
+//                    }
+//                }
+//                //hover_info.style.visibility = 'hidden';
+//                removeLayer(displayed_gis_layer_regulated);
+//                removeLayer(displayed_gis_layer_unregulated);
+//                removeLayer(displayed_gis_layer_groundwater);
+//                removeLayer(displayed_gis_layer_workapproval);
+//                removeLayer(displayed_gis_layer_approval);
+//                document.getElementById('selectCAT').value = 'default';
+//                map.removeControl(hover_info);
             }
                        
             // find the middle point from geojason file
@@ -4945,7 +4932,7 @@ and open the template in the editor.
             }
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-//                document.getElementById("selectCAT").value = catchment_name;
+                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }

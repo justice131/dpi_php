@@ -19,7 +19,7 @@ and open the template in the editor.
         <?php include("../../common.scripts/navigator.html"); ?>
 	<div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
 		<div class="row">
-			<div class="box-container" style="width:17.2%;" id="left_panel">
+			<div class="box-container" style="width:16.5%;" id="left_panel">
 				<table style="width:100%">
 				  <tr>
 					<td>
@@ -68,7 +68,7 @@ and open the template in the editor.
 				  </table>
 			</div>                  
 			
-			<div class="box-container" style="width:82.8%" id="map_panel">
+			<div class="box-container" style="width:83.%" id="map_panel">
 				<div class="box">
 					<div  id="map_title" class="box-title">
 						<h4><b>Town Water & Power Generation</b></h4>

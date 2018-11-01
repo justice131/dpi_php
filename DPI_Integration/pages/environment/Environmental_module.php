@@ -31,6 +31,7 @@ and open the template in the editor.
 						  </div>                                                   
                                                
 						  <div class="box-content" style="height:200px;">
+                                                      <h5><b>Select a Catchment for More Information</b></h5>
                                                     <table>
                                                         <tr>
                                                             <th>

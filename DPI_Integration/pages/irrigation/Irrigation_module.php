@@ -38,7 +38,7 @@ and open the template in the editor.
                                                             <form action="../">
                                                                 <select name="selectCAT" id="selectCAT"  style="width:135px" onchange='OnChange(this.form.selectCAT);' >
                                                                 <option value="default">-----CATCHMENT-----</option>
-                                                                <option value="MacquarieBogan">MacquarieBogan</option>
+                                                                <option value="MacquarieBogan">Macquarie</option>
                                                                 <option value="ManningRiver">Manning</option>
                                                                 </select>
                                                             </form>
@@ -148,7 +148,7 @@ and open the template in the editor.
                 var settingHeight = document.getElementById("setting").offsetHeight;
                 var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
                 document.getElementById("legend").style.height = (pageHeight - settingHeight - legendTitleHeight) + "px";
-            }
+            };
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var MacquarieBogan_CatchmentBoundary_1 = MacquarieBogan_CatchmentBoundary;
             var ManningRiver_CatchmentBoundary = ManningRiver_CatchmentBoundary;

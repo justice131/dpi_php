@@ -203,7 +203,7 @@ and open the template in the editor.
                 var settingHeight = document.getElementById("setting").offsetHeight;
                 var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
                 document.getElementById("legend").style.height = (pageHeight - settingHeight - legendTitleHeight) + "px";
-            }
+            };
             
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var ManningRiver_CatchmentBoundary = ManningRiver_CatchmentBoundary;

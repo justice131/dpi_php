@@ -4102,9 +4102,6 @@ and open the template in the editor.
                     var overall_idsi = "<?php echo $row["overall_idsi"]; ?>";
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
                     var overall_dei = "<?php echo $row["overall_dei"]; ?>";
-                    var catchment_size = "<?php echo $row["catchment_size"]; ?>";
-                    var surface_water_size = "<?php echo $row["surface_water_size"]; ?>";
-                    var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     this._div.innerHTML = (
 //                        props?
 //                        '<h5>' + catch_name + ' Catchment' + '</h5>' + 
@@ -4170,7 +4167,7 @@ and open the template in the editor.
                 var bg_color = new Array();
                 var data = [];
                 <?php if(!empty($row)){?>;
-                    data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>];
+                    data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>];
                 <?php }?>;
                 for(i = 0; i < 3; i++) {
                     if(data[i] <= 0.25){

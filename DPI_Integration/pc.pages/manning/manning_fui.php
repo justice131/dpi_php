@@ -234,9 +234,9 @@ and open the template in the editor.
                                     'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                    'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
+                                    'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                    'FAI(1-FUI): ' + '<b>'+ Math.round(props.FUI_100*100)/100 + '</b>'+'<br />'
+//                                    'FAI(1-FUI): ' + '<b>'+ Math.round(props.FUI_100*100)/100 + '</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
@@ -343,15 +343,15 @@ and open the template in the editor.
                             labels = [],
                             from, to;
                             labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' +
-                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                            '<i style="background:' + myCols[2] + '"></i> ' + '[0, 0.2]');
+//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' +
-                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                            '<i style="background:' + myCols[1] + '"></i> ' + '(0.2, 0.4]');
+//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' +
-                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                            div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                            '<i style="background:' + myCols[0] + '"></i> ' + '(0.4, 1]');
+//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            div.innerHTML = '<h4>Index Rank (FUI)</h4>' + labels.join('<br>');
                             return div;
                     };
                     legend.addTo(map);

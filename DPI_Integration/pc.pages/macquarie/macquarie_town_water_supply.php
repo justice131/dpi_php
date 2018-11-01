@@ -230,12 +230,22 @@ and open the template in the editor.
                 });
             });
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
-                    return myCols[0];
-                }else if(d<=Math.ceil(2*max_row/3)){
-                    return myCols[1];
+                if(d >= 0 && d <= 10){
+                return myCols[2];
+                }else if(d > 10 && d <= 100){
+                return myCols[1];
                 }else{
-                    return myCols[2];
+                return myCols[0];
+                }
+            }
+            
+            function getColorScalar_1(d) {
+                if(d >= 0 && d <= 10){
+                return myCols[0];
+                }else if(d > 10 && d <= 100){
+                return myCols[1];
+                }else{
+                return myCols[2];
                 }
             }
             /*overall variables end*/
@@ -279,8 +289,8 @@ and open the template in the editor.
                         'Gross Regional Product: '+ '<b>' + props.gross_reional_product + '</b>' + '<br />'+
                         'WSDI: '+ '<b>' + props.WSDI + '</b>' + '<br />'+
                         'Forecast Drinking Water Quality Deficiency (HBT) Index (%): '+ '<b>' + props.HBT + '</b>' + '<br />'+
-                        'Risk (million $): '+ '<b>' + props.risk + '</b>' + '<br />'+
-                        'Opprtunity : '+ '<b>' + props.opportunity + '</b>' + '<br />'
+                        'Risk: '+ '<b>$' + Math.round(props.risk*10)/10 + 'M</b>' + '<br />'+
+                        'Opportunity : '+ '<b>' + Math.round(props.opportunity*10)/10 + '</b>' + '<br />'
                 : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info1.addTo(map1);
@@ -322,8 +332,8 @@ and open the template in the editor.
                         'Gross Regional Product: '+ '<b>' + props.gross_reional_product + '</b>' + '<br />'+
                         'WSDI: '+ '<b>' + props.WSDI + '</b>' + '<br />'+
                         'Forecast Drinking Water Quality Deficiency (HBT) Index (%): '+ '<b>' + props.HBT + '</b>' + '<br />'+
-                        'Risk (million $): '+ '<b>' + props.risk + '</b>' + '<br />'+
-                        'Opprtunity : '+ '<b>' + props.opportunity + '</b>' + '<br />'
+                        'Risk: '+ '<b>$' + Math.round(props.risk*10)/10 + 'M</b>' + '<br />'+
+                        'Opportunity : '+ '<b>' + Math.round(props.opportunity*10)/10 + '</b>' + '<br />'
                         : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info2.addTo(map2);
@@ -358,11 +368,11 @@ and open the template in the editor.
                         right: 1,
                         bottom: 15
                 })
-                .color(function (d) {return getColorScalar(d.RiskIndexRank); });
+                .color(function (d) {return getColorScalar(d[keys[12]]); });
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/town_water_supply_macquaire.csv", function (data) {
-                var keys = Object.keys(data[0]);
+                keys = Object.keys(data[0]);
                 _.each(data, function (d, i) {
                     d.index = d.index || i; //unique id
                     var LGA_name = d[keys[0]];
@@ -404,7 +414,7 @@ and open the template in the editor.
                         color: 'white',
                         dashArray: '3',
                         fillOpacity: 0.8 * showIt(feature.properties.HBT),
-                        fillColor: getColorScalar(feature.properties.opportunity_index_rank)
+                        fillColor: getColorScalar_1(feature.properties.opportunity)
                     };
                 }
                 geojson1 = L.geoJson(lgas, {
@@ -433,7 +443,7 @@ and open the template in the editor.
                         color: 'white',
                         dashArray: '3',
                         fillOpacity: 0.8 * showIt(feature.properties.HBT),
-                        fillColor: getColorScalar(feature.properties.risk_index_rank)
+                        fillColor: getColorScalar(feature.properties.risk)
                     };
                 }
                 geojson2 = L.geoJson(lgas, {
@@ -472,15 +482,15 @@ and open the template in the editor.
                     labels = [],
                     from, to;
                     labels.push(
-                                    '<i style="background:' + myCols[0] + '"></i> ' +
-                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    '<i style="background:' + myCols[0] + '"></i> ' + '[0, 10]');
+//                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[1] + '"></i> ' +
-                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    '<i style="background:' + myCols[1] + '"></i> ' + '(10, 100]');
+//                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[2] + '"></i> ' +
-                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    '<i style="background:' + myCols[2] + '"></i> ' + '(100, ∞)');
+//                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                    div.innerHTML = '<h4>Index Rank (Opportunity)</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
@@ -491,15 +501,15 @@ and open the template in the editor.
                         labels = [],
                         from, to;
                         labels.push(
-                                '<i style="background:' + myCols[0] + '"></i> ' +
-                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                '<i style="background:' + myCols[2] + '"></i> ' + '[0, 10]');
+//                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[1] + '"></i> ' +
-                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                '<i style="background:' + myCols[1] + '"></i> ' + '(10, 100]');
+//                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[2] + '"></i> ' +
-                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                '<i style="background:' + myCols[0] + '"></i> ' + '(100, ∞)');
+//                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                        div.innerHTML = '<h4>Index Rank (Risk)</h4>' + labels.join('<br>');
                         return div;
                 };
                 legend2.addTo(map2);
@@ -611,7 +621,7 @@ and open the template in the editor.
                         geojsonLabels1.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.NSW_LGA__3) {
                                 if (d.feature.properties.HBT > 0) {
-                                        z._icon.innerHTML=d.feature.properties.opportunity;
+                                        z._icon.innerHTML=Math.round(d.feature.properties.opportunity*10)/10;
                                 } else {
                                         z._icon.innerHTML = "";
                                 }
@@ -624,7 +634,7 @@ and open the template in the editor.
                         geojsonLabels2.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.NSW_LGA__3) {
                                 if (d.feature.properties.HBT > 0) {
-                                     z._icon.innerHTML=d.feature.properties.risk;
+                                     z._icon.innerHTML=Math.round(d.feature.properties.risk*10)/10;
                                 } else {
                                     z._icon.innerHTML = "";
                                 }

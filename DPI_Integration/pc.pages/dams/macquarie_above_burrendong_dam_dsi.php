@@ -335,15 +335,15 @@ and open the template in the editor.
                             labels = [],
                             from, to;
                             labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' +
-                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                            '<i style="background:' + myCols[0] + '"></i> ' + '[0, 0.3]');
+//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' +
-                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                            '<i style="background:' + myCols[1] + '"></i> ' + '(0.3, 0.55]');
+//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' +
-                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                            div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                            '<i style="background:' + myCols[2] + '"></i> ' + '(0.55, 1]');
+//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            div.innerHTML = '<h4>Index Rank (DSI)</h4>' + labels.join('<br>');
                             return div;
                     };
                     legend.addTo(map);

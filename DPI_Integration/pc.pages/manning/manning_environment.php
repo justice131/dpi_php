@@ -176,22 +176,23 @@ and open the template in the editor.
             
 
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
+                if(d >= 0 && d <= 5){
                 return myCols[2];
-                }else if(d<=Math.ceil(2*max_row/3)){
+                }else if(d > 5 && d <= 50){
                 return myCols[1];
                 }else{
                 return myCols[0];
                 }
             }
+            
             function style(feature) {
                     return {
                             weight: 1,
                             opacity: showIt(1),
                             color: 'white',
                             dashArray: '3',
-                            fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                            fillColor: getColorScalar(feature.properties.IndexRank)
+                            fillOpacity: 0.8 * showIt(feature.properties.benefit_from_environment),
+                            fillColor: getColorScalar(feature.properties.benefit_from_environment)
                     };
             }
             var max_row=0;//Get the row number of ranking file
@@ -228,7 +229,7 @@ and open the template in the editor.
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
 //                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                    'Ecosystem Risk Index: ' + '<b>'+ Math.round(props.status_of_ecosystem_population*100)/100 + '</b>'+'<br />'
+                                    'Benefit From Environment: ' + '<b>'+ Math.round(props.benefit_from_environment*100)/100 + '</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
@@ -256,7 +257,7 @@ and open the template in the editor.
                     lgas.features[j].properties.normalized_flood_exposure=0;
                     lgas.features[j].properties.time_below_requirement=0;
                     lgas.features[j].properties.FUI=0;
-                    lgas.features[j].properties.status_of_ecosystem_population=0;
+                    lgas.features[j].properties.benefit_from_environment=0;
                     lgas.features[j].properties.IndexRank=0;
                     lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
             }
@@ -273,12 +274,12 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d.IndexRank) });
+                    .color(function (d) { return getColorScalar(d[keys[21]]); });
 
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/environment_manning.csv", function (data) {
-                var keys = Object.keys(data[0]);
+                keys = Object.keys(data[0]);
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d[keys[0]];
@@ -303,7 +304,7 @@ and open the template in the editor.
                             lgaDict[water_source_name].properties.normalized_flood_exposure=d[keys[18]];
                             lgaDict[water_source_name].properties.time_below_requirement=d[keys[19]];
                             lgaDict[water_source_name].properties.FUI=d[keys[20]];
-                            lgaDict[water_source_name].properties.status_of_ecosystem_population=d[keys[21]];
+                            lgaDict[water_source_name].properties.benefit_from_environment=d[keys[21]];
                             lgaDict[water_source_name].properties.IndexRank=d[keys[22]];
                             lga.push(water_source_name);
                     });
@@ -334,15 +335,15 @@ and open the template in the editor.
                             labels = [],
                             from, to;
                             labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' +
-                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                            '<i style="background:' + myCols[2] + '"></i> '  + '[0, 5]');
+//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' +
-                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                            '<i style="background:' + myCols[1] + '"></i> ' + '(5, 50]');
+//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' +
-                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                            div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                            '<i style="background:' + myCols[0] + '"></i> ' + '(50, ∞)');
+//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            div.innerHTML = '<h4>Index Rank（Benefit' + '</br>' + 'From Environment)</h4>' + labels.join('<br>');
                             return div;
                     };
                     legend.addTo(map);
@@ -428,10 +429,10 @@ and open the template in the editor.
                             isSelected = true;
                             gridUpdate(d);
                             //update map
-                            lgas.features.map(function (d) {d.properties.FUI = -1; });
+                            lgas.features.map(function (d) {d.properties.benefit_from_environment = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k[keys[0]]].properties.FUI = k.FUI;
+                                    lgaDict[k[keys[0]]].properties.benefit_from_environment = k[keys[21]];
                             });
 
                             map.removeControl(legend);
@@ -452,8 +453,8 @@ and open the template in the editor.
                                     geojson.resetStyle(d);
                                     geojsonLabels.getLayers().forEach(function (z) {
                                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
-                                                    if (d.feature.properties.FUI > 0) {
-                                                            z._icon.innerHTML=Math.round(d.feature.properties.FUI*100)/100;
+                                                    if (d.feature.properties.benefit_from_environment > 0) {
+                                                            z._icon.innerHTML=Math.round(d.feature.properties.benefit_from_environment*100)/100;
                                                     } else {
                                                             z._icon.innerHTML = "";
                                                     }

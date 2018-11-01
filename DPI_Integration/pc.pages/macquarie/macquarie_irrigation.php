@@ -141,15 +141,27 @@ and open the template in the editor.
                 max_row++;
                 });
             });
+            
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
-                    return myCols[0];
-                }else if(d<=Math.ceil(2*max_row/3)){
-                    return myCols[1];
+                if(d >= 0 && d <= 1){
+                return myCols[2];
+                }else if(d > 1 && d <= 10){
+                return myCols[1];
                 }else{
-                    return myCols[2];
+                return myCols[0];
                 }
             }
+            
+            function getColorScalar_1(d) {
+                if(d >= 0 && d <= 1){
+                return myCols[0];
+                }else if(d > 1 && d <= 10){
+                return myCols[1];
+                }else{
+                return myCols[2];
+                }
+            }
+            
             /*overall variables end*/
            
            /*Map section*/
@@ -300,11 +312,11 @@ and open the template in the editor.
                         right: 1,
                         bottom: 15
                 })
-                .color(function (d) {return getColorScalar(d.RiskIndexRank); });
+                .color(function (d) {return getColorScalar(d[keys[23]]); });
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/irrigation_macquaire.csv", function (data) {
-                var keys = Object.keys(data[0]);
+                keys = Object.keys(data[0]);
                 _.each(data, function (d, i) {
                     d.index = d.index || i; //unique id
                     var water_source_name = d[keys[0]];
@@ -358,7 +370,7 @@ and open the template in the editor.
                         color: 'white',
                         dashArray: '3',
                         fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                        fillColor: getColorScalar(feature.properties.opportunity_index_rank)
+                        fillColor: getColorScalar_1(feature.properties.irrigation_opportunity_index)
                     };
                 }
                 geojson1 = L.geoJson(lgas, {
@@ -387,7 +399,7 @@ and open the template in the editor.
                         color: 'white',
                         dashArray: '3',
                         fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                        fillColor: getColorScalar(feature.properties.risk_index_rank)
+                        fillColor: getColorScalar(feature.properties.agricluture_risk_index)
                     };
                 }
                 geojson2 = L.geoJson(lgas, {
@@ -407,6 +419,7 @@ and open the template in the editor.
                         });
                     },
                 }).addTo(map1);
+                
                 geojsonLabels2 = L.geoJson(lgaCentroids, {
                         pointToLayer: function (feature, latlng) {
                                 return  L.marker(latlng, {
@@ -426,15 +439,15 @@ and open the template in the editor.
                     labels = [],
                     from, to;
                     labels.push(
-                                    '<i style="background:' + myCols[0] + '"></i> ' +
-                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    '<i style="background:' + myCols[0] + '"></i> ' + '[0, 1]');
+//                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[1] + '"></i> ' +
-                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    '<i style="background:' + myCols[1] + '"></i> ' + '(1, 10]');
+//                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[2] + '"></i> ' +
-                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    '<i style="background:' + myCols[2] + '"></i> ' + '(10, ∞)');
+//                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                    div.innerHTML = '<h4>Index Rank (Opportunity'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
@@ -445,15 +458,15 @@ and open the template in the editor.
                         labels = [],
                         from, to;
                         labels.push(
-                                '<i style="background:' + myCols[0] + '"></i> ' +
-                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                '<i style="background:' + myCols[2] + '"></i> ' + '[0, 1]');
+//                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[1] + '"></i> ' +
-                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                '<i style="background:' + myCols[1] + '"></i> ' + '(1, 10]');
+//                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[2] + '"></i> ' +
-                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                '<i style="background:' + myCols[0] + '"></i> ' + '(10, ∞)');
+//                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                        div.innerHTML = '<h4>Index Rank (Risk'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
                         return div;
                 };
                 legend2.addTo(map2);
@@ -565,8 +578,7 @@ and open the template in the editor.
                         geojsonLabels1.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                 if (d.feature.properties.FUI > 0) {
-//                                        z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
-                                        z._icon.innerHTML=d.feature.properties.irrigation_opportunity_index;
+                                        z._icon.innerHTML=Math.round(d.feature.properties.irrigation_opportunity_index*100)/100;
                                 } else {
                                         z._icon.innerHTML = "";
                                 }
@@ -579,8 +591,7 @@ and open the template in the editor.
                         geojsonLabels2.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                 if (d.feature.properties.FUI > 0) {
-//                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
-                                     z._icon.innerHTML=d.feature.properties.agricluture_risk_index;
+                                     z._icon.innerHTML=Math.round(d.feature.properties.agricluture_risk_index*100)/100;
                                 } else {
                                     z._icon.innerHTML = "";
                                 }

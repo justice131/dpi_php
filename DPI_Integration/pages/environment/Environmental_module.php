@@ -3920,9 +3920,6 @@ and open the template in the editor.
                     var overall_idsi = "<?php echo $row["overall_idsi"]; ?>";
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
                     var overall_dei = "<?php echo $row["overall_dei"]; ?>";
-                    var catchment_size = "<?php echo $row["catchment_size"]; ?>";
-                    var surface_water_size = "<?php echo $row["surface_water_size"]; ?>";
-                    var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     if (catch_name === 'MacquarieBogan'){
                         var Total_area = area_sum(Macquarie_Wetland);
                         var Total_no = asset_no(Macquarie_Wetland);

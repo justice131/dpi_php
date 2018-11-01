@@ -578,9 +578,9 @@ and open the template in the editor.
                 displayedCAT.push(CATName);
                 check_collection.push(checkbox_id);
                 // Remove other's layers
-                removeLayer(displayed_gis_layer_regulated);
-                removeLayer(displayed_gis_layer_unregulated);
-                removeLayer(displayed_gis_layer_groundwater);
+//                removeLayer(displayed_gis_layer_regulated);
+//                removeLayer(displayed_gis_layer_unregulated);
+//                removeLayer(displayed_gis_layer_groundwater);
                 }        
             }
             
@@ -4151,9 +4151,6 @@ and open the template in the editor.
                     var overall_idsi = "<?php echo $row["overall_idsi"]; ?>";
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
                     var overall_dei = "<?php echo $row["overall_dei"]; ?>";
-                    var catchment_size = "<?php echo $row["catchment_size"]; ?>";
-                    var surface_water_size = "<?php echo $row["surface_water_size"]; ?>";
-                    var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     if (catch_name === 'MacquarieBogan'){
                         var Total_no_mine = mine_sum(Macquarie_Mining);
                         var Employ = "<?php echo $em_macquarie; ?>"; 

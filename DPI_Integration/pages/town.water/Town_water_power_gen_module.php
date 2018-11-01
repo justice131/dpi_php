@@ -4887,9 +4887,6 @@ and open the template in the editor.
                     var catch_name = "<?php echo $_GET['catchment_name']; ?>";  
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
                     var overall_dei = "<?php echo $row["overall_dei"]; ?>";
-                    var catchment_size = "<?php echo $row["catchment_size"]; ?>";
-                    var surface_water_size = "<?php echo $row["surface_water_size"]; ?>";
-                    var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     if (catch_name === 'MacquarieBogan'){
                         var no_wtc = WTC_number_Macquarie;
                         var no_wwtc = WWTC_number_Macquarie;

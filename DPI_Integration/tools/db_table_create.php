@@ -103,6 +103,7 @@ $sql = "CREATE TABLE IF NOT EXISTS town_water_supply( ".
     "volume_treated INT, ".
     "HBT_index FLOAT, ".
     "population_served FLOAT, ".
+    "gross_regional_product FLOAT, ".
     "WSDI FLOAT, ".
     "Risk FLOAT, ".
     "Opportunity FLOAT, ".

@@ -29,16 +29,17 @@
             <table class="layui-table">
                 <thead>
                     <tr>
-                        <th>tws_id</th>
+                        <th>tws id</th>
                         <th>catchment</th>
-                        <th>exact_location</th>
-                        <th>town_served</th>
+                        <th>exact location</th>
+                        <th>town served</th>
                         <th>latitude</th>
                         <th>longitude</th>
                         <th>postcode</th>
-                        <th>volume_treated</th>
-                        <th>HBT_index</th>
-                        <th>population_served</th>
+                        <th>volume treated</th>
+                        <th>HBT index</th>
+                        <th>population served</th>
+                        <th>Gross Regional product($M)</th>
                         <th>WSDI</th>
                         <th>Risk(million $)</th>
                         <th>Opportunity(million $)</th>
@@ -62,13 +63,14 @@
                         $volume_treated=$result_arr['volume_treated']; 
                         $HBT_index=$result_arr['HBT_index'];
                         $population_served=$result_arr['population_served'];
+                        $gross_regional_product=$result_arr['gross_regional_product'];
                         $WSDI=$result_arr['WSDI'];  
                         $risk=$result_arr['Risk']; 
                         $opportunity=$result_arr['Opportunity']; 
                         echo "<tr><td>$tws_id</td><td>$catchment</td><td>$exact_location</td><td>$town_served</td>"
                             . "<td>$latitude</td><td>$longitude</td><td>$postcode</td>"
                             . "<td>$volume_treated</td><td>$HBT_index</td>"
-                            . "<td>$population_served</td><td>$WSDI</td>"
+                            . "<td>$population_served</td><td>$gross_regional_product</td><td>$WSDI</td>"
                             . "<td>$risk</td><td>$opportunity</td><tr>";
                         }
                 ?>

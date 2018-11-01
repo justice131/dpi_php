@@ -170,14 +170,14 @@ and open the template in the editor.
             elem_ov.setAttribute('id', 'mine_legend');
             elem_ov.innerHTML = (
                     '<img src="../../images/mineral_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (exploring)<br>'+
-                    '<img src="../../images/mineral_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (mining)<br>'+
-                    '<img src="../../images/mineral_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (assessment)<br>'+
+                    '<img src="../../images/mineral_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (mining)<br>'+
+                    '<img src="../../images/mineral_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (assessment)<br>'+
                     '<img src="../../images/petrol_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (exploring)<br>'+
-                    '<img src="../../images/petrol_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (mining)<br>'+
-                    '<img src="../../images/petrol_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (assessment)<br>'+
+                    '<img src="../../images/petrol_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (mining)<br>'+
+                    '<img src="../../images/petrol_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (assessment)<br>'+
                     '<img src="../../images/coal_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (exploring)<br>'+
-                    '<img src="../../images/coal_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (mining)<br>'+
-                    '<img src="../../images/coal_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (assessment)<div style="height:2px;"><br></div'
+                    '<img src="../../images/coal_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (mining)<br>'+
+                    '<img src="../../images/coal_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (assessment)<div style="height:2px;"><br></div'
                     );
 //            document.getElementById("legend").appendChild(elem_ov);
 
@@ -4163,7 +4163,7 @@ and open the template in the editor.
 //                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
                           '<b>' + 'Mining Sector within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
                           '<p style=\"line-height:50%\"><img src=\"../../images/mining_number.png\" height=\"25\" width=\"25\"> Total Number of Mines: <b>' + toThousands(Total_no_mine) + '</b><br/><br />'+
-                          '<img src=\"../../images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + toThousands(Math.round(Prop*10)/10)  + ' $M</b><br/><br />'+
+                          '<img src=\"../../images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>$' + toThousands(Math.round(Prop*10)/10)  + 'M</b><br/><br />'+
                           '<img src=\"../../images/mining_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
                           '<img src=\"../../images/mining_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Water_use))  + ' ML</b><br/><br />'+
                           '<img src=\"../../images/mining_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + Math.round(Prop/Water_use*100)/100  + ' $M/ML</b><br/></p>'   

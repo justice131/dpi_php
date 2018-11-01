@@ -517,51 +517,61 @@ and open the template in the editor.
                 }              
             }
 
-            function icon_wwqi(Fui_macquarie, feature){          
-                function compareSecondColumn(a, b) {
-                    if (a[1] === b[1]) {
-                        return 0;
-                    }
-                    else {
-                        return (a[1] > b[1]) ? -1 : 1;
-                    }
-                }
-                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
-                var e = Fui_macquarie.length;
-                if(e>=3 & (e%3) === 0){
-                    var i = e/3; 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
-                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
-                }else if(e>3 & (e%3) === 1){
-                    var i = Math.floor(e/3); 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
-                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
-                }else if(e>3 & (e%3) === 2){
-                    var i = Math.floor(e/3); 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
-                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
-                }else if (e===2){
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
-                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
-                }else if (e===1){
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
-                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
-                }
-              
-                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+//            function icon_wwqi(Fui_macquarie, feature){          
+//                function compareSecondColumn(a, b) {
+//                    if (a[1] === b[1]) {
+//                        return 0;
+//                    }
+//                    else {
+//                        return (a[1] > b[1]) ? -1 : 1;
+//                    }
+//                }
+//                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
+//                var e = Fui_macquarie.length;
+//                if(e>=3 & (e%3) === 0){
+//                    var i = e/3; 
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
+//                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
+//                }else if(e>3 & (e%3) === 1){
+//                    var i = Math.floor(e/3); 
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+//                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
+//                }else if(e>3 & (e%3) === 2){
+//                    var i = Math.floor(e/3); 
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+//                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
+//                }else if (e===2){
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+//                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
+//                }else if (e===1){
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+//                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
+//                }
+//              
+//                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+//                    return Icon_waste_red;
+//                }
+//                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
+//                    return Icon_waste_orange;
+//                }
+//                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
+//                    return Icon_waste_green;
+//                }              
+//            }
+
+            function icon_wwqi(w){
+                if (w>=0 & w<=0.8){
+                    return Icon_waste_green;
+                }else if (w>0.8 & w<=0.9){
+                    return Icon_waste_orange;
+                }else{
                     return Icon_waste_red;
                 }
-                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_waste_orange;
-                }
-                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_waste_green;
-                }              
             }
             
             var wsdi_rank_Macquarie = [];
@@ -969,7 +979,7 @@ and open the template in the editor.
                                 var wwqi = "<?php echo $wwtc_mac[$x]["wwqi"]; ?>";
                                 var treted_volume = "<?php echo $wwtc_mac[$x]["treted_volume"]; ?>";
 
-                                var M = L.marker([lat, lon], {icon: icon_wwqi(wwqi_rank_Macquarie, treatment_plant)}).addTo(map)
+                                var M = L.marker([lat, lon], {icon: icon_wwqi(wwqi/100)}).addTo(map)
                                 .bindPopup('Location: ' + treatment_plant + '<br/>'
                                 + 'LGA: ' + lga + '<br/>'
                                 + 'WWQI: ' +Math.round(wwqi)/100 + '<br/>'
@@ -980,84 +990,19 @@ and open the template in the editor.
                         
                     var max_row = wwqi_rank_Macquarie.length;
                     legend = L.control({position: 'bottomright'});
-                    if (max_row>=3 & (max_row%3)===0){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
-                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };
-                    }else if (max_row>=3 & (max_row%3)===1){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
-                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };                       
-                    }else if (max_row>=3 & (max_row%3)===2){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
-                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };
-                    }else if (max_row===2){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water__red.png"> ' +
-                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
-                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };                       
-                    }else if (max_row===1){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        }; 
-                    
-                    }
+                    legend.onAdd = function (map) {
+                              var div = L.DomUtil.create('div', 'info legend'),
+                              labels = [],
+                              from, to;
+                              labels.push(
+                                              '<img src="../../lib/leaflet/images/waste_water_green.png"> ' + '[0, 0.8]');
+                              labels.push(
+                                              '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' + '(0.8, 0.9]');
+                              labels.push(
+                                              '<img src="../../lib/leaflet/images/waste_water_red.png"> ' + '(0.9, 1]');
+                              div.innerHTML = '<h4>Index Rank (WWQI)</h4>' + labels.join('<br>');
+                              return div;
+                    };                  
                     legend.addTo(map);
                 }
                 if (checkBox.checked === false){
@@ -3479,10 +3424,10 @@ and open the template in the editor.
                                 var wwqi = "<?php echo $wwtc_man[$x]["wwqi"]; ?>";
                                 var treted_volume = "<?php echo $wwtc_man[$x]["treted_volume"]; ?>";
 
-                                var M = L.marker([lat, lon], {icon: icon_wwqi(wwqi_rank_Manning, treatment_plant)}).addTo(map)
+                                var M = L.marker([lat, lon], {icon: icon_wwqi(wwqi/100)}).addTo(map)
                                 .bindPopup('Location: ' + treatment_plant + '<br/>'
                                 + 'LGA: ' + lga + '<br/>'
-                                + 'WWQI: ' +toThousands(wwqi) + '<br/>'
+                                + 'WWQI: ' +Math.round(wwqi)/100 + '<br/>'
                                 + 'Volume Treated: ' + toThousands(treted_volume) + ' ML');
                                 featureWTCollection.push(M);
                         <?php }?>;    
@@ -3490,84 +3435,19 @@ and open the template in the editor.
                         
                     var max_row = wwqi_rank_Manning.length;
                     legend = L.control({position: 'bottomright'});
-                    if (max_row>=3 & (max_row%3)===0){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
-                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };
-                    }else if (max_row>=3 & (max_row%3)===1){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
-                                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };                       
-                    }else if (max_row>=3 & (max_row%3)===2){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' +
-                                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.floor(2*max_row/3) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
-                                                3 +' (' + (Math.floor(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };
-                    }else if (max_row===2){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water__red.png"> ' +
-                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_green.png"> ' +
-                                                2 +' (' + (Math.ceil(2*max_row/3)) + '&ndash;' + max_row + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        };                       
-                    }else if (max_row===1){
-                        legend.onAdd = function (map) {
-                                var div = L.DomUtil.create('div', 'info legend'),
-                                labels = [],
-                                from, to;
-                                labels.push(
-                                                '<img src="../../lib/leaflet/images/waste_water_red.png"> ' +
-                                                1 +' (' +'1&ndash;' + (Math.floor(max_row/3)+1) + ')');
-                                div.innerHTML = '<h5>Index (WWQI) Rank</h5>' + labels.join('<br>');
-                                return div;
-                        }; 
-                    
-                    }
+                    legend.onAdd = function (map) {
+                              var div = L.DomUtil.create('div', 'info legend'),
+                              labels = [],
+                              from, to;
+                              labels.push(
+                                              '<img src="../../lib/leaflet/images/waste_water_green.png"> ' + '[0, 0.8]');
+                              labels.push(
+                                              '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' + '(0.8, 0.9]');
+                              labels.push(
+                                              '<img src="../../lib/leaflet/images/waste_water_red.png"> ' + '(0.9, 1]');
+                              div.innerHTML = '<h4>Index Rank (WWQI)</h4>' + labels.join('<br>');
+                              return div;
+                      };
                     legend.addTo(map);
                 }
                 if (checkBox.checked === false){

@@ -45,8 +45,8 @@
     <body style="background-color:#F3F3F4;">
         <?php include("../../common.scripts/navigator.html"); ?>
         <div id="page-wrapper" class="gray-bg dashboard"  style="padding-bottom:20px">
-            <div class="row" style="width: 8200px;">
-                <div id="left_panel" class="box-container" style="width:5.5%;">
+            <div class="row" style="width: 8100px;">
+                <div id="left_panel" class="box-container" style="width:4.5%;">
                     <table style="width:100%">
                         <tr>
                             <td>
@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="box-content" style="height:40%;">
                                         <h5><b>Select a Catchment for More Information</b></h5>
-                                        <select id="select_catchment" style="width:135px">
+                                        <select id="select_catchment" style="width:140px">
                                             <option value="default">-----CATCHMENT-----</option>
                                             <option value="MacquarieBogan">Macquarie</option>
                                             <option value="ManningRiver">Manning</option>
@@ -65,8 +65,8 @@
                                         <table>
                                           <tr>
                                                 <th>
-                                                    <select id="module" style="width:300px" onchange="module_selection()">
-                                                        <option value="default">-----Module-----</option>
+                                                    <select id="module" style="width:140px" onchange="module_selection()">
+                                                        <option value="default">------MODULE------</option>
                                                         <option value="irrigation">Irrigation</option>
                                                         <option value="mining">Mining</option>
                                                         <option value="environment">Environment</option>
@@ -97,7 +97,7 @@
                         </tr>
                     </table>
                 </div>
-                <div id="visualization" class="box-container" style="width:94.5%;">
+                <div id="visualization" class="box-container" style="width:95.5%;">
                     <iframe id="iframe" style="width:100%; height: 100%;" frameborder="no" scrolling="no"/>
                 </div>
             </div>

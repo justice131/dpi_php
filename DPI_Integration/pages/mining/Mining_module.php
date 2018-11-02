@@ -43,7 +43,7 @@ and open the template in the editor.
                                                             </form>
                                                             </th>
                                                         <th>
-                                                            <button id="clear" onClick="clearAllLayers()">Clear</button>  
+                                                            <button id="clear" onClick="clearAllLayers()">CLEAR</button>  
                                                         </th>
                                                         </tr>
                                                     </table>

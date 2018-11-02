@@ -82,7 +82,7 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   -->
                                                 <input type="checkbox" id="Work-approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_workapprovals('Work-approvals-CAT-MacquarieBogan')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="aa()"> <font size="2">Work approvals </font></br>
-<!--                                                <input type="checkbox" id="MacquarieBogan_wts" onclick="show_MacquarieBogan_tws('MacquarieBogan_wts')"> <font size="2">Town water </font></br>-->
+                                                <input type="checkbox" id="MacquarieBogan_wts" onclick="show_MacquarieBogan_tws('MacquarieBogan_wts')"> <font size="2">Town water </font></br>
                                                 <input type="checkbox" id="MacquarieBogan_wt" onclick="show_MacquarieBogan_tw('MacquarieBogan_wt')"> <font size="2">Waste water </font>
                                                 
                                         </div>
@@ -93,7 +93,7 @@ and open the template in the editor.
                                                 <input type="checkbox" id="Groundwater-CAT-Manning" onclick="show_gis_Manning_groundwater('Groundwater-CAT-Manning')"> <font size="2">Groundwater </font></br>-->
                                                 <input type="checkbox" id="Work-approvals-CAT-Manning" onclick="show_gis_Manning_workapprovals('Work-approvals-CAT-Manning')"> <font size="2">License </font></br>
                                                 <input type="checkbox" id="Approvals-CAT-Manning" onclick="show_gis_Manning_approvals('Approvals-CAT-Manning')"> <font size="2">Work approvals </font></br>
-<!--                                                <input type="checkbox" id="Manning_wts" onclick="show_Manning_tws('Manning_wts')"> <font size="2">Town water </font></br>-->
+                                                <input type="checkbox" id="Manning_wts" onclick="show_Manning_tws('Manning_wts')"> <font size="2">Town water </font></br>
                                                 <input type="checkbox" id="Manning_wt" onclick="show_Manning_tw('Manning_wt')"> <font size="2">Waste water </font>
                                         </div>
                                     
@@ -470,52 +470,52 @@ and open the template in the editor.
                 }
             }
             
-            function icon_wsdi(Fui_macquarie, feature){          
-                function compareSecondColumn(a, b) {
-                    if (a[1] === b[1]) {
-                        return 0;
-                    }
-                    else {
-                        return (a[1] > b[1]) ? -1 : 1;
-                    }
-                }
-                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
-                var e = Fui_macquarie.length;
-                if(e>=3 & (e%3) === 0){
-                    var i = e/3; 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
-                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
-                }else if(e>3 & (e%3) === 1){
-                    var i = Math.floor(e/3); 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
-                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
-                }else if(e>3 & (e%3) === 2){
-                    var i = Math.floor(e/3); 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
-                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
-                }else if (e===2){
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
-                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
-                }else if (e===1){
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
-                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
-                }
-              
-                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_red;
-                }
-                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_orange;
-                }
-                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_green;
-                }              
-            }
+//            function icon_wsdi(Fui_macquarie, feature){          
+//                function compareSecondColumn(a, b) {
+//                    if (a[1] === b[1]) {
+//                        return 0;
+//                    }
+//                    else {
+//                        return (a[1] > b[1]) ? -1 : 1;
+//                    }
+//                }
+//                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
+//                var e = Fui_macquarie.length;
+//                if(e>=3 & (e%3) === 0){
+//                    var i = e/3; 
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
+//                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
+//                }else if(e>3 & (e%3) === 1){
+//                    var i = Math.floor(e/3); 
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+//                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
+//                }else if(e>3 & (e%3) === 2){
+//                    var i = Math.floor(e/3); 
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
+//                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
+//                }else if (e===2){
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+//                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
+//                }else if (e===1){
+//                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
+//                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
+//                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
+//                }
+//              
+//                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+//                    return Icon_red;
+//                }
+//                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
+//                    return Icon_orange;
+//                }
+//                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
+//                    return Icon_green;
+//                }              
+//            }
 
 //            function icon_wwqi(Fui_macquarie, feature){          
 //                function compareSecondColumn(a, b) {
@@ -571,6 +571,16 @@ and open the template in the editor.
                     return Icon_waste_orange;
                 }else{
                     return Icon_waste_red;
+                }
+            }
+            
+            function icon_wsdi(w){
+                if (w>=0 & w<=0.2){
+                    return Icon_green;
+                }else if (w>0.2 & w<=0.4){
+                    return Icon_orange;
+                }else{
+                    return Icon_red;
                 }
             }
             
@@ -795,18 +805,32 @@ and open the template in the editor.
 //                link_to_wts = document.getElementById('tws_scenario_mac');
                 if (checkBox.checked === true){
 //                    link_to_wts.style.display = 'block'; 
-//                    var elem_ov = document.createElement("div");
-//                    elem_ov.setAttribute('id', 'tws_legend');
-//                    elem_ov.innerHTML = (
-//                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
-//                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
-//                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tws_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
 //                            '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
-//                            );
-//                    document.getElementById("legend").appendChild(elem_ov);
-//            
-//                    var max_row = wsdi_rank_Macquarie.length;
-//                    legend = L.control({position: 'bottomright'});
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
+            
+                    var max_row = wsdi_rank_Macquarie.length;
+                    legend = L.control({position: 'bottomright'});
+                    legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' + '[0, 0.2]');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +'(0.2, 0.4]');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +'(0.4, 1]');
+                                div.innerHTML = '<h4>Index Rank (WSDI)</h4>' + labels.join('<br>');
+                                return div;
+                    };
+                    
 //                    if (max_row>=3 & (max_row%3)===0){
 //                        legend.onAdd = function (map) {
 //                                var div = L.DomUtil.create('div', 'info legend'),
@@ -885,45 +909,45 @@ and open the template in the editor.
 //                        }; 
 //                    
 //                    }
-//                    legend.addTo(map);
-//                            
-//                    <?php if(!empty($town_water_supply)){?>;
-//                        WTC_number_Macquarie = 0;
-//                        WTC_population_Macquarie = 0;
-//                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
-//                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";                           
-//                            if (cat === 'Macquarie'){
-//                                WTC_number_Macquarie = WTC_number_Macquarie + 1;                               
-//                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
-//                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
-//                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
-//                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
-//                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
-//                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
-//                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
-//                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
-//                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
-//                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Macquarie, location)}).addTo(map)
-//                                .bindPopup('Location: ' + location + '<br/>'
-//                                + 'Town Served: ' + town_served + '<br/>'
-//                                + 'Postcode: ' + pos + '<br/>'
-//                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-//                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
-//                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
-//                                + 'Population Served: ' + Math.round(popu));
-//                                featureWTSCollection.push(M);
-//                                WTC_population_Macquarie = WTC_population_Macquarie + Math.round(popu);
-//                            }
-//                        <?php }?>;    
-//                    <?php }?>; 
+                    legend.addTo(map);
+                            
+                    <?php if(!empty($town_water_supply)){?>;
+                        WTC_number_Macquarie = 0;
+                        WTC_population_Macquarie = 0;
+                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";                           
+                            if (cat === 'Macquarie'){
+                                WTC_number_Macquarie = WTC_number_Macquarie + 1;                               
+                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+                                var M = L.marker([lat, lon], {icon: icon_wsdi(WSDI/100)}).addTo(map)
+                                .bindPopup('Location: ' + location + '<br/>'
+                                + 'Town Served: ' + town_served + '<br/>'
+                                + 'Postcode: ' + pos + '<br/>'
+                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
+                                + 'Population Served: ' + Math.round(popu));
+                                featureWTSCollection.push(M);
+                                WTC_population_Macquarie = WTC_population_Macquarie + Math.round(popu);
+                            }
+                        <?php }?>;    
+                    <?php }?>; 
 
                 }
                 if (checkBox.checked === false){
 //                    link_to_wts.style.display = 'none'; 
-//                    removeLayer(featureWTSCollection);
-//                    map.removeControl(legend);
-//                    var elementToBeRemoved = document.getElementById('tws_legend');
-//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                    removeLayer(featureWTSCollection);
+                    map.removeControl(legend);
+                    var elementToBeRemoved = document.getElementById('tws_legend');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }
             }
             
@@ -937,7 +961,6 @@ and open the template in the editor.
                             '<img src="../../lib/leaflet/images/waste_water_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (high <small>WWQI</small>)<br>'+
                             '<img src="../../lib/leaflet/images/waste_water_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (medium <small>WWQI</small>)<br>'+
                             '<img src="../../lib/leaflet/images/waste_water_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Waste water treatment centre (low <small>WWQI</small>)<div style="height:2px;"><br></div>'
-        //                    '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
                             );
                     document.getElementById("legend").appendChild(elem_ov);
                     
@@ -3241,18 +3264,31 @@ and open the template in the editor.
 //                link_to_wts_man = document.getElementById('tws_scenario_man');
                 if (checkBox.checked === true){
 //                    link_to_wts_man.style.display = "block";
-//                    var elem_ov = document.createElement("div");
-//                    elem_ov.setAttribute('id', 'tw_legend');
-//                    elem_ov.innerHTML = (
-//                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
-//                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
-//                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
-//                            '<img src="../../lib/leaflet/images/power_generation_icon.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Power generator<br>'
-//                            );
-//                    document.getElementById("legend").appendChild(elem_ov);
-//                    
-//                    var max_row=wsdi_rank_Manning.length;
-//                    legend = L.control({position: 'bottomright'});
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tw_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
+                    
+                    var max_row=wsdi_rank_Manning.length;
+                    legend = L.control({position: 'bottomright'});
+                    legend.onAdd = function (map) {
+                                var div = L.DomUtil.create('div', 'info legend'),
+                                labels = [],
+                                from, to;
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"> ' + '[0, 0.2]');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +'(0.2, 0.4]');
+                                labels.push(
+                                                '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +'(0.4, 1]');
+                                div.innerHTML = '<h4>Index Rank (WSDI)</h4>' + labels.join('<br>');
+                                return div;
+                    };
+                    
 //                    if (max_row>=3 & (max_row%3)===0){
 //                        legend.onAdd = function (map) {
 //                                var div = L.DomUtil.create('div', 'info legend'),
@@ -3331,44 +3367,44 @@ and open the template in the editor.
 //                        }; 
 //                    
 //                    }
-//                    legend.addTo(map);
-//                    
-//                    <?php if(!empty($town_water_supply)){?>;
-//                        WTC_number_Manning = 0;
-//                        WTC_population_Manning = 0;
-//                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
-//                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";
-//                            if (cat === 'Manning'){
-//                                WTC_number_Manning = WTC_number_Manning + 1;
-//                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
-//                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
-//                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
-//                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
-//                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
-//                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
-//                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
-//                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
-//                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
-//                                var M = L.marker([lat, lon], {icon: icon_wsdi(wsdi_rank_Manning, location)}).addTo(map)
-//                                .bindPopup('Location: ' + location + '<br/>'
-//                                + 'Town Served: ' + town_served + '<br/>'
-//                                + 'Postcode: ' + pos + '<br/>'
-//                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-//                                + 'Health Based Target Index: ' + HBT + '<br/>'
-//                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
-//                                + 'Population Served: ' + Math.round(popu));
-//                                featureTWSCollection.push(M);
-//                                WTC_population_Manning = WTC_population_Manning + Math.round(popu);
-//                            }
-//                        <?php }?>;    
-//                    <?php }?>; 
+                    legend.addTo(map);
+                    
+                    <?php if(!empty($town_water_supply)){?>;
+                        WTC_number_Manning = 0;
+                        WTC_population_Manning = 0;
+                        <?php for ($x=0; $x<count($town_water_supply); $x++) {?>
+                            var cat = "<?php echo $town_water_supply[$x]["catchment"]; ?>";
+                            if (cat === 'Manning'){
+                                WTC_number_Manning = WTC_number_Manning + 1;
+                                var location ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                                var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+                                var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+                                var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+                                var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+                                var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+                                var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+                                var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                                var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+                                var M = L.marker([lat, lon], {icon: icon_wsdi(WSDI)}).addTo(map)
+                                .bindPopup('Location: ' + location + '<br/>'
+                                + 'Town Served: ' + town_served + '<br/>'
+                                + 'Postcode: ' + pos + '<br/>'
+                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+                                + 'Health Based Target Index: ' + HBT + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Population Served: ' + Math.round(popu));
+                                featureTWSCollection.push(M);
+                                WTC_population_Manning = WTC_population_Manning + Math.round(popu);
+                            }
+                        <?php }?>;    
+                    <?php }?>; 
                 }
                 if (checkBox.checked === false){
 //                    link_to_wts_man.style.display = "none";
-//                    removeLayer(featureTWSCollection);
-//                    map.removeControl(legend);
-//                    var elementToBeRemoved = document.getElementById('tw_legend');
-//                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                    removeLayer(featureTWSCollection);
+                    map.removeControl(legend);
+                    var elementToBeRemoved = document.getElementById('tw_legend');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
                 }
             }
             

@@ -2400,7 +2400,7 @@ and open the template in the editor.
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: getRandomColor(), weight: 1.0, fillOpacity: 0.3};
+                            return { color: 'yellow', weight: 1.0, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     displayed_gis_layer_groundwater.push(Reg);  
@@ -3617,7 +3617,7 @@ and open the template in the editor.
                     
                     var Reg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
-                            return { color: getRandomColor(), weight: 1.5, fillOpacity: 0.3};
+                            return { color: 'yellow', weight: 1.5, fillOpacity: 0.3};
                         }
                     }).addTo(map);
                     displayed_gis_layer_groundwater.push(Reg); 

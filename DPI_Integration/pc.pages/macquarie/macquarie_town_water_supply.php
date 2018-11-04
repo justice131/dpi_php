@@ -93,7 +93,7 @@ and open the template in the editor.
                 document.getElementById("parrallel_coordinate").style.height = pageHeight + "px";//设置map高度
                 document.getElementById("grid").style.height = pageHeight + "px";//设置map高度
             }
-            
+                               
             /*Functions section begining*/            
             function showIt(d) {
                 return d > 0 ? 0.75 : 0;
@@ -144,51 +144,14 @@ and open the template in the editor.
                     return mask + temp + decimal; 
             } 
             
-            function icon_wsdi(Fui_macquarie, feature){          
-                function compareSecondColumn(a, b) {
-                    if (a[1] === b[1]) {
-                        return 0;
-                    }
-                    else {
-                        return (a[1] > b[1]) ? -1 : 1;
-                    }
-                }
-                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
-                var e = Fui_macquarie.length;
-                if(e>=3 & (e%3) === 0){
-                    var i = e/3; 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
-                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
-                }else if(e>3 & (e%3) === 1){
-                    var i = Math.floor(e/3); 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
-                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
-                }else if(e>3 & (e%3) === 2){
-                    var i = Math.floor(e/3); 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
-                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
-                }else if (e===2){
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
-                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
-                }else if (e===1){
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
-                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
-                }
-              
-                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+            function icon_wsdi(w){
+                if (w>=0 & w<=0.2){
+                    return Icon_green;
+                }else if (w>0.2 & w<=0.4){
+                    return Icon_orange;
+                }else{
                     return Icon_red;
                 }
-                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_orange;
-                }
-                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_green;
-                }              
             }
             
             var Icon_red = L.icon({
@@ -662,23 +625,23 @@ and open the template in the editor.
                             var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
                             var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
                             hbt_rank_Macquarie.push([loca, HBT]);
-                                var M_1 = L.marker([lat, lon], {icon: icon_wsdi(hbt_rank_Macquarie, loca)}).addTo(map1)
+                                var M_1 = L.marker([lat, lon], {icon: icon_wsdi(WSDI/100)}).addTo(map1)
                                 .bindPopup('Location: ' + loca + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
                                 + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-                                + 'Health Based Target Index: ' + HBT + '<br/>'
-                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
                                 + 'Population Served: ' + Math.round(popu));
                                 tws_marker_collection.push(M_1); 
                                 
-                                var M_2 = L.marker([lat, lon], {icon: icon_wsdi(hbt_rank_Macquarie, loca)}).addTo(map2)
+                                var M_2 = L.marker([lat, lon], {icon: icon_wsdi(WSDI/100)}).addTo(map2)
                                 .bindPopup('Location: ' + loca + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
                                 + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-                                + 'Health Based Target Index: ' + HBT + '<br/>'
-                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
                                 + 'Population Served: ' + Math.round(popu));
                                 tws_marker_collection.push(M_2);                     
                     <?php }?>;    

@@ -39,6 +39,22 @@
                     return;
                 }
                 document.getElementById("iframe").src = "../" + catchment + "/"+ catchment + "_" + module + ".php";
+                
+                var elementToBeRemoved = document.getElementById('tw_legend');
+                if (!!elementToBeRemoved){
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                }
+                
+                if(cm=="MacquarieBogan" && module==="town_water_supply"){
+                    var elem_ov = document.createElement("div");
+                    elem_ov.setAttribute('id', 'tw_legend');
+                    elem_ov.innerHTML = (
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+                            );
+                    document.getElementById("legend").appendChild(elem_ov);
+                }
             }
         </script>
     </head>

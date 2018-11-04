@@ -3390,8 +3390,8 @@ and open the template in the editor.
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
                                 + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-                                + 'Health Based Target Index: ' + HBT + '<br/>'
-                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
                                 + 'Population Served: ' + Math.round(popu));
                                 featureTWSCollection.push(M);
                                 WTC_population_Manning = WTC_population_Manning + Math.round(popu);

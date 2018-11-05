@@ -9,6 +9,7 @@ and open the template in the editor.
         <title>Irrigation Data Insight</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
         <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>
         <script type="text/javascript" src="../../common.scripts/settings.js"></script>
     </head>
@@ -18,19 +19,19 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div>
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Macquarie Catchment--Opportunity for irrigation</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Macquarie Catchment--Opportunity of mining</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">
                         <div id="map1"></div>
-                    </div>     
+                    </div>
                 </div>
             </div>
             <div class="box-container" style="width:17%;">
                 <div class="box">
                     <div class="box-title">
                         <div>
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Macquarie Catchment--Risk to agriculture due to variation in supply availability</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Macquarie Catchment--Risk to Mining</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">
@@ -136,32 +137,20 @@ and open the template in the editor.
             var layer, overlay;
             var lga = new Array();
             var max_row=0;//Get the row number of ranking file
-            d3.csv("../../pc.csv/irrigation_macquaire.csv", function (data) {
+            d3.csv("../../pc.csv/mining_macquaire.csv", function (data) {
                 _.each(data, function (d, i) {
                 max_row++;
                 });
             });
-            
             function getColorScalar(d) {
-                if(d >= 0 && d <= 1){
-                return myCols[2];
-                }else if(d > 1 && d <= 10){
-                return myCols[1];
+                if(d<=Math.floor(max_row/3)){
+                    return myCols[0];
+                }else if(d<=Math.ceil(2*max_row/3)){
+                    return myCols[1];
                 }else{
-                return myCols[0];
+                    return myCols[2];
                 }
             }
-            
-            function getColorScalar_1(d) {
-                if(d >= 0 && d <= 1){
-                return myCols[0];
-                }else if(d > 1 && d <= 10){
-                return myCols[1];
-                }else{
-                return myCols[2];
-                }
-            }
-            
             /*overall variables end*/
            
            /*Map section*/
@@ -194,29 +183,73 @@ and open the template in the editor.
             };
             info1.update = function (props) {
                 this._div.innerHTML = (props?
-                        '<h4>' + props.WATER_SOUR + '</h4>'+
-                        'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
-                        'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                        'Irrigation Value: '+ '<b>$'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+'M' + '</b>'+'<br />'+
-//                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                        'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-//                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                        'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) +' ML/year'+ '</b>' +'<br />'+
+                '<h4>' + props.WATER_SOUR + '</h4>'+
+//                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
+//                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+//                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
+                        'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+//                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                        'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+//                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
 //                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-//                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+'</b>' +'<br />'+
-                        'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
+//                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
+//                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
 //                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
 //                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
 //                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                        'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
+//                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                        'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
+//                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                        'Irrigation Opportunity Index: ' + '<b>'+ Math.round(props.irrigation_opportunity_index*100)/100 + '</b>'+'<br />'
+                        'Opportunity of mining : ' + '<b>'+ props.mining_opportunity + '</b>'+'<br />'
                 : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info1.addTo(map1);
+            
+            // control that shows state info on hover
+            info3 = L.control({position: 'topright'});
+            info3.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            info3.update = function (props) {
+                if(props != undefined){
+                    var trace = {
+                        y: props.mining_opportunity_sequence,
+                        marker: {color: '#3D9970'},
+                        name: 'Mining Opportunity',
+                        type: 'box'
+                    };
+                    this._div.innerHTML = (props?
+                        '<div id=\"myDiv1\" style=\"height: 300px;width:250px;\"></div>'
+                    : '<b>'+ 'Click a Water Source'+'</b>');
+                    layout = {
+                            yaxis: {
+                                autorange: true,
+                                showgrid: true,
+                                zeroline: true,
+                                dtick: 5,
+                                gridcolor: 'rgb(255, 255, 255)',
+                                gridwidth: 1,
+                                zerolinecolor: 'rgb(255, 255, 255)',
+                                zerolinewidth: 2
+                            },
+                            margin: {
+                                 l: 20,
+                                r: 10,
+                                b: 40,
+                                t: 50
+                            },
+                            paper_bgcolor: 'rgb(243, 243, 243)',
+                            plot_bgcolor: 'rgb(243, 243, 243)',
+                            showlegend: false
+                    };
+                    Plotly.newPlot('myDiv1', [trace], layout);
+                }
+            };
+            info3.addTo(map1);
             
             //map2
             var map2 = L.map('map2',{zoomControl: false}).setView([-29.0, 134.7], 4.4);
@@ -235,7 +268,7 @@ and open the template in the editor.
                     layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.1});
                 }
             }).addTo(map2);
-            map2.setView([-31.8, 148.5], 8);     
+            map2.setView([-31.8, 148.5], 8);
             
             // control that shows state info on hover
             info2 = L.control({position: 'topright'});
@@ -246,58 +279,108 @@ and open the template in the editor.
             };
             info2.update = function (props) {
                 this._div.innerHTML = (props?
-                        '<h4>' + props.WATER_SOUR + '</h4>'+
+                '<h4>' + props.WATER_SOUR + '</h4>'+
 //                                            'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
 //                                            'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
 //                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
-//                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                        'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
 //                                            'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-//                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
+                        'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+//                                            'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + '</b>' +'<br />'+
 //                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-//                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen)+'% mg/L' + '</b>' +'<br />'+
-                                'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
+//                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
+//                                            'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
 //                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
 //                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                'Days Below Mean Flow: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+//                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
 //                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
 //                                            'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                'Risk to Argiculture Index: ' + '<b>'+ Math.round(props.agricluture_risk_index*100)/100 + '</b>'+'<br />'
-                        : '<b>'+ 'Click a Water Source'+'</b>');
+                        'Risk to Mining : ' + '<b>'+ props.mining_risk + '</b>'+'<br />'
+                : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info2.addTo(map2);
+            
+            // control that shows state info on hover
+            info4 = L.control({position: 'topright'});
+            info4.onAdd = function (map) {
+                this._div = L.DomUtil.create('div', 'info');
+                this.update();
+                return this._div;
+            };
+            info4.update = function (props) {
+                if(props != undefined){
+                    var trace = {
+                        y: props.mining_risk_sequence,
+                        marker: {color: '#3D9970'},
+                        name: 'Mining Risk',
+                        type: 'box'
+                    };
+                    this._div.innerHTML = (props?
+                        '<div id=\"myDiv2\" style=\"height: 300px;width:250px;\"></div>'
+                    : '<b>'+ 'Click a Water Source'+'</b>');
+                    layout = {
+                            yaxis: {
+                                autorange: true,
+                                showgrid: true,
+                                zeroline: true,
+                                dtick: 5,
+                                gridcolor: 'rgb(255, 255, 255)',
+                                gridwidth: 1,
+                                zerolinecolor: 'rgb(255, 255, 255)',
+                                zerolinewidth: 2
+                            },
+                            margin: {
+                                l: 20,
+                                r: 10,
+                                b: 40,
+                                t: 50
+                            },
+                            paper_bgcolor: 'rgb(243, 243, 243)',
+                            plot_bgcolor: 'rgb(243, 243, 243)',
+                            showlegend: false
+                    };
+                    Plotly.newPlot('myDiv2', [trace], layout);
+                }
+            };
+            info4.addTo(map2);
+            
             
             var lgaDict = {};
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
-                    lgas.features[j].properties.irrigated_area=0;
-                    lgas.features[j].properties.population=0;
-                    lgas.features[j].properties.irrigation_value=0;
-                    lgas.features[j].properties.mining_value=0;
-                    lgas.features[j].properties.employment_irrigation=0;
-                    lgas.features[j].properties.employment_mining=0;
-                    lgas.features[j].properties.total_entitlement=0;	
-                    lgas.features[j].properties.agricultural_water_use=0;
-                    lgas.features[j].properties.mining_water_use=0;
-                    lgas.features[j].properties.wetland_area=0;
-                    lgas.features[j].properties.dissolved_oxygen=0;
-                    lgas.features[j].properties.mean_flow=0;
-                    lgas.features[j].properties.variation=0;
-                    lgas.features[j].properties.median=0;
-                    lgas.features[j].properties.days_below_mean=0;
-                    lgas.features[j].properties.DSI=0;
-                    lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
-                    lgas.features[j].properties.time_below_requirement=0;
-                    lgas.features[j].properties.FUI=0;
-                    lgas.features[j].properties.water_scarcity=0;
-                    lgas.features[j].properties.irrigation_opportunity_index=0;
-                    lgas.features[j].properties.opportunity_index_rank=0;
-                    lgas.features[j].properties.agricluture_risk_index=0;
-                    lgas.features[j].properties.risk_index_rank=0;
-                    lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                lgas.features[j].properties.irrigated_area=0;
+                lgas.features[j].properties.population=0;
+                lgas.features[j].properties.irrigation_value=0;
+                lgas.features[j].properties.mining_value=0;
+                lgas.features[j].properties.employment_irrigation=0;
+                lgas.features[j].properties.employment_mining=0;
+                lgas.features[j].properties.total_entitlement=0;
+                lgas.features[j].properties.agricultural_water_use=0;
+                lgas.features[j].properties.mining_water_use=0;
+                lgas.features[j].properties.wetland_area=0;
+                lgas.features[j].properties.dissolved_oxygen=0;
+                lgas.features[j].properties.mean_flow=0;
+                lgas.features[j].properties.variation=0;
+                lgas.features[j].properties.median=0;
+                lgas.features[j].properties.days_below_mean=0;
+                lgas.features[j].properties.DSI=0;
+                lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
+                lgas.features[j].properties.time_below_requirement=0;
+                lgas.features[j].properties.FUI=0;
+                lgas.features[j].properties.water_scarcity=0;
+                lgas.features[j].properties.risk_mining_productivity_index=0;
+                lgas.features[j].properties.MiningRiskProductivityIndexRank=0;
+                lgas.features[j].properties.agriculture_risk=0;
+                lgas.features[j].properties.mining_risk=0;
+                lgas.features[j].properties.MiningRiskIndexRank=0;
+                lgas.features[j].properties.agriculture_opportunity=0;
+                lgas.features[j].properties.mining_opportunity=0;
+                lgas.features[j].properties.MiningOpportunityIndexRank=0;
+                lgas.features[j].properties.environment_benefit=0;
+                lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
             }
 
             // Create parallel Coordinate
@@ -312,11 +395,11 @@ and open the template in the editor.
                         right: 1,
                         bottom: 15
                 })
-                .color(function (d) {return getColorScalar(d[keys[23]]); });
+                .color(function (d) {return getColorScalar(d.MiningOpportunityIndexRank); });
 
             //Read data for parallel coordinate
-            d3.csv("../../pc.csv/irrigation_macquaire.csv", function (data) {
-                keys = Object.keys(data[0]);
+            d3.csv("../../pc.csv/mining_macquaire.csv", function (data) {
+                var keys = Object.keys(data[0]);
                 _.each(data, function (d, i) {
                     d.index = d.index || i; //unique id
                     var water_source_name = d[keys[0]];
@@ -340,10 +423,15 @@ and open the template in the editor.
                     lgaDict[water_source_name].properties.time_below_requirement=d[keys[18]];
                     lgaDict[water_source_name].properties.FUI=d[keys[19]];
                     lgaDict[water_source_name].properties.water_scarcity=d[keys[20]];
-                    lgaDict[water_source_name].properties.irrigation_opportunity_index=d[keys[21]];
-                    lgaDict[water_source_name].properties.opportunity_index_rank=d[keys[22]];
-                    lgaDict[water_source_name].properties.agricluture_risk_index=d[keys[23]];
-                    lgaDict[water_source_name].properties.risk_index_rank=d[keys[24]];
+                    lgaDict[water_source_name].properties.risk_mining_productivity_index=d[keys[21]];
+                    lgaDict[water_source_name].properties.MiningRiskProductivityIndexRank=d[keys[22]];
+                    lgaDict[water_source_name].properties.agriculture_risk=d[keys[23]];
+                    lgaDict[water_source_name].properties.mining_risk=d[keys[24]];
+                    lgaDict[water_source_name].properties.MiningRiskIndexRank=d[keys[25]];
+                    lgaDict[water_source_name].properties.agriculture_opportunity=d[keys[26]];
+                    lgaDict[water_source_name].properties.mining_opportunity=d[keys[27]];
+                    lgaDict[water_source_name].properties.MiningOpportunityIndexRank=d[keys[28]];
+                    lgaDict[water_source_name].properties.environment_benefit=d[keys[29]];
                     lga.push(water_source_name);
                 });
                 
@@ -355,6 +443,7 @@ and open the template in the editor.
                 function zoomToFeature1(e) {
                     var layer = e.target;
                     info1.update(layer.feature.properties);
+                    info3.update(layer.feature.properties);
                 }
                 function onEachFeature1(feature, layer) {
                     layer.on({
@@ -369,8 +458,8 @@ and open the template in the editor.
                         opacity: showIt(1),
                         color: 'white',
                         dashArray: '3',
-                        fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                        fillColor: getColorScalar_1(feature.properties.irrigation_opportunity_index)
+                        fillOpacity: 0.8 * showIt(feature.properties.MiningRiskProductivityIndexRank),
+                        fillColor: getColorScalar(feature.properties.MiningOpportunityIndexRank)
                     };
                 }
                 geojson1 = L.geoJson(lgas, {
@@ -384,6 +473,7 @@ and open the template in the editor.
                 function zoomToFeature2(e) {
                     var layer = e.target;
                     info2.update(layer.feature.properties);
+                    info4.update(layer.feature.properties);
                 }
                 function onEachFeature2(feature, layer) {
                     layer.on({
@@ -398,8 +488,8 @@ and open the template in the editor.
                         opacity: showIt(1),
                         color: 'white',
                         dashArray: '3',
-                        fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                        fillColor: getColorScalar(feature.properties.agricluture_risk_index)
+                        fillOpacity: 0.8 * showIt(feature.properties.MiningRiskProductivityIndexRank),
+                        fillColor: getColorScalar(feature.properties.MiningRiskIndexRank)
                     };
                 }
                 geojson2 = L.geoJson(lgas, {
@@ -419,7 +509,6 @@ and open the template in the editor.
                         });
                     },
                 }).addTo(map1);
-                
                 geojsonLabels2 = L.geoJson(lgaCentroids, {
                         pointToLayer: function (feature, latlng) {
                                 return  L.marker(latlng, {
@@ -439,15 +528,15 @@ and open the template in the editor.
                     labels = [],
                     from, to;
                     labels.push(
-                                    '<i style="background:' + myCols[0] + '"></i> ' + '[0, 1]');
-//                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    '<i style="background:' + myCols[0] + '"></i> ' +
+                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[1] + '"></i> ' + '(1, 10]');
-//                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    '<i style="background:' + myCols[1] + '"></i> ' +
+                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[2] + '"></i> ' + '(10, ∞)');
-//                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Index Rank (Opportunity'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
+                                    '<i style="background:' + myCols[2] + '"></i> ' +
+                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
@@ -458,15 +547,15 @@ and open the template in the editor.
                         labels = [],
                         from, to;
                         labels.push(
-                                '<i style="background:' + myCols[2] + '"></i> ' + '[0, 1]');
-//                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                '<i style="background:' + myCols[0] + '"></i> ' +
+                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[1] + '"></i> ' + '(1, 10]');
-//                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                '<i style="background:' + myCols[1] + '"></i> ' +
+                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[0] + '"></i> ' + '(10, ∞)');
-//                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank (Risk'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
+                                '<i style="background:' + myCols[2] + '"></i> ' +
+                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                        div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
                         return div;
                 };
                 legend2.addTo(map2);
@@ -556,16 +645,16 @@ and open the template in the editor.
                 parcoords.on("brush", function (d) {
                         gridUpdate(d);
                         //update map1
-                        lgas.features.map(function (d) {d.properties.FUI = -1; });
+                        lgas.features.map(function (d) {d.properties.MiningRiskProductivityIndexRank = -1; });
                         geojsonLabels1.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                         _.each(d, function (k, i) {
-                                lgaDict[k[keys[0]]].properties.FUI = k.FUI;
+                                lgaDict[k[keys[0]]].properties.MiningRiskProductivityIndexRank = k.MiningRiskProductivityIndexRank;
                         });
                         //update map2
-                        lgas.features.map(function (d) {d.properties.FUI = -1; });
+                        lgas.features.map(function (d) {d.properties.MiningRiskProductivityIndexRank = -1; });
                         geojsonLabels2.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                         _.each(d, function (k, i) {
-                                lgaDict[k[keys[0]]].properties.FUI = k.FUI;
+                                lgaDict[k[keys[0]]].properties.MiningRiskProductivityIndexRank = k.MiningRiskProductivityIndexRank;
                         });
                         refreshMap(lga);
                 });
@@ -577,8 +666,8 @@ and open the template in the editor.
                         geojson1.resetStyle(d);
                         geojsonLabels1.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
-                                if (d.feature.properties.FUI > 0) {
-                                        z._icon.innerHTML=Math.round(d.feature.properties.irrigation_opportunity_index*100)/100;
+                                if (d.feature.properties.MiningRiskProductivityIndexRank > 0) {
+                                        z._icon.innerHTML=d.feature.properties.mining_opportunity;
                                 } else {
                                         z._icon.innerHTML = "";
                                 }
@@ -590,8 +679,8 @@ and open the template in the editor.
                         geojson2.resetStyle(d);
                         geojsonLabels2.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
-                                if (d.feature.properties.FUI > 0) {
-                                     z._icon.innerHTML=Math.round(d.feature.properties.agricluture_risk_index*100)/100;
+                                if (d.feature.properties.MiningRiskProductivityIndexRank > 0) {
+                                     z._icon.innerHTML=d.feature.properties.mining_risk;
                                 } else {
                                     z._icon.innerHTML = "";
                                 }
@@ -600,6 +689,32 @@ and open the template in the editor.
                     });
                 }
             });
+            d3.csv("../../pc.csv/mining_risk_history_macquaire.csv", function (data) {
+                var keys = Object.keys(data[0]);
+                _.each(data, function (d, i) {
+                    d.index = d.index || i; //unique id
+                    var water_source_name = d["Water Sources"];                    
+                    var irs = new Array(119);
+                    for(var i=0;i<119;i++){
+                        irs[i] = d[keys[i+1]];
+                    }
+                    lgaDict[water_source_name].properties.mining_risk_sequence=irs;
+                });
+            });
+                
+            d3.csv("../../pc.csv/mining_opportunity_history_macquaire.csv", function (data) {
+                var keys = Object.keys(data[0]);
+                _.each(data, function (d, i) {
+                    d.index = d.index || i; //unique id
+                    var water_source_name = d["Water Sources"];
+                    var ios = new Array(119);
+                    for(var i=0;i<119;i++){
+                        ios[i] = d[keys[i+1]];
+                    }
+                    lgaDict[water_source_name].properties.mining_opportunity_sequence=ios;
+                });
+            });
+            
             setTimeout(function(){ map1.invalidateSize()}, 500);
             setTimeout(function(){ map2.invalidateSize()}, 500);
         </script>

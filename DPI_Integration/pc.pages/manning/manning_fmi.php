@@ -19,7 +19,7 @@ and open the template in the editor.
                     <div class="box">
                         <div class="box-title">
                             <div id="s0_title">
-                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Manning Catchment--Flood risk (100 years return period)</span>
+                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Manning Catchment--100 years flood risk</span>
                             </div>
                         </div>
                         <div class="box-content">

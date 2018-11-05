@@ -18,7 +18,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div id="s0_title">
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Macquarie Catchment--Water related health risk due to poor ecosystem health (measured by Dissolved Oxygen level)</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Macquarie Catchment--Water related health risk due to poor ecosystem health (measured by Dissolved Oxygen level)</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">

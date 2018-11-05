@@ -44,11 +44,11 @@ and open the template in the editor.
         <script type="text/javascript" src="lib/Leaflet.markercluster-1.3.0/dist/leaflet.markercluster-src.js"></script>
         <link rel="stylesheet" href="lib/Leaflet.markercluster-1.3.0/dist/MarkerCluster.Default.css">
         <link rel="stylesheet" href="lib/Leaflet.markercluster-1.3.0/dist/MarkerCluster.css">
-        
+
         <!--Controlsearch-->
         <script type="text/javascript" src="lib/leaflet-search-master/src/leaflet-search.js"></script>
         <link rel="stylesheet" href="lib/leaflet-search-master/src/leaflet-search.css" />
-        
+
         <!--Template-->
         <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="css/navigator_style.css" rel="stylesheet">

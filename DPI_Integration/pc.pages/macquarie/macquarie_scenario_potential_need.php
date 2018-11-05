@@ -18,7 +18,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div id="s0_title">
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Macquarie Catchment--Potential need for new infrastructure</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Macquarie Catchment--Potential need for new infrastructure</span>
                         </div>
                     </div>
                     <div class="box-content" role="tabpanel" style="padding: 10px 10px 10px 20px;">

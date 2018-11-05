@@ -344,7 +344,7 @@ and open the template in the editor.
                             labels.push(
                                             '<i style="background:' + myCols[0] + '"></i> ' + '(50, ∞)');
 //                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                            div.innerHTML = '<h4>Index Rank（Benefit' + '</br>' + 'From Environment)</h4>' + labels.join('<br>');
+                            div.innerHTML = '<h4>Benefit From Environment</h4>' + labels.join('<br>');
                             return div;
                     };
                     legend.addTo(map);

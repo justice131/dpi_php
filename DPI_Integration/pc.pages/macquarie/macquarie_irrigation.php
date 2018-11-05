@@ -447,7 +447,7 @@ and open the template in the editor.
                     labels.push(
                                     '<i style="background:' + myCols[2] + '"></i> ' + '(10, ∞)');
 //                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Index Rank (Opportunity'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
+                    div.innerHTML = '<h4>Opportunity to Agriculture)'+'</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
@@ -466,7 +466,7 @@ and open the template in the editor.
                         labels.push(
                                 '<i style="background:' + myCols[0] + '"></i> ' + '(10, ∞)');
 //                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank (Risk'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
+                        div.innerHTML = '<h4>Risk to Agriculture)'+'</h4>' + labels.join('<br>');
                         return div;
                 };
                 legend2.addTo(map2);

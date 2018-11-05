@@ -253,7 +253,7 @@ and open the template in the editor.
                         'WSDI: '+ '<b>' + props.WSDI + '</b>' + '<br />'+
                         'Forecast Drinking Water Quality Deficiency (HBT) Index (%): '+ '<b>' + props.HBT + '</b>' + '<br />'+
                         'Risk: '+ '<b>$' + Math.round(props.risk*10)/10 + 'M</b>' + '<br />'+
-                        'Opportunity : '+ '<b>' + Math.round(props.opportunity*10)/10 + '</b>' + '<br />'
+                        'Economic Opportunity : '+ '<b>$' + Math.round(props.opportunity*10)/10 + 'M</b>' + '<br />'
                 : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info1.addTo(map1);
@@ -296,7 +296,7 @@ and open the template in the editor.
                         'WSDI: '+ '<b>' + props.WSDI + '</b>' + '<br />'+
                         'Forecast Drinking Water Quality Deficiency (HBT) Index (%): '+ '<b>' + props.HBT + '</b>' + '<br />'+
                         'Risk: '+ '<b>$' + Math.round(props.risk*10)/10 + 'M</b>' + '<br />'+
-                        'Opportunity : '+ '<b>' + Math.round(props.opportunity*10)/10 + '</b>' + '<br />'
+                        'Economic Opportunity : '+ '<b>$' + Math.round(props.opportunity*10)/10 + 'M</b>' + '<br />'
                         : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info2.addTo(map2);
@@ -445,15 +445,15 @@ and open the template in the editor.
                     labels = [],
                     from, to;
                     labels.push(
-                                    '<i style="background:' + myCols[0] + '"></i> ' + '[0, 10]');
+                                    '<i style="background:' + myCols[0] + '"></i> ' + 'High Opportunity [0, 10]');
 //                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[1] + '"></i> ' + '(10, 100]');
+                                    '<i style="background:' + myCols[1] + '"></i> ' + 'Medium Opportunity (10, 100]');
 //                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[2] + '"></i> ' + '(100, ∞)');
+                                    '<i style="background:' + myCols[2] + '"></i> ' + 'Low Opportunity (100, ∞)');
 //                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Index Rank (Opportunity)</h4>' + labels.join('<br>');
+                    div.innerHTML = '<h4>Economic Opportunity</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
@@ -464,15 +464,15 @@ and open the template in the editor.
                         labels = [],
                         from, to;
                         labels.push(
-                                '<i style="background:' + myCols[2] + '"></i> ' + '[0, 10]');
+                                '<i style="background:' + myCols[2] + '"></i> ' + 'High Risk [0, 10]');
 //                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[1] + '"></i> ' + '(10, 100]');
+                                '<i style="background:' + myCols[1] + '"></i> ' + 'Medium Risk (10, 100]');
 //                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[0] + '"></i> ' + '(100, ∞)');
+                                '<i style="background:' + myCols[0] + '"></i> ' + 'Low Risk (100, ∞)');
 //                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank (Risk)</h4>' + labels.join('<br>');
+                        div.innerHTML = '<h4>Risk</h4>' + labels.join('<br>');
                         return div;
                 };
                 legend2.addTo(map2);

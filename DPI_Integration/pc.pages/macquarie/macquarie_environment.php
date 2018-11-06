@@ -246,7 +246,6 @@ and open the template in the editor.
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/environment_macquaire.csv", function (data) {
-               //  keys = Object.keys(data[0]);
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d["Water Source"];

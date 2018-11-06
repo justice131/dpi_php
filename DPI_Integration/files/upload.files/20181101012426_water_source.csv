@@ -1,0 +1,47 @@
+catchment,water_source,longterm_extraction_limit,unreg_entitlement,mean_flow,FUI,DSI,irrigable_area,wetland_area
+Macquarie,Backwater Boggy Cowal Water Source,4531,2627,145.9,0.106001806,0,12692.6,2646.6
+Macquarie,Bell River Water Source,8115,8136,304.96,0.115176712,0.628072763,509.9,0
+Macquarie,Bulbodney Grahway Creek Water Source,14038,7922,149.83,0.291254142,0,0,1076.5
+Macquarie,Burrendong Dam Tributaries Water Source,873,577,333.54,0.00489353,1,0,6473.5
+Macquarie,Campbells River Water Source,2356,2101,228.3,0.033333333,1,159.8,144.7
+Macquarie,Coolbaggie Creek Water Source,507,466,68.41,0.04010327,0,877.2,184.6
+Macquarie,Cooyal Wialdra Creek Water Source,989,741,77.64,0.056255694,0.492577598,91.3,4.7
+Macquarie,Ewenmar Creek Water Source,65177,1289.5,90.98,0.083438157,0,6160.5,13939.9
+Macquarie,Fish River Water Source,18374.5,18071,257.24,0.236553087,1,18.3,298.7
+Macquarie,Goolma Creek Water Source,71,0,10.09,0,1,0,1412.7
+Macquarie,Lawsons Creek Water Source,1632,1496,47.35,0.193312749,1,128.1,743.3
+Macquarie,Little River Water Source,2621,2270,97.47,0.101906139,0.361140969,636,0
+Macquarie,Lower Bogan River Water Source,44021,41277,156.05,1,0,1610.3,245215.4
+Macquarie,Lower Macquarie River Water Source,51993.5,48616,231.64,1,0.161071191,4395,237878.2
+Macquarie,Lower Talbragar River Water Source,2009,2251,94.48,0.116489138,0,566.5,0
+Macquarie,Macquarie River above Burrendong Water Source,25871,25586,548.27,0.158615521,0.272473228,543.6,1.3
+Macquarie,Marra Creek Water Source,438.5,311.5,4.91,0.173248053,0,1776.8,46236.6
+Macquarie,Marthaguy Creek Water Source,4620,7608,204.5,0.189811174,0.001939182,3289.8,29652.5
+Macquarie,Maryvale Geurie Creek Water Source,745,639,29.93,0.093430329,0.393902945,1092.7,4.5
+Macquarie,Molong Creek Water Source,5663,5616,69.99,0.270966768,0.305608594,479.9,27.4
+Macquarie,Piambong Creek Water Source,1113,925,4.66,1,0.023675676,344.4,1092.5
+Macquarie,Pipeclay Creek Water Source,491,446,17.47,0.190955884,0.523766816,503.1,65.6
+Macquarie,Summerhill Creek Water Source,12402,11744,193.51,0.20495637,0.404036104,197.3,304.4
+Macquarie,Turon Crudine River Water Source,585,328,291.41,0.003937244,1,2.2,19.9
+Macquarie,Upper Bogan River Water Source,2182.5,1729,106.59,0.089347602,0,3711.7,4412.4
+Macquarie,Upper Cudgegong River Water Source,6580.5,6452,151.42,0.154365146,0.573025108,11.4,90.4
+Macquarie,Upper Talbragar River Water Source,627,370,55.14,0.032806334,0,394.4,0
+Macquarie,Wambangalong Whylandra Creek Water Source,220,169,45.48,0.016258076,1,834.8,7.6
+Macquarie,Winburndale Rivulet Water Source,1814,1629,171.03,0.033941304,1,19.1,24.8
+Manning,Avon River Water Source,2261.55,1744,421.7478121,0.017336234,1,111.5,22.2
+Manning,Bowman River Water Source,2344.6,2120,335.0197544,0.022625582,1,98.1,3.4
+Manning,Cooplacurripa River Water Source,964.3,400,654.3650477,0.004799128,1,28.4,9.1
+Manning,Dingo Creek Water Source,5393.9,4925,932.8277258,0.017744459,1,40.4,4.5
+Manning,Lower Barnard River Water Source,31562.45,21369,107.4230347,1,0,0,55.2
+Manning,Lower Barrington / Gloucester Rivers Water Source,11229.9,11293,416.3816948,0.087193814,1,427.7,132.5
+Manning,Lower Manning River Water Source,20064,20400,3087.938087,0.030533573,0.67,274.1,282.4
+Manning,Manning Estuary Tributaries Water Source,3612.25,4213,278.0197818,1,0,2128.7,8748.9
+Manning,Mid Manning River Water Source,726.9,991,1008.774986,0.003386172,1,8.3,42.1
+Manning,Myall Creek Water Source,133.65,2298,399.8820566,0.00131084,1,0,8.2
+Manning,Nowendoc River Water Source,1417.15,1274,495.9011287,0.009306598,1,0,84.9
+Manning,Rowleys River Water Source,377.45,277,708.8309735,0.001734151,1,0,4.6
+Manning,Upper Barnard River Water Source,412.7,1159,237.4133895,0.005206234,1,0,22
+Manning,Upper Barrington River Water Source,1053.5,951,778.130876,0.004045004,1,0,55
+Manning,Upper Gloucester River Water Source,6714.35,5419,114.179149,0.225748993,0.06,286.1,12.4
+Manning,Upper Manning River Water Source,2346.75,2241,260.426369,0.044496392,1,9.1,7.5
+Manning,Upper Manning River Water Source,2243,2234,192600.6732,0.011645858,1,529.3465439,0

@@ -206,6 +206,7 @@ and open the template in the editor.
                         y: props.mining_opportunity_sequence,
                         marker: {color: '#3D9970'},
                         name: 'Mining Opportunity',
+                        boxpoints: false,
                         type: 'box'
                     };
                     this._div.innerHTML = (props?
@@ -303,6 +304,7 @@ and open the template in the editor.
                         y: props.mining_risk_sequence,
                         marker: {color: '#3D9970'},
                         name: 'Mining Risk',
+                        boxpoints: false,
                         type: 'box'
                     };
                     this._div.innerHTML = (props?

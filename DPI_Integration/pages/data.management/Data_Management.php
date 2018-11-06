@@ -19,12 +19,13 @@
             <div class="layui-side layui-bg-black x-side">
                 <div class="layui-side-scroll">
                     <ul class="layui-nav layui-nav-tree site-demo-nav" lay-filter="side">
+                    
                     <!--Raw Data-->
                         <li class="layui-nav-item">
                             <a class="javascript:;" href="javascript:;" _href="Data_Management_Home.php">
-                               <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>Raw Data</cite>
+                               <i class="layui-icon" style="top: 3px;">&#xe62d;</i><cite>Visualization Data</cite>
                             </a>
-                      <dl class="layui-nav-child">
+                            <dl class="layui-nav-child">
                                 <dd class="">
                                     <dd class="">
                                         <a href="javascript:;" _href="Whole_Catchment_Indices.php">
@@ -34,102 +35,11 @@
                                 </dd>
                                 <dd class="">
                                     <dd class="">
-                                        <a href="javascript:;" _href="River_Indices.php">
-                                            <cite>River Indices</cite>
-                                        </a>
-                                    </dd>
-                                </dd>
-                                <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="Management_Zone_Indices.php">
-                                            <cite>Management Zone Indices</cite>
-                                        </a>
-                                    </dd>
-                                </dd>
-                                <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="Irrigated_Areas.php">
-                                           <cite>Irrigated Areas</cite>
-                                        </a>
-                              </dd>
-                              <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="Operational_Mines.php">
-                                           <cite>Operational Mines</cite>
-                                        </a>
-                              </dd>
-                              <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="Water_Treatment_Centre.php">
-                                           <cite>Water Treatment Centre</cite>
-                                        </a>
-                              </dd>
-                              <dd class="">
-                                    <dd class="">
                                         <a href="javascript:;" _href="LGA_Data.php">
                                            <cite>LGA Data</cite>
                                         </a>
-                              </dd>
+                              </dd> 
                               <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="Manning_Flow_Data.php">
-                                           <cite>Manning Flow Data</cite>
-                                        </a>
-                              </dd>
-                            </dl>
-                        </li>
-                        
-                        <!--Macquarie Valley and Dam Data-->
-                        <li class="layui-nav-item">
-                            <a class="javascript:;" href="javascript:;">
-                                <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>Valley and Dam in Macquarie</cite>
-                            </a>
-                            <dl class="layui-nav-child">
-                                <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="valley_summary.php">
-                                            <i class="layui-icon"></i><cite>Valley Summary</cite>
-                                        </a>
-                                    </dd>
-                                </dd>
-                                <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="valley_daily_data.php">
-                                            <i class="layui-icon"></i><cite>Valley Daily Data</cite>
-                                        </a>
-                                    </dd>
-                                </dd> 
-                                <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="valley_yearly_data.php">
-                                            <i class="layui-icon"></i><cite>Valley Yearly Data</cite>
-                                        </a>
-                                    </dd>
-                                </dd> 
-                                <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="dam_daily_data.php">
-                                            <i class="layui-icon"></i><cite>Dam Daily Data</cite>
-                                        </a>
-                                    </dd>
-                                    <dd class="">
-                                    <dd class="">
-                                        <a href="javascript:;" _href="dam_summary.php">
-                                            <i class="layui-icon"></i><cite>Dam Summary</cite>
-                                        </a>
-                                    </dd>
-                                </dd> 
-                                </dd> 
-                            </dl>
-                        </li>
-                        
-                        <!--Data in Visualization-->
-                        <li class="layui-nav-item">
-                            <a class="javascript:;" href="javascript:;">
-                                <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>Visualization Data</cite>
-                            </a>
-                            <dl class="layui-nav-child">
-                                <dd class="">
                                     <dd class="">
                                         <a href="javascript:;" _href="Town_Water_Supply.php">
                                             <i class="layui-icon"></i><cite>Town Water Supply</cite>
@@ -177,8 +87,7 @@
                                             <i class="layui-icon"></i><cite>Ground Water</cite>
                                         </a>
                                     </dd>
-                                </dd>
-                                
+                                </dd>                                
                                 <dd class="">
                                     <dd class="">
                                         <a href="javascript:;" _href="Water_Use_Watersource.php">
@@ -188,6 +97,51 @@
                                 </dd>
                             </dl>
                         </li>
+                        
+                        <!--Macquarie Valley and Dam Data-->
+                        <li class="layui-nav-item">
+                            <a class="javascript:;" href="javascript:;">
+                                <i class="layui-icon" style="top: 3px;">&#xe629;</i><cite>Valley and Dam in Macquarie</cite>
+                            </a>
+                            <dl class="layui-nav-child">
+                                <dd class="">
+                                    <dd class="">
+                                        <a href="javascript:;" _href="valley_summary.php">
+                                            <i class="layui-icon"></i><cite>Valley Summary</cite>
+                                        </a>
+                                    </dd>
+                                </dd>
+                                <dd class="">
+                                    <dd class="">
+                                        <a href="javascript:;" _href="valley_daily_data.php">
+                                            <i class="layui-icon"></i><cite>Valley Daily Data</cite>
+                                        </a>
+                                    </dd>
+                                </dd> 
+                                <dd class="">
+                                    <dd class="">
+                                        <a href="javascript:;" _href="valley_yearly_data.php">
+                                            <i class="layui-icon"></i><cite>Valley Yearly Data</cite>
+                                        </a>
+                                    </dd>
+                                </dd> 
+                                <dd class="">
+                                    <dd class="">
+                                        <a href="javascript:;" _href="dam_daily_data.php">
+                                            <i class="layui-icon"></i><cite>Dam Daily Data</cite>
+                                        </a>
+                                    </dd>
+                                    <dd class="">
+                                    <dd class="">
+                                        <a href="javascript:;" _href="dam_summary.php">
+                                            <i class="layui-icon"></i><cite>Dam Summary</cite>
+                                        </a>
+                                    </dd>
+                                </dd> 
+                                </dd> 
+                            </dl>
+                        </li>                      
+                     
                     </ul>
                 </div>
 

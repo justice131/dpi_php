@@ -23,82 +23,7 @@ $sql = "CREATE TABLE IF NOT EXISTS whole_catchment_indices( ".
     "overall_idsi FLOAT, ".
     "overall_fmi FLOAT, ".
     "overall_dei FLOAT, ".
-    "catchment_size FLOAT, ".
-    "surface_water_size FLOAT, ".
-    "groundwater_size FLOAT, ".
-    "total_irrigated_areas FLOAT, ".
-    "annual_production_value FLOAT, ".
-    "annual_employment_number FLOAT, ".
-    "annual_water_use FLOAT, ".
-    "production_value_per_water_drop FLOAT, ".
-    "total_mine_number FLOAT, ".
-    "water_treatment_centre_number FLOAT, ".
-    "affected_population FLOAT, ".
-    "annual_power_generated FLOAT, ".
-    "annual_town_water_sewerage_use FLOAT, ".
-    "power_generation_water_use FLOAT, ".
     "PRIMARY KEY (catchment_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
-mysqli_query($conn,$sql);
-
-//Create river_indices
-$sql = "CREATE TABLE IF NOT EXISTS river_indices( ".
-    "river_id INT NOT NULL AUTO_INCREMENT, ".
-    "belong_catchment_id INT NOT NULL, ".
-    "river_name VARCHAR(100) NOT NULL, ".
-    "river_type CHAR(50), ".
-    "lt_annual_extraction_limit FLOAT, ".
-    "license_category_1 FLOAT, ".
-    "license_category_2 FLOAT, ".
-    "fui FLOAT, ".
-    "idsi FLOAT, ".
-    "PRIMARY KEY (river_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
-mysqli_query($conn,$sql);
-
-//Create management_zone_indices
-$sql = "CREATE TABLE IF NOT EXISTS management_zone_indices( ".
-    "zone_id INT NOT NULL AUTO_INCREMENT, ".
-    "belong_river_id INT NOT NULL, ".
-    "belong_catchment_id INT NOT NULL, ".
-    "management_zone_name VARCHAR(100) NOT NULL, ".
-    "lt_annual_extraction_limit FLOAT, ".
-    "license_category_1 FLOAT, ".
-    "license_category_2 FLOAT, ".
-    "PRIMARY KEY (zone_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
-mysqli_query($conn,$sql);
-
-//Create irrigated_areas
-$sql = "CREATE TABLE IF NOT EXISTS irrigated_areas( ".
-    "irrigated_area_id INT NOT NULL AUTO_INCREMENT, ".
-    "irrigated_area_name VARCHAR(50) NOT NULL, ".
-    "belong_catchment_id INT NOT NULL, ".
-    "annual_production_value FLOAT, ".
-    "annual_water_use FLOAT, ".
-    "cotton_plantation FLOAT, ".
-    "PRIMARY KEY (irrigated_area_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
-mysqli_query($conn,$sql);
-
-//Create operational_mines
-$sql = "CREATE TABLE IF NOT EXISTS operational_mines( ".
-    "operational_mine_id INT NOT NULL AUTO_INCREMENT, ".
-    "operational_mine_name VARCHAR(50) NOT NULL, ".
-    "belong_catchment_id INT NOT NULL, ".
-    "mineral_type VARCHAR(50), ".
-    "annual_water_use FLOAT, ".
-    "PRIMARY KEY (operational_mine_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
-mysqli_query($conn,$sql);
-
-//Create water_treatment_centre
-$sql = "CREATE TABLE IF NOT EXISTS water_treatment_centre( ".
-    "wtc_id INT NOT NULL AUTO_INCREMENT, ".
-    "wtc_name VARCHAR(50) NOT NULL, ".
-    "belong_catchment_id INT NOT NULL, ".
-    "served_towns INT, ".
-    "served_population INT, ".
-    "annual_water_use FLOAT, ".
-    "health_based_target_index FLOAT, ".
-    "waste_water_quality_index FLOAT, ".
-    "water_supply_deficiency_index FLOAT, ".
-    "PRIMARY KEY (wtc_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
 mysqli_query($conn,$sql);
 
 //Create lga_data
@@ -166,16 +91,6 @@ $sql = "CREATE TABLE IF NOT EXISTS lga_data( ".
     "PRIMARY KEY (lga_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
     mysqli_query($conn,$sql);
     
-//Create manning_flow_data
-$sql = "CREATE TABLE IF NOT EXISTS manning_flow_data( ".
-    "station_id INT NOT NULL AUTO_INCREMENT, ".
-    "station_code INT NOT NULL, ".
-    "date VARCHAR(30) NOT NULL, ".
-    "flow FLOAT, ".
-    "PRIMARY KEY (station_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
-mysqli_query($conn,$sql);
-
-    
 //Create town_water_supply
 $sql = "CREATE TABLE IF NOT EXISTS town_water_supply( ".
     "tws_id INT NOT NULL AUTO_INCREMENT, ".
@@ -188,9 +103,10 @@ $sql = "CREATE TABLE IF NOT EXISTS town_water_supply( ".
     "volume_treated INT, ".
     "HBT_index FLOAT, ".
     "population_served FLOAT, ".
+    "gross_regional_product FLOAT, ".
     "WSDI FLOAT, ".
-    "water_supply_risk FLOAT, ".
-    "health_risk_dueto_poor_water_quality FLOAT, ".
+    "Risk FLOAT, ".
+    "Opportunity FLOAT, ".
     "PRIMARY KEY (tws_id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
 mysqli_query($conn,$sql);
 

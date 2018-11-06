@@ -23,33 +23,34 @@ and open the template in the editor.
 		<div class="row">
 			<div class="box-container" style="width:16.5%;" id="left_panel">
 				<table style="width:100%">
-<!--				  <tr>
+				  <tr>
 					<td>
-						<div>
+						<div id="setting">
 						  <div class="box-title">
 							<h4><b>Catchment Settings</b></h4>
 						  </div>
-						  <div class="box-content" style="height:210px;">
+						  <div class="box-content" style="height:200px;">
+                                                      <h5><b>Select a Catchment for More Information</b></h5>
                                                     <table>
                                                         <tr>
                                                             <th>
                                                             <form action="../">
-                                                                <select name="selectCAT" id="selectCAT"  onchange='OnChange(this.form.selectCAT);' >
-                                                                <option value="default">------CATCHMENT------</option>
-                                                                <option value="MacquarieBogan">MacquarieBogan</option>
+                                                                <select name="selectCAT" id="selectCAT" style="width:135px" onchange='OnChange(this.form.selectCAT);' >
+                                                                <option value="default">-----CATCHMENT-----</option>
+                                                                <option value="MacquarieBogan">Macquarie</option>
                                                                 <option value="ManningRiver">Manning</option>
                                                                 </select>
                                                             </form>
                                                             </th>
                                                         <th>
-                                                            <button id="clear" onClick="clearAllLayers()">Clear</button>  
+                                                            <button id="clear" onClick="clearAllLayers()">CLEAR</button>  
                                                         </th>
                                                         </tr>
                                                     </table>
 						  </div>
 						</div>
 					</td>
-				  </tr>-->
+				  </tr>
 				  <tr>
 					<td>
 						<div>
@@ -59,19 +60,6 @@ and open the template in the editor.
 						  <div class="box-content">
 							<div id="rightdiv">
                                                             <div id="legend">
-<!--                                                                <img src="../../lib/leaflet/images/marker-icon.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Regulated river<br>
-                                                                <img src="../../lib/leaflet/images/new-marker.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Unregulated river<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-1.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Groundwater<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-2.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Management zone<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-8.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (regulated river)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-6.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (unregulated river)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-7.png"  width="13" height="22" align = "center">&nbsp; &nbsp;License (groundwater)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-3.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (regulated river)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-4.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (unregulated river)<br>
-                                                                <img src="../../lib/leaflet/images/new-marker-5.png"  width="13" height="22" align = "center">&nbsp; &nbsp;Work approval (groundwater)<br>
-                                                                <img src="../../images/mineral.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Mineral<br>
-                                                                <img src="../../images/petroleum.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Petroleum<br>
-                                                                <img src="../../images/black.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coal<br>-->
                                                                 <br>
                                                             </div>
 							</div>
@@ -155,9 +143,10 @@ and open the template in the editor.
                 pageHeight = window.screen.height*heightRatio;
                 var mapTitleHeight = document.getElementById("map_title").offsetHeight;
                 document.getElementById("map").style.height = (pageHeight-mapTitleHeight) + "px";
+                var settingHeight = document.getElementById("setting").offsetHeight;
                 var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
-                document.getElementById("legend").style.height = (pageHeight - legendTitleHeight) + "px";
-            }
+                document.getElementById("legend").style.height = (pageHeight - settingHeight - legendTitleHeight) + "px";
+            };
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var MacquarieBogan_CatchmentBoundary_1 = MacquarieBogan_CatchmentBoundary;
             var ManningRiver_CatchmentBoundary = ManningRiver_CatchmentBoundary;
@@ -181,21 +170,22 @@ and open the template in the editor.
             elem_ov.setAttribute('id', 'mine_legend');
             elem_ov.innerHTML = (
                     '<img src="../../images/mineral_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (exploring)<br>'+
-                    '<img src="../../images/mineral_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (mining)<br>'+
-                    '<img src="../../images/mineral_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (assessment)<br>'+
+                    '<img src="../../images/mineral_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (mining)<br>'+
+                    '<img src="../../images/mineral_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Mineral (assessment)<br>'+
                     '<img src="../../images/petrol_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (exploring)<br>'+
-                    '<img src="../../images/petrol_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (mining)<br>'+
-                    '<img src="../../images/petrol_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (assessment)<br>'+
+                    '<img src="../../images/petrol_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (mining)<br>'+
+                    '<img src="../../images/petrol_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Petroleum (assessment)<br>'+
                     '<img src="../../images/coal_1.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (exploring)<br>'+
-                    '<img src="../../images/coal_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (mining)<br>'+
-                    '<img src="../../images/coal_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (assessment)<div style="height:2px;"><br></div'
+                    '<img src="../../images/coal_3.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (mining)<br>'+
+                    '<img src="../../images/coal_2.png"  width="29" height="16" align = "center">&nbsp; &nbsp;Coal (assessment)<div style="height:2px;"><br></div'
                     );
-            document.getElementById("legend").appendChild(elem_ov);
+//            document.getElementById("legend").appendChild(elem_ov);
 
             var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
             L.control.zoom({
                 position:'bottomleft'
             }).addTo(map);
+            
             var myToken = 'pk.eyJ1IjoiZHlobCIsImEiOiJjaWtubG5uMWYwc3BmdWNqN2hlMzFsNDhvIn0.027tda69GVKbxiPnkEBDAw';
 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + myToken, {
 			maxZoom: 18,
@@ -411,12 +401,7 @@ and open the template in the editor.
                 });
             }
             
-            function OnChange(dropdown){
-//                var myindex = dropdown.selectedIndex;
-//                var CATName = dropdown.options[myindex].value;
-//                var CATValue = getProperty(CATName);
-//                addCATLayer(CATName, CATValue);
-                
+            function OnChange(dropdown){               
                 //Edited by justice
                 var  myselect=document.getElementById("selectCAT");
                 var selectedIndex=myselect.selectedIndex;
@@ -425,6 +410,8 @@ and open the template in the editor.
                     window.location.href = "Mining_module.php?catchment_name=MacquarieBogan";
                 }else if(selectValue==="ManningRiver"){
                     window.location.href = "Mining_module.php?catchment_name=ManningRiver";
+                }else if(selectValue==="default"){
+                    window.location.href = "Mining_module.php";
                 }
                 //Edited by justice
             }
@@ -578,28 +565,29 @@ and open the template in the editor.
                 displayedCAT.push(CATName);
                 check_collection.push(checkbox_id);
                 // Remove other's layers
-                removeLayer(displayed_gis_layer_regulated);
-                removeLayer(displayed_gis_layer_unregulated);
-                removeLayer(displayed_gis_layer_groundwater);
+//                removeLayer(displayed_gis_layer_regulated);
+//                removeLayer(displayed_gis_layer_unregulated);
+//                removeLayer(displayed_gis_layer_groundwater);
                 }        
             }
             
             
             function clearAllLayers(){
-                for (var i = 0; i < featureCATCollection.length; i++){     
-                    map.removeLayer(featureCATCollection[i]);
-                    if (checkbox_id !== null){
-                        checkbox_id.style.display = "none";
-                    }
-                }
-                //hover_info.style.visibility = 'hidden';
-                removeLayer(displayed_gis_layer_regulated);
-                removeLayer(displayed_gis_layer_unregulated);
-                removeLayer(displayed_gis_layer_groundwater);
-                removeLayer(displayed_gis_layer_workapproval);
-                removeLayer(displayed_gis_layer_approval);
-                document.getElementById('selectCAT').value = 'default';
-                map.removeControl(hover_info);
+                window.location.href = "Mining_module.php";
+//                for (var i = 0; i < featureCATCollection.length; i++){     
+//                    map.removeLayer(featureCATCollection[i]);
+//                    if (checkbox_id !== null){
+//                        checkbox_id.style.display = "none";
+//                    }
+//                }
+//                //hover_info.style.visibility = 'hidden';
+//                removeLayer(displayed_gis_layer_regulated);
+//                removeLayer(displayed_gis_layer_unregulated);
+//                removeLayer(displayed_gis_layer_groundwater);
+//                removeLayer(displayed_gis_layer_workapproval);
+//                removeLayer(displayed_gis_layer_approval);
+//                document.getElementById('selectCAT').value = 'default';
+//                map.removeControl(hover_info);
             }
                        
             // find the middle point from geojason file
@@ -665,6 +653,7 @@ and open the template in the editor.
 //                var checkBox = document.getElementById(id); 
                 var geojsonfile = MacquarieBogan_RugulatedRiver;
                 // display legend for reg river
+                document.getElementById("legend").appendChild(elem_ov);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'reg_mac');
                 elem.innerHTML = ('<img src="../../lib/leaflet/images/R.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Regulated river<br>');
@@ -2802,6 +2791,8 @@ and open the template in the editor.
            
             function show_gis_Manning_unregulated(id){
                 var displayed_gis_layer_unregulated = [];
+                //dispaly legend
+                document.getElementById("legend").appendChild(elem_ov);
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_man');
                 elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
@@ -4151,9 +4142,6 @@ and open the template in the editor.
                     var overall_idsi = "<?php echo $row["overall_idsi"]; ?>";
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
                     var overall_dei = "<?php echo $row["overall_dei"]; ?>";
-                    var catchment_size = "<?php echo $row["catchment_size"]; ?>";
-                    var surface_water_size = "<?php echo $row["surface_water_size"]; ?>";
-                    var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     if (catch_name === 'MacquarieBogan'){
                         var Total_no_mine = mine_sum(Macquarie_Mining);
                         var Employ = "<?php echo $em_macquarie; ?>"; 
@@ -4175,7 +4163,7 @@ and open the template in the editor.
 //                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
                           '<b>' + 'Mining Sector within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
                           '<p style=\"line-height:50%\"><img src=\"../../images/mining_number.png\" height=\"25\" width=\"25\"> Total Number of Mines: <b>' + toThousands(Total_no_mine) + '</b><br/><br />'+
-                          '<img src=\"../../images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>' + toThousands(Math.round(Prop*10)/10)  + ' $M</b><br/><br />'+
+                          '<img src=\"../../images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>$' + toThousands(Math.round(Prop*10)/10)  + 'M</b><br/><br />'+
                           '<img src=\"../../images/mining_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
                           '<img src=\"../../images/mining_use_of_water.png\" height=\"25\" width=\"25\"> Annual Use of Water: <b>' + toThousands(Math.round(Water_use))  + ' ML</b><br/><br />'+
                           '<img src=\"../../images/mining_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + Math.round(Prop/Water_use*100)/100  + ' $M/ML</b><br/></p>'   
@@ -4207,7 +4195,7 @@ and open the template in the editor.
             }
             var catchment_name = getQueryString("catchment_name");
             if(catchment_name==="MacquarieBogan"||catchment_name==="ManningRiver"){
-//                document.getElementById("selectCAT").value = catchment_name;
+                document.getElementById("selectCAT").value = catchment_name;
                 var CATValue = getProperty(catchment_name);
                 addCATLayer(catchment_name, CATValue);
             }

@@ -200,16 +200,6 @@ and open the template in the editor.
                 }
             }
             
-            function getColorScalar_1(d) {
-                if(d >= 0 && d <= 0.25){
-                return myCols[0];
-                }else if(d > 0.25 && d <= 0.4){
-                return myCols[1];
-                }else{
-                return myCols[2];
-                }
-            }
-            
             function style(feature) {
                     return {
                             weight: 1,
@@ -248,16 +238,16 @@ and open the template in the editor.
                                     'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) +' ML/year'+ '</b>' +'<br />'+
     //                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
     //                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
-                                    'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10)/10) + ' ML/day'+'</b>' +'<br />'+
+                                    'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
     //                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
     //                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                    'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+                                    'Days Below Mean Flow: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                     'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
     //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
     //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                    'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
+                                    'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'
     //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                    'Drought Security Index: ' + '<b>'+ Math.round(props.DSI_100*100)/100 + '</b>'+'<br />'
+    //                               'Drought Security Index: ' + '<b>'+ Math.round(props.DSI_100*100)/100 + '</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
@@ -303,7 +293,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar_1(d.DSI/100) });
+                    .color(function (d) { return getColorScalar(d.DSI/100) });
 
 
             //Read data for parallel coordinate

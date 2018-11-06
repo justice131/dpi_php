@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="box-content" style="height:40%;">
                                         <h5><b>Select a Catchment for More Information</b></h5>
-                                        <select id="select_catchment" style="width:135px" onchange="scenario_selection()">
+                                        <select id="select_catchment" style="width:140px" onchange="scenario_selection()">
                                             <option value="default">-----CATCHMENT-----</option>
                                             <option value="MacquarieBogan">Macquarie</option>
                                             <option value="ManningRiver">Manning</option>
@@ -66,7 +66,7 @@
                                           <tr>
                                                 <th>
                                                     <select id="select_scenario" style="width:300px" onchange="scenario_selection()">
-                                                        <option value="default">------------------------Scenario------------------------</option>
+                                                        <option value="default">------------------------SCENARIO------------------------</option>
                                                         <option value="potential_need">Potential need for new infrastructure</option>
                                                         <option value="water_risk">Water related health risk due to poor ecosystem health</option>
                                                     </select>

@@ -171,7 +171,7 @@ and open the template in the editor.
                                     '<h4>' + props.WATER_SOUR + '</h4>'+
 //                                           'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
                                             'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                            'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
+                                            'Irrigation Value: '+ '<b>$'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+'M' + '</b>'+'<br />'+
 //                                            'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
                                             'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
 //                                            'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
@@ -179,7 +179,7 @@ and open the template in the editor.
                                             'Agriculture water use: '+ '<b>'+ toThousands(props.agriculture_water_use) +' ML'+ '</b>' +'<br />'+
 //                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
 //                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) + '% mg/L'+'</b>' +'<br />'+
-                                            'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10)/10) + ' ML/day'+'</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/day'+'</b>' +'<br />'+
 //                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
 //                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
 //                                            'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
@@ -188,7 +188,7 @@ and open the template in the editor.
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
                                             'FUI: '+ '<b>'+ Math.round(props.FUI/100*100)/100 + '</b>'+'<br />'+
 //                                            'Water Scarcity: '+ '<b>'+ toThousands(props.water_scarcity) + '</b>'+'<br />'+
-                                            'Irrigation Opportunity Index: ' + '<b>'+ Math.round(props.irrigation_opportunity_index*100)/100 + '</b>'+'<br />'
+                                            'Opportunity to Agriculture Index: ' + '<b>'+ Math.round(props.irrigation_opportunity_index*100)/100 + '</b>'+'<br />'
                                     : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info1.addTo(map1);
@@ -206,6 +206,7 @@ and open the template in the editor.
                         y: props.irrigation_opportunity_sequence,
                         marker: {color: '#3D9970'},
                         name: 'Irrigation Opportunity',
+                        boxpoints: false,
                         type: 'box'
                     };
                     this._div.innerHTML = (props?
@@ -277,10 +278,10 @@ and open the template in the editor.
                                             'Agriculture Water Use: '+ '<b>'+ toThousands(props.agriculture_water_use) +' ML'+ '</b>' +'<br />'+
 //                                            'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
 //                                            'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen)+'% mg/L' + '</b>' +'<br />'+
-                                            'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10)/10) + ' ML/year'+'</b>' +'<br />'+
+                                            'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
 //                                            'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
 //                                            'Median: '+ '<b>'+ toThousands(props.median) + ' ML/year'+'</b>' +'<br />'+
-                                            'Days Below Mean: '+ '<b>'+ toThousands(Math.round(props.days_below_mean*100)/100) + '</b>' +'<br />'+
+                                            'Days Below Mean Flow: '+ '<b>'+ toThousands(Math.round(props.days_below_mean*100)/100) + '</b>' +'<br />'+
 //                                            'DSI: '+ '<b>'+ Math.round(props.DSI/100*100)/100 + '</b>'+'<br />'+
 //                                            '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
 //                                            'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
@@ -304,6 +305,7 @@ and open the template in the editor.
                         y: props.irrigation_risk_sequence,
                         marker: {color: '#3D9970'},
                         name: 'Irrigation Risk',
+                        boxpoints: false,
                         type: 'box'
                     };
                     this._div.innerHTML = (props?
@@ -343,12 +345,22 @@ and open the template in the editor.
             });
             
             function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
-                    return myCols[0];
-                }else if(d<=Math.ceil(2*max_row/3)){
-                    return myCols[1];
+                if(d >= 0 && d <= 1){
+                return myCols[2];
+                }else if(d > 1 && d <= 10){
+                return myCols[1];
                 }else{
-                    return myCols[2];
+                return myCols[0];
+                }
+            }
+            
+            function getColorScalar_1(d) {
+                if(d >= 0 && d <= 1){
+                return myCols[0];
+                }else if(d > 1 && d <= 10){
+                return myCols[1];
+                }else{
+                return myCols[2];
                 }
             }
 
@@ -394,12 +406,12 @@ and open the template in the editor.
                         right: 1,
                         bottom: 15
                 })
-                .color(function (d) {return getColorScalar(d.OpportunityIndexRank);});
+                .color(function (d) {return getColorScalar(d[keys[23]]);});
 
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/irrigation_manning.csv", function (data) {
-                var keys = Object.keys(data[0]);
+                keys = Object.keys(data[0]);
                 _.each(data, function (d, i) {
                     d.index = d.index || i; //unique id
                     var water_source_name = d[keys[0]];
@@ -455,7 +467,7 @@ and open the template in the editor.
                         color: 'white',
                         dashArray: '3',
                         fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                        fillColor: getColorScalar(feature.properties.opportunity_index_rank)
+                        fillColor: getColorScalar_1(feature.properties.irrigation_opportunity_index)
                     };
                 }
                 geojson1 = L.geoJson(lgas, {
@@ -485,7 +497,7 @@ and open the template in the editor.
                         color: 'white',
                         dashArray: '3',
                         fillOpacity: 0.8 * showIt(feature.properties.FUI),
-                        fillColor: getColorScalar(feature.properties.risk_index_rank)
+                        fillColor: getColorScalar(feature.properties.agricluture_risk_index)
                     };
                 }
                 geojson2 = L.geoJson(lgas, {
@@ -523,15 +535,15 @@ and open the template in the editor.
                     var div = L.DomUtil.create('div', 'info legend'),
                     labels = [];
                     labels.push(
-                                    '<i style="background:' + myCols[0] + '"></i> ' +
-                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                    '<i style="background:' + myCols[0] + '"></i> ' + '[0, 1]');
+//                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[1] + '"></i> ' +
-                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                    '<i style="background:' + myCols[1] + '"></i> ' + '(1, 10]');
+//                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                     labels.push(
-                                    '<i style="background:' + myCols[2] + '"></i> ' +
-                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                    '<i style="background:' + myCols[2] + '"></i> ' + '(10, ∞)');
+//                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                    div.innerHTML = '<h4>Index Rank (Opportunity'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
@@ -542,15 +554,15 @@ and open the template in the editor.
                         labels = [],
                         from, to;
                         labels.push(
-                                '<i style="background:' + myCols[0] + '"></i> ' +
-                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
+                                '<i style="background:' + myCols[2] + '"></i> ' + '[0, 1]');
+//                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[1] + '"></i> ' +
-                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
+                                '<i style="background:' + myCols[1] + '"></i> ' + '(1, 10]');
+//                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                         labels.push(
-                                '<i style="background:' + myCols[2] + '"></i> ' +
-                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                                '<i style="background:' + myCols[0] + '"></i> ' + '(10, ∞)');
+//                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                        div.innerHTML = '<h4>Index Rank (Risk'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
                         return div;
                 };
                 legend2.addTo(map2);
@@ -661,8 +673,7 @@ and open the template in the editor.
                         geojsonLabels1.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                 if (d.feature.properties.FUI > 0) {
-//                                        z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
-                                        z._icon.innerHTML=d.feature.properties.irrigation_opportunity_index;
+                                        z._icon.innerHTML=Math.round(d.feature.properties.irrigation_opportunity_index*100)/100;
                                 } else {
                                         z._icon.innerHTML = "";
                                 }
@@ -675,8 +686,7 @@ and open the template in the editor.
                         geojsonLabels2.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                 if (d.feature.properties.FUI > 0) {
-//                                    z._icon.innerHTML=Math.round(d.feature.properties.FUI/100*100)/100;
-                                     z._icon.innerHTML=d.feature.properties.agricluture_risk_index;
+                                     z._icon.innerHTML=Math.round(d.feature.properties.agricluture_risk_index*100)/100;
                                 } else {
                                     z._icon.innerHTML = "";
                                 }

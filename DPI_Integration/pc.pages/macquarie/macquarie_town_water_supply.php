@@ -93,7 +93,7 @@ and open the template in the editor.
                 document.getElementById("parrallel_coordinate").style.height = pageHeight + "px";//设置map高度
                 document.getElementById("grid").style.height = pageHeight + "px";//设置map高度
             }
-            
+                               
             /*Functions section begining*/            
             function showIt(d) {
                 return d > 0 ? 0.75 : 0;
@@ -144,51 +144,14 @@ and open the template in the editor.
                     return mask + temp + decimal; 
             } 
             
-            function icon_wsdi(Fui_macquarie, feature){          
-                function compareSecondColumn(a, b) {
-                    if (a[1] === b[1]) {
-                        return 0;
-                    }
-                    else {
-                        return (a[1] > b[1]) ? -1 : 1;
-                    }
-                }
-                Fui_macquarie = Fui_macquarie.sort(compareSecondColumn);
-                var e = Fui_macquarie.length;
-                if(e>=3 & (e%3) === 0){
-                    var i = e/3; 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,2*i);
-                    Fui_macquarie_3 = Fui_macquarie.slice(2*i,3*i);
-                }else if(e>3 & (e%3) === 1){
-                    var i = Math.floor(e/3); 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
-                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                  
-                }else if(e>3 & (e%3) === 2){
-                    var i = Math.floor(e/3); 
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,i);
-                    Fui_macquarie_2 = Fui_macquarie.slice(i,(2*i+1));
-                    Fui_macquarie_3 = Fui_macquarie.slice((2*i+1),e);                      
-                }else if (e===2){
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,1);
-                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                    Fui_macquarie_3 = Fui_macquarie.slice(1,e);                    
-                }else if (e===1){
-                    Fui_macquarie_1 = Fui_macquarie.slice(0,e);
-                    Fui_macquarie_2 = Fui_macquarie.slice(e,e);
-                    Fui_macquarie_3 = Fui_macquarie.slice(e,e);                   
-                }
-              
-                if ($.inArray(feature, Fui_macquarie_1.map(function(value, index) { return value[0];})) !== -1){
+            function icon_wsdi(w){
+                if (w>=0 & w<=0.2){
+                    return Icon_green;
+                }else if (w>0.2 & w<=0.4){
+                    return Icon_orange;
+                }else{
                     return Icon_red;
                 }
-                if ($.inArray(feature, Fui_macquarie_2.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_orange;
-                }
-                if ($.inArray(feature, Fui_macquarie_3.map(function(value, index) { return value[0];})) !== -1){
-                    return Icon_green;
-                }              
             }
             
             var Icon_red = L.icon({
@@ -229,10 +192,21 @@ and open the template in the editor.
                 max_row++;
                 });
             });
-            function getColorScalar(d) {
-                if(d<=Math.floor(max_row/3)){
+            
+            function getColorRisk(d) {
+                if(d<=10){
+                    return myCols[2];
+                }else if(d<=100){
+                    return myCols[1];
+                }else{
                     return myCols[0];
-                }else if(d<=Math.ceil(2*max_row/3)){
+                }
+            }
+            
+            function getColorOpportunity(d) {
+                if(d<=10){
+                    return myCols[0];
+                }else if(d<=100){
                     return myCols[1];
                 }else{
                     return myCols[2];
@@ -258,7 +232,7 @@ and open the template in the editor.
                 onEachFeature: function onEach(feature, layer){
                     layer.setStyle({color: 'grey', weight: 1.2, fillOpacity: 0.1});
                 }
-            }).addTo(map1);  
+            }).addTo(map1);
             map1.setView([-31.8, 148.5], 8);
             
             // control that shows state info on hover
@@ -270,18 +244,13 @@ and open the template in the editor.
             };
             info1.update = function (props) {
                 this._div.innerHTML = (props?
-                        '<h4>' + props.NSW_LGA__3 + '</h4>'+
-                        'Plan: '+ '<b>' + props.plan + '</b>' + '<br />'+
-                        'Volume Treated: '+ '<b>' + props.volume_treated + '</b>' + '<br />'+
-                        'Population Served: '+ '<b>' + props.population_served + '</b>' + '<br />'+
-                        'Population in 2015: '+ '<b>' + props.population_2015 + '</b>' + '<br />'+
-                        'Population predicted in 2036: '+ '<b>' + props.population_2036 + '</b>' + '<br />'+
-                        'Gross Regional Product: '+ '<b>' + props.gross_reional_product + '</b>' + '<br />'+
-                        'WSDI: '+ '<b>' + props.WSDI + '</b>' + '<br />'+
-                        'Forecast Drinking Water Quality Deficiency (HBT) Index (%): '+ '<b>' + props.HBT + '</b>' + '<br />'+
-                        'Risk (million $): '+ '<b>' + props.risk + '</b>' + '<br />'+
-                        'Opprtunity : '+ '<b>' + props.opportunity + '</b>' + '<br />'
-                : '<b>'+ 'Click a Water Source'+'</b>');
+                    '<h4>' + props.NSW_LGA__3 + '</h4>'+
+                            'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
+                            'Gross Regional product ($M): '+ '<b>' + props.gross_regional_product +'</b>'+'<br />'+
+                            'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
+                            'HBT Index (%): '+ '<b>' + props.hbt +'</b>'+'<br />'+
+                            'Opportunity (million $) : '+ '<b>' + props.opportunity +'</b>'
+                    : '<b>'+ 'Click a LGA'+'</b>');
             };
             info1.addTo(map1);
             
@@ -313,36 +282,25 @@ and open the template in the editor.
             };
             info2.update = function (props) {
                 this._div.innerHTML = (props?
-                        '<h4>' + props.NSW_LGA__3 + '</h4>'+
-                        'Plan: '+ '<b>' + props.plan + '</b>' + '<br />'+
-                        'Volume Treated: '+ '<b>' + props.volume_treated + '</b>' + '<br />'+
-                        'Population Served: '+ '<b>' + props.population_served + '</b>' + '<br />'+
-                        'Population in 2015: '+ '<b>' + props.population_2015 + '</b>' + '<br />'+
-                        'Population predicted in 2036: '+ '<b>' + props.population_2036 + '</b>' + '<br />'+
-                        'Gross Regional Product: '+ '<b>' + props.gross_reional_product + '</b>' + '<br />'+
-                        'WSDI: '+ '<b>' + props.WSDI + '</b>' + '<br />'+
-                        'Forecast Drinking Water Quality Deficiency (HBT) Index (%): '+ '<b>' + props.HBT + '</b>' + '<br />'+
-                        'Risk (million $): '+ '<b>' + props.risk + '</b>' + '<br />'+
-                        'Opprtunity : '+ '<b>' + props.opportunity + '</b>' + '<br />'
-                        : '<b>'+ 'Click a Water Source'+'</b>');
+                '<h4>' + props.NSW_LGA__3 + '</h4>'+
+                        'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
+                        'Gross Regional product ($M): '+ '<b>' + props.gross_regional_product +'</b>'+'<br />'+
+                        'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
+                        'HBT Index (%): '+ '<b>' + props.hbt +'</b>'+'<br />'+
+                        'Risk (million $): '+ '<b>' + props.risk +'</b>'
+                : '<b>'+ 'Click a LGA'+'</b>');
             };
             info2.addTo(map2);
             
             var lgaDict = {};
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
-                lgas.features[j].properties.plan="";
-                lgas.features[j].properties.volume_treated=0;
-                lgas.features[j].properties.population_served=0;
-                lgas.features[j].properties.population_2015=0;
-                lgas.features[j].properties.population_2036=0;
-                lgas.features[j].properties.gross_reional_product=0;
-                lgas.features[j].properties.WSDI=0;
-                lgas.features[j].properties.HBT=0;
-                lgas.features[j].properties.risk=0;
-                lgas.features[j].properties.risk_index_rank=0;
+                lgas.features[j].properties.population=0;
+                lgas.features[j].properties.gross_regional_product=0;
+                lgas.features[j].properties.wsdi=0;
+                lgas.features[j].properties.hbt=0;
                 lgas.features[j].properties.opportunity=0;
-                lgas.features[j].properties.opportunity_index_rank=0;
+                lgas.features[j].properties.risk=0;
                 lgaDict[lgas.features[j].properties.NSW_LGA__3] = lgas.features[j];
             }
 
@@ -358,27 +316,21 @@ and open the template in the editor.
                         right: 1,
                         bottom: 15
                 })
-                .color(function (d) {return getColorScalar(d.RiskIndexRank); });
+                .color(function (d) {return getColorRisk(d["Risk (million $)"]); });
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/town_water_supply_macquaire.csv", function (data) {
-                var keys = Object.keys(data[0]);
+                keys = Object.keys(data[0]);
                 _.each(data, function (d, i) {
                     d.index = d.index || i; //unique id
-                    var LGA_name = d[keys[0]];
-                    lgaDict[LGA_name].properties.plan=d[keys[1]];
-                    lgaDict[LGA_name].properties.volume_treated=d[keys[5]];
-                    lgaDict[LGA_name].properties.population_served=d[keys[6]];
-                    lgaDict[LGA_name].properties.population_2015=d[keys[7]];
-                    lgaDict[LGA_name].properties.population_2036=d[keys[8]];
-                    lgaDict[LGA_name].properties.gross_reional_product=d[keys[9]];
-                    lgaDict[LGA_name].properties.WSDI=d[keys[10]];
-                    lgaDict[LGA_name].properties.HBT=d[keys[11]];
-                    lgaDict[LGA_name].properties.risk=d[keys[12]];
-                    lgaDict[LGA_name].properties.risk_index_rank=d[keys[13]];
-                    lgaDict[LGA_name].properties.opportunity=d[keys[14]];
-                    lgaDict[LGA_name].properties.opportunity_index_rank=d[keys[15]];
-                    lga.push(LGA_name);
+                    var lga_name = d["LGA"];
+                    lgaDict[lga_name].properties.population=d["Population 2015"];
+                    lgaDict[lga_name].properties.gross_regional_product=d["Gross Regional product ($M)"];
+                    lgaDict[lga_name].properties.wsdi=d["WSDI"];
+                    lgaDict[lga_name].properties.hbt=d["Forecast Drinking Water Quality Deficiency (HBT) Index (%)"];
+                    lgaDict[lga_name].properties.risk=d["Risk (million $)"];
+                    lgaDict[lga_name].properties.opportunity=d["Opportunity (million $)"];
+                    lga.push(lga_name);
                 });
                 
                 // add lga layer
@@ -403,8 +355,8 @@ and open the template in the editor.
                         opacity: showIt(1),
                         color: 'white',
                         dashArray: '3',
-                        fillOpacity: 0.8 * showIt(feature.properties.HBT),
-                        fillColor: getColorScalar(feature.properties.opportunity_index_rank)
+                        fillOpacity: 0.8 * showIt(feature.properties.population),
+                        fillColor: getColorOpportunity(feature.properties.opportunity)
                     };
                 }
                 geojson1 = L.geoJson(lgas, {
@@ -432,8 +384,8 @@ and open the template in the editor.
                         opacity: showIt(1),
                         color: 'white',
                         dashArray: '3',
-                        fillOpacity: 0.8 * showIt(feature.properties.HBT),
-                        fillColor: getColorScalar(feature.properties.risk_index_rank)
+                        fillOpacity: 0.8 * showIt(feature.properties.population),
+                        fillColor: getColorRisk(feature.properties.risk)
                     };
                 }
                 geojson2 = L.geoJson(lgas, {
@@ -469,41 +421,26 @@ and open the template in the editor.
                 legend1 = L.control({position: 'bottomright'});
                 legend1.onAdd = function (map) {
                     var div = L.DomUtil.create('div', 'info legend'),
-                    labels = [],
-                    from, to;
-                    labels.push(
-                                    '<i style="background:' + myCols[0] + '"></i> ' +
-                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                    labels.push(
-                                    '<i style="background:' + myCols[1] + '"></i> ' +
-                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                    labels.push(
-                                    '<i style="background:' + myCols[2] + '"></i> ' +
-                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
+                    labels = [];
+                    labels.push('<i style="background:' + myCols[0] + '"></i> low [0 &ndash;10]');
+                    labels.push('<i style="background:' + myCols[1] + '"></i> medium (10 &ndash;100]');
+                    labels.push('<i style="background:' + myCols[2] + '"></i> high (100 &ndash;∞]');
+                    div.innerHTML = '<h4>Opportunity</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
 
                 legend2 = L.control({position: 'bottomright'});
                 legend2.onAdd = function (map) {
-                        var div = L.DomUtil.create('div', 'info legend'),
-                        labels = [],
-                        from, to;
-                        labels.push(
-                                '<i style="background:' + myCols[0] + '"></i> ' +
-                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                        labels.push(
-                                '<i style="background:' + myCols[1] + '"></i> ' +
-                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                        labels.push(
-                                '<i style="background:' + myCols[2] + '"></i> ' +
-                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank</h4>' + labels.join('<br>');
-                        return div;
+                    var div = L.DomUtil.create('div', 'info legend'),
+                    labels = [];
+                    labels.push('<i style="background:' + myCols[2] + '"></i> low [0 &ndash;10]');
+                    labels.push('<i style="background:' + myCols[1] + '"></i> medium (10 &ndash;100]');
+                    labels.push('<i style="background:' + myCols[0] + '"></i> high (100 &ndash;∞]');
+                    div.innerHTML = '<h4>Risk</h4>' + labels.join('<br>');
+                    return div;
                 };
                 legend2.addTo(map2);
-                
                 
                 //Bind data to parallel coordinate
                 parcoords.data(data)
@@ -550,8 +487,8 @@ and open the template in the editor.
                 var sortdir = 1;
 
                 function comparer(a, b) {
-                        var x = a[sortcol], y = b[sortcol];
-                        return (x == y ? 0 : (x > y ? 1 : -1));
+                    var x = a[sortcol], y = b[sortcol];
+                    return (x == y ? 0 : (x > y ? 1 : -1));
                 }
 
                 // click header to sort grid column
@@ -589,16 +526,16 @@ and open the template in the editor.
                 parcoords.on("brush", function (d) {
                         gridUpdate(d);
                         //update map1
-                        lgas.features.map(function (d) {d.properties.HBT = -1; });
+                        lgas.features.map(function (d) {d.properties.population = -1; });
                         geojsonLabels1.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                         _.each(d, function (k, i) {
-                                lgaDict[k[keys[0]]].properties.HBT = k.HBT;
+                                lgaDict[k[keys[0]]].properties.population = k["Population 2015"];
                         });
                         //update map2
-                        lgas.features.map(function (d) {d.properties.HBT = -1; });
+                        lgas.features.map(function (d) {d.properties.population = -1; });
                         geojsonLabels2.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                         _.each(d, function (k, i) {
-                                lgaDict[k[keys[0]]].properties.HBT = k.HBT;
+                                lgaDict[k[keys[0]]].properties.population = k["Population 2015"];
                         });
                         refreshMap(lga);
                 });
@@ -610,8 +547,8 @@ and open the template in the editor.
                         geojson1.resetStyle(d);
                         geojsonLabels1.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.NSW_LGA__3) {
-                                if (d.feature.properties.HBT > 0) {
-                                        z._icon.innerHTML=d.feature.properties.opportunity;
+                                if (d.feature.properties.hbt > 0) {
+                                        z._icon.innerHTML=Math.round(d.feature.properties.opportunity*10)/10;
                                 } else {
                                         z._icon.innerHTML = "";
                                 }
@@ -623,8 +560,8 @@ and open the template in the editor.
                         geojson2.resetStyle(d);
                         geojsonLabels2.getLayers().forEach(function (z) {
                             if (z.feature.properties.name == d.feature.properties.NSW_LGA__3) {
-                                if (d.feature.properties.HBT > 0) {
-                                     z._icon.innerHTML=d.feature.properties.risk;
+                                if (d.feature.properties.hbt > 0) {
+                                     z._icon.innerHTML=Math.round(d.feature.properties.risk*10)/10;
                                 } else {
                                     z._icon.innerHTML = "";
                                 }
@@ -652,23 +589,23 @@ and open the template in the editor.
                             var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
                             var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
                             hbt_rank_Macquarie.push([loca, HBT]);
-                                var M_1 = L.marker([lat, lon], {icon: icon_wsdi(hbt_rank_Macquarie, loca)}).addTo(map1)
+                                var M_1 = L.marker([lat, lon], {icon: icon_wsdi(WSDI/100)}).addTo(map1)
                                 .bindPopup('Location: ' + loca + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
                                 + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-                                + 'Health Based Target Index: ' + HBT + '<br/>'
-                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
                                 + 'Population Served: ' + Math.round(popu));
                                 tws_marker_collection.push(M_1); 
                                 
-                                var M_2 = L.marker([lat, lon], {icon: icon_wsdi(hbt_rank_Macquarie, loca)}).addTo(map2)
+                                var M_2 = L.marker([lat, lon], {icon: icon_wsdi(WSDI/100)}).addTo(map2)
                                 .bindPopup('Location: ' + loca + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
                                 + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
-                                + 'Health Based Target Index: ' + HBT + '<br/>'
-                                + 'Water Supply Deficiency Index: ' + WSDI + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
                                 + 'Population Served: ' + Math.round(popu));
                                 tws_marker_collection.push(M_2);                     
                     <?php }?>;    

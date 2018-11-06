@@ -2,7 +2,7 @@ var lgaCentroids_mac = { "type": "FeatureCollection", "features": [
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 148.0251377423062, -32.91417180557465 ] }, "properties": { "name": "PARKES", "id": "16200" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 150.4200034991793, -31.61547490223988 ] }, "properties": { "name": "LIVERPOOL PLAINS", "id": "14920" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 148.0655128090806, -32.22608633991383 ] }, "properties": { "name": "NARROMINE", "id": "15850" } },
-	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 148.6077536064064, -32.35538059638229 ] }, "properties": { "name": "DUBBO REGIONAL", "id": "12600" } },
+	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 148.6077536064064, -32.35538059638229 ] }, "properties": { "name": "DUBBO", "id": "12600" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 151.1434273787481, -31.91465695902955 ] }, "properties": { "name": "UPPER HUNTER", "id": "17620" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 150.9187246574846, -32.66894940966452 ] }, "properties": { "name": "SINGLETON", "id": "17000" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 148.6577536064064, -32.95298309475787 ] }, "properties": { "name": "CABONNE", "id": "11400" } },
@@ -23,5 +23,5 @@ var lgaCentroids_mac = { "type": "FeatureCollection", "features": [
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 147.7205500416323, -30.85494387057855 ] }, "properties": { "name": "COONAMBLE", "id": "12150" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 146.9061601741995, -31.50813944476327 ] }, "properties": { "name": "BOGAN", "id": "10950" } },
 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 150.1789364790297, -33.27768493590731 ] }, "properties": { "name": "LITHGOW", "id": "14870" } },
- 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 149.5195824682196, -33.36327051911982 ] }, "properties": { "name": "BATHURST REGIONAL", "id": "10470" } }
+ 	{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [ 149.5195824682196, -33.36327051911982 ] }, "properties": { "name": "BATHURST", "id": "10470" } }
 ] }

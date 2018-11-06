@@ -104,7 +104,7 @@ and open the template in the editor.
                                             </form>
                                             </th>
                                         <th>
-                                            <button id="clear" onClick="clearAllLayers()">Clear</button>  
+                                            <button id="clear" onClick="clearAllLayers()">CLEAR</button>  
                                         </th>
                                         </tr>
                                     </table>
@@ -203,7 +203,7 @@ and open the template in the editor.
                 var settingHeight = document.getElementById("setting").offsetHeight;
                 var legendTitleHeight = document.getElementById("legend_title").offsetHeight;
                 document.getElementById("legend").style.height = (pageHeight - settingHeight - legendTitleHeight) + "px";
-            }
+            };
             
             var MacquarieBogan_CatchmentBoundary = MacquarieBogan_CatchmentBoundary;
             var ManningRiver_CatchmentBoundary = ManningRiver_CatchmentBoundary;
@@ -408,7 +408,7 @@ and open the template in the editor.
             var ylegend = L.control({position: 'bottomright'});//Legend
             ylegend.onAdd = function (map) {
                 var div = L.DomUtil.create('div', 'ylegend');
-                div.innerHTML +="<img src=\"images/index_icons/legend.png\" width=\"136px\" height=\"100px\"/>";
+                div.innerHTML +="<img src=\"images/index_icons/legend.png\" width=\"170px\" height=\"125px\"/>";
                 return div;
             };
             ylegend.addTo(map);//add index icon
@@ -4103,9 +4103,6 @@ and open the template in the editor.
                     var overall_idsi = "<?php echo $row["overall_idsi"]; ?>";
                     var overall_fmi = "<?php echo $row["overall_fmi"]; ?>";
                     var overall_dei = "<?php echo $row["overall_dei"]; ?>";
-                    var catchment_size = "<?php echo $row["catchment_size"]; ?>";
-                    var surface_water_size = "<?php echo $row["surface_water_size"]; ?>";
-                    var groundwater_size = "<?php echo $row["groundwater_size"]; ?>";
                     this._div.innerHTML = (
 //                        props?
 //                        '<h5>' + catch_name + ' Catchment' + '</h5>' + 
@@ -4171,7 +4168,7 @@ and open the template in the editor.
                 var bg_color = new Array();
                 var data = [];
                 <?php if(!empty($row)){?>;
-                    data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>, <?php echo $row["surface_water_size"]; ?>, <?php echo $row["groundwater_size"]; ?>];
+                    data = [<?php echo $row["overall_fui"]; ?>, <?php echo $row["overall_idsi"]; ?>, <?php echo $row["overall_fmi"]; ?>, <?php echo $row["overall_dei"]; ?>];
                 <?php }?>;
                 for(i = 0; i < 3; i++) {
                     if(data[i] <= 0.25){

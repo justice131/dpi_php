@@ -827,7 +827,7 @@ and open the template in the editor.
                                                 '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +'(0.2, 0.4]');
                                 labels.push(
                                                 '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +'(0.4, 1]');
-                                div.innerHTML = '<h4>Index Rank (WSDI)</h4>' + labels.join('<br>');
+                                div.innerHTML = '<h4>WSDI</h4>' + labels.join('<br>');
                                 return div;
                     };
                     
@@ -1023,7 +1023,7 @@ and open the template in the editor.
                                               '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' + '(0.8, 0.9]');
                               labels.push(
                                               '<img src="../../lib/leaflet/images/waste_water_red.png"> ' + '(0.9, 1]');
-                              div.innerHTML = '<h4>Index Rank (WWQI)</h4>' + labels.join('<br>');
+                              div.innerHTML = '<h4>WWQI</h4>' + labels.join('<br>');
                               return div;
                     };                  
                     legend.addTo(map);
@@ -3285,7 +3285,7 @@ and open the template in the editor.
                                                 '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"> ' +'(0.2, 0.4]');
                                 labels.push(
                                                 '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"> ' +'(0.4, 1]');
-                                div.innerHTML = '<h4>Index Rank (WSDI)</h4>' + labels.join('<br>');
+                                div.innerHTML = '<h4>WSDI</h4>' + labels.join('<br>');
                                 return div;
                     };
                     
@@ -3481,7 +3481,7 @@ and open the template in the editor.
                                               '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' + '(0.8, 0.9]');
                               labels.push(
                                               '<img src="../../lib/leaflet/images/waste_water_red.png"> ' + '(0.9, 1]');
-                              div.innerHTML = '<h4>Index Rank (WWQI)</h4>' + labels.join('<br>');
+                              div.innerHTML = '<h4>WWQI</h4>' + labels.join('<br>');
                               return div;
                       };
                     legend.addTo(map);

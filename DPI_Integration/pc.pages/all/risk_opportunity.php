@@ -31,11 +31,11 @@
                 }else if(cm=="ManningRiver"){
                     catchment = "manning";
                 }else{
-                    alert("Please select a catchment to explore.");
+//                    alert("Please select a catchment to explore.");
                     return;
                 }
                 if(module!="irrigation"&&module!="mining"&&module!="environment"&&module!="town_water_supply"){
-                    alert("Please select a module to explore.");
+//                    alert("Please select a module to explore.");
                     return;
                 }
                 document.getElementById("iframe").src = "../" + catchment + "/"+ catchment + "_" + module + ".php";
@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="box-content" style="height:40%;">
                                         <h5><b>Select a Catchment for More Information</b></h5>
-                                        <select id="select_catchment" style="width:140px">
+                                        <select id="select_catchment" style="width:140px" onchange="module_selection()">
                                             <option value="default">-----CATCHMENT-----</option>
                                             <option value="MacquarieBogan">Macquarie</option>
                                             <option value="ManningRiver">Manning</option>

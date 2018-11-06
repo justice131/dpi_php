@@ -19,7 +19,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div>
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Manning Catchment--Opportunity of mining</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Manning Catchment--Opportunity of mining</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">
@@ -31,7 +31,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div>
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Manning Catchment--Risk to Mining</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Manning Catchment--Risk to Mining</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">
@@ -206,7 +206,6 @@ and open the template in the editor.
                         y: props.mining_opportunity_sequence,
                         marker: {color: '#3D9970'},
                         name: 'Mining Opportunity',
-                        boxpoints: false,
                         type: 'box'
                     };
                     this._div.innerHTML = (props?
@@ -304,7 +303,6 @@ and open the template in the editor.
                         y: props.mining_risk_sequence,
                         marker: {color: '#3D9970'},
                         name: 'Mining Risk',
-                        boxpoints: false,
                         type: 'box'
                     };
                     this._div.innerHTML = (props?

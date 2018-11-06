@@ -24,7 +24,7 @@ and open the template in the editor.
 				<div class="box">
 					<div class="box-title">
                                             <div id="s0_title">
-                                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Upper Talbragar--Opportunity for additional supply</span>
+                                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Upper Talbragar--Opportunity for additional supply</span>
                                             </div>
 					</div>
 					<div class="box-content">
@@ -357,7 +357,7 @@ and open the template in the editor.
                             labels.push(
                                             '<i style="background:' + myCols[0] + '"></i> ' + '(0.4, 1]');
 //                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                            div.innerHTML = '<h4>Index Rank (FUI)</h4>' + labels.join('<br>');
+                            div.innerHTML = '<h4>FUI</h4>' + labels.join('<br>');
                             return div;
                     };
                     legend.addTo(map);

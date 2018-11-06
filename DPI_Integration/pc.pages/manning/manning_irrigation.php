@@ -19,7 +19,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div>
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Manning Catchment--Opportunity for irrigation</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Manning Catchment--Opportunity for irrigation</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">
@@ -31,7 +31,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div>
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Manning Catchment--Risk to agriculture due to variation in supply availability</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Manning Catchment--Risk to agriculture due to variation in supply availability</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">
@@ -543,7 +543,7 @@ and open the template in the editor.
                     labels.push(
                                     '<i style="background:' + myCols[2] + '"></i> ' + '(10, ∞)');
 //                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Index Rank (Opportunity'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
+                    div.innerHTML = '<h4>Opportunity to Agriculture)'+'</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
@@ -562,7 +562,7 @@ and open the template in the editor.
                         labels.push(
                                 '<i style="background:' + myCols[0] + '"></i> ' + '(10, ∞)');
 //                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Index Rank (Risk'+'</br>'+'to Agriculture)'+'</h4>' + labels.join('<br>');
+                        div.innerHTML = '<h4>Risk to Agriculture)'+'</h4>' + labels.join('<br>');
                         return div;
                 };
                 legend2.addTo(map2);

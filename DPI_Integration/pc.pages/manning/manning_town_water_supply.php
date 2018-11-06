@@ -367,7 +367,7 @@ and open the template in the editor.
                 // add legend
                 legend1 = L.control({position: 'bottomright'});
                 legend1.onAdd = function (map) {
-                    var div = L.DomUtil.create('div', 'info legend'),
+                    var div = L.DomUtil.create('div', 'info legend');
                     labels = [];
                     labels.push('<i style="background:' + myCols[0] + '"></i> low [0 &ndash;10]');
                     labels.push('<i style="background:' + myCols[1] + '"></i> medium (10 &ndash;100]');

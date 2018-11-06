@@ -31,11 +31,11 @@
                 }else if(cm=="ManningRiver"){
                     catchment = "manning";
                 }else{
-                    alert("Please select a catchment to explore.");
+//                    alert("Please select a catchment to explore.");
                     return;
                 }
                 if(scenario!="potential_need"&&scenario!="water_risk"){
-                    alert("Please select a scenario to explore.");
+//                    alert("Please select a scenario to explore.");
                     return;
                 }
                 document.getElementById("iframe").src = "../" + catchment + "/"+ catchment + "_scenario_" + scenario + ".php";
@@ -59,7 +59,7 @@
                                         <select id="select_catchment" style="width:140px" onchange="scenario_selection()">
                                             <option value="default">-----CATCHMENT-----</option>
                                             <option value="MacquarieBogan">Macquarie</option>
-                                            <option value="ManningRiver">Manning</option>
+                                            <!--<option value="ManningRiver">Manning</option>-->
                                         </select><br/><br/>
                                         <h5><b>Select the scenario you want to explore</b></h5>
                                         <table>

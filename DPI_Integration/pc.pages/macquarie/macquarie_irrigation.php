@@ -533,18 +533,11 @@ and open the template in the editor.
                 legend1 = L.control({position: 'bottomright'});
                 legend1.onAdd = function (map) {
                     var div = L.DomUtil.create('div', 'info legend'),
-                    labels = [],
-                    from, to;
-                    labels.push(
-                                    '<i style="background:' + myCols[0] + '"></i> ' + '[0, 1]');
-//                                    1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                    labels.push(
-                                    '<i style="background:' + myCols[1] + '"></i> ' + '(1, 10]');
-//                                    2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                    labels.push(
-                                    '<i style="background:' + myCols[2] + '"></i> ' + '(10, ∞)');
-//                                    3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                    div.innerHTML = '<h4>Opportunity to Agriculture)'+'</h4>' + labels.join('<br>');
+                    labels = [];
+                    labels.push('<i style="background:' + myCols[0] + '"></i> ' + 'low [0, 1]');
+                    labels.push('<i style="background:' + myCols[1] + '"></i> ' + 'medium (1, 10]');
+                    labels.push('<i style="background:' + myCols[2] + '"></i> ' + 'high (10, ∞)');
+                    div.innerHTML = '<h4>Opportunity to Agriculture'+'</h4>' + labels.join('<br>');
                     return div;
                 };
                 legend1.addTo(map1);
@@ -552,18 +545,11 @@ and open the template in the editor.
                 legend2 = L.control({position: 'bottomright'});
                 legend2.onAdd = function (map) {
                         var div = L.DomUtil.create('div', 'info legend'),
-                        labels = [],
-                        from, to;
-                        labels.push(
-                                '<i style="background:' + myCols[2] + '"></i> ' + '[0, 1]');
-//                                1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                        labels.push(
-                                '<i style="background:' + myCols[1] + '"></i> ' + '(1, 10]');
-//                                2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                        labels.push(
-                                '<i style="background:' + myCols[0] + '"></i> ' + '(10, ∞)');
-//                                3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
-                        div.innerHTML = '<h4>Risk to Agriculture)'+'</h4>' + labels.join('<br>');
+                        labels = [];
+                        labels.push('<i style="background:' + myCols[2] + '"></i> ' + 'low [0, 1]');
+                        labels.push('<i style="background:' + myCols[1] + '"></i> ' + 'medium (1, 10]');
+                        labels.push('<i style="background:' + myCols[0] + '"></i> ' + 'high (10, ∞)');
+                        div.innerHTML = '<h4>Risk to Agriculture'+'</h4>' + labels.join('<br>');
                         return div;
                 };
                 legend2.addTo(map2);

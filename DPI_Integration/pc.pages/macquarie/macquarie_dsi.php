@@ -230,7 +230,7 @@ and open the template in the editor.
                     this._div.innerHTML = (props?
                             '<h4>' + props.WATER_SOUR + '</h4>'+
                                     'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
-                                    'Irrigation Value: '+ '<b>$'+ Math.round(toThousands(props.irrigation_value)*100)/100+'M' + '</b>'+'<br />'+
+                                    'Irrigation Value: '+ '<b>$'+ toThousands(Math.round(props.irrigation_value*100)/100)+'M' + '</b>'+'<br />'+
                                     'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                     'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) +' ML/year'+ '</b>' +'<br />'+
                                     'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
@@ -408,7 +408,7 @@ and open the template in the editor.
                             lgas.features.map(function (d) {d.properties.DSI = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k[keys[0]]].properties.DSI = k.DSI;
+                                    lgaDict[k["Water Source"]].properties.DSI = k.DSI;
                             });
 
                             map.removeControl(legend);

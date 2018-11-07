@@ -531,6 +531,10 @@ and open the template in the editor.
                 legend1 = L.control({position: 'bottomright'});
                 legend1.onAdd = function (map) {
                     var div = L.DomUtil.create('div', 'info legend'),
+                    labels = [];
+                    labels.push('<i style="background:' + myCols[0] + '"></i> ' + 'High Opportunity [0, 1]');
+                    labels.push('<i style="background:' + myCols[1] + '"></i> ' + 'Medium Opportunity (1, 10]');
+                    labels.push('<i style="background:' + myCols[2] + '"></i> ' + 'Low Opportunity (10, ∞)');
                     div.innerHTML = '<h4>Opportunity to Agriculture'+'</h4>' + labels.join('<br>');
                     return div;
                 };
@@ -539,6 +543,10 @@ and open the template in the editor.
                 legend2 = L.control({position: 'bottomright'});
                 legend2.onAdd = function (map) {
                         var div = L.DomUtil.create('div', 'info legend'),
+                        labels = [];
+                        labels.push('<i style="background:' + myCols[2] + '"></i> ' + 'Low Risk [0, 1]');
+                        labels.push('<i style="background:' + myCols[1] + '"></i> ' + 'Medium Risk (1, 10]');
+                        labels.push('<i style="background:' + myCols[0] + '"></i> ' + 'High Risk (10, ∞)');
                         div.innerHTML = '<h4>Risk to Agriculture'+'</h4>' + labels.join('<br>');
                         return div;
                 };
@@ -705,7 +713,3 @@ and open the template in the editor.
         </script>
     </body>
 </html>
-                    labels = [];
-                    labels.push('<i style="background:' + myCols[0] + '"></i> ' + 'low [0, 1]');
-                    labels.push('<i style="background:' + myCols[1] + '"></i> ' + 'medium (1, 10]');
-                    labels.push('<i style="background:' + myCols[2] + '"></i> ' + 'high (10, ∞)');

@@ -26,7 +26,8 @@
                                     <h4><b>Data Management</b></h4>
                                 </div>
                                 <div id="map" class="box-content">
-                                    <object style="border:0px" type="text/x-scriptlet" data="Data_Management.php" width=100% height=100%></object>
+                                    <!--<object style="border:0px" type="text/x-scriptlet" data="Data_Management.php" width=100% height=100%></object>-->
+                                    <iframe id="iframe" style="width:100%; height: 100%;" frameborder="no" scrolling="no" src="Data_Management.php"/>
                                 </div>
                         </div>
                 </div>

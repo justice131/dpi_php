@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data Insight of Macquarie Catchment</title>
+        <title>Macquarie Above Burrendong FUI</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
         <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>

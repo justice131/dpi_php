@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data Insight of Macquarie Catchment</title>
+        <title>Macquarie FUI</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
         <script type="text/javascript" src="../../common.scripts/settings.js"></script>

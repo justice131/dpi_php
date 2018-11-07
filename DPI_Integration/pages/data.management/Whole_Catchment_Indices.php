@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            Whole Catchment Indices
-        </title>
+        <title>Whole Catchment Indices</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../../css/x-admin.css" media="all">
         <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">

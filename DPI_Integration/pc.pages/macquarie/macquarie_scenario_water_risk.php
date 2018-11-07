@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data Insight</title>
+        <title>Macquaire Water Risk</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
         <script src="../../border/MacquarieBogan_watersource_centroids.geojson"></script>

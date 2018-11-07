@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Irrigation Data Insight</title>
+        <title>Macquarie Mining</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
         <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>

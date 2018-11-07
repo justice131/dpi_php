@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Data Insight of Manning Catchment</title>
+        <title>Manning FUI</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
         <script src="../../border/Manning_watersource_centroids.geojson"></script>

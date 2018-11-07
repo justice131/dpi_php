@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Data Insight</title>
+        <title>Risk & Opportunity</title>
         <meta charset="UTF-8">
         <link href="../../lib/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="../../css/navigator_style.css" rel="stylesheet">

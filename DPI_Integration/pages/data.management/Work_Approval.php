@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            Work Approval
-        </title>
+        <title>Work Approval</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="../../css/x-admin.css" media="all">
         <link href="../../lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">

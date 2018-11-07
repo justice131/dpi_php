@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Irrigation Data Insight</title>
+        <title>Macquaire Town Water Supply</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <?php include("../../common.scripts/pc_import_scripts.html"); ?>
         <script type="text/javascript" src="../../common.scripts/settings.js"></script>

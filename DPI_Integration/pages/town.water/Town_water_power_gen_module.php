@@ -566,11 +566,11 @@ and open the template in the editor.
 
             function icon_wwqi(w){
                 if (w>=0 & w<=0.8){
-                    return Icon_waste_green;
+                    return Icon_waste_red;
                 }else if (w>0.8 & w<=0.9){
                     return Icon_waste_orange;
                 }else{
-                    return Icon_waste_red;
+                    return Icon_waste_green;
                 }
             }
             
@@ -1018,11 +1018,11 @@ and open the template in the editor.
                               labels = [],
                               from, to;
                               labels.push(
-                                              '<img src="../../lib/leaflet/images/waste_water_green.png"> ' + '[0, 0.8]');
+                                              '<img src="../../lib/leaflet/images/waste_water_red.png"> ' + '[0, 0.8]');
                               labels.push(
                                               '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' + '(0.8, 0.9]');
                               labels.push(
-                                              '<img src="../../lib/leaflet/images/waste_water_red.png"> ' + '(0.9, 1]');
+                                              '<img src="../../lib/leaflet/images/waste_water_green.png"> ' + '(0.9, 1]');
                               div.innerHTML = '<h4>WWQI</h4>' + labels.join('<br>');
                               return div;
                     };                  
@@ -3476,11 +3476,11 @@ and open the template in the editor.
                               labels = [],
                               from, to;
                               labels.push(
-                                              '<img src="../../lib/leaflet/images/waste_water_green.png"> ' + '[0, 0.8]');
+                                              '<img src="../../lib/leaflet/images/waste_water_red.png"> ' + '[0, 0.8]');
                               labels.push(
                                               '<img src="../../lib/leaflet/images/waste_water_orange.png"> ' + '(0.8, 0.9]');
                               labels.push(
-                                              '<img src="../../lib/leaflet/images/waste_water_red.png"> ' + '(0.9, 1]');
+                                              '<img src="../../lib/leaflet/images/waste_water_green.png"> ' + '(0.9, 1]');
                               div.innerHTML = '<h4>WWQI</h4>' + labels.join('<br>');
                               return div;
                       };

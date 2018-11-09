@@ -144,10 +144,20 @@ and open the template in the editor.
                     return mask + temp + decimal; 
             } 
             
-            function icon_wsdi(w){
-                if (w>=0 & w<=0.2){
+            function icon_oppor(w){
+                if (w>=0 & w<=10){
+                    return Icon_red;
+                }else if (w>10 & w<=100){
+                    return Icon_orange;
+                }else{
                     return Icon_green;
-                }else if (w>0.2 & w<=0.4){
+                }
+            }
+            
+            function icon_risk(w){
+                if (w>=0 & w<=10){
+                    return Icon_green;
+                }else if (w>10 & w<=100){
                     return Icon_orange;
                 }else{
                     return Icon_red;
@@ -246,10 +256,10 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                     '<h4>' + props.NSW_LGA__3 + '</h4>'+
                             'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
-                            'Gross Regional product ($M): '+ '<b>' + props.gross_regional_product +'</b>'+'<br />'+
+                            'Gross Regional product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
                             'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
                             'HBT Index (%): '+ '<b>' + props.hbt +'</b>'+'<br />'+
-                            'Opportunity (million $) : '+ '<b>' + props.opportunity +'</b>'
+                            'Opportunity (million $) : '+ '<b>' + Math.round(props.opportunity*100)/100 +'</b>'
                     : '<b>'+ 'Click a LGA'+'</b>');
             };
             info1.addTo(map1);
@@ -284,10 +294,10 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                 '<h4>' + props.NSW_LGA__3 + '</h4>'+
                         'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
-                        'Gross Regional product ($M): '+ '<b>' + props.gross_regional_product +'</b>'+'<br />'+
+                        'Gross Regional product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
                         'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
                         'HBT Index (%): '+ '<b>' + props.hbt +'</b>'+'<br />'+
-                        'Risk (million $): '+ '<b>' + props.risk +'</b>'
+                        'Risk (million $): '+ '<b>' + Math.round(props.risk*100)/100 +'</b>'
                 : '<b>'+ 'Click a LGA'+'</b>');
             };
             info2.addTo(map2);
@@ -588,25 +598,31 @@ and open the template in the editor.
                             var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
                             var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
                             var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+                            var risk = "<?php echo $town_water_supply[$x]["Risk"]; ?>";
+                            var oppor = "<?php echo $town_water_supply[$x]["Opportunity"]; ?>";
                             hbt_rank_Macquarie.push([loca, HBT]);
-                                var M_1 = L.marker([lat, lon], {icon: icon_wsdi(WSDI/100)}).addTo(map1)
+                                var M_1 = L.marker([lat, lon], {icon: icon_oppor(oppor)}).addTo(map1)
                                 .bindPopup('Location: ' + loca + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
                                 + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
                                 + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
                                 + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
-                                + 'Population Served: ' + Math.round(popu));
+                                + 'Population Served: ' + Math.round(popu) + '<br/>'
+                                + 'Risk: $' + Math.round(risk*100)/100 + 'M<br/>'
+                                + 'Opportunity: $' + Math.round(oppor*100)/100 + 'M');
                                 tws_marker_collection.push(M_1); 
                                 
-                                var M_2 = L.marker([lat, lon], {icon: icon_wsdi(WSDI/100)}).addTo(map2)
+                                var M_2 = L.marker([lat, lon], {icon: icon_risk(risk)}).addTo(map2)
                                 .bindPopup('Location: ' + loca + '<br/>'
                                 + 'Town Served: ' + town_served + '<br/>'
                                 + 'Postcode: ' + pos + '<br/>'
                                 + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
                                 + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
                                 + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
-                                + 'Population Served: ' + Math.round(popu));
+                                + 'Population Served: ' + Math.round(popu) + '<br/>'
+                                + 'Risk: $' + Math.round(risk*100)/100 + 'M<br/>'
+                                + 'Opportunity: $' + Math.round(oppor*100)/100 + 'M');
                                 tws_marker_collection.push(M_2);                     
                     <?php }?>;    
             <?php }?>; 

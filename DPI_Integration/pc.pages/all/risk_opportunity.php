@@ -45,13 +45,11 @@
                     document.getElementById('legend').removeChild(elementToBeRemoved);
                 }
                 
-                if(cm=="MacquarieBogan" && module==="town_water_supply"){
+                if(module==="town_water_supply"){
                     var elem_ov = document.createElement("div");
                     elem_ov.setAttribute('id', 'tw_legend');
                     elem_ov.innerHTML = (
-                            '<img src="../../lib/leaflet/images/water_treatment_icon_red.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (high <small>WSDI</small>)<br>'+
-                            '<img src="../../lib/leaflet/images/water_treatment_icon_orange.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (medium <small>WSDI</small>)<br>'+
-                            '<img src="../../lib/leaflet/images/water_treatment_icon_green.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre (low <small>WSDI</small>)<div style="height:2px;"><br></div>'
+                            '<img src="../../lib/leaflet/images/water_treatment_icon_black.png"  width="14" height="14" align = "center">&nbsp; &nbsp;Water treatment centre<br>'
                             );
                     document.getElementById("legend").appendChild(elem_ov);
                 }

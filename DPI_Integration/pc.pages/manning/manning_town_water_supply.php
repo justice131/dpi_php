@@ -62,6 +62,23 @@ and open the template in the editor.
             </div>                   
         </div>
         <div class="se-pre-con"></div>
+        <?php
+            include '../../db.helper/db_connection_ini.php';
+            //if(!empty($_GET['catchment_name'])){
+                if($conn!=null){
+                    $sql_3 = "SELECT * FROM town_water_supply WHERE catchment = 'Manning'";
+                    $result_3 = $conn->query($sql_3);
+                    $town_water_supply = array();
+                    $o = -1;
+                    while ($row_3 = $result_3->fetch_assoc()){
+                        $o++;
+                        $town_water_supply[$o] = $row_3;
+                    }
+                }else{
+                    include '../../db.helper/db_connection_ini.php';
+                }
+           // }
+        ?>
         
         <script type="text/javascript">
             // Show preloader
@@ -106,6 +123,26 @@ and open the template in the editor.
                         layer.bringToFront();
                 }
             }
+            
+            function icon_oppor(w){
+                if (w>=0 & w<=10){
+                    return Icon_red;
+                }else if (w>10 & w<=100){
+                    return Icon_orange;
+                }else{
+                    return Icon_green;
+                }
+            }
+            
+            function icon_risk(w){
+                if (w>=0 & w<=10){
+                    return Icon_green;
+                }else if (w>10 & w<=100){
+                    return Icon_orange;
+                }else{
+                    return Icon_red;
+                }
+            }
                         
             function toThousands(num) {
                 if (isNaN(num)) { 
@@ -125,7 +162,29 @@ and open the template in the editor.
                 } 
                 }, "").replace(/\,$/g, ""); 
                     return mask + temp + decimal; 
-            }            
+            }   
+            
+            var Icon_red = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_red.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_orange = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_orange.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
+            var Icon_green = L.icon({
+                iconUrl: '../../lib/leaflet/images/water_treatment_icon_green.png',
+                iconSize:     [15, 15], 
+                iconAnchor:   [7.5, 7.5],  
+                popupAnchor:  [0, -15] 
+            });
+            
             /*Function section end*/
 
             /*overall variables beginning*/
@@ -171,10 +230,10 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                     '<h4>' + props.NSW_LGA__3 + '</h4>'+
                             'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
-                            'Gross Regional product ($M): '+ '<b>' + props.gross_regional_product +'</b>'+'<br />'+
+                            'Gross Regional product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
                             'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
                             'HBT Index (%): '+ '<b>' + props.hbt +'</b>'+'<br />'+
-                            'Opportunity (million $) : '+ '<b>' + props.opportunity +'</b>'
+                            'Opportunity (million $) : '+ '<b>' + Math.round(props.opportunity*100)/100 +'</b>'
                     : '<b>'+ 'Click a LGA'+'</b>');
             };
             info1.addTo(map1);
@@ -209,10 +268,10 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                     '<h4>' + props.NSW_LGA__3 + '</h4>'+
                             'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
-                            'Gross Regional product ($M): '+ '<b>' + props.gross_regional_product +'</b>'+'<br />'+
+                            'Gross Regional product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
                             'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
                             'HBT Index (%): '+ '<b>' + props.hbt +'</b>'+'<br />'+
-                            'Risk (million $): '+ '<b>' + props.risk +'</b>'
+                            'Risk (million $): '+ '<b>' + Math.round(props.risk*100)/100 +'</b>'
                     : '<b>'+ 'Click a LGA'+'</b>');
             };
             info2.addTo(map2);
@@ -520,6 +579,50 @@ and open the template in the editor.
             
             setTimeout(function(){ map1.invalidateSize()}, 800);
             setTimeout(function(){ map2.invalidateSize()}, 800);
+            
+            //
+            var hbt_rank_Manning = [];
+            var tws_marker_collection = [];
+            <?php if(!empty($town_water_supply)){?>;
+                    <?php for ($x=0; $x<count($town_water_supply); $x++) {?>                              
+                            var loca ="<?php echo $town_water_supply[$x]["exact_location"]; ?>";
+                            var town_served ="<?php echo $town_water_supply[$x]["town_served"]; ?>";
+                            var lat = "<?php echo $town_water_supply[$x]["latitude"]; ?>";
+                            var lon = "<?php echo $town_water_supply[$x]["longitude"]; ?>";
+                            var pos = "<?php echo $town_water_supply[$x]["postcode"]; ?>";
+                            var vol = "<?php echo $town_water_supply[$x]["volume_treated"]; ?>";
+                            var HBT = "<?php echo $town_water_supply[$x]["HBT_index"]; ?>";
+                            var WSDI = "<?php echo $town_water_supply[$x]["WSDI"]; ?>";
+                            var popu = "<?php echo $town_water_supply[$x]["population_served"]; ?>";
+                            var risk = "<?php echo $town_water_supply[$x]["Risk"]; ?>";
+                            var oppor = "<?php echo $town_water_supply[$x]["Opportunity"]; ?>";
+                            hbt_rank_Manning.push([loca, HBT]);
+                                var M_1 = L.marker([lat, lon], {icon: icon_oppor(oppor)}).addTo(map1)
+                                .bindPopup('Location: ' + loca + '<br/>'
+                                + 'Town Served: ' + town_served + '<br/>'
+                                + 'Postcode: ' + pos + '<br/>'
+                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
+                                + 'Population Served: ' + Math.round(popu) + '<br/>'
+                                + 'Risk: $' + Math.round(risk*100)/100 + 'M<br/>'
+                                + 'Opportunity: $' + Math.round(oppor*100)/100 + 'M');
+                                tws_marker_collection.push(M_1); 
+                                
+                                var M_2 = L.marker([lat, lon], {icon: icon_risk(risk)}).addTo(map2)
+                                .bindPopup('Location: ' + loca + '<br/>'
+                                + 'Town Served: ' + town_served + '<br/>'
+                                + 'Postcode: ' + pos + '<br/>'
+                                + 'Volume Treated: ' + toThousands(vol) + ' ML' + '<br/>'
+                                + 'Health Based Target Index: ' + Math.round(HBT*100)/100 + '<br/>'
+                                + 'Water Supply Deficiency Index: ' + Math.round(WSDI)/100 + '<br/>'
+                                + 'Population Served: ' + Math.round(popu) + '<br/>'
+                                + 'Risk: $' + Math.round(risk*100)/100 + 'M<br/>'
+                                + 'Opportunity: $' + Math.round(oppor*100)/100 + 'M');
+                                tws_marker_collection.push(M_2);                     
+                    <?php }?>;    
+            <?php }?>; 
+            //
         </script>
     </body>
 </html>

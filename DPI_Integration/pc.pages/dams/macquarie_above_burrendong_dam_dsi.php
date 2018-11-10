@@ -215,23 +215,23 @@ and open the template in the editor.
                     this._div.innerHTML = (props?
                             '<h4>' + props.WATER_SOUR + '</h4>'+
                                 'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
-                                'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                'Irrigation Value: '+ '<b>'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+' $M' + '</b>'+'<br />'+
-                                'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                'Employment Irrigation: '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-                                'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
-                                'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
+//                                'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                                'Irrigation Value: '+ '<b>$'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+'M' + '</b>'+'<br />'+
+//                                'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
+                                'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+//                                'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
+//                                'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+//                                'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
+//                                'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
                                 'DSI: '+ '<b>'+ props.DSI + '</b>'+'<br />'+
-                                '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-                                'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'+
-                                'Risk to Agriculture: ' + '<b>'+ props.risk_to_agriculture + '</b>'+'<br />'+
-                                'Risk to Mining: ' + '<b>'+ props.risk_to_mining + '</b>'+'<br />'+
-                                'Opportunity to Agriculture: ' + '<b>'+ props.opportunity_to_agriculture + '</b>'+'<br />'+
-                                'Opportunity to Mining: ' + '<b>'+ props.opportunity_to_mining + '</b>'+'<br />'+
-                                'Benefit from Environment: ' + '<b>'+ props.benefit_from_environment + '</b>'+'<br />'
+//                                '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
+//                                'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
+                                'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'
+//                                'Risk to Agriculture: ' + '<b>'+ props.risk_to_agriculture + '</b>'+'<br />'+
+//                                'Risk to Mining: ' + '<b>'+ props.risk_to_mining + '</b>'+'<br />'+
+//                                'Opportunity to Agriculture: ' + '<b>'+ props.opportunity_to_agriculture + '</b>'+'<br />'+
+//                                'Opportunity to Mining: ' + '<b>'+ props.opportunity_to_mining + '</b>'+'<br />'+
+//                                'Benefit from Environment: ' + '<b>'+ props.benefit_from_environment + '</b>'+'<br />'
                                 : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
@@ -349,7 +349,7 @@ and open the template in the editor.
 
                     //Bind data to parallel coordinate
                     parcoords.data(data)
-                                    .hideAxis(["Water source","index"])
+                                    .hideAxis(["Water Source","index"])
                                     .render()
                                     .reorderable()
                                     .brushMode("1D-axes")

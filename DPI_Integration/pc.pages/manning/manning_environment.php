@@ -85,11 +85,11 @@ and open the template in the editor.
             }
 
             function onEachFeature(feature, layer) {
-                    layer.on({
-                            mouseover: highlightFeature,
-                            mouseout: resetHighlight,
-                            click: zoomToFeature
-                    });
+                layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlight,
+                        click: zoomToFeature
+                });
             }
 
             function highlightFeature(e) {
@@ -210,12 +210,12 @@ and open the template in the editor.
                     return this._div;
             };
             info.update = function (props) {
-                    this._div.innerHTML = (props?
-                           '<h4>' + props.WATER_SOUR + '</h4>'+
-                                    'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                    'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
-                                    'Benefit From Environment: ' + '<b>$'+ Math.round(props.benefit_from_environment*100)/100 + 'M</b>'+'<br />'
-                            : '<b>'+ 'Click a Water Source'+'</b>');
+                this._div.innerHTML = (props?
+                '<h4>' + props.WATER_SOUR + '</h4>'+
+                         'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                         'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
+                         'Benefit From Environment: ' + '<b>$'+ Math.round(props.benefit_from_environment*100)/100 + 'M</b>'+'<br />'
+                 : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
 
@@ -240,18 +240,18 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d["Benefit from Environment (Million $)"]); });
+                    .color(function (d) { return getColorScalar(d["Benefit from environment (Million $)"]); });
 
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/environment_manning.csv", function (data) {
                     _.each(data, function (d, i) {
-                            d.index = d.index || i; //unique id
-                            var water_source_name = d["Water Source"];
-                            lgaDict[water_source_name].properties.wetland_area=d["Wetland Area"];
-                            lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
-                            lgaDict[water_source_name].properties.benefit_from_environment=d["Benefit from Environment (Million $)"];
-                            lga.push(water_source_name);
+                        d.index = d.index || i; //unique id
+                        var water_source_name = d["Water Source"];
+                        lgaDict[water_source_name].properties.wetland_area=d["Wet land area (HA)"];
+                        lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
+                        lgaDict[water_source_name].properties.benefit_from_environment=d["Benefit from environment (Million $)"];
+                        lga.push(water_source_name);
                     });
 
                     // add lga layer
@@ -277,17 +277,10 @@ and open the template in the editor.
                     legend = L.control({position: 'bottomright'});
                     legend.onAdd = function (map) {
                             var div = L.DomUtil.create('div', 'info legend'),
-                            labels = [],
-                            from, to;
-                            labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> '  + '[0, 5]');
-//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                            labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' + '(5, 50]');
-//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                            labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' + '(50, ∞)');
-//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            labels = [];
+                            labels.push('<i style="background:' + myCols[2] + '"></i> '  + '[0, 5]');
+                            labels.push('<i style="background:' + myCols[1] + '"></i> ' + '(5, 50]');
+                            labels.push('<i style="background:' + myCols[0] + '"></i> ' + '(50, ∞)');
                             div.innerHTML = '<h4>Benefit From Environment</h4>' + labels.join('<br>');
                             return div;
                     };
@@ -377,7 +370,7 @@ and open the template in the editor.
                             lgas.features.map(function (d) {d.properties.benefit_from_environment = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k["Water Source"]].properties.benefit_from_environment = k["Benefit from Environment (Million $)"];
+                                    lgaDict[k["Water Source"]].properties.benefit_from_environment = k["Benefit from environment (Million $)"];
                             });
 
                             map.removeControl(legend);

@@ -423,11 +423,11 @@ and open the template in the editor.
             burrendongIndexIcon.addTo(map);//add index icon
             
             var windamereIcon = L.icon({
-                iconUrl: 'images/index_icons/macquaire_talbragar.png',
+                iconUrl: 'images/index_icons/macquaire_cudgegong.png',
                 iconSize: [50, 50]
             });
             var windamereIndexIcon = L.marker([ -32.80973, 149.912125497000034], {icon: windamereIcon});
-            windamereIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/dams/macquarie_above_upper_talbragar_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/dams/macquarie_above_upper_talbragar_fui.php\">FUI</a></div>").openPopup();
+            windamereIndexIcon.bindPopup("<div class=\"four_index_link\"><a href=\"pc.pages/dams/macquarie_above_upper_cudgegong_dsi.php\">DSI</a>&nbsp;&nbsp;&nbsp;<a href=\"pc.pages/dams/macquarie_above_upper_cudgegong_fui.php\">FUI</a></div>").openPopup();
             windamereIndexIcon.addTo(map);//add index icon
             /*add by justice*/
             

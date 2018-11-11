@@ -178,15 +178,14 @@ and open the template in the editor.
             map.setView([-31.8, 148.5], 8);
             
             function getColorScalar(d) {
-                if(d >= 0 && d <= 0.2){
-                return myCols[2];
-                }else if(d > 0.2 && d <= 0.4){
-                return myCols[1];
-                }else if(d > 0.4 && d <= 1){
-                return myCols[0];
+                if(d >= 0 && d <= 0.5){
+                    return myCols[2];
+                }else if(d > 0.5 && d <= 1){
+                    return myCols[1];
+                }else if(d > 1 && d <= 100){
+                    return myCols[0];
                 }
             }
-            
             
             function style(feature) {
                     return {
@@ -224,7 +223,7 @@ and open the template in the editor.
                                     'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
                                     'DSI: '+ '<b>'+ Math.round(props.DSI*100)/100 + '</b>'+'<br />'+
                                     'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
-                                    'Flood Risk Index (FRI): ' + '<b>'+ Math.round(props.flood_risk*10*100)/10 + ' %</b>'+'<br />'
+                                    'Flood Risk Index (FRI): ' + '<b>'+ Math.round(props.flood_risk*10)/10 + ' %</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
@@ -256,7 +255,7 @@ and open the template in the editor.
                             bottom: 15
                     })
                     .color(function (d) { 
-                        return getColorScalar(d["FRI"])
+                        return getColorScalar(d["FRI (100 yrs Flood frequency)"])
                     });
 
 
@@ -265,14 +264,14 @@ and open the template in the editor.
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d["Water Source"];
-                            lgaDict[water_source_name].properties.irrigated_area=d["Irrigated Area"];
-                            lgaDict[water_source_name].properties.irrigation_value=d["Irrigation Value ($)"];
-                            lgaDict[water_source_name].properties.employment_irrigation=d["Employment (Irrigation)"];
+                            lgaDict[water_source_name].properties.irrigated_area=d["Irrigated area"];
+                            lgaDict[water_source_name].properties.irrigation_value=d["Irrigation value($ M)"];
+                            lgaDict[water_source_name].properties.employment_irrigation=d["employment irrigation"];
                             lgaDict[water_source_name].properties.total_entitlement=d["Total Entitlement"];
                             lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
                             lgaDict[water_source_name].properties.DSI=d["DSI"];
                             lgaDict[water_source_name].properties.FUI=d["FUI"];
-                            lgaDict[water_source_name].properties.flood_risk=d["FRI"];
+                            lgaDict[water_source_name].properties.flood_risk=d["FRI (100 yrs Flood frequency)"];
                             lga.push(water_source_name);
                     });
 
@@ -299,17 +298,10 @@ and open the template in the editor.
                     legend = L.control({position: 'bottomright'});
                     legend.onAdd = function (map) {
                             var div = L.DomUtil.create('div', 'info legend'),
-                            labels = [],
-                            from, to;
-                            labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' + '[0, 0.5%]');
-//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                            labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' + '(0.5%, 1%]');
-//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                            labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' + '(1%, 100%]');
-//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            labels = [];
+                            labels.push('<i style="background:' + myCols[2] + '"></i> ' + '[0, 0.5%]');
+                            labels.push('<i style="background:' + myCols[1] + '"></i> ' + '(0.5%, 1%]');
+                            labels.push('<i style="background:' + myCols[0] + '"></i> ' + '(1%, 100%]');
                             div.innerHTML = '<h4>FRI</h4>' + labels.join('<br>');
                             return div;
                     };
@@ -399,7 +391,7 @@ and open the template in the editor.
                             lgas.features.map(function (d) {d.properties.flood_risk = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k["Water Source"]].properties.flood_risk = k["FRI"];;
+                                    lgaDict[k["Water Source"]].properties.flood_risk = k["FRI (100 yrs Flood frequency)"];;
                             });
 
                             map.removeControl(legend);
@@ -421,7 +413,7 @@ and open the template in the editor.
                                     geojsonLabels.getLayers().forEach(function (z) {
                                             if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
                                                     if (d.feature.properties.flood_risk >= 0) {
-                                                            z._icon.innerHTML=Math.round(d.feature.properties.flood_risk*10*100)/10 + '%';
+                                                            z._icon.innerHTML=Math.round(d.feature.properties.flood_risk*10)/10 + '%';
                                                     } else {
                                                             z._icon.innerHTML = "";
                                                     }

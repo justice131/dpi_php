@@ -263,9 +263,9 @@ and open the template in the editor.
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d["Water Source"];
-                            lgaDict[water_source_name].properties.irrigated_area=d["Irrigated Area"];
-                            lgaDict[water_source_name].properties.irrigation_value=d["Irrigation Value ($)"];
-                            lgaDict[water_source_name].properties.employment_irrigation=d["Employment (Irrigation)"];
+                            lgaDict[water_source_name].properties.irrigated_area=d["Irrigated area"];
+                            lgaDict[water_source_name].properties.irrigation_value=d["Irrigation value($ M)"];
+                            lgaDict[water_source_name].properties.employment_irrigation=d["employment irrigation"];
                             lgaDict[water_source_name].properties.total_entitlement=d["Total Entitlement"];
                             lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
                             lgaDict[water_source_name].properties.DSI=d["DSI"];

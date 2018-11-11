@@ -1,31 +1,31 @@
-Water Source,Irrigated Area,Irrigation Value ($),Employment (Irrigation),Agriculture Water Use,FUI,Risk to Agriculture,Opportunity to Agriculture
-Backwater Boggy Cowal Water Source,12692.65,71,321,1374,0.11,1.18,35.63
-Bell River Water Source,509.93,30,258,6216,0.12,0,70.68
-Bulbodney Grahway Creek Water Source,,59,287,4818,0.29,5.8,37.17
-Burrendong Dam Tributaries Water Source,,23,252,350,0,0,124.94
-Campbells River Water Source,159.81,11,105,1873,0.03,0,64.12
-Coolbaggie Creek Water Source,877.21,16,132,443,0.04,0.12,18.67
-Cooyal Wialdra Creek Water Source,91.25,7,85,518,0.06,0.01,17.40
-Ewenmar Creek Water Source,6160.49,37,184,486,0.08,0.37,23.12
-Fish River Water Source,18.25,10,104,1844.5,0.24,0,42.38
-Goolma Creek Water Source,,6,67,0,0,0,2.51
-Lawsons Creek Water Source,128.1,5,68,807,0.19,0,3.26
-Little River Water Source,636.03,47,397,1897,0.1,0,25.78
-Lower Bogan River Water Source,1610.28,31,154,40257.5,1,48.5,0.00
-Lower Macquarie River Water Source,4395,34,123,44163,1,33.91,0.00
-Lower Talbragar River Water Source,566.52,35,304,2192,0.12,1.29,20.30
-Macquarie River above Burrendong Water Source,543.63,15,143,6963,0.16,2.32,136.29
-Marra Creek Water Source,1776.84,30,116,204,0.17,0.25,0.00
-Marthaguy Creek Water Source,3289.83,68,303,1795,0.19,2.06,59.32
-Maryvale Geurie Creek Water Source,1092.71,10,93,602,0.09,0,8.03
-Molong Creek Water Source,479.93,7,60,3681,0.27,1.67,12.33
-Piambong Creek Water Source,344.37,6,79,851,1,0.98,0.00
-Pipeclay Creek Water Source,503.06,2,30,367,0.19,0,1.06
-Queen Charlottes Vale Evans Plains Creek Water Source,139.48,10,95,1784,0.11,0,18.38
-Summerhill Creek Water Source,197.31,35,287,2799,0.2,0.59,39.62
-Turon Crudine River Water Source,2.22,11,129,261,0,0,75.90
-Upper Bogan River Water Source,3711.7,134,714,643,0.09,0.77,35.87
-Upper Cudgegong River Water Source,11.42,6,77,2803,0.15,0,26.82
-Upper Talbragar River Water Source,394.44,15,134,370,0.03,0,13.82
-Wambangalong Whylandra Creek Water Source,834.77,15,123,115,0.02,0,13.72
-Winburndale Rivulet Water Source,19.14,9,89,497,0.03,0,43.77
+Water Source,Irrigated area,Irrigation value($ M),employment irrigation,Agriculture water use,Risk to agriculture ($ millions),Opportunity to Agriculture,
+Backwater Boggy Cowal Water Source,12692.64787,70.59359329,321,1374,1.175892942,35.62953699,
+Bell River Water Source,509.9266643,29.95813039,258,6216,0,70.68239743,
+Bulbodney Grahway Creek Water Source,,59.11354284,287,4818,5.804602908,37.1700326,
+Burrendong Dam Tributaries Water Source,,22.70675802,252,350,0,124.9402835,
+Campbells River Water Source,159.8132512,11.01394224,105,1873,0,64.12081664,
+Coolbaggie Creek Water Source,877.2138134,16.3378655,132,443,0.115676437,18.67499233,
+Cooyal Wialdra Creek Water Source,91.25207614,6.53819504,85,518,0.009264243,17.40102117,
+Ewenmar Creek Water Source,6160.487664,37.40080453,184,486,0.370065203,23.11645052,
+Fish River Water Source,18.25237449,10.42706147,104,1844.5,0,42.38040036,
+Goolma Creek Water Source,,6.40397924,67,0,0,2.50856721,
+Lawsons Creek Water Source,128.0991786,5.21390166,68,807,0,3.262083489,
+Little River Water Source,636.0286631,46.92652932,397,1897,0,25.78154955,
+Lower Bogan River Water Source,1610.27661,31.11480772,154,40257.5,48.50120414,0,
+Lower Macquarie River Water Source,4394.995041,33.63215545,123,44163,33.90753316,0,
+Lower Talbragar River Water Source,566.5158438,34.87038145,304,2192,1.288874123,20.2953269,
+Macquarie River above Burrendong Water Source,543.6345003,14.59559673,143,6963,2.322669769,136.2933203,
+Marra Creek Water Source,1776.836298,29.84669419,116,204,0.245773971,0,
+Marthaguy Creek Water Source,3289.826898,67.86833844,303,1795,2.056743913,59.31713884,
+Maryvale Geurie Creek Water Source,1092.711442,10.27814674,93,602,0,8.025681097,
+Molong Creek Water Source,479.9319731,7.31496893,60,3681,1.672036956,12.33214201,
+Piambong Creek Water Source,344.3737048,6.07841649,79,851,0.9767154,0,
+Pipeclay Creek Water Source,503.0571364,2.27982782,30,367,0,1.064124999,
+Queen Charlottes Vale Evans Plains Creek Water Source,139.4763893,9.71790708,95,1784,0,18.38247709,
+Summerhill Creek Water Source,197.3106387,35.04924015,287,2799,0.594808975,39.61577213,
+Turon Crudine River Water Source,2.216484204,10.84266836,129,261,0,75.89928427,
+Upper Bogan River Water Source,3711.695595,133.5357358,714,643,0.774669919,35.86684113,
+Upper Cudgegong River Water Source,11.42363833,5.88224764,77,2803,0,26.82487428,
+Upper Talbragar River Water Source,394.4364329,14.61360823,134,370,0,13.81821466,
+Wambangalong Whylandra Creek Water Source,834.7718922,14.70930426,123,115,0,13.71809127,
+Winburndale Rivulet Water Source,19.14092754,8.94460009,89,497,0,43.76683957,

@@ -211,18 +211,17 @@ and open the template in the editor.
                     return this._div;
             };
             info.update = function (props) {
-                    this._div.innerHTML = (props?
-                            '<h4>' + props.WATER_SOUR + '</h4>'+
-                                    'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                    'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                                    'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
-                                    'Water Related Health Risk Index: ' + '<b>'+ Math.round(props.health_of_water_bodies*100)/100 + '</b>'+'<br />'
-                            : '<b>'+ 'Click a Water Source'+'</b>');
+                this._div.innerHTML = (props?
+                '<h4>' + props.WATER_SOUR + '</h4>'+
+                        'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
+                        'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
+                        'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
+                        'Water Related Health Risk Index: ' + '<b>'+ Math.round(props.health_of_water_bodies*100)/100 + '</b>'+'<br />'
+                : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
 
             var lgaDict = {};
-//                    var geojson, geojsonLabels;
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
                     lgas.features[j].properties.population=0;
@@ -244,7 +243,7 @@ and open the template in the editor.
                     right: 1,
                     bottom: 15
             })
-            .color(function (d) { return getColorScalar(d["Water Related Ecosystem Health Index"]) });
+            .color(function (d) { return getColorScalar(d["Water related ecosystem health index"]) });
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/health_of_water_bodies_population_macquaire.csv", function (data) {
@@ -252,9 +251,9 @@ and open the template in the editor.
                             d.index = d.index || i; //unique id
                             var water_source_name = d["Water Source"];
                             lgaDict[water_source_name].properties.population=d["Population"];
-                            lgaDict[water_source_name].properties.wetland_area=d["Wetland Area"];
+                            lgaDict[water_source_name].properties.wetland_area=d["Wet land area (HA)"];
                             lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
-                            lgaDict[water_source_name].properties.health_of_water_bodies=d["Water Related Ecosystem Health Index"];
+                            lgaDict[water_source_name].properties.health_of_water_bodies=d["Water related ecosystem health index"];
                             lga.push(water_source_name);
                     });
 
@@ -381,7 +380,7 @@ and open the template in the editor.
                             lgas.features.map(function (d) {d.properties.health_of_water_bodies = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k["Water Source"]].properties.health_of_water_bodies = k["Water Related Ecosystem Health Index"];
+                                lgaDict[k["Water Source"]].properties.health_of_water_bodies = k["Water related ecosystem health index"];
                             });
 
                             map.removeControl(legend);

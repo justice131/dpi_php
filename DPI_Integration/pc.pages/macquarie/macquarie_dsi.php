@@ -179,17 +179,7 @@ and open the template in the editor.
                 }
             }).addTo(map);
             map.setView([-31.8, 148.5], 8);       
-            
-//            function getColorScalar(d) {
-//                if(d<=Math.floor(max_row/3)){
-//                return myCols[2];
-//                }else if(d<=Math.ceil(2*max_row/3)){
-//                return myCols[1];
-//                }else{
-//                return myCols[0];
-//                }
-//            }
-            
+      
             function getColorScalar(d) {
                 if(d >= 0 && d <= 0.3){
                 return myCols[0];
@@ -274,9 +264,9 @@ and open the template in the editor.
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d["Water Source"];
-                            lgaDict[water_source_name].properties.irrigated_area=d["Irrigated Area"];
-                            lgaDict[water_source_name].properties.irrigation_value=d["Irrigation value ($)"];
-                            lgaDict[water_source_name].properties.employment_irrigation=d["Employment (Irrigation)"];
+                            lgaDict[water_source_name].properties.irrigated_area=d["Irrigated area"];
+                            lgaDict[water_source_name].properties.irrigation_value=d["Irrigation value($ M)"];
+                            lgaDict[water_source_name].properties.employment_irrigation=d["employment irrigation"];
                             lgaDict[water_source_name].properties.total_entitlement=d["Total Entitlement"];
                             lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
                             lgaDict[water_source_name].properties.DSI=d["DSI"];

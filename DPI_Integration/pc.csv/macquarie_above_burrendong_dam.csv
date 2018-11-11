@@ -1,8 +1,8 @@
-Water Source,Irrigated area ,population,irrigation value($),mining_value($M),employment irrigation,employment mining,Wet land area (Ha),Dissolved oxygen (mg/l)Mean,Days  below Mean,DSI_org,DSI,FRI           100 yrs Flood frequency,Time Below Requirement,FUI,Risk to agriculture ($ millions),Risk to Mining ,Opprtunity to Agriculture,Opportunity of mining ,Benefit from environment (Million $),FUIIndexRank,DSIIndexRank
-Campbells River Water Source,159.8132512,4713,11013942,10.85,105,102,144.73,97.1,0.81,4.16,1,0,0,0.02,0,0,99,1225,0.48,4,1
-Fish River Water Source,18.25237449,5574,10427061,35.22,104,327,298.69,97.1,0.78,1.09,1,0.01,0.09,0.13,0,0,98,328,1,1,2
-Macquarie River above Burrendong Water Source,543.6345003,10960,14595597,32.85,143,307,1.32,105.2,0.82,0.27,0.27,0,0.15,0.08,6.1,0.49,221,216,0,2,7
-Queen Charlottes Vale Evans Plains Creek Water Source,139.4763893,6395,9717907,19.02,95,178,13.2,97.1,0.85,1.14,1,0,0.03,0.04,0,0,30,452,0.04,3,3
-Summerhill Creek Water Source,197.3106387,36297,35049240,370.47,287,3369,304.37,105.2,0.85,0.4,0.4,0,0.13,0.1,2.01,2.38,76,974,1.02,6,6
-Turon Crudine River Water Source,2.216484204,8756,10842668,103.15,129,937,19.86,107.8,0.85,27.82,1,0.01,0,0,0,0,128,599,0.07,7,4
-Winburndale Rivulet Water Source,19.14092754,8150,8944600,18.14,89,174,24.85,105.2,0.83,3.14,1,0.01,0.02,0.02,0,0,74,146,0.08,5,5
+Water Source,Irrigated area,Irrigation value($ M),employment irrigation,Total Entitlement,Mean Flow,DSI,FUI,
+Campbells River Water Source,159.8132512,11.01394224,105,2101,228.2968438,1,0.033333333,
+Fish River Water Source,18.25237449,10.42706147,104,18070.5,257.2431737,1,0.236553087,
+Macquarie River above Burrendong Water Source,543.6345003,14.59559673,143,25586,565.5957955,0.272473228,0.158615521,
+Queen Charlottes Vale Evans Plains Creek Water Source,139.4763893,9.71790708,95,1925,72.17864766,1,0.106665928,
+Summerhill Creek Water Source,197.3106387,35.04924015,287,11744,193.5124967,0.404036104,0.20495637,
+Turon Crudine River Water Source,2.216484204,10.84266836,129,328,291.4109419,1,0.003937244,
+Winburndale Rivulet Water Source,19.14092754,8.94460009,89,1629,171.0334805,1,0.033941304,

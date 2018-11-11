@@ -213,54 +213,27 @@ and open the template in the editor.
             };
             info.update = function (props) {
                     this._div.innerHTML = (props?
-                            '<h4>' + props.WATER_SOUR + '</h4>'+
-                                'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
-//                                'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                                'Irrigation Value: '+ '<b>$'+ Math.round(toThousands(props.irrigation_value/1000000)*100)/100+'M' + '</b>'+'<br />'+
-//                                'Mining Value: '+ '<b>' + toThousands(props.mining_value) + ' $M'+'</b>'+'<br />'+
-                                'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-//                                'Employment Mining: '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
-//                                'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-//                                'Dissolved Oxygen: '+ '<b>'+ toThousands(props.dissolved_oxygen) +'% mg/L'+ '</b>' +'<br />'+
-//                                'Days Below Mean: '+ '<b>'+ toThousands(props.days_below_mean) + '</b>' +'<br />'+
-                                'DSI: '+ '<b>'+ props.DSI + '</b>'+'<br />'+
-//                                '100 Years Flood Frequency: '+ '<b>'+ toThousands(props.one_hundred_yrs_flood_frequency) + '</b>'+'<br />'+
-//                                'Time Below Requirement: '+ '<b>'+ toThousands(props.time_below_requirement) + '</b>'+'<br />'+
-                                'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'
-//                                'Risk to Agriculture: ' + '<b>'+ props.risk_to_agriculture + '</b>'+'<br />'+
-//                                'Risk to Mining: ' + '<b>'+ props.risk_to_mining + '</b>'+'<br />'+
-//                                'Opportunity to Agriculture: ' + '<b>'+ props.opportunity_to_agriculture + '</b>'+'<br />'+
-//                                'Opportunity to Mining: ' + '<b>'+ props.opportunity_to_mining + '</b>'+'<br />'+
-//                                'Benefit from Environment: ' + '<b>'+ props.benefit_from_environment + '</b>'+'<br />'
-                                : '<b>'+ 'Click a Water Source'+'</b>');
+                '<h4>' + props.WATER_SOUR + '</h4>'+
+                'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
+                'Irrigation Value: '+ '<b>$'+ props.irrigation_value+'M' + '</b>'+'<br />'+
+                'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                'DSI: '+ '<b>'+ props.DSI + '</b>'+'<br />'+
+                'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'
+                : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
 
             var lgaDict = {};
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
-                    lgas.features[j].properties.irrigated_area=0;
-                    lgas.features[j].properties.population=0;
-                    lgas.features[j].properties.irrigation_value=0;
-                    lgas.features[j].properties.mining_value=0;
-                    lgas.features[j].properties.employment_irrigation=0;
-                    lgas.features[j].properties.employment_mining=0;
-                    lgas.features[j].properties.wetland_area=0;
-                    lgas.features[j].properties.dissolved_oxygen=0;
-                    lgas.features[j].properties.days_below_mean=0;
-                    lgas.features[j].properties.DSI_org=0;
-                    lgas.features[j].properties.DSI=0;
-                    lgas.features[j].properties.one_hundred_yrs_flood_frequency=0;
-                    lgas.features[j].properties.time_below_requirement=0;
-                    lgas.features[j].properties.FUI=0;
-                    lgas.features[j].properties.risk_to_agriculture=0;
-                    lgas.features[j].properties.risk_to_mining=0;
-                    lgas.features[j].properties.opportunity_to_agriculture=0;
-                    lgas.features[j].properties.opportunity_to_mining=0;
-                    lgas.features[j].properties.benefit_from_environment=0;
-                    lgas.features[j].properties.FUIIndexRank=0;
-                    lgas.features[j].properties.DSIIndexRank=0;
-                    lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
+                lgas.features[j].properties.irrigated_area=0;
+                lgas.features[j].properties.irrigation_value=0;
+                lgas.features[j].properties.employment_irrigation=0;
+                lgas.features[j].properties.total_entitlement=0;
+                lgas.features[j].properties.mean_flow=0;
+                lgas.features[j].properties.DSI=0;
+                lgas.features[j].properties.FUI=0;
+                lgaDict[lgas.features[j].properties.WATER_SOUR] = lgas.features[j];
             }
 
             // Create parallel Coordinate
@@ -282,30 +255,16 @@ and open the template in the editor.
             d3.csv("../../pc.csv/macquarie_above_burrendong_dam.csv", function (data) {
                 var keys = Object.keys(data[0]);
                     _.each(data, function (d, i) {
-                            d.index = d.index || i; //unique id
-                            var water_source_name = d[keys[0]];
-                            lgaDict[water_source_name].properties.irrigated_area=d[keys[1]];
-                            lgaDict[water_source_name].properties.population=d[keys[2]];
-                            lgaDict[water_source_name].properties.irrigation_value=d[keys[3]];
-                            lgaDict[water_source_name].properties.mining_value=d[keys[4]];
-                            lgaDict[water_source_name].properties.employment_irrigation=d[keys[5]];
-                            lgaDict[water_source_name].properties.employment_mining=d[keys[6]];
-                            lgaDict[water_source_name].properties.wetland_area=d[keys[7]];
-                            lgaDict[water_source_name].properties.dissolved_oxygen=d[keys[8]];
-                            lgaDict[water_source_name].properties.days_below_mean=d[keys[9]];
-                            lgaDict[water_source_name].properties.DSI_org=d[keys[10]];
-                            lgaDict[water_source_name].properties.DSI=d[keys[11]];
-                            lgaDict[water_source_name].properties.one_hundred_yrs_flood_frequency=parseFloat(d[keys[12]]);
-                            lgaDict[water_source_name].properties.time_below_requirement=d[keys[13]];
-                            lgaDict[water_source_name].properties.FUI=d[keys[14]];
-                            lgaDict[water_source_name].properties.risk_to_agriculture=d[keys[15]];
-                            lgaDict[water_source_name].properties.risk_to_mining=d[keys[16]];
-                            lgaDict[water_source_name].properties.opportunity_to_agriculture=d[keys[17]];
-                            lgaDict[water_source_name].properties.opportunity_to_mining=d[keys[18]];
-                            lgaDict[water_source_name].properties.benefit_from_environment=d[keys[19]];
-                            lgaDict[water_source_name].properties.FUIIndexRank=d[keys[20]];
-                            lgaDict[water_source_name].properties.DSIIndexRank=d[keys[21]];
-                            lga.push(water_source_name);
+                        d.index = d.index || i; //unique id
+                        var water_source_name = d["Water Source"];
+                        lgaDict[water_source_name].properties.irrigated_area=d["Irrigated area"];
+                        lgaDict[water_source_name].properties.irrigation_value=d["Irrigation value($ M)"];
+                        lgaDict[water_source_name].properties.employment_irrigation=d["employment irrigation"];
+                        lgaDict[water_source_name].properties.total_entitlement=d["Total Entitlement"];
+                        lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
+                        lgaDict[water_source_name].properties.DSI=d["DSI"];
+                        lgaDict[water_source_name].properties.FUI=d["FUI"];
+                        lga.push(water_source_name);
                     });
 
                     // add lga layer
@@ -333,15 +292,9 @@ and open the template in the editor.
                             var div = L.DomUtil.create('div', 'info legend'),
                             labels = [],
                             from, to;
-                            labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' + '[0, 0.3]');
-//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                            labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' + '(0.3, 0.55]');
-//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                            labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' + '(0.55, 1]');
-//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            labels.push('<i style="background:' + myCols[0] + '"></i> ' + '[0, 0.3]');
+                            labels.push('<i style="background:' + myCols[1] + '"></i> ' + '(0.3, 0.55]');
+                            labels.push('<i style="background:' + myCols[2] + '"></i> ' + '(0.55, 1]');
                             div.innerHTML = '<h4>DSI</h4>' + labels.join('<br>');
                             return div;
                     };

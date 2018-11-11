@@ -177,12 +177,12 @@ and open the template in the editor.
             map.setView([-31.75, 151.9],10);  
             
             function getColorScalar(d) {
-                if(d >= 0 && d <= 0.2){
-                return myCols[2];
-                }else if(d > 0.2 && d <= 0.4){
-                return myCols[1];
-                }else if(d > 0.4 && d <= 1){
-                return myCols[0];
+                if(d >= 0 && d <= 0.5){
+                    return myCols[2];
+                }else if(d > 0.5 && d <= 1){
+                    return myCols[1];
+                }else if(d > 1 && d <= 100){
+                    return myCols[0];
                 }
             }
             
@@ -214,22 +214,21 @@ and open the template in the editor.
                     return this._div;
             };
             info.update = function (props) {
-                    this._div.innerHTML = (props?
-                            '<h4>' + props.WATER_SOUR + '</h4>'+
-                                    'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
-                                    'Irrigation Value: '+ '<b>$'+ toThousands(Math.round(props.irrigation_value*100)/100)+'M' + '</b>'+'<br />'+
-                                    'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
-                                    'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + ' ML/year'+ '</b>' +'<br />'+
-                                    'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
-                                    'DSI: '+ '<b>'+ Math.round(props.DSI*100)/100 + '</b>'+'<br />'+
-                                    'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
-                                    'Flood Risk Index (FRI): ' + '<b>'+ Math.round(props.flood_risk*10*100)/10 + ' %</b>'+'<br />'
-                            : '<b>'+ 'Click a Water Source'+'</b>');
+                this._div.innerHTML = (props?
+                '<h4>' + props.WATER_SOUR + '</h4>'+
+                        'Irrigated Area: '+ '<b>' + toThousands(Math.round(props.irrigated_area*10)/10) + ' Ha' + '</b>' + '<br />'+
+                        'Irrigation Value: '+ '<b>$'+ toThousands(Math.round(props.irrigation_value*100)/100)+'M' + '</b>'+'<br />'+
+                        'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                        'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) + ' ML/year'+ '</b>' +'<br />'+
+                        'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
+                        'DSI: '+ '<b>'+ Math.round(props.DSI*100)/100 + '</b>'+'<br />'+
+                        'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
+                        'Flood Risk Index (FRI): ' + '<b>'+ Math.round(props.flood_risk*10)/10 + ' %</b>'+'<br />'
+                : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);
 
             var lgaDict = {};
-//                    var geojson, geojsonLabels;
             // initialise each property for of geojson
             for (j = 0; j < lgas.features.length; j++) {
                     lgas.features[j].properties.irrigated_area=0;
@@ -255,7 +254,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d["FRI"]) });
+                    .color(function (d) { return getColorScalar(d["FRI (100 yrs Flood frequency)"]) });
 
 
             //Read data for parallel coordinate
@@ -263,14 +262,14 @@ and open the template in the editor.
                     _.each(data, function (d, i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d["Water Source"];
-                            lgaDict[water_source_name].properties.irrigated_area=d["Irrigated Area"];
-                            lgaDict[water_source_name].properties.irrigation_value=d["Irrigation Value ($)"];
-                            lgaDict[water_source_name].properties.employment_irrigation=d["Employment (Irrigation)"];
+                            lgaDict[water_source_name].properties.irrigated_area=d["Irrigated area"];
+                            lgaDict[water_source_name].properties.irrigation_value=d["Irrigation value($ M)"];
+                            lgaDict[water_source_name].properties.employment_irrigation=d["employment irrigation"];
                             lgaDict[water_source_name].properties.total_entitlement=d["Total Entitlement"];
                             lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
                             lgaDict[water_source_name].properties.DSI=d["DSI"];
                             lgaDict[water_source_name].properties.FUI=d["FUI"];
-                            lgaDict[water_source_name].properties.flood_risk=d["FRI"];
+                            lgaDict[water_source_name].properties.flood_risk=d["FRI (100 yrs Flood frequency)"];
                             lga.push(water_source_name);
                     });
 
@@ -299,15 +298,9 @@ and open the template in the editor.
                             var div = L.DomUtil.create('div', 'info legend'),
                             labels = [],
                             from, to;
-                            labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' + '[0, 20%]');
-//                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
-                            labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' + '(20%, 40%]');
-//                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
-                            labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' + '(80%, 100%]');
-//                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
+                            labels.push('<i style="background:' + myCols[2] + '"></i> ' + '[0, 20%]');
+                            labels.push('<i style="background:' + myCols[1] + '"></i> ' + '(20%, 40%]');
+                            labels.push('<i style="background:' + myCols[0] + '"></i> ' + '(80%, 100%]');
                             div.innerHTML = '<h4>FRI</h4>' + labels.join('<br>');
                             return div;
                     };
@@ -316,13 +309,12 @@ and open the template in the editor.
 
                     //Bind data to parallel coordinate
                     parcoords.data(data)
-                                    .hideAxis(["Water Source","index"])
-                                    .render()
-                                    .updateAxes()
-                                    .reorderable()
-                                    .brushMode("1D-axes")
-                                    .rate(400);
-
+                    .hideAxis(["Water Source","index"])
+                    .render()
+                    .updateAxes()
+                    .reorderable()
+                    .brushMode("1D-axes")
+                    .rate(400);
 
                     // setting up grid
                     var column_keys = d3.keys(data[0]);
@@ -400,7 +392,7 @@ and open the template in the editor.
                             lgas.features.map(function (d) {d.properties.flood_risk = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k["Water Source"]].properties.flood_risk = k["FRI"];
+                                    lgaDict[k["Water Source"]].properties.flood_risk = k["FRI (100 yrs Flood frequency)"];
                             });
 
                             map.removeControl(legend);
@@ -416,19 +408,19 @@ and open the template in the editor.
                     };
 
                     function refreshMap(updatedLGA) {
-                            // go through updateLGA, or edit the values directly in the geojson layers
-                            geojson.getLayers().map(function (d) {
-                                    geojson.resetStyle(d);
-                                    geojsonLabels.getLayers().forEach(function (z) {
-                                            if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
-                                                    if (d.feature.properties.flood_risk >= 0) {
-                                                            z._icon.innerHTML=Math.round(d.feature.properties.flood_risk*100*10)/10 + '%';
-                                                    } else {
-                                                            z._icon.innerHTML = "";
-                                                    }
-                                            }
-                                    });
-                            })
+                        // go through updateLGA, or edit the values directly in the geojson layers
+                        geojson.getLayers().map(function (d) {
+                            geojson.resetStyle(d);
+                            geojsonLabels.getLayers().forEach(function (z) {
+                                if (z.feature.properties.name == d.feature.properties.WATER_SOUR) {
+                                    if (d.feature.properties.flood_risk >= 0) {
+                                        z._icon.innerHTML=Math.round(d.feature.properties.flood_risk*10)/10 + '%';
+                                    } else {
+                                        z._icon.innerHTML = "";
+                                    }
+                                }
+                            });
+                        })
                     }
             });
             setTimeout(function(){ map.invalidateSize()}, 500);

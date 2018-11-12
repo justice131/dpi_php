@@ -223,7 +223,7 @@ and open the template in the editor.
                                     'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
                                     'DSI: '+ '<b>'+ Math.round(props.DSI*100)/100 + '</b>'+'<br />'+
                                     'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
-                                    'Flood Risk Index (FRI): ' + '<b>'+ Math.round(props.flood_risk*10)/10 + ' %</b>'+'<br />'
+                                    'Flood Risk Index (FRI): ' + '<b>'+ Math.round(props.flood_risk*100)/100 + ' %</b>'+'<br />'
                             : '<b>'+ 'Click a Water Source'+'</b>');
             };
             info.addTo(map);

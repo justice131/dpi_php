@@ -372,12 +372,14 @@ and open the template in the editor.
 
                     // setting up grid
                     var column_keys = d3.keys(data[0]);
+                    column_keys.length = 8; //remove index
                     var columns = column_keys.map(function(key,i) {
                             return {
                                     id: key,
                                     name: key,
                                     field: key,
-                                    sortable: true}
+                                    sortable: true,
+                                    cssClass: "column-empid"}
                     });
 
                     var options = {

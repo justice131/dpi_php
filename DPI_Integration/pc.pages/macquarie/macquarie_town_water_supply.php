@@ -462,12 +462,14 @@ and open the template in the editor.
 
                 /*Setting up grid beginning*/
                 var column_keys = d3.keys(data[0]);
+                column_keys.length = 7; //remove index
                 var columns = column_keys.map(function(key,i) {
                     return {
                         id: key,
                         name: key,
                         field: key,
-                        sortable: true
+                        sortable: true,
+                        cssClass: "column-empid"
                     }
                 });
 

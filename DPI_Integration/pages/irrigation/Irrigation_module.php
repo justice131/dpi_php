@@ -170,7 +170,7 @@ and open the template in the editor.
             
             var elem_ov = document.createElement("div");
             elem_ov.setAttribute('id', 'irr_legend');
-            elem_ov.innerHTML = ('<img src="../../images/yellow.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Cropping<br>'+
+            elem_ov.innerHTML = ('<img src="../../images/light_yellow.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Cropping<br>'+
                     '<img src="../../images/red.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Excluded land use <br>'+
                     '<img src="../../images/light_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing irrigated modified pastures<br>'+
                     '<img src="../../images/dark_green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Grazing modified pastures<br>'+
@@ -420,7 +420,7 @@ and open the template in the editor.
             }
             function getColor(Color_crop){
                 if (Color_crop === "Cropping"){
-                    return 'yellow';
+                    return '#ffff96';
                 }else if (Color_crop === "Excluded in landuse"){
                     return 'red';
                 }else if (Color_crop === "Grazing irrigated modified pastures"){
@@ -2454,7 +2454,8 @@ and open the template in the editor.
                 var geojsonfile = MacquarieBogan_GW;
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_mac');
-                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>'+
+                        '<img src="../../lib/leaflet/images/yellow_gw.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Groundwater<br>');
 //                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
@@ -3705,7 +3706,8 @@ and open the template in the editor.
 //                var checkBox = document.getElementById(id); 
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_man');
-                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>'+
+                        '<img src="../../lib/leaflet/images/yellow_gw.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Groundwater<br>');
 
                 var geojsonfile = Manning_Groundwater;
 //                if (checkBox.checked === true){

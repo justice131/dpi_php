@@ -2378,7 +2378,8 @@ and open the template in the editor.
                 var geojsonfile = MacquarieBogan_GW;
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_mac');
-                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>'+
+                        '<img src="../../lib/leaflet/images/yellow_gw.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Groundwater<br>');
 //                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
@@ -3593,7 +3594,8 @@ and open the template in the editor.
 //                var checkBox = document.getElementById(id); 
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'gw_man');
-                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/G.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Groundwater<br>'+
+                        '<img src="../../lib/leaflet/images/yellow_gw.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Groundwater<br>');
 
                 var geojsonfile = Manning_Groundwater;
 //                if (checkBox.checked === true){

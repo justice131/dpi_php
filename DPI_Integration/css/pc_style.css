@@ -25,6 +25,14 @@ Comments: css for the parallel coordinates
     color: #069;
 }
 
+.slick-header-column{
+    text-align: center;
+}
+
+.column-empid {
+    text-align: center;
+}
+
 .slick-header-column.ui-state-default {
     background:none ;
     background-color: #505050 ;
@@ -36,7 +44,7 @@ Comments: css for the parallel coordinates
     font-size: 13px;
     font-weight: bold;
     height: 40px;
-    line-height: 40px;    
+    line-height: 40px; 
 }
 
 .info {

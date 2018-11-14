@@ -510,7 +510,8 @@ and open the template in the editor.
                         id: key,
                         name: key,
                         field: key,
-                        sortable: true
+                        sortable: true,
+                        cssClass: "column-empid"
                     }
                 });
 

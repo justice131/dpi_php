@@ -261,7 +261,7 @@ and open the template in the editor.
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/dsi_macquaire.csv", function (data) {
-                    _.each(data, function (d, i) {
+                    _.each(data, function (d,i) {
                             d.index = d.index || i; //unique id
                             var water_source_name = d["Water Source"];
                             lgaDict[water_source_name].properties.irrigated_area=d["Irrigated area"];
@@ -323,12 +323,14 @@ and open the template in the editor.
 
                     // setting up grid
                     var column_keys = d3.keys(data[0]);
+                    column_keys.length = 8; //remove index
                     var columns = column_keys.map(function(key,i) {
                             return {
                                     id: key,
                                     name: key,
                                     field: key,
-                                    sortable: true}
+                                    sortable: true,
+                                    cssClass: "column-empid"}
                     });
 
                     var options = {
@@ -339,7 +341,7 @@ and open the template in the editor.
 
                     var dataView = new Slick.Data.DataView();
                     var grid = new Slick.Grid("#grid", dataView, columns, options);
-
+                    //grid.setColumns()
                     grid.autosizeColumns();
 
                     // wire up model events to drive the grid

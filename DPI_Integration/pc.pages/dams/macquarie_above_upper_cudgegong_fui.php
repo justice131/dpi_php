@@ -294,13 +294,13 @@ and open the template in the editor.
                             labels = [],
                             from, to;
                             labels.push(
-                                            '<i style="background:' + myCols[0] + '"></i> ' + '[0, 0.3]');
+                                            '<i style="background:' + myCols[2] + '"></i> ' + '[0, 0.2]');
 //                                            1 +' (' +'1&ndash;' + Math.floor(max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[1] + '"></i> ' + '(0.3, 0.55]');
+                                            '<i style="background:' + myCols[1] + '"></i> ' + '(0.2, 0.4]');
 //                                            2 +' (' + (Math.floor(max_row/3)+1) + '&ndash;' + Math.ceil(2*max_row/3) + ')');
                             labels.push(
-                                            '<i style="background:' + myCols[2] + '"></i> ' + '(0.55, 1]');
+                                            '<i style="background:' + myCols[0] + '"></i> ' + '(0.4, 1]');
 //                                            3 +' (' + (Math.ceil(2*max_row/3)+1) + '&ndash;' + max_row + ')');
                             div.innerHTML = '<h4>FUI</h4>' + labels.join('<br>');
                             return div;

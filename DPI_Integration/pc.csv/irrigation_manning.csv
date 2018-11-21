@@ -1,17 +1,17 @@
-Water Source,Irrigated area,Irrigation value($ M),employment irrigation,Agriculture water use,Risk to agriculture ($ millions),Opportunity to Agriculture,
-Lower Barnard River Water Source,0,758.484022,80,1349,1.625240623,0,
-Upper Manning River Water Source,90585.39494,579.909246,66,1729,0,63.24397437,
-Myall Creek Water Source,0,537.636363,52,0,0,65.41370553,
-Upper Barnard River Water Source,0,863.965081,89,1159,0,62.30366537,
-Nowendoc River Water Source,0,553.714084,53,1166,0,91.15212357,
-Upper Barrington River Water Source,0,703.648665,67,916,0,92.36637013,
-Rowleys River Water Source,0,790.920772,80,277,0,30.11229549,
-Mid Manning River Water Source,83343.45852,216.532119,21,991,0,27.93127734,
-Dingo Creek Water Source,404085.0942,661.185353,65,4855,0,94.65795052,
-Cooplacurripa River Water Source,283561.9168,724.868713,69,600,0,71.16802953,
-Upper Gloucester River Water Source,2861407.248,308.073752,30,4949,5.274065637,24.98634562,
-Bowman River Water Source,981021.731,278.100689,27,2000.5,0,55.06157052,
-Avon River Water Source,1115037.838,350.662397,34,909.5,0,76.8345847,
-Lower Manning River Water Source,2740588.405,663.949316,64,6834,0,134.4005824,
-Lower Barrington / Gloucester Rivers Water Source,4277298.575,345.747958,33,9247,0,92.57488125,
-Manning Estuary Tributaries Water Source,21286825.64,1 143.08,110,2167,2.610746057,0,
+Water Source,Irrigated area,Irrigation value($ M),employment irrigation,Agriculture water use,Risk to agriculture ($ millions),Opportunity to Agriculture
+Lower Barnard River Water Source,0,758,80,1349,1.6,0
+Upper Manning River Water Source,90585,580,66,1729,0,63.2
+Myall Creek Water Source,0,538,52,0,0,65.4
+Upper Barnard River Water Source,0,864,89,1159,0,62.3
+Nowendoc River Water Source,0,554,53,1166,0,91.2
+Upper Barrington River Water Source,0,704,67,916,0,92.4
+Rowleys River Water Source,0,791,80,277,0,30.1
+Mid Manning River Water Source,83343,217,21,991,0,27.9
+Dingo Creek Water Source,404085,661,65,4855,0,94.7
+Cooplacurripa River Water Source,283562,725,69,600,0,71.2
+Upper Gloucester River Water Source,2861407,308,30,4949,5.3,25
+Bowman River Water Source,981022,278,27,2001,0,55.1
+Avon River Water Source,1115038,351,34,910,0,76.8
+Lower Manning River Water Source,2740588,664,64,6834,0,134.4
+Lower Barrington / Gloucester Rivers Water Source,4277299,346,33,9247,0,92.6
+Manning Estuary Tributaries Water Source,21286826,1143,110,2167,2.6,0

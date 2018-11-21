@@ -1,8 +1,8 @@
-Water Source,Irrigated area,Irrigation value($ M),employment irrigation,Total Entitlement,Mean Flow,DSI,FUI,
-Campbells River Water Source,159.8132512,11.01394224,105,2101,228.2968438,1,0.033333333,
-Fish River Water Source,18.25237449,10.42706147,104,18070.5,257.2431737,1,0.236553087,
-Macquarie River above Burrendong Water Source,543.6345003,14.59559673,143,25586,565.5957955,0.272473228,0.158615521,
-Queen Charlottes Vale Evans Plains Creek Water Source,139.4763893,9.71790708,95,1925,72.17864766,1,0.106665928,
-Summerhill Creek Water Source,197.3106387,35.04924015,287,11744,193.5124967,0.404036104,0.20495637,
-Turon Crudine River Water Source,2.216484204,10.84266836,129,328,291.4109419,1,0.003937244,
-Winburndale Rivulet Water Source,19.14092754,8.94460009,89,1629,171.0334805,1,0.033941304,
+Water Source,Irrigated area,Irrigation value($ M),employment irrigation,Total Entitlement,Mean Flow,DSI,FUI
+Campbells River Water Source,160,11,105,2101,228,1,0.03
+Fish River Water Source,18,10,104,18070.5,257,1,0.24
+Macquarie River above Burrendong Water Source,544,15,143,25586,566,0.27,0.16
+Queen Charlottes Vale Evans Plains Creek Water Source,139,10,95,1925,72,1,0.11
+Summerhill Creek Water Source,197,35,287,11744,194,0.4,0.2
+Turon Crudine River Water Source,2,11,129,328,291,1,0
+Winburndale Rivulet Water Source,19,9,89,1629,171,1,0.03

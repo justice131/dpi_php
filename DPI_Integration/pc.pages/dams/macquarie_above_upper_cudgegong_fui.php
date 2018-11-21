@@ -177,12 +177,12 @@ and open the template in the editor.
             map.setView([-32.8, 150.1], 11);  
             
             function getColorScalar(d) {
-                if(d >= 0 && d <= 0.3){
-                return myCols[0];
-                }else if(d > 0.3 && d <= 0.55){
+                if(d >= 0 && d <= 0.2){
+                return myCols[2];
+                }else if(d > 0.2 && d <= 0.4){
                 return myCols[1];
                 }else{
-                return myCols[2];
+                return myCols[0];
                 }
             }
             

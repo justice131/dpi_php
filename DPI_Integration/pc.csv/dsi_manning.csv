@@ -1,17 +1,17 @@
-Water Source,Irrigated area,Irrigation value($ M),employment irrigation,Total Entitlement,Mean Flow,DSI,FUI,
-Avon River Water Source,1115037.838,350.662397,34,1744,421.7478121,1,0.017336234,
-Bowman River Water Source,981021.731,278.100689,27,2120,335.0197544,1,0.022625582,
-Cooplacurripa River Water Source,283561.9168,724.868713,69,400,654.3650477,1,0.004799128,
-Dingo Creek Water Source,404085.0942,661.185353,65,4925,932.8277258,1,0.017744459,
-Lower Barnard River Water Source,0,758.484022,80,21369,107.4230347,0,1,
-Lower Barrington / Gloucester Rivers Water Source,4277298.575,345.747958,33,11293,416.3816948,1,0.087193814,
-Lower Manning River Water Source,2740588.405,663.949316,64,20400,3087.938087,0.674866727,0.030533573,
-Manning Estuary Tributaries Water Source,21286825.64,1 143.08,110,4213,278.0197818,0,1,
-Mid Manning River Water Source,83343.45852,216.532119,21,991,1008.774986,1,0.003386172,
-Myall Creek Water Source,0,537.636363,52,2298,399.8820566,1,0.00131084,
-Nowendoc River Water Source,0,553.714084,53,1274,495.9011287,1,0.009306598,
-Rowleys River Water Source,0,790.920772,80,277,708.8309735,1,0.001734151,
-Upper Barnard River Water Source,0,863.965081,89,1159,237.4133895,1,0.005206234,
-Upper Barrington River Water Source,0,703.648665,67,951,778.130876,1,0.004045004,
-Upper Gloucester River Water Source,2861407.248,308.073752,30,5419,114.179149,0.056576279,0.225748993,
-Upper Manning River Water Source,90585.39494,579.909246,66,2241,260.426369,1,0.044496392,
+Water Source,Irrigated area,Irrigation value($ M),employment irrigation,Total Entitlement,Mean Flow,DSI,FUI
+Avon River Water Source,1115038,351,34,1744,422,1,0.02
+Bowman River Water Source,981022,278,27,2120,335,1,0.02
+Cooplacurripa River Water Source,283562,725,69,400,654,1,0
+Dingo Creek Water Source,404085,661,65,4925,933,1,0.02
+Lower Barnard River Water Source,0,758,80,21369,107,0,1
+Lower Barrington / Gloucester Rivers Water Source,4277299,346,33,11293,416,1,0.09
+Lower Manning River Water Source,2740588,664,64,20400,3088,0.67,0.03
+Manning Estuary Tributaries Water Source,21286826,1143,110,4213,278,0,1
+Mid Manning River Water Source,83343,217,21,991,1009,1,0
+Myall Creek Water Source,0,538,52,2298,400,1,0
+Nowendoc River Water Source,0,554,53,1274,496,1,0.01
+Rowleys River Water Source,0,791,80,277,709,1,0
+Upper Barnard River Water Source,0,864,89,1159,237,1,0.01
+Upper Barrington River Water Source,0,704,67,951,778,1,0
+Upper Gloucester River Water Source,2861407,308,30,5419,114,0.06,0.23
+Upper Manning River Water Source,90585,580,66,2241,260,1,0.04

@@ -1,31 +1,31 @@
-Water Source,Population,Wet land area (HA),Mean Flow,Water related ecosystem health index,
-Backwater Boggy Cowal Water Source,3029,2646.604252,145.8987377,0.271680674,
-Bell River Water Source,13155,,304.9616762,0.313960387,
-Bulbodney Grahway Creek Water Source,2530,1076.462612,149.8255564,0.278743651,
-Burrendong Dam Tributaries Water Source,9826,6473.460597,399.8012843,0.59148642,
-Campbells River Water Source,4713,144.7334665,228.2968438,0.557718964,
-Coolbaggie Creek Water Source,6288,184.5992185,68.40837605,0.290056248,
-Cooyal Wialdra Creek Water Source,2502,4.73045017,77.63915838,0.120561084,
-Ewenmar Creek Water Source,1778,13939.93464,90.98323447,0.264627024,
-Fish River Water Source,5574,298.6889041,257.2431737,0.562573634,
-Goolma Creek Water Source,2939,1412.686864,10.09312209,0.123025069,
-Lawsons Creek Water Source,2000,743.3175342,47.34607439,0.618965171,
-Little River Water Source,9302,,97.46987391,0.828038067,
-Lower Bogan River Water Source,1491,245215.3592,156.0485176,0.272885344,
-Lower Macquarie River Water Source,926,237878.172,231.6402791,0.563526804,
-Lower Talbragar River Water Source,12819,,94.48198852,0.067621437,
-Macquarie River above Burrendong Water Source,10960,1.32256265,565.5957955,0.792942104,
-Marra Creek Water Source,826,46236.57607,4.905039939,0.562962963,
-Marthaguy Creek Water Source,2613,29652.46967,204.5034711,0.360693121,
-Maryvale Geurie Creek Water Source,5112,4.54767841,29.92663408,0.246388443,
-Molong Creek Water Source,1646,27.41934074,69.99474923,0.24906794,
-Piambong Creek Water Source,2332,1092.51301,4.658369211,0.119602555,
-Pipeclay Creek Water Source,875,65.61894702,17.46688208,0.612621961,
-Queen Charlottes Vale Evans Plains Creek Water Source,6395,13.20331021,72.17864766,0.567202768,
-Summerhill Creek Water Source,36297,304.3733029,193.5124967,0.935802469,
-Turon Crudine River Water Source,8756,19.86428318,291.4109419,0.844712582,
-Upper Bogan River Water Source,11491,4412.40951,106.5946149,0.329269433,
-Upper Cudgegong River Water Source,2260,90.40975479,151.4156563,0.620431157,
-Upper Talbragar River Water Source,2091,,55.14459976,0.007132587,
-Wambangalong Whylandra Creek Water Source,6245,7.56345616,45.48439684,0.25277676,
-Winburndale Rivulet Water Source,8150,24.84606781,171.0334805,0.777098175,
+Water Source,Population,Wet land area (HA),Mean Flow,Water related ecosystem health index
+Backwater Boggy Cowal Water Source,3029,2646.604252,146,0.36
+Bell River Water Source,13155,,305,0.43
+Bulbodney Grahway Creek Water Source,2530,1076.462612,150,0.35
+Burrendong Dam Tributaries Water Source,9826,6473.460597,400,0.12
+Campbells River Water Source,4713,144.7334665,228,0.09
+Coolbaggie Creek Water Source,6288,184.5992185,68,0.38
+Cooyal Wialdra Creek Water Source,2502,4.73045017,78,0.51
+Ewenmar Creek Water Source,1778,13939.93464,91,0.35
+Fish River Water Source,5574,298.6889041,257,0.1
+Goolma Creek Water Source,2939,1412.686864,10,0.51
+Lawsons Creek Water Source,2000,743.3175342,47,0
+Little River Water Source,9302,,97,0
+Lower Bogan River Water Source,1491,245215.3592,156,0.34
+Lower Macquarie River Water Source,926,237878.172,232,0.05
+Lower Talbragar River Water Source,12819,,94,0.68
+Macquarie River above Burrendong Water Source,10960,1.32256265,566,0
+Marra Creek Water Source,826,46236.57607,5,0.04
+Marthaguy Creek Water Source,2613,29652.46967,205,0.27
+Maryvale Geurie Creek Water Source,5112,4.54767841,30,0.41
+Molong Creek Water Source,1646,27.41934074,70,0.37
+Piambong Creek Water Source,2332,1092.51301,5,0.5
+Pipeclay Creek Water Source,875,65.61894702,17,0
+Queen Charlottes Vale Evans Plains Creek Water Source,6395,13.20331021,72,0.1
+Summerhill Creek Water Source,36297,304.3733029,194,0.07
+Turon Crudine River Water Source,8756,19.86428318,291,0
+Upper Bogan River Water Source,11491,4412.40951,107,0.4
+Upper Cudgegong River Water Source,2260,90.40975479,151,0
+Upper Talbragar River Water Source,2091,,55,0.61
+Wambangalong Whylandra Creek Water Source,6245,7.56345616,45,0.42
+Winburndale Rivulet Water Source,8150,24.84606781,171,0

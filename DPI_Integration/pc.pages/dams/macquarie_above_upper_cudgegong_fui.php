@@ -309,7 +309,7 @@ and open the template in the editor.
 
                     //Bind data to parallel coordinate
                     parcoords.data(data)
-                                    .hideAxis(["Water source","index"])
+                                    .hideAxis(["Water Source","index"])
                                     .render()
                                     .reorderable()
                                     .brushMode("1D-axes")

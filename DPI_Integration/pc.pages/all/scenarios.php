@@ -61,14 +61,14 @@
                                             <option value="MacquarieBogan">Macquarie</option>
                                             <!--<option value="ManningRiver">Manning</option>-->
                                         </select><br/><br/>
-                                        <h5><b>Select the scenario you want to explore</b></h5>
+                                        <h5><b>Select the Scenario You Want to Explore</b></h5>
                                         <table>
                                           <tr>
                                                 <th>
                                                     <select id="select_scenario" style="width:300px" onchange="scenario_selection()">
                                                         <option value="default">------------------------SCENARIO------------------------</option>
-                                                        <option value="potential_need">Potential need for new infrastructure</option>
-                                                        <option value="water_risk">Water related health risk due to poor ecosystem health</option>
+                                                        <option value="potential_need">Potential Need for New Infrastructure</option>
+                                                        <option value="water_risk">Water Related Health Risk due to Poor Ecosystem Health</option>
                                                     </select>
                                                 </th>
                                                 <th>

@@ -230,10 +230,10 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                     '<h4>' + props.NSW_LGA__3 + '</h4>'+
                             'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
-                            'Gross Regional product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
+                            'Gross Regional Product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
                             'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
-                            'HBT Index (%): '+ '<b>' + props.hbt +'</b>'+'<br />'+
-                            'Opportunity (million $) : '+ '<b>' + Math.round(props.opportunity*100)/100 +'</b>'
+                            'HBT Index: '+ '<b>' + props.hbt +'%</b>'+'<br />'+
+                            'Opportunity : '+ '<b>$' + Math.round(props.opportunity*100)/100 +'M</b>'
                     : '<b>'+ 'Click a LGA'+'</b>');
             };
             info1.addTo(map1);
@@ -268,10 +268,10 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                     '<h4>' + props.NSW_LGA__3 + '</h4>'+
                             'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
-                            'Gross Regional product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
+                            'Gross Regional Product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
                             'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
-                            'HBT Index (%): '+ '<b>' + props.hbt +'</b>'+'<br />'+
-                            'Risk (million $): '+ '<b>' + Math.round(props.risk*100)/100 +'</b>'
+                            'HBT Index: '+ '<b>' + props.hbt +'%</b>'+'<br />'+
+                            'Risk: '+ '<b>$' + Math.round(props.risk*100)/100 +'M</b>'
                     : '<b>'+ 'Click a LGA'+'</b>');
             };
             info2.addTo(map2);
@@ -330,11 +330,11 @@ and open the template in the editor.
                     d.index = d.index || i; //unique id
                     var lga_name = d["LGA"];
                     lgaDict[lga_name].properties.population=d["Population 2015"];
-                    lgaDict[lga_name].properties.gross_regional_product=d["Gross Regional product ($M)"];
+                    lgaDict[lga_name].properties.gross_regional_product=d["Gross Regional Product ($ M)"];
                     lgaDict[lga_name].properties.wsdi=d["WSDI"];
                     lgaDict[lga_name].properties.hbt=d["Forecast Drinking Water Quality Deficiency (HBT) Index (%)"];
-                    lgaDict[lga_name].properties.risk=d["Risk (million $)"];
-                    lgaDict[lga_name].properties.opportunity=d["Opportunity (million $)"];
+                    lgaDict[lga_name].properties.risk=d["Risk ($ M)"];
+                    lgaDict[lga_name].properties.opportunity=d["Opportunity ($ M)"];
                     lga.push(lga_name);
                 });
 
@@ -450,7 +450,7 @@ and open the template in the editor.
 
                 //Bind data to parallel coordinate
                 parcoords.data(data)
-                    .hideAxis(["Water source","index"])
+                    .hideAxis(["Water Source","index"])
                     .render()
                     .reorderable()
                     .brushMode("1D-axes")

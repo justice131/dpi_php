@@ -1,4 +1,4 @@
-Water Source,Irrigated area,mining_value ($M),employment mining,Mining  water use (ML/year),Risk to Mining,Opportunity of mining
+Water Source,Irrigated Area (Ha),Mining Value ($ M),Employment Mining,Mining  Water Use (ML),Risk to Mining ($ M),Opportunity of Mining ($ M)
 Backwater Boggy Cowal Water Source,12693,2,25,0,0,1
 Bell River Water Source,510,69,629,47,0,19.5
 Bulbodney Grahway Creek Water Source,,2,23,0,0,37.2

@@ -212,8 +212,8 @@ and open the template in the editor.
             info.update = function (props) {
                 this._div.innerHTML = (props?
                 '<h4>' + props.WATER_SOUR + '</h4>'+
-                         'Wetland Area: '+ '<b>'+ toThousands(Math.round(props.wetland_area*10)/10) + ' Ha'+'</b>' +'<br />'+
-                         'Mean Flow: '+ '<b>'+ toThousands(Math.round(props.mean_flow*10*365)/10) + ' ML/year'+'</b>' +'<br />'+
+                         'Wetland Area: '+ '<b>'+ toThousands(props.wetland_area) + ' Ha'+'</b>' +'<br />'+
+                         'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                          'Benefit From Environment: ' + '<b>$'+ Math.round(props.benefit_from_environment*100)/100 + 'M</b>'+'<br />'
                  : '<b>'+ 'Click a Water Source'+'</b>');
             };
@@ -240,7 +240,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d["Benefit from environment (Million $)"]); });
+                    .color(function (d) { return getColorScalar(d["Benefit from Environment ($ M)"]); });
 
 
             //Read data for parallel coordinate
@@ -248,9 +248,9 @@ and open the template in the editor.
                     _.each(data, function (d, i) {
                         d.index = d.index || i; //unique id
                         var water_source_name = d["Water Source"];
-                        lgaDict[water_source_name].properties.wetland_area=d["Wet land area (HA)"];
-                        lgaDict[water_source_name].properties.mean_flow=d["Mean Flow"];
-                        lgaDict[water_source_name].properties.benefit_from_environment=d["Benefit from environment (Million $)"];
+                        lgaDict[water_source_name].properties.wetland_area=d["Wetland Area (Ha)"];
+                        lgaDict[water_source_name].properties.mean_flow=d["Mean Flow (ML/year)"];
+                        lgaDict[water_source_name].properties.benefit_from_environment=d["Benefit from Environment ($ M)"];
                         lga.push(water_source_name);
                     });
 
@@ -372,7 +372,7 @@ and open the template in the editor.
                             lgas.features.map(function (d) {d.properties.benefit_from_environment = -1; });
                             geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                             _.each(d, function (k, i) {
-                                    lgaDict[k["Water Source"]].properties.benefit_from_environment = k["Benefit from environment (Million $)"];
+                                    lgaDict[k["Water Source"]].properties.benefit_from_environment = k["Benefit from Environment ($ M)"];
                             });
 
                             map.removeControl(legend);

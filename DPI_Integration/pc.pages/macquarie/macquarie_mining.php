@@ -195,7 +195,7 @@ and open the template in the editor.
             info1.update = function (props) {
                 this._div.innerHTML = (props?
                 '<h4>' + props.WATER_SOUR + '</h4>'+
-                        'Mining Value: '+ '<b>$' + toThousands(Math.round(props.mining_value*100)/100) + 'M'+'</b>'+'<br />'+
+                        'Mining Value: '+ '<b>$' + toThousands(props.mining_value) + 'M'+'</b>'+'<br />'+
                         'Employment (Mining): '+ '<b>'+ toThousands(props.employment_mining) +'</b>'+'<br />'+
                         'Mining Water Use: '+ '<b>'+ toThousands(props.mining_water_use) + ' ML</b>'+'<br />'+
                         'Opportunity of Mining : ' + '<b>$'+ props.mining_opportunity + 'M</b>'+'<br />'
@@ -354,19 +354,19 @@ and open the template in the editor.
                         right: 1,
                         bottom: 15
                 })
-                .color(function (d) {return getColorScalar(d["Risk to mining"]); });
+                .color(function (d) {return getColorScalar(d["Risk to Mining ($ M)"]); });
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/mining_macquaire.csv", function (data) {
                 _.each(data, function (d, i) {
                     d.index = d.index || i; //unique id
                     var water_source_name = d["Water Source"];
-                    lgaDict[water_source_name].properties.irrigated_area=d["Irrigated area"];
-                    lgaDict[water_source_name].properties.mining_value=d["Mining value ($M)"];
-                    lgaDict[water_source_name].properties.employment_mining=d["Employment mining"];
-                    lgaDict[water_source_name].properties.mining_water_use=d["Mining  water use (ML/year)"];
-                    lgaDict[water_source_name].properties.mining_risk=d["Risk to mining"];
-                    lgaDict[water_source_name].properties.mining_opportunity=d["Opportunity of mining"];
+                    lgaDict[water_source_name].properties.irrigated_area=d["Irrigated Area (Ha)"];
+                    lgaDict[water_source_name].properties.mining_value=d["Mining Value ($ M)"];
+                    lgaDict[water_source_name].properties.employment_mining=d["Employment Mining"];
+                    lgaDict[water_source_name].properties.mining_water_use=d["Mining  Water Use (ML)"];
+                    lgaDict[water_source_name].properties.mining_risk=d["Risk to Mining ($ M)"];
+                    lgaDict[water_source_name].properties.mining_opportunity=d["Opportunity of Mining ($ M)"];
                     lga.push(water_source_name);
                 });
                 
@@ -572,13 +572,13 @@ and open the template in the editor.
                         lgas.features.map(function (d) {d.properties.mining_opportunity = -1; });
                         geojsonLabels1.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                         _.each(d, function (k, i) {
-                                lgaDict[k["Water Source"]].properties.mining_opportunity = k["Opportunity of mining"];
+                                lgaDict[k["Water Source"]].properties.mining_opportunity = k["Opportunity of Mining ($ M)"];
                         });
                         //update map2
                         lgas.features.map(function (d) {d.properties.mining_risk = -1; });
                         geojsonLabels2.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                         _.each(d, function (k, i) {
-                                lgaDict[k["Water Source"]].properties.mining_risk = k["Risk to mining"];
+                                lgaDict[k["Water Source"]].properties.mining_risk = k["Risk to Mining ($ M)"];
                         });
                         refreshMap(lga);
                 });

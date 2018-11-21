@@ -1,17 +1,17 @@
-Water Source,Irrigated area,mining_value ($M),employment mining,Mining  water use (ML/year),Risk to Mining,Opportunity of mining
-Avon River Water Source,1115038,2,19,79,0,560.7
-Bowman River Water Source,981022,2,15,0,0,26.1
-Cooplacurripa River Water Source,283562,2,20,0,0,26.8
-Dingo Creek Water Source,404085,5,36,12,0,0
+Water Source,Irrigated Area (Ha),Mining Value ($ M),Employment Mining,Mining Water Use (ML),Risk to Mining ($ M),Opportunity of Mining ($ M)
+Avon River Water Source,112,2,19,79,0,560.7
+Bowman River Water Source,98,2,15,0,0,26.1
+Cooplacurripa River Water Source,28,2,20,0,0,26.8
+Dingo Creek Water Source,40,5,36,12,0,0
 Lower Barnard River Water Source,0,7,58,0,0,0
-Lower Barrington / Gloucester Rivers Water Source,4277299,2,18,5,0,99.2
-Lower Manning River Water Source,2740588,4,35,60,0,21.2
-Manning Estuary Tributaries Water Source,21286826,8,61,84,7.1,0
-Mid Manning River Water Source,83343,1,11,0,0,0
+Lower Barrington / Gloucester Rivers Water Source,428,2,18,5,0,99.2
+Lower Manning River Water Source,274,4,35,60,0,21.2
+Manning Estuary Tributaries Water Source,2129,8,61,84,7.1,0
+Mid Manning River Water Source,8,1,11,0,0,0
 Myall Creek Water Source,0,1,7,0,0,0
 Nowendoc River Water Source,0,2,16,5,0,0
 Rowleys River Water Source,0,4,33,0,0,1
 Upper Barnard River Water Source,0,9,84,0,0,0
 Upper Barrington River Water Source,0,5,37,28,0,9.5
-Upper Gloucester River Water Source,2861407,2,16,83,6.2,126
-Upper Manning River Water Source,90585,7,56,0,0,23.4
+Upper Gloucester River Water Source,286,2,16,83,6.2,126
+Upper Manning River Water Source,9,7,56,0,0,23.4

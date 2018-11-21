@@ -211,8 +211,8 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                     '<h4>' + props.WATER_SOUR + '</h4>'+
                     'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
-                    'Variation: '+ '<b>'+ toThousands(Math.round(props.variation*100)/100) + '</b>' +'<br />'+
-                    'Normalized Dam Capacity: '+ '<b>'+ Math.round(props.norm*100)/100 + '</b>'+'<br />'+
+                    'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
+                    'Normalized Dam Capacity: '+ '<b>'+ props.norm + '</b>'+'<br />'+
                     'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
                     'Potential for new infrastructure: ' + '<b>'+ Math.round(props.potential_infra*100)/100 + '</b>'+'<br />'
                     : '<b>'+ 'Click a Water Source'+'</b>');
@@ -242,7 +242,7 @@ and open the template in the editor.
                     right: 1,
                     bottom: 15
             })
-            .color(function (d) { return getColorScalar(d["Potential for new infrastructure"]) });
+            .color(function (d) { return getColorScalar(d["Potential for New Infrastructure"]) });
 
             //Read data for parallel coordinate
             d3.csv("../../pc.csv/potential_for_new_infrastucture_macquaire.csv", function (data) {
@@ -250,10 +250,10 @@ and open the template in the editor.
                         d.index = d.index || i; //unique id
                         var water_source_name = d["Water Source"];
                         lgaDict[water_source_name].properties.population=d["Population"];
-                        lgaDict[water_source_name].properties.variation=d["variation"];
-                        lgaDict[water_source_name].properties.norm=d["Normalized dam capacity"];
+                        lgaDict[water_source_name].properties.variation=d["Variation"];
+                        lgaDict[water_source_name].properties.norm=d["Normalized Dam Capacity"];
                         lgaDict[water_source_name].properties.FUI=d["FUI"];
-                        lgaDict[water_source_name].properties.potential_infra=d["Potential for new infrastructure"];
+                        lgaDict[water_source_name].properties.potential_infra=d["Potential for New Infrastructure"];
                         lga.push(water_source_name);
                 });
 
@@ -376,7 +376,7 @@ and open the template in the editor.
                         lgas.features.map(function (d) {d.properties.potential_infra = -1; });
                         geojsonLabels.getLayers().map(function (d) { d._icon.innerHTML = ""; })
                         _.each(d, function (k, i) {
-                                lgaDict[k["Water Source"]].properties.potential_infra = k["Potential for new infrastructure"];
+                                lgaDict[k["Water Source"]].properties.potential_infra = k["Potential for New Infrastructure"];
                         });
 
                         map.removeControl(legend);

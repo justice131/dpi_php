@@ -4195,10 +4195,10 @@ and open the template in the editor.
 //                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
                           '<b>' + 'Mining Sector within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
                           '<p style=\"line-height:50%\"><img src=\"../../images/mining_number.png\" height=\"25\" width=\"25\"> Total Number of Mines: <b>' + toThousands(Total_no_mine) + '</b><br/><br />'+
-                          '<img src=\"../../images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>$' + toThousands(Math.round(Prop*10)/10)  + 'M</b><br/><br />'+
+                          '<img src=\"../../images/mining_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>$' + toThousands(Math.round(Prop))  + 'M</b><br/><br />'+
                           '<img src=\"../../images/mining_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
                           '<img src=\"../../images/mining_use_of_water.png\" height=\"25\" width=\"25\"> Entitlements of Mining Water Use: <b>' + toThousands(Math.round(Water_use))  + ' ML</b><br/><br />'+
-                          '<img src=\"../../images/mining_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + Math.round(Prop/Water_use*100)/100  + ' $M/ML</b><br/></p>'   
+                          '<img src=\"../../images/mining_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>$' + Math.round(Prop/Water_use*100)/100  + 'M/ML</b><br/></p>'   
                     );
                 <?php }?>;
             };

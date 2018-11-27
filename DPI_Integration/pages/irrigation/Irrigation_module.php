@@ -1049,7 +1049,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_1);
 
@@ -1096,7 +1096,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_2);
 
@@ -1143,7 +1143,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_3);
 
@@ -1189,7 +1189,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                   + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                   + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_4);
 
@@ -1236,7 +1236,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                  + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                  + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));   
 //                    markersLayer.addLayer(Mak_uw_5);
 
@@ -1283,7 +1283,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_6);
 
@@ -1330,7 +1330,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                   + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                   + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_7);
  
@@ -1377,7 +1377,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));  
 //                    markersLayer.addLayer(Mak_uw_8);
 
@@ -1425,7 +1425,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_9);
                     
@@ -1472,7 +1472,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_10);
             
@@ -1519,7 +1519,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_11);
             
@@ -1566,7 +1566,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_12);
             
@@ -1613,7 +1613,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_13);
  
@@ -1660,7 +1660,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_14);
 
@@ -1707,7 +1707,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_15);
 
@@ -1754,7 +1754,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_16);
 
@@ -1802,7 +1802,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_17);
  
@@ -1849,7 +1849,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_18);
  
@@ -1896,7 +1896,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                   + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                   + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_19);
 
@@ -1943,7 +1943,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_20);
 
@@ -1990,7 +1990,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_21);
 
@@ -2037,7 +2037,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_22);
 
@@ -2084,7 +2084,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_23);
  
@@ -2131,7 +2131,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_24);
  
@@ -2178,7 +2178,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_25);
 
@@ -2225,7 +2225,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_26);
 
@@ -2272,7 +2272,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                   + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                   + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_27);
 
@@ -2319,7 +2319,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_28);
 
@@ -2366,7 +2366,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_29);
 
@@ -2413,7 +2413,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_uw_30);
             
@@ -2962,7 +2962,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_1);
 
@@ -3009,7 +3009,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_2);
 
@@ -3056,7 +3056,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_3);
   
@@ -3103,7 +3103,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_4);
             
@@ -3150,7 +3150,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                     + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_5);
   
@@ -3198,7 +3198,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_6);
    
@@ -3245,7 +3245,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_7);
    
@@ -3292,7 +3292,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_8);
   
@@ -3339,7 +3339,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_9);
    
@@ -3386,7 +3386,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_10);
   
@@ -3434,7 +3434,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_11);
    
@@ -3481,7 +3481,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_12);
   
@@ -3528,7 +3528,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_13);
   
@@ -3575,7 +3575,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_14);
                     
@@ -3622,7 +3622,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_15);
  
@@ -3669,7 +3669,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment)));
 //                    markersLayer.addLayer(Mak_16);
             
@@ -4161,12 +4161,12 @@ and open the template in the editor.
                     if (catch_name === 'MacquarieBogan'){
                         var Total_area = area_sum_1(Macquarie_Crop);
                         var Employ = "<?php echo $em_macquarie; ?>"; 
-                        var Pro_value = toThousands((Math.round(pv_mac)/1000000).toFixed(1));
+                        var Pro_value = toThousands((Math.round(pv_mac)/1000000));
                         var Water_use = water_use_mac;
                     }else if(catch_name === 'ManningRiver'){
                         var Total_area = area_sum_2(Manning_Crop);
                         var Employ = "<?php echo $em_manning; ?>";
-                        var Pro_value = toThousands((Math.round(pv_man)/1000000).toFixed(1));
+                        var Pro_value = toThousands((Math.round(pv_man)/1000000));
                         var Water_use = water_use_man;
                     }
 
@@ -4179,11 +4179,11 @@ and open the template in the editor.
 //                        'Annual Use of Water: '+ overall_dei + '<br />'+
 //                        'Production Value per Drop of Water: ' + surface_water_size + '<br />'
                           '<b>' + 'Irrigation within ' + catch_name + ' Catchment' + '</b><br/><br/>' + 
-                          '<p style=\"line-height:50%\"><img src=\"../../images/irrigation_area.png\" height=\"25\" width=\"25\"> Total Irrigated Areas: <b>' + toThousands(Math.round(Total_area*100)/100) + ' Ha' + '</b><br/><br />'+
-                          '<img src=\"../../images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>$' + Math.round(Pro_value*10)/10 + 'M</b><br/><br />'+
+                          '<p style=\"line-height:50%\"><img src=\"../../images/irrigation_area.png\" height=\"25\" width=\"25\"> Total Irrigated Areas: <b>' + toThousands(Math.round(Total_area*10)/10) + ' Ha' + '</b><br/><br />'+
+                          '<img src=\"../../images/irrigation_value.png\" height=\"25\" width=\"25\"> Annual Production Value: <b>$' + Math.round(Pro_value) + 'M</b><br/><br />'+
                           '<img src=\"../../images/irrigation_employment.png\" height=\"25\" width=\"25\"> Annual Employment Number: <b>' + toThousands(Math.round(Employ))  + '</b><br/><br />'+
                           '<img src=\"../../images/irrigation_use_of_water.png\" height=\"25\" width=\"25\"> Entitlements of Agriculture Water Use: <b>' + toThousands(Math.round(Water_use)) + ' ML </b><br/><br />'+
-                          '<img src=\"../../images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>' + toThousands(Math.round(Pro_value*1000000/Water_use))  + ' $/ML </b><br/></p>'                          
+                          '<img src=\"../../images/irrigation_value_per_water.png\" height=\"25\" width=\"25\"> Production Value per Drop of Water: <b>$' + toThousands(Math.round(Pro_value*1000000/Water_use))  + '/ML </b><br/></p>'                          
                     );
                 <?php }?>;
             };

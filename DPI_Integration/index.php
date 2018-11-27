@@ -1085,7 +1085,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1134,7 +1134,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1183,7 +1183,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1232,7 +1232,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1281,7 +1281,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));      
@@ -1330,7 +1330,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1379,7 +1379,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1428,7 +1428,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));   
@@ -1478,7 +1478,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1527,7 +1527,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1576,7 +1576,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1625,7 +1625,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1674,7 +1674,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1723,7 +1723,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1772,7 +1772,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1821,7 +1821,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1871,7 +1871,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1920,7 +1920,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -1969,7 +1969,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2018,7 +2018,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2067,7 +2067,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2116,7 +2116,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2165,7 +2165,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2214,7 +2214,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2263,7 +2263,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2312,7 +2312,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2361,7 +2361,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2410,7 +2410,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2459,7 +2459,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -2508,7 +2508,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3080,7 +3080,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3129,7 +3129,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3178,7 +3178,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3227,7 +3227,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3276,7 +3276,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3326,7 +3326,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3375,7 +3375,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3424,7 +3424,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3473,7 +3473,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3522,7 +3522,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3572,7 +3572,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3621,7 +3621,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3670,7 +3670,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3719,7 +3719,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3768,7 +3768,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
@@ -3817,7 +3817,7 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production)) + 'M' + '<br/>'
+                    + 'Annual Production Value (Irrigation) : $' + toThousands(Math.round(Irrigation_production/1000000)) + 'M' + '<br/>'
                     + 'Annual Production Value (Mining) : $' + toThousands(Math.round(Mining_production))+ 'M' +'<br/>'
                     + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
                     + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));

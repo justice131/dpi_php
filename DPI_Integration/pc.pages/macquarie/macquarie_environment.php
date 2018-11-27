@@ -17,7 +17,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div id="s0_title">
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Macquarie Catchment--Wetland economic benefit</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Sources of Macquarie Catchment--Risk to wetland economic benefit</span>
                         </div>
                     </div>
                     <div class="box-content">

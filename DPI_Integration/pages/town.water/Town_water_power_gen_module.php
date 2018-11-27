@@ -201,7 +201,7 @@ and open the template in the editor.
                 },
                 onEachFeature: function(feature, layer){
                 layer.on({
-                    mouseover: highlight,
+                    mouseover: highlight_mac,
                     mouseout: reset_mac,
                     click: go_to_mac
                 });
@@ -214,7 +214,7 @@ and open the template in the editor.
                 },
                 onEachFeature: function(feature, layer){
                 layer.on({
-                    mouseover: highlight,
+                    mouseover: highlight_man,
                     mouseout: reset_man,
                     click: go_to_man
                 });
@@ -230,8 +230,23 @@ and open the template in the editor.
                 window.location.href = "Town_water_power_gen_module.php?catchment_name=ManningRiver";
             }
             
-            function highlight(e) {
+            function highlight_mac(e) {
                 var layer = e.target;
+                Mac_bound.bindTooltip("<b>"+"Macquarie Catchment"+"</b>", {sticky: true}).addTo(map);
+                layer.setStyle({
+                    weight: 5,
+                    color: '#666',
+                    dashArray: '',
+                    fillOpacity: 0.15
+                });
+                if (!L.Browser.ie && !L.Browser.opera) {
+                    layer.bringToFront();
+                }
+            }
+            
+            function highlight_man(e) {
+                var layer = e.target;
+                Man_bound.bindTooltip("<b>"+"Manning Catchment"+"</b>", {sticky: true});
                 layer.setStyle({
                     weight: 5,
                     color: '#666',
@@ -324,6 +339,27 @@ and open the template in the editor.
             
             var Icon_unreg = L.icon({
                 iconUrl: '../../lib/leaflet/images/U.png',
+                iconSize:     [17, 18.2], 
+                iconAnchor:   [8.5, 9.1],  
+                popupAnchor:  [0, -10] 
+            });
+            
+            var Icon_unreg_red = L.icon({
+                iconUrl: '../../lib/leaflet/images/U_red.png',
+                iconSize:     [17, 18.2], 
+                iconAnchor:   [8.5, 9.1],  
+                popupAnchor:  [0, -10] 
+            });
+            
+            var Icon_unreg_orange = L.icon({
+                iconUrl: '../../lib/leaflet/images/U_orange.png',
+                iconSize:     [17, 18.2], 
+                iconAnchor:   [8.5, 9.1],  
+                popupAnchor:  [0, -10] 
+            });
+            
+            var Icon_unreg_green = L.icon({
+                iconUrl: '../../lib/leaflet/images/U_green.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
@@ -467,6 +503,16 @@ and open the template in the editor.
                     return 'rgba(252, 157, 61, 1)';
                 }else{
                     return 'rgba(255, 56, 3, 1)';
+                }
+            }
+            
+            function icon_unreg(w){
+                if (w>=0 & w<=0.5){
+                    return Icon_unreg_green;
+                }else if (w>0.5 & w<=0.75){
+                    return Icon_unreg_orange;
+                }else{
+                    return Icon_unreg_red;
                 }
             }
             
@@ -1253,7 +1299,7 @@ and open the template in the editor.
 //                link_to_parr = document.getElementById('link_to_parallel_coordinate');
                 var elem = document.createElement("div");
                 elem.setAttribute('id', 'unreg_mac');
-                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.5" align = "center">&nbsp; &nbsp;Unregulated river<br>');
+                elem.innerHTML = ('<img src="../../lib/leaflet/images/U.png"  width="17" height="18.2" align = "center">&nbsp; &nbsp;Unregulated river<br>');
 //                if (checkBox.checked === true){
                     document.getElementById("legend").appendChild(elem);
                     // display link icon
@@ -1262,35 +1308,37 @@ and open the template in the editor.
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }
-                    var markersLayer = new L.LayerGroup();
-                    map.addLayer(markersLayer);
-                    controlSearch = new L.Control.Search({
-                        position:'topleft',
-                        layer: markersLayer,
-                        initial: false,
-                        zoom: 11,
-                        marker: false,
-                        propertyName: 'water_source',
-                        textPlaceholder: 'Search water source',
-                        textErr: 'Water source not found'
-                    }); 
+//                    markersLayer = new L.LayerGroup();
+//                    map.addLayer(markersLayer);
+//                    controlSearch = new L.Control.Search({
+//                        position:'topleft',
+//                        layer: markersLayer,
+//                        initial: false,
+//                        zoom: 11,
+//                        marker: false,
+//                        propertyName: 'water_source',
+//                        textPlaceholder: 'Search water source',
+//                        textErr: 'Water source not found'
+//                    }); 
 //                    map.addControl(controlSearch);
                     
-                    var Reg = L.geoJSON(geojsonfile, {
-//                        style: function (feature) {
-//                            return { color: getRandomColor(), weight: 0.0, fillOpacity: 0.3};
-//                        }
-                        onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color:'white', fillColor: '#88888', weight: 0.6, fillOpacity: 0.3, dashArray: '3'});
-                        }
-
+                    Unreg = L.geoJSON(geojsonfile, {
+                        style: function (feature) {
+                            return { color:'white', fillColor: '#88888', weight: 0.6, fillOpacity: 0.3, dashArray: '3'};
+                        },
+                        onEachFeature: function(feature, layer){
+                            layer.on({
+                                mouseover: highlightFeature_unreg,
+                                mouseout: resetHighlight_unreg
+                            });
+                        }                      
                     }).addTo(map);
                     var Reg_1 = L.geoJSON(geojsonfile_1, {
                         style: function (feature) {
                             return { color: 'lightblue', weight: 1, fillOpacity: 0.9};
                         }
-                    }).addTo(map);                    
-                    displayed_gis_layer_unregulated.push(Reg);  
+                    }).addTo(map);                   
+                    displayed_gis_layer_unregulated.push(Unreg);  
                     displayed_gis_layer_unregulated.push(Reg_1);  
                     
                     //display marker for unregulated
@@ -1469,6 +1517,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_0["DSI"]; ?>";
                         var IE ="<?php echo $ro_0["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_0["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?>  
                     
                     <?php if(!empty($lga_1)){?>
@@ -1493,21 +1542,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                     
-                    var Mak_uw_1 = L.marker(unregulated_0, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_1 = L.marker(unregulated_0, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[0].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_1);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_1);
 
                     <?php if(!empty($ro_1)){?>
                         var AE ="<?php echo $ro_1["longterm_extraction_limit"]; ?>";
@@ -1517,6 +1562,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_1["DSI"]; ?>";
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_1["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
 
                     <?php if(!empty($lga_1)){?>
@@ -1541,21 +1587,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                     
-                    var Mak_uw_2 = L.marker(unregulated_1, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_2 = L.marker(unregulated_1, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[1].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_2);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_2);
 
                     <?php if(!empty($ro_2)){?>
                         var AE ="<?php echo $ro_2["longterm_extraction_limit"]; ?>";
@@ -1565,6 +1607,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_2["DSI"]; ?>";
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_2["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1589,21 +1632,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_3 = L.marker(unregulated_2, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_3 = L.marker(unregulated_2, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[2].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_3);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_3);
 
                     <?php if(!empty($lga_1)){?>
                         var Population = 0;
@@ -1625,7 +1664,7 @@ and open the template in the editor.
                             Irrigation_employment = Irrigation_employment + WaSource_prop*Irrigation_emp;
                             Mining_employment = Mining_employment + WaSource_prop*Mining_emp;
                         <?php }?> 
-                    <?php }?> 
+                    <?php }?>
             
                     <?php if(!empty($ro_3)){?>
                         var AE ="<?php echo $ro_3["longterm_extraction_limit"]; ?>";
@@ -1635,23 +1674,19 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_3["DSI"]; ?>";
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
-                    var Mak_uw_4 = L.marker(unregulated_3, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_4 = L.marker(unregulated_3, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
-                    + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_4);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_4);
 
                     <?php if(!empty($ro_4)){?>
                         var AE ="<?php echo $ro_4["longterm_extraction_limit"]; ?>";
@@ -1661,6 +1696,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_4["DSI"]; ?>";
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_4["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1685,21 +1721,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_5 = L.marker(unregulated_4, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_5 = L.marker(unregulated_4, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[4].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));        
-                    markersLayer.addLayer(Mak_uw_5);
+                    + 'Population: ' + toThousands(Math.round(Population)));     
+//                    markersLayer.addLayer(Mak_uw_5);
 
                     <?php if(!empty($ro_5)){?>
                         var AE ="<?php echo $ro_5["longterm_extraction_limit"]; ?>";
@@ -1709,6 +1741,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_5["DSI"]; ?>";
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_5["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1733,21 +1766,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_6 = L.marker(unregulated_5, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_6 = L.marker(unregulated_5, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[5].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_6);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_6);
 
                     <?php if(!empty($ro_6)){?>
                         var AE ="<?php echo $ro_6["longterm_extraction_limit"]; ?>";
@@ -1757,6 +1786,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_6["DSI"]; ?>";
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_6["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1781,21 +1811,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
                         
-                    var Mak_uw_7 = L.marker(unregulated_6, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_7 = L.marker(unregulated_6, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[6].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_7);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_7);
  
                      <?php if(!empty($ro_7)){?>
                         var AE ="<?php echo $ro_7["longterm_extraction_limit"]; ?>";
@@ -1805,6 +1831,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_7["DSI"]; ?>";
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_7["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1829,21 +1856,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?> 
 
-                    var Mak_uw_8 = L.marker(unregulated_7, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_8 = L.marker(unregulated_7, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[7].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));    
-                    markersLayer.addLayer(Mak_uw_8);
+                    + 'Population: ' + toThousands(Math.round(Population)));  
+//                    markersLayer.addLayer(Mak_uw_8);
 
                     <?php if(!empty($ro_8)){?>
                         var AE ="<?php echo $ro_8["longterm_extraction_limit"]; ?>";
@@ -1853,6 +1876,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_8["DSI"]; ?>";
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_8["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1878,21 +1902,17 @@ and open the template in the editor.
                     <?php }?> 
                         
                         
-                    var Mak_uw_9 = L.marker(unregulated_8, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_9 = L.marker(unregulated_8, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[8].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_9);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_9);
                     
                     <?php if(!empty($ro_9)){?>
                         var AE ="<?php echo $ro_9["longterm_extraction_limit"]; ?>";
@@ -1902,6 +1922,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_9["DSI"]; ?>";
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_9["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1926,22 +1947,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>                         
                         
-                    var Mak_uw_10 = L.marker(unregulated_9, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_10 = L.marker(unregulated_9, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[9].properties.WATER_SOUR + '</b><br/><br/>' 
-                    + 'All Entitlement: ' + toThousands(AE) + ' ML' + '<br/>'
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_10);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_10);
             
                      <?php if(!empty($ro_10)){?>
                         var AE ="<?php echo $ro_10["longterm_extraction_limit"]; ?>";
@@ -1951,6 +1967,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_10["DSI"]; ?>";
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_10["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1975,21 +1992,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_11 = L.marker(unregulated_10, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_11 = L.marker(unregulated_10, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[10].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_11);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_11);
             
                     <?php if(!empty($ro_11)){?>
                         var AE ="<?php echo $ro_11["longterm_extraction_limit"]; ?>";
@@ -1999,6 +2012,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_11["DSI"]; ?>";
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_11["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2023,21 +2037,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_12 = L.marker(unregulated_11, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_12 = L.marker(unregulated_11, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[11].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_12);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_12);
             
                     <?php if(!empty($ro_12)){?>
                         var AE ="<?php echo $ro_12["longterm_extraction_limit"]; ?>";
@@ -2047,6 +2057,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_12["DSI"]; ?>";
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_12["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2071,21 +2082,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_13 = L.marker(unregulated_12, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_13 = L.marker(unregulated_12, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[12].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_13);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_13);
  
                      <?php if(!empty($ro_13)){?>
                         var AE ="<?php echo $ro_13["longterm_extraction_limit"]; ?>";
@@ -2095,6 +2102,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_13["DSI"]; ?>";
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_13["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2119,21 +2127,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_14 = L.marker(unregulated_13, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_14 = L.marker(unregulated_13, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[13].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_14);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_14);
 
                     <?php if(!empty($ro_14)){?>
                         var AE ="<?php echo $ro_14["longterm_extraction_limit"]; ?>";
@@ -2143,6 +2147,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_14["DSI"]; ?>";
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_14["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2167,21 +2172,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_15 = L.marker(unregulated_14, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_15 = L.marker(unregulated_14, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[14].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_15);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_15);
 
                     <?php if(!empty($ro_15)){?>
                         var AE ="<?php echo $ro_15["longterm_extraction_limit"]; ?>";
@@ -2191,6 +2192,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_15["DSI"]; ?>";
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_15["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2215,21 +2217,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_16 = L.marker(unregulated_15, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_16 = L.marker(unregulated_15, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[15].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_16);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_16);
 
                     <?php if(!empty($ro_16)){?>
                         var AE ="<?php echo $ro_16["longterm_extraction_limit"]; ?>";
@@ -2239,6 +2237,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_16["DSI"]; ?>";
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_16["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2264,21 +2263,17 @@ and open the template in the editor.
                     <?php }?>           
             
             
-                    var Mak_uw_17 = L.marker(unregulated_16, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[16].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_17 = L.marker(unregulated_16, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[16].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[16].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_17);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_17);
  
                     <?php if(!empty($ro_17)){?>
                         var AE ="<?php echo $ro_17["longterm_extraction_limit"]; ?>";
@@ -2288,6 +2283,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_17["DSI"]; ?>";
                         var IE ="<?php echo $ro_17["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_17["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2312,21 +2308,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_18 = L.marker(unregulated_17, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[17].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_18 = L.marker(unregulated_17, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[17].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[17].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_18);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_18);
  
                      <?php if(!empty($ro_18)){?>
                         var AE ="<?php echo $ro_18["longterm_extraction_limit"]; ?>";
@@ -2336,6 +2328,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_18["DSI"]; ?>";
                         var IE ="<?php echo $ro_18["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_18["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2360,21 +2353,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_19 = L.marker(unregulated_18, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[18].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_19 = L.marker(unregulated_18, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[18].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[18].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_19);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_19);
 
                     <?php if(!empty($ro_19)){?>
                         var AE ="<?php echo $ro_19["longterm_extraction_limit"]; ?>";
@@ -2384,6 +2373,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_19["DSI"]; ?>";
                         var IE ="<?php echo $ro_19["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_19["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2408,21 +2398,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_20 = L.marker(unregulated_19, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[19].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_20 = L.marker(unregulated_19, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[19].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[19].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_20);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_20);
 
                     <?php if(!empty($ro_20)){?>
                         var AE ="<?php echo $ro_20["longterm_extraction_limit"]; ?>";
@@ -2432,6 +2418,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_20["DSI"]; ?>";
                         var IE ="<?php echo $ro_20["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_20["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2456,21 +2443,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_21 = L.marker(unregulated_20, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[20].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_21 = L.marker(unregulated_20, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[20].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[20].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_21);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_21);
 
                     <?php if(!empty($ro_21)){?>
                         var AE ="<?php echo $ro_21["longterm_extraction_limit"]; ?>";
@@ -2480,6 +2463,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_21["DSI"]; ?>";
                         var IE ="<?php echo $ro_21["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_21["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2504,21 +2488,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_22 = L.marker(unregulated_21, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[21].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_22 = L.marker(unregulated_21, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[21].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[21].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_22);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_22);
 
                     <?php if(!empty($ro_22)){?>
                         var AE ="<?php echo $ro_22["longterm_extraction_limit"]; ?>";
@@ -2528,6 +2508,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_22["DSI"]; ?>";
                         var IE ="<?php echo $ro_22["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_22["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2552,21 +2533,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_23 = L.marker(unregulated_22, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[22].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_23 = L.marker(unregulated_22, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[22].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[22].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_23);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_23);
  
                      <?php if(!empty($ro_23)){?>
                         var AE ="<?php echo $ro_23["longterm_extraction_limit"]; ?>";
@@ -2576,6 +2553,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_23["DSI"]; ?>";
                         var IE ="<?php echo $ro_23["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_23["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2600,21 +2578,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_24 = L.marker(unregulated_23, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[23].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_24 = L.marker(unregulated_23, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[23].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[23].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_24);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_24);
  
                      <?php if(!empty($ro_24)){?>
                         var AE ="<?php echo $ro_24["longterm_extraction_limit"]; ?>";
@@ -2624,6 +2598,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_24["DSI"]; ?>";
                         var IE ="<?php echo $ro_24["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_24["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2648,21 +2623,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_25 = L.marker(unregulated_24, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[24].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_25 = L.marker(unregulated_24, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[24].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[24].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_25);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_25);
 
                     <?php if(!empty($ro_25)){?>
                         var AE ="<?php echo $ro_25["longterm_extraction_limit"]; ?>";
@@ -2672,6 +2643,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_25["DSI"]; ?>";
                         var IE ="<?php echo $ro_25["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_25["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2696,21 +2668,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_26 = L.marker(unregulated_25, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[25].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_26 = L.marker(unregulated_25, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[25].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[25].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_26);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_26);
 
                     <?php if(!empty($ro_26)){?>
                         var AE ="<?php echo $ro_26["longterm_extraction_limit"]; ?>";
@@ -2720,6 +2688,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_26["DSI"]; ?>";
                         var IE ="<?php echo $ro_26["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_26["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2744,21 +2713,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_27 = L.marker(unregulated_26, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[26].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_27 = L.marker(unregulated_26, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[26].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[26].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_27);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_27);
 
                     <?php if(!empty($ro_27)){?>
                         var AE ="<?php echo $ro_27["longterm_extraction_limit"]; ?>";
@@ -2768,6 +2733,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_27["DSI"]; ?>";
                         var IE ="<?php echo $ro_27["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_27["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2792,21 +2758,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_28 = L.marker(unregulated_27, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[27].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_28 = L.marker(unregulated_27, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[27].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[27].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_28);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_28);
 
                     <?php if(!empty($ro_28)){?>
                         var AE ="<?php echo $ro_28["longterm_extraction_limit"]; ?>";
@@ -2816,6 +2778,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_28["DSI"]; ?>";
                         var IE ="<?php echo $ro_28["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_28["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2840,21 +2803,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_29 = L.marker(unregulated_28, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[28].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_29 = L.marker(unregulated_28, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[28].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[28].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_29);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_29);
 
                     <?php if(!empty($ro_29)){?>
                         var AE ="<?php echo $ro_29["longterm_extraction_limit"]; ?>";
@@ -2864,6 +2823,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_29["DSI"]; ?>";
                         var IE ="<?php echo $ro_29["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_29["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                     
                     <?php if(!empty($lga_1)){?>
@@ -2888,21 +2848,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>  
                         
-                    var Mak_uw_30 = L.marker(unregulated_29, {icon: Icon_unreg, water_source: MacquarieBogan_unregulated.features[29].properties.WATER_SOUR}).addTo(map)
+                    var Mak_uw_30 = L.marker(unregulated_29, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[29].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[29].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_uw_30);
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_uw_30);
             
                     displayed_gis_layer_unregulated.push(Mak_uw_1);
                     displayed_gis_layer_unregulated.push(Mak_uw_2);
@@ -2935,10 +2891,10 @@ and open the template in the editor.
                     displayed_gis_layer_unregulated.push(Mak_uw_29);
                     displayed_gis_layer_unregulated.push(Mak_uw_30);
                     
-                    controlSearch.on('search:locationfound', 
-                    function(e) {
-                        e.layer.addTo(map).openPopup();
-                    }); 
+//                    controlSearch.on('search:locationfound', 
+//                    function(e) {
+//                        e.layer.addTo(map).openPopup();
+//                    }); 
 //                    }
 //                if (checkBox.checked === false){
 //                    removeLayer(displayed_gis_layer_unregulated);
@@ -2964,18 +2920,18 @@ and open the template in the editor.
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }                    
-                    var markersLayer = new L.LayerGroup();
-                    map.addLayer(markersLayer);
-                    controlSearch = new L.Control.Search({
-                        position:'topleft',
-                        layer: markersLayer,
-                        initial: false,
-                        zoom: 11,
-                        marker: false,
-                        propertyName: 'gwater_source',
-                        textPlaceholder: 'Search groundwater source',
-                        textErr: 'Groundwater source not found'
-                    }); 
+//                    var markersLayer = new L.LayerGroup();
+//                    map.addLayer(markersLayer);
+//                    controlSearch = new L.Control.Search({
+//                        position:'topleft',
+//                        layer: markersLayer,
+//                        initial: false,
+//                        zoom: 11,
+//                        marker: false,
+//                        propertyName: 'gwater_source',
+//                        textPlaceholder: 'Search groundwater source',
+//                        textErr: 'Groundwater source not found'
+//                    }); 
 //                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
@@ -3022,7 +2978,7 @@ and open the template in the editor.
                     var Mak_groundwater_1 = L.marker(groundwater_0, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[0].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[0].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
-                    markersLayer.addLayer(Mak_groundwater_1);
+//                    markersLayer.addLayer(Mak_groundwater_1);
                     
                     <?php if(!empty($ro_gw_2)){?>
                         var lel ="<?php echo $ro_gw_2["longterm_extraction_limit"]; ?>";
@@ -3032,7 +2988,7 @@ and open the template in the editor.
                     var Mak_groundwater_2 = L.marker(groundwater_1, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[1].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[1].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
-                    markersLayer.addLayer(Mak_groundwater_2);
+//                    markersLayer.addLayer(Mak_groundwater_2);
                     
                     <?php if(!empty($ro_gw_3)){?>
                         var lel ="<?php echo $ro_gw_3["longterm_extraction_limit"]; ?>";
@@ -3042,7 +2998,7 @@ and open the template in the editor.
                     var Mak_groundwater_3 = L.marker(groundwater_2, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[2].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[2].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year'); 
-                    markersLayer.addLayer(Mak_groundwater_3);
+//                    markersLayer.addLayer(Mak_groundwater_3);
 
                     <?php if(!empty($ro_gw_4)){?>
                         var lel ="<?php echo $ro_gw_4["longterm_extraction_limit"]; ?>";
@@ -3051,17 +3007,17 @@ and open the template in the editor.
                     var Mak_groundwater_4 = L.marker(groundwater_3, {icon: Icon_gw, gwater_source: MacquarieBogan_GW.features[3].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+MacquarieBogan_GW.features[3].properties.W_Source_1+'</b>'+'</br></br>'+
                     'Longterm Extraction Limit: ' + toThousands(lel) + ' ML/year');  
-                    markersLayer.addLayer(Mak_groundwater_4);
+//                    markersLayer.addLayer(Mak_groundwater_4);
             
                     displayed_gis_layer_groundwater.push(Mak_groundwater_1); 
                     displayed_gis_layer_groundwater.push(Mak_groundwater_2);
                     displayed_gis_layer_groundwater.push(Mak_groundwater_3);
                     displayed_gis_layer_groundwater.push(Mak_groundwater_4);
                     
-                    controlSearch.on('search:locationfound', 
-                    function(e) {
-                        e.layer.addTo(map).openPopup();
-                    });                                  
+//                    controlSearch.on('search:locationfound', 
+//                    function(e) {
+//                        e.layer.addTo(map).openPopup();
+//                    });                                  
                     
 //                }
 //                if (checkBox.checked === false){
@@ -3515,28 +3471,36 @@ and open the template in the editor.
 //                var checkBox = document.getElementById(id); 
                 var geojsonfile = Manning_unregulated;
                 var geojsonfile_1 = Manning_Unregulatedriver;
+//                link_to_parr_man = document.getElementById('link_to_parallel_coordinate_manning');
 //                if (checkBox.checked === true){
+//                    link_to_parr_man.style.display='block';
                     document.getElementById("legend").appendChild(elem);
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }                    
-                    var markersLayer = new L.LayerGroup();
-                    map.addLayer(markersLayer);
-                    controlSearch = new L.Control.Search({
-                        position:'topleft',
-                        layer: markersLayer,
-                        initial: false,
-                        zoom: 12,
-                        marker: false,
-                        propertyName: 'water_source',
-                        textPlaceholder: 'Search water source',
-                        textErr: 'Water source not found'
-                    }); 
+//                    var markersLayer = new L.LayerGroup();
+//                    map.addLayer(markersLayer);
+//                    controlSearch = new L.Control.Search({
+//                        position:'topleft',
+//                        layer: markersLayer,
+//                        initial: false,
+//                        zoom: 12,
+//                        marker: false,
+//                        propertyName: 'water_source',
+//                        textPlaceholder: 'Search water source',
+//                        textErr: 'Water source not found'
+//                    }); 
 //                    map.addControl(controlSearch);
                     
-                    var Reg = L.geoJSON(geojsonfile, {
+                    Unreg = L.geoJSON(geojsonfile, {
                         style: function (feature) {
                             return { color: 'white', fillColor: '#88888', weight: 0.6, fillOpacity: 0.3, dashArray: '3'};
+                        },
+                        onEachFeature: function(feature, layer){
+                            layer.on({
+                                mouseover: highlightFeature_unreg,
+                                mouseout: resetHighlight_unreg
+                            });
                         }
                     }).addTo(map);
                     
@@ -3546,7 +3510,7 @@ and open the template in the editor.
                         }
                     }).addTo(map);
                     
-                    displayed_gis_layer_unregulated.push(Reg);   
+                    displayed_gis_layer_unregulated.push(Unreg);   
                     displayed_gis_layer_unregulated.push(Reg_1);  
                     
                     var man_unre_0 = getCentroid(Manning_unregulated.features[0].geometry.coordinates[0]);
@@ -3558,11 +3522,13 @@ and open the template in the editor.
                     var man_unre_6 = getCentroid(Manning_unregulated.features[6].geometry.coordinates[0]);
                     var man_unre_7 = getCentroid(Manning_unregulated.features[7].geometry.coordinates[0]);
                     var man_unre_8 = getCentroid(Manning_unregulated.features[8].geometry.coordinates[0]);
+                    man_unre_8[0] = man_unre_8[0]+0.02;
                     var man_unre_9 = getCentroid(Manning_unregulated.features[9].geometry.coordinates[0]);
                     var man_unre_10 = getCentroid(Manning_unregulated.features[10].geometry.coordinates[0]);
                     var man_unre_11 = getCentroid(Manning_unregulated.features[11].geometry.coordinates[0]);
                     var man_unre_12 = getCentroid(Manning_unregulated.features[12].geometry.coordinates[0]);
                     var man_unre_13 = getCentroid(Manning_unregulated.features[13].geometry.coordinates[0]);
+                    man_unre_13[1] = man_unre_13[1]-0.04;
                     var man_unre_14 = getCentroid(Manning_unregulated.features[14].geometry.coordinates[0]);
                     var man_unre_15 = getCentroid(Manning_unregulated.features[15].geometry.coordinates[0]);
                     
@@ -3655,7 +3621,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_1["DSI"]; ?>";
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_1["wetland_area"]; ?>";
-                        //IE = IE.toFixed(2);
+                        var RA = (UE/AE)*100;
                     <?php }?>  
                         
                     <?php if(!empty($lga_2)){?>
@@ -3680,21 +3646,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                     //var water_source = Manning_unregulated.features[0].properties.WATER_SOUR;
-                    var Mak_1 = L.marker(man_unre_0, {icon: Icon_unreg, water_source: Manning_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
+                    var Mak_1 = L.marker(man_unre_0, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[0].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[0].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_1);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_1);
 
                     <?php if(!empty($ro_2)){?>
                         var AE ="<?php echo $ro_2["longterm_extraction_limit"]; ?>";
@@ -3704,6 +3666,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_2["DSI"]; ?>";
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_2["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3728,21 +3691,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_2 = L.marker(man_unre_1, {icon: Icon_unreg, water_source: Manning_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
+                    var Mak_2 = L.marker(man_unre_1, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[1].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[1].properties.WATER_SOUR + '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_2);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_2);
 
                     <?php if(!empty($ro_3)){?>
                         var AE ="<?php echo $ro_3["longterm_extraction_limit"]; ?>";
@@ -3752,6 +3711,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_3["DSI"]; ?>";
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3776,21 +3736,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_3 = L.marker(man_unre_2, {icon: Icon_unreg, water_source: Manning_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
+                    var Mak_3 = L.marker(man_unre_2, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[2].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[2].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_3);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_3);
   
                     <?php if(!empty($ro_4)){?>
                         var AE ="<?php echo $ro_4["longterm_extraction_limit"]; ?>";
@@ -3800,6 +3756,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_4["DSI"]; ?>";
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_4["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3824,21 +3781,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_4 = L.marker(man_unre_3, {icon: Icon_unreg, water_source: Manning_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
+                    var Mak_4 = L.marker(man_unre_3, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
-                    + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                   + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_4);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_4);
             
                     <?php if(!empty($ro_5)){?>
                         var AE ="<?php echo $ro_5["longterm_extraction_limit"]; ?>";
@@ -3848,6 +3801,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_5["DSI"]; ?>";
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_5["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3872,21 +3826,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_5 = L.marker(man_unre_4, {icon: Icon_unreg, water_source: Manning_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
+                    var Mak_5 = L.marker(man_unre_4, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[4].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[4].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_5);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_5);
   
                     <?php if(!empty($ro_6)){?>
                         var AE ="<?php echo $ro_6["longterm_extraction_limit"]; ?>";
@@ -3896,6 +3846,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_6["DSI"]; ?>";
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_6["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3921,21 +3872,17 @@ and open the template in the editor.
                     <?php }?>
                         
                     man_unre_5[1] = man_unre_5[1] + 0.05;
-                    var Mak_6 = L.marker(man_unre_5, {icon: Icon_unreg, water_source: Manning_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
+                    var Mak_6 = L.marker(man_unre_5, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[5].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[5].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_6);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_6);
    
                     <?php if(!empty($ro_7)){?>
                         var AE ="<?php echo $ro_7["longterm_extraction_limit"]; ?>";
@@ -3945,6 +3892,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_7["DSI"]; ?>";
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_7["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3969,21 +3917,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_7 = L.marker(man_unre_6, {icon: Icon_unreg, water_source: Manning_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
+                    var Mak_7 = L.marker(man_unre_6, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[6].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[6].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_7);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_7);
    
                     <?php if(!empty($ro_8)){?>
                         var AE ="<?php echo $ro_8["longterm_extraction_limit"]; ?>";
@@ -3993,6 +3937,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_8["DSI"]; ?>";
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_8["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4017,21 +3962,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_8 = L.marker(man_unre_7, {icon: Icon_unreg, water_source: Manning_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
+                    var Mak_8 = L.marker(man_unre_7, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[7].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[7].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_8);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_8);
   
                     <?php if(!empty($ro_9)){?>
                         var AE ="<?php echo $ro_9["longterm_extraction_limit"]; ?>";
@@ -4041,6 +3982,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_9["DSI"]; ?>";
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_9["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4065,21 +4007,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_9 = L.marker(man_unre_8, {icon: Icon_unreg, water_source: Manning_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
+                    var Mak_9 = L.marker(man_unre_8, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[8].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[8].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_9);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_9);
    
                     <?php if(!empty($ro_10)){?>
                         var AE ="<?php echo $ro_10["longterm_extraction_limit"]; ?>";
@@ -4089,6 +4027,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_10["DSI"]; ?>";
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_10["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4113,21 +4052,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_10 = L.marker(man_unre_9, {icon: Icon_unreg, water_source: Manning_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
+                    var Mak_10 = L.marker(man_unre_9, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[9].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[9].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_10);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_10);
   
                     <?php if(!empty($ro_11)){?>
                         var AE ="<?php echo $ro_11["longterm_extraction_limit"]; ?>";
@@ -4137,6 +4072,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_11["DSI"]; ?>";
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_11["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4162,21 +4098,17 @@ and open the template in the editor.
                     <?php }?>
                         
                     man_unre_10[0] = man_unre_10[0] - 0.05;
-                    var Mak_11 = L.marker(man_unre_10, {icon: Icon_unreg, water_source: Manning_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
+                    var Mak_11 = L.marker(man_unre_10, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[10].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[10].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_11);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_11);
    
                     <?php if(!empty($ro_12)){?>
                         var AE ="<?php echo $ro_12["longterm_extraction_limit"]; ?>";
@@ -4186,6 +4118,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_12["DSI"]; ?>";
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_12["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?>
                         
                     <?php if(!empty($lga_2)){?>
@@ -4210,21 +4143,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_12 = L.marker(man_unre_11, {icon: Icon_unreg, water_source: Manning_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
+                    var Mak_12 = L.marker(man_unre_11, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[11].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[11].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_12);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_12);
   
                     <?php if(!empty($ro_13)){?>
                         var AE ="<?php echo $ro_13["longterm_extraction_limit"]; ?>";
@@ -4234,6 +4163,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_13["DSI"]; ?>";
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_13["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4258,21 +4188,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_13 = L.marker(man_unre_12, {icon: Icon_unreg, water_source: Manning_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
+                    var Mak_13 = L.marker(man_unre_12, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[12].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[12].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_13);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_13);
   
                     <?php if(!empty($ro_14)){?>
                         var AE ="<?php echo $ro_14["longterm_extraction_limit"]; ?>";
@@ -4282,6 +4208,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_14["DSI"]; ?>";
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_14["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4306,21 +4233,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_14 = L.marker(man_unre_13, {icon: Icon_unreg, water_source: Manning_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
+                    var Mak_14 = L.marker(man_unre_13, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[13].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[13].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_14);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_14);
                     
                     <?php if(!empty($ro_15)){?>
                         var AE ="<?php echo $ro_15["longterm_extraction_limit"]; ?>";
@@ -4330,6 +4253,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_15["DSI"]; ?>";
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_15["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                     
                     <?php if(!empty($lga_2)){?>
@@ -4354,21 +4278,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_15 = L.marker(man_unre_14, {icon: Icon_unreg, water_source: Manning_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
+                    var Mak_15 = L.marker(man_unre_14, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[14].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[14].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_15);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_15);
  
                     <?php if(!empty($ro_16)){?>
                         var AE ="<?php echo $ro_16["longterm_extraction_limit"]; ?>";
@@ -4378,6 +4298,7 @@ and open the template in the editor.
                         var DS ="<?php echo $ro_16["DSI"]; ?>";
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_16["wetland_area"]; ?>";
+                        var RA = (UE/AE)*100;
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4402,21 +4323,17 @@ and open the template in the editor.
                         <?php }?> 
                     <?php }?>
                         
-                    var Mak_16 = L.marker(man_unre_15, {icon: Icon_unreg, water_source: Manning_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
+                    var Mak_16 = L.marker(man_unre_15, {icon: icon_unreg(UE/AE), water_source: Manning_unregulated.features[15].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + Manning_unregulated.features[15].properties.WATER_SOUR+ '</b><br/><br/>' 
                     + 'Longterm Extraction Limit: ' + toThousands(AE) + ' ML' + '<br/>'
-                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML' + '<br/>'
+                    + 'Unreg Entitlement: ' + toThousands(UE) + ' ML (' + Math.round(RA*10)/10 +' % of Longterm Extraction Limit)' + '<br/>'
                     + 'MeanFlow: ' + toThousands(MF) + ' ML/year' + '<br/>'
-                    + 'FUI: ' + toThousands(Math.round(FU)/100) + '<br/>'
-                    + 'DSI: ' + toThousands(Math.round(DS)/100) + '<br/>'
-                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha'+ '<br/>'
-                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha'+ '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'Annual Production Value (Irrigation) : ' + toThousands((Math.round(Irrigation_production)/1000000).toFixed(2)) + ' $M' + '<br/>'
-                    + 'Annual Production Value (Mining) : ' + toThousands(Mining_production.toFixed(2))+ ' $M' +'<br/>'
-                    + 'Annual Employment Number (Irrigation) : ' + toThousands(Math.round(Irrigation_employment))+ '<br/>'
-                    + 'Annual Employment Number (Mining) : ' + toThousands(Math.round(Mining_employment)));
-                    markersLayer.addLayer(Mak_16);
+                    + 'FUI: ' + toThousands(Math.round(FU*100)/100) + '<br/>'
+                    + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
+                    + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
+                    + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
+                    + 'Population: ' + toThousands(Math.round(Population)));
+//                    markersLayer.addLayer(Mak_16);
             
                     displayed_gis_layer_unregulated.push(Mak_1);
                     displayed_gis_layer_unregulated.push(Mak_2);
@@ -4435,18 +4352,18 @@ and open the template in the editor.
                     displayed_gis_layer_unregulated.push(Mak_15);
                     displayed_gis_layer_unregulated.push(Mak_16);
                     
-                    controlSearch.on('search:locationfound', 
-                    function(e) {
-                        e.layer.addTo(map).openPopup();
-                    });                   
+//                    controlSearch.on('search:locationfound', 
+//                    function(e) {
+//                        e.layer.addTo(map).openPopup();
+//                    });                   
 //                }
 //                if (checkBox.checked === false){
 //                    removeLayer(displayed_gis_layer_unregulated);
 //                    map.removeControl(controlSearch);
 //                    var elementToBeRemoved = document.getElementById('unreg_man');
 //                    document.getElementById('legend').removeChild(elementToBeRemoved);
-//
-//                }                 
+//                    link_to_parr_man.style.display='none';
+//                }                  
             }
             
               
@@ -4464,18 +4381,18 @@ and open the template in the editor.
                     if (typeof controlSearch !== 'undefined') {
                         map.removeControl(controlSearch);
                     }                    
-                    var markersLayer = new L.LayerGroup();
-                    map.addLayer(markersLayer);
-                    controlSearch = new L.Control.Search({
-                        position:'topleft',
-                        layer: markersLayer,
-                        initial: false,
-                        zoom: 11,
-                        marker: false,
-                        propertyName: 'gwater_source',
-                        textPlaceholder: 'Search groundwater source',
-                        textErr: 'Groundwater source not found'
-                    }); 
+//                    var markersLayer = new L.LayerGroup();
+//                    map.addLayer(markersLayer);
+//                    controlSearch = new L.Control.Search({
+//                        position:'topleft',
+//                        layer: markersLayer,
+//                        initial: false,
+//                        zoom: 11,
+//                        marker: false,
+//                        propertyName: 'gwater_source',
+//                        textPlaceholder: 'Search groundwater source',
+//                        textErr: 'Groundwater source not found'
+//                    }); 
 //                    map.addControl(controlSearch);
                     
                     var Reg = L.geoJSON(geojsonfile, {
@@ -4503,73 +4420,73 @@ and open the template in the editor.
                     
                     var Mak_1 = L.marker(man_gw_0, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[0].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[0].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_1);
+                    //markersLayer.addLayer(Mak_1);
                     
                     var Mak_2 = L.marker(man_gw_1, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[1].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[1].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_2);
+                    //markersLayer.addLayer(Mak_2);
                     man_gw_2[1] = man_gw_2[1]-0.001;
                     
                     var Mak_3 = L.marker(man_gw_2, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[2].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[2].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_3);
+                    //markersLayer.addLayer(Mak_3);
                     
                     man_gw_3[1] = man_gw_3[1]-0.007;
                     var Mak_4 = L.marker(man_gw_3, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[3].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[3].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_4);
+                    //markersLayer.addLayer(Mak_4);
                     
                     man_gw_4[1] =  man_gw_4[1]+0.001;
                     var Mak_5 = L.marker(man_gw_4, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[4].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[4].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_5);
+                   // markersLayer.addLayer(Mak_5);
                     
                     man_gw_5[1]=man_gw_5[1]+0.04;
                     man_gw_5[0]=man_gw_5[0]-0.005;
                     var Mak_6 = L.marker(man_gw_5, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[5].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[5].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_6);
+                   // markersLayer.addLayer(Mak_6);
                     
                     man_gw_6[1]=man_gw_6[1]+0.005;
                     var Mak_7 = L.marker(man_gw_6, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[6].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[6].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_7);
+                    //markersLayer.addLayer(Mak_7);
                     
                     man_gw_7[1] = man_gw_7[1] - 0.01 ;
                     var Mak_8 = L.marker(man_gw_7, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[7].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[7].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_8);
+                    //markersLayer.addLayer(Mak_8);
                     
                     var Mak_9 = L.marker(man_gw_8, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[8].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[8].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_9);
+                    //markersLayer.addLayer(Mak_9);
                     
                     var Mak_10 = L.marker(man_gw_9, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[9].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[9].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_10);
+                    //markersLayer.addLayer(Mak_10);
                     
                     var Mak_11 = L.marker(man_gw_10, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[10].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[10].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_11);
+                    //markersLayer.addLayer(Mak_11);
                     
                     var Mak_12 = L.marker(man_gw_11, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[11].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[11].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_12);
+                    //markersLayer.addLayer(Mak_12);
                     
                     man_gw_12[0] = man_gw_12[0] + 0.006;
                     var Mak_13 = L.marker(man_gw_12, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[12].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[12].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_13);
+                    //markersLayer.addLayer(Mak_13);
                     
                     man_gw_13[1]=man_gw_13[1]+0.015;
                     var Mak_14 = L.marker(man_gw_13, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[13].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[13].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_14);
+                    //markersLayer.addLayer(Mak_14);
                     
                     man_gw_14[0] = man_gw_14[0]-0.02;
                     var Mak_15 = L.marker(man_gw_14, {icon: Icon_gw, gwater_source: Manning_Groundwater.features[14].properties.W_Source_1}).addTo(map)
                     .bindPopup('<b>'+Manning_Groundwater.features[14].properties.W_Source_1+'</b>');
-                    markersLayer.addLayer(Mak_15);
+                    //markersLayer.addLayer(Mak_15);
                     
                     displayed_gis_layer_groundwater.push(Mak_1); 
                     displayed_gis_layer_groundwater.push(Mak_2);
@@ -4587,10 +4504,10 @@ and open the template in the editor.
                     displayed_gis_layer_groundwater.push(Mak_14);
                     displayed_gis_layer_groundwater.push(Mak_15);
                     
-                    controlSearch.on('search:locationfound', 
-                    function(e) {
-                        e.layer.addTo(map).openPopup();
-                    });
+//                    controlSearch.on('search:locationfound', 
+//                    function(e) {
+//                        e.layer.addTo(map).openPopup();
+//                    });
 //                }
 //                if (checkBox.checked === false){
 //                    removeLayer(displayed_gis_layer_groundwater);
@@ -4767,9 +4684,35 @@ and open the template in the editor.
                 hover_info.update(layer.feature.properties);
             }
             
+            function highlightFeature_unreg(e) {
+                    var layer = e.target;
+                    if (layer._layers) {
+                            layer.eachLayer(function (myLayer) {
+                                    myLayer.setStyle({
+                                            weight: myLayer.options ? (myLayer.options.opacity > 0 ? 4 : 0) : 0,
+                                            color: '#666',
+                                            dashArray: ''
+                                    });
+                            });
+                    } else {
+                            layer.setStyle({
+                                    weight: layer.options ? (layer.options.opacity > 0 ? 4 : 0) : 0,
+                                    color: '#666',
+                                    dashArray: ''
+                            });
+                    }
+                    if (!L.Browser.ie && !L.Browser.opera) {
+                           //layer.bringToFront();
+                    }
+            }
+            
             function resetHighlight(e) {
                 CAT.resetStyle(e.target || e);
                 hover_info.update();
+            }
+            
+            function resetHighlight_unreg(e) {
+                Unreg.resetStyle(e.target || e);
             }
             
             function zoomToFeature(e) { 

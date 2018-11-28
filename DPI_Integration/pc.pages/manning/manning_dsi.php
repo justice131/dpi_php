@@ -219,7 +219,7 @@ and open the template in the editor.
                            '<h4>' + props.WATER_SOUR + '</h4>'+
                                     'Irrigated Area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
                                     'Irrigation Value: '+ '<b>$'+ toThousands(props.irrigation_value)+'M' + '</b>'+'<br />'+
-                                    'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                                    'Employment (Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                                     'Total Entitlement: '+ '<b>'+ toThousands(props.total_entitlement) +' ML/year'+ '</b>' +'<br />'+
                                     'Mean Flow: '+ '<b>'+ toThousands(props.mean_flow) + ' ML/year'+'</b>' +'<br />'+
                                     'DSI: '+ '<b>'+ Math.round(props.DSI*100)/100 + '</b>'+'<br />'+

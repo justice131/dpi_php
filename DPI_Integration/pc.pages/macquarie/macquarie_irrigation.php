@@ -497,7 +497,7 @@ and open the template in the editor.
 
                 /*Setting up grid beginning*/
                 var column_keys = d3.keys(data[0]);
-                column_keys.length = 7; //remove index
+                column_keys.length = 12; //remove index
                 var columns = column_keys.map(function(key,i) {
                     return {
                         id: key,

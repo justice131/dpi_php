@@ -1,31 +1,31 @@
-Water Source,Irrigated Area (Ha),Mining Value ($ M),Employment Mining,Mining  Water Use (ML),Risk to Mining ($ M),Opportunity of Mining ($ M)
-Backwater Boggy Cowal Water Source,12693,2,25,0,0,1
-Bell River Water Source,510,69,629,47,0,19.5
-Bulbodney Grahway Creek Water Source,,2,23,0,0,37.2
-Burrendong Dam Tributaries Water Source,,125,1104,0,0,15.4
-Campbells River Water Source,160,11,102,0,0,17.4
-Coolbaggie Creek Water Source,877,7,66,0,0,0.3
-Cooyal Wialdra Creek Water Source,91,66,587,0,0,17.4
-Ewenmar Creek Water Source,6160,1,10,2,0.1,5.6
-Fish River Water Source,18,35,327,77,0,4.7
-Goolma Creek Water Source,,24,217,0,0,2.5
-Lawsons Creek Water Source,128,53,469,0,0,3.3
-Little River Water Source,636,23,204,0,0,19.1
-Lower Bogan River Water Source,1610,0,2,0,0,0
-Lower Macquarie River Water Source,4395,0,1,0,0,0
-Lower Talbragar River Water Source,567,14,137,0,0,20.3
-Macquarie River above Burrendong Water Source,544,33,307,8,0.2,3.1
-Marra Creek Water Source,1777,0,1,0,0,0
-Marthaguy Creek Water Source,3290,0,3,0,0,24.4
-Maryvale Geurie Creek Water Source,1093,6,54,0,0,7.5
-Molong Creek Water Source,480,13,120,0,0,6.4
-Piambong Creek Water Source,344,62,547,0,0,0
-Pipeclay Creek Water Source,503,23,205,0,0,1.1
-Queen Charlottes Vale Evans Plains Creek Water Source,139,19,178,18,0,6.4
-Summerhill Creek Water Source,197,370,3369,47,0.7,13.8
-Turon Crudine River Water Source,2,103,937,53,0,8.5
-Upper Bogan River Water Source,3712,82,852,300,25.4,35.9
-Upper Cudgegong River Water Source,11,60,530,231,0,13.9
-Upper Talbragar River Water Source,394,27,236,0,0,13.8
-Wambangalong Whylandra Creek Water Source,835,7,66,0,0,1
-Winburndale Rivulet Water Source,19,18,174,18,0,2.1
+Water Source,Potential Mining Area (Ha),Mining Value ($ M),Employment Mining,Mining Water Use (ML),Risk to Mining ($ M),Opportunity of Mining ($ M),FUI,DSI,Mean Flow (ML/year),Population
+Backwater Boggy Cowal Water Source,4420,2,25,0,0,1,0.11,0,53290,3029
+Bell River Water Source,86806,69,629,47,0,19.5,0.12,0.63,111325,13155
+Bulbodney Grahway Creek Water Source,418851,2,23,0,0,37.2,0.29,0,54750,2530
+Burrendong Dam Tributaries Water Source,68588,125,1104,0,0,15.4,0,1,146000,9826
+Campbells River Water Source,77569,11,102,0,0,17.4,0.03,1,83220,4713
+Coolbaggie Creek Water Source,1402,7,66,0,0,0.3,0.04,0,24820,6288
+Cooyal Wialdra Creek Water Source,116574,66,587,0,0,17.4,0.06,0.49,28470,2502
+Ewenmar Creek Water Source,24960,1,10,2,0.1,5.6,0.08,0,33215,1778
+Fish River Water Source,20741,35,327,77,0,4.7,0.24,1,93805,5574
+Goolma Creek Water Source,22310,24,217,0,0,2.5,0,1,3650,2939
+Lawsons Creek Water Source,86933,53,469,0,0,3.3,0.19,1,17155,2000
+Little River Water Source,85351,23,204,0,0,19.1,0.1,0.36,35405,9302
+Lower Bogan River Water Source,145739,0,2,0,0,0,1,0,56940,1491
+Lower Macquarie River Water Source,36664,0,1,0,0,0,1,0.16,84680,926
+Lower Talbragar River Water Source,349864,14,137,0,0,20.3,0.12,0,34310,12819
+Macquarie River above Burrendong Water Source,13701,33,307,8,0.2,3.1,0.16,0.27,206590,10960
+Marra Creek Water Source,16165,0,1,0,0,0,0.17,0,1825,826
+Marthaguy Creek Water Source,108732,0,3,0,0,24.4,0.19,0,74825,2613
+Maryvale Geurie Creek Water Source,33253,6,54,0,0,7.5,0.09,0.39,10950,5112
+Molong Creek Water Source,28550,13,120,0,0,6.4,0.27,0.31,25550,1646
+Piambong Creek Water Source,16989,62,547,0,0,0,1,0.02,1825,2332
+Pipeclay Creek Water Source,26958,23,205,0,0,1.1,0.19,0.52,6205,875
+Queen Charlottes Vale Evans Plains Creek Water Source,28653,19,178,18,0,6.4,0.11,1,26280,6395
+Summerhill Creek Water Source,61652,370,3369,47,0.7,13.8,0.2,0.4,70810,36297
+Turon Crudine River Water Source,37940,103,937,53,0,8.5,0,1,106215,8756
+Upper Bogan River Water Source,282047,82,852,300,25.4,35.9,0.09,0,39055,11491
+Upper Cudgegong River Water Source,61886,60,530,231,0,13.9,0.15,0.57,55115,2260
+Upper Talbragar River Water Source,290275,27,236,0,0,13.8,0.03,0,20075,2091
+Wambangalong Whylandra Creek Water Source,4521,7,66,0,0,1,0.02,1,16425,6245
+Winburndale Rivulet Water Source,9219,18,174,18,0,2.1,0.03,1,62415,8150

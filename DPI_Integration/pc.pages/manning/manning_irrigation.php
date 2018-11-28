@@ -171,7 +171,7 @@ and open the template in the editor.
                 '<h4>' + props.WATER_SOUR + '</h4>'+
                 'Irrigated Area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
                 'Irrigation Value: '+ '<b>$'+ toThousands(props.irrigation_value)+'M' + '</b>'+'<br />'+
-                'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                'Employment (Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                 'Argicultural Water Use: ' + '<b>'+ toThousands(props.agricultural_water_use) + ' ML</b>'+'<br />'+
                 'Irrigation Opportunity Index: ' + '<b>$'+ Math.round(props.irrigation_opportunity_index*100)/100 + 'M</b>'+'<br />'
                 : '<b>'+ 'Click a Water Source'+'</b>');
@@ -367,7 +367,7 @@ and open the template in the editor.
                 _.each(data, function (d, i) {
                     d.index = d.index || i; //unique id
                     var water_source_name = d["Water Source"];
-                     lgaDict[water_source_name].properties.irrigated_area=d["Irrigated Area  (Ha)"];
+                     lgaDict[water_source_name].properties.irrigated_area=d["Irrigated Area (Ha)"];
                     lgaDict[water_source_name].properties.irrigation_value=d["Irrigation Value ($ M)"];
                     lgaDict[water_source_name].properties.employment_irrigation=d["Employment Irrigation"];
                     lgaDict[water_source_name].properties.agricultural_water_use=d["Agriculture Water Use (ML)"];
@@ -497,7 +497,7 @@ and open the template in the editor.
 
                 /*Setting up grid beginning*/
                 var column_keys = d3.keys(data[0]);
-                column_keys.length = 7; //remove index
+                column_keys.length = 12; //remove index
                 var columns = column_keys.map(function(key,i) {
                     return {
                         id: key,

@@ -364,7 +364,7 @@ and open the template in the editor.
                     lgaDict[water_source_name].properties.irrigated_area=d["Irrigated Area (Ha)"];
                     lgaDict[water_source_name].properties.mining_value=d["Mining Value ($ M)"];
                     lgaDict[water_source_name].properties.employment_mining=d["Employment Mining"];
-                    lgaDict[water_source_name].properties.mining_water_use=d["Mining  Water Use (ML)"];
+                    lgaDict[water_source_name].properties.mining_water_use=d["Mining Water Use (ML)"];
                     lgaDict[water_source_name].properties.mining_risk=d["Risk to Mining ($ M)"];
                     lgaDict[water_source_name].properties.mining_opportunity=d["Opportunity of Mining ($ M)"];
                     lga.push(water_source_name);
@@ -493,7 +493,7 @@ and open the template in the editor.
 
                 /*Setting up grid beginning*/
                 var column_keys = d3.keys(data[0]);
-                column_keys.length = 7; //remove index
+                column_keys.length = 11; //remove index
                 var columns = column_keys.map(function(key,i) {
                     return {
                         id: key,

@@ -212,7 +212,7 @@ and open the template in the editor.
                     '<h4>' + props.WATER_SOUR + '</h4>'+
                     'Population: '+ '<b>' + toThousands(props.population) +'</b>'+'<br />'+
                     'Variation: '+ '<b>'+ toThousands(props.variation) + '</b>' +'<br />'+
-                    'Normalized Dam Capacity: '+ '<b>'+ props.norm + '</b>'+'<br />'+
+                    'Dam Capacity: '+ '<b>'+ props.norm + ' GL</b>'+'<br />'+
                     'FUI: '+ '<b>'+ Math.round(props.FUI*100)/100 + '</b>'+'<br />'+
                     'Potential for new infrastructure: ' + '<b>'+ Math.round(props.potential_infra*100)/100 + '</b>'+'<br />'
                     : '<b>'+ 'Click a Water Source'+'</b>');
@@ -251,7 +251,7 @@ and open the template in the editor.
                         var water_source_name = d["Water Source"];
                         lgaDict[water_source_name].properties.population=d["Population"];
                         lgaDict[water_source_name].properties.variation=d["Variation"];
-                        lgaDict[water_source_name].properties.norm=d["Normalized Dam Capacity"];
+                        lgaDict[water_source_name].properties.norm=d["Dam Capacity (GL)"];
                         lgaDict[water_source_name].properties.FUI=d["FUI"];
                         lgaDict[water_source_name].properties.potential_infra=d["Potential for New Infrastructure"];
                         lga.push(water_source_name);
@@ -301,7 +301,7 @@ and open the template in the editor.
 
                 // setting up grid
                 var column_keys = d3.keys(data[0]);
-                column_keys.length = 6; //remove index
+                column_keys.length = 10; //remove index
                 var columns = column_keys.map(function(key,i) {
                     return {
                         id: key,

@@ -217,7 +217,7 @@ and open the template in the editor.
                     '<h4>' + props.WATER_SOUR + '</h4>'+
                     'Irrigated Area: '+ '<b>' + toThousands(props.irrigated_area) + ' Ha' + '</b>' + '<br />'+
                     'Irrigation Value: '+ '<b>$'+ props.irrigation_value+'M' + '</b>'+'<br />'+
-                    'Employment(Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
+                    'Employment (Irrigation): '+ '<b>'+toThousands(props.employment_irrigation) +'</b>'+'<br />'+
                     'DSI: '+ '<b>'+ props.DSI + '</b>'+'<br />'+
                     'FUI: '+ '<b>'+ props.FUI + '</b>'+'<br />'
                     : '<b>'+ 'Click a Water Source'+'</b>');

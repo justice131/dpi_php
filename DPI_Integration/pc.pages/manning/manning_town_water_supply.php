@@ -230,7 +230,7 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                     '<h4>' + props.NSW_LGA__3 + '</h4>'+
                             'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
-                            'Gross Regional Product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
+                            'Gross Regional Product: '+ '<b>$' + toThousands(props.gross_regional_product) +'M</b>'+'<br />'+
                             'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
                             'HBT Index: '+ '<b>' + props.hbt +'%</b>'+'<br />'+
                             'Opportunity : '+ '<b>$' + Math.round(props.opportunity*100)/100 +'M</b>'
@@ -268,7 +268,7 @@ and open the template in the editor.
                 this._div.innerHTML = (props?
                     '<h4>' + props.NSW_LGA__3 + '</h4>'+
                             'Population: '+ '<b>' + toThousands(Math.round(props.population)) +'</b>'+'<br />'+
-                            'Gross Regional Product ($M): '+ '<b>' + toThousands(props.gross_regional_product) +'</b>'+'<br />'+
+                            'Gross Regional Product: '+ '<b>$' + toThousands(props.gross_regional_product) +'M</b>'+'<br />'+
                             'WSDI: ' + '<b>' + props.wsdi + '</b>'+'<br />' +
                             'HBT Index: '+ '<b>' + props.hbt +'%</b>'+'<br />'+
                             'Risk: '+ '<b>$' + Math.round(props.risk*100)/100 +'M</b>'
@@ -458,7 +458,7 @@ and open the template in the editor.
 
                 /*Setting up grid beginning*/
                 var column_keys = d3.keys(data[0]);
-                column_keys.length = 7; //remove index
+                column_keys.length = 8; //remove index
                 var columns = column_keys.map(function(key,i) {
                     return {
                         id: key,

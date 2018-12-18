@@ -38,6 +38,10 @@
 //                    alert("Please select a scenario to explore.");
                     return;
                 }
+                if(cm=="ManningRiver"&&scenario=="water_risk"){
+                    alert("Currently, Water Related Health Risk due to Poor Ecosystem Health module is not available for Manning Catchment. Please select another scenario.");
+                    return;
+                }
                 document.getElementById("iframe").src = "../" + catchment + "/"+ catchment + "_scenario_" + scenario + ".php";
             }
         </script>
@@ -59,7 +63,7 @@
                                         <select id="select_catchment" style="width:140px" onchange="scenario_selection()">
                                             <option value="default">-----CATCHMENT-----</option>
                                             <option value="MacquarieBogan">Macquarie</option>
-                                            <!--<option value="ManningRiver">Manning</option>-->
+                                            <option value="ManningRiver">Manning</option>
                                         </select><br/><br/>
                                         <h5><b>Select the Scenario You Want to Explore</b></h5>
                                         <table>

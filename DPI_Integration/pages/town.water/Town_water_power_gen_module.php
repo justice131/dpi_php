@@ -323,12 +323,12 @@ and open the template in the editor.
                 popupAnchor:  [0, -30] 
             }); 
 
-            var Icon_reg = L.icon({
-                iconUrl: '../../lib/leaflet/images/reg.png',
-                iconSize:     [16, 27], 
-                iconAnchor:   [8, 27],  
-                popupAnchor:  [0, -34] 
-            });
+//            var Icon_reg = L.icon({
+//                iconUrl: '../../lib/leaflet/images/reg.png',
+//                iconSize:     [16, 27], 
+//                iconAnchor:   [8, 27],  
+//                popupAnchor:  [0, -34] 
+//            });
             
             var Icon_reg = L.icon({
                 iconUrl: '../../lib/leaflet/images/R.png',
@@ -345,21 +345,21 @@ and open the template in the editor.
             });
             
             var Icon_unreg_red = L.icon({
-                iconUrl: '../../lib/leaflet/images/U_red.png',
+                iconUrl: '../../lib/leaflet/images/U.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_unreg_orange = L.icon({
-                iconUrl: '../../lib/leaflet/images/U_orange.png',
+                iconUrl: '../../lib/leaflet/images/U.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 
             });
             
             var Icon_unreg_green = L.icon({
-                iconUrl: '../../lib/leaflet/images/U_green.png',
+                iconUrl: '../../lib/leaflet/images/U.png',
                 iconSize:     [17, 18.2], 
                 iconAnchor:   [8.5, 9.1],  
                 popupAnchor:  [0, -10] 

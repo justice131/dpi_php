@@ -10,6 +10,10 @@ and open the template in the editor.
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <script type="text/javascript" src="../../border/Macquarie_Wetland.geojson"></script>
         <script type="text/javascript" src="../../border/Manning_Wetland.geojson"></script>
+        <script type="text/javascript" src="../../border/Macquarie_HEVAE.geojson"></script>
+        <script type="text/javascript" src="../../border/Manning_HEVAE.geojson"></script>
+        <script type="text/javascript" src="../../border/Macquarie_risk.geojson"></script>
+        <script type="text/javascript" src="../../border/Manning_risk.geojson"></script>
         <script type="text/javascript" src="../../common.scripts/settings.js"></script>
         <style>
             .hover_info {
@@ -79,13 +83,25 @@ and open the template in the editor.
 					<div class="box-content">
                                             <div id="map"></div>
 					</div>
-                                        <!--<div id="MacquarieBogan">-->
-<!--                                                <input type="checkbox" id="Regulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_regulated('Regulated-CAT-MacquarieBogan')"> <font size="2">Regulated </font></br>       
+                                        <div id="MacquarieBogan">
+                                                <input type="checkbox" id="CEA" onclick="show_gis_cea_mac('CEA')"> <font size="2">Critical Environmental Assets</font></br>       
+                                                <input type="checkbox" id="HEVAE" onclick="show_gis_hevae_mac('HEVAE')"> <font size="2">HEVAE</font></br>   
+                                                <input type="checkbox" id="Risk" onclick="show_gis_risk_mac('Risk')"> <font size="2">River Risk</font>
+                                        </div>
+                                    
+                                        <div id="ManningRiver">
+                                                <input type="checkbox" id="CEA_MAN" onclick="show_gis_cea_man('CEA_MAN')"> <font size="2">Critical Environmental Assets</font></br>       
+                                                <input type="checkbox" id="HEVAE_MAN" onclick="show_gis_hevae_man('HEVAE_MAN')"> <font size="2">HEVAE</font></br>   
+                                                <input type="checkbox" id="Risk_MAN" onclick="show_gis_risk_man('Risk_MAN')"> <font size="2">River Risk</font>
+                                        </div>
+                                    
+<!--                                        <div id="MacquarieBogan">
+                                                <input type="checkbox" id="Regulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_regulated('Regulated-CAT-MacquarieBogan')"> <font size="2">Regulated </font></br>       
                                                 <input type="checkbox" id="Unregulated-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_unregulated('Unregulated-CAT-MacquarieBogan')"> <font size="2">Unregulated </font></br>   
-                                                <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   -->
-<!--                                                <input type="checkbox" id="Work-approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_workapprovals('Work-approvals-CAT-MacquarieBogan')"> <font size="2">License </font></br>
-                                                <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_approvals('Approvals-CAT-MacquarieBogan')"> <font size="2">Work approvals </font>-->
-                                        <!--</div>-->
+                                                <input type="checkbox" id="Groundwater-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_groundwater('Groundwater-CAT-MacquarieBogan')"> <font size="2">Groundwater </font></span></br>   
+                                                <input type="checkbox" id="Work-approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_workapprovals('Work-approvals-CAT-MacquarieBogan')"> <font size="2">License </font></br>
+                                                <input type="checkbox" id="Approvals-CAT-MacquarieBogan" onclick="show_gis_MacquarieBogan_approvals('Approvals-CAT-MacquarieBogan')"> <font size="2">Work approvals </font>
+                                        </div>-->
         
                                         <!--<div id="ManningRiver">-->
 <!--                                                <input type="checkbox" id="Regulated-CAT-Manning" onclick="show_gis_Manning_regulated('Regulated-CAT-Manning')"> <font size="2">Regulated </font></br>
@@ -161,6 +177,10 @@ and open the template in the editor.
             var Manning_Groundwater = Manning_Groundwater;
             var Macquarie_Wetland = Macquarie_Wetland;
             var Manning_Wetland = Manning_Wetland;
+            var Mac_HEVAE = Mac_hevae;
+            var Mac_risk = Mac_risk;
+            var Man_HEVAE = Man_hevae;
+            var Man_risk = Man_risk;
 
             // Show preloader
             $(window).load(function() {
@@ -168,14 +188,14 @@ and open the template in the editor.
             });
             
             var elem_ov = document.createElement("div");
-            elem_ov.setAttribute('id', 'irr_legend');
-            elem_ov.innerHTML = (
-                    '<img src="../../images/green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Floodplain wetland<br>'+
-                    '<img src="../../images/blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Reservoir<br>'+
-                    '<img src="../../images/purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Freshwater lake<br>'+
-                    '<img src="../../images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coastal lagoons and lakes<br>'+
-                    '<img src="../../images/cyan.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Estuarine wetland<div style="height:2px;"><br></div'
-                    );
+//            elem_ov.setAttribute('id', 'irr_legend');
+//            elem_ov.innerHTML = (
+//                    '<img src="../../images/green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Floodplain wetland<br>'+
+//                    '<img src="../../images/blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Reservoir<br>'+
+//                    '<img src="../../images/purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Freshwater lake<br>'+
+//                    '<img src="../../images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coastal lagoons and lakes<br>'+
+//                    '<img src="../../images/cyan.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Estuarine wetland<div style="height:2px;"><br></div'
+//                    );
 //            document.getElementById("legend").appendChild(elem_ov);
             
             var map = L.map('map',{zoomControl: false}).setView([-32.4, 148.1], 6.5);
@@ -362,6 +382,12 @@ and open the template in the editor.
                 popupAnchor:  [0, -10] 
             });
             
+            var myCols = [
+                    '#ff3333',//Red
+                    '#ff8533',//Orange
+                    '#33ff33'//Green
+            ];
+            
             function inside (point, vs) {
                 var x = point[0], y = point[1];
                 var inside = false;
@@ -397,6 +423,18 @@ and open the template in the editor.
                     window.location.href = "Environmental_module.php";
                 }
                 //Edited by justice
+            }
+            
+            function getColor_hevae(value){
+                if (value>=0 & value <0.33){
+                    return '#33ff33';
+                }else if(value>=0.33 & value <0.6){
+                    return '#ff8533';
+                }else if (value>=0.6){
+                    return '#ff3333';
+                }else if (value===null){
+                    return 'black';
+                }
             }
             
             function getColor(Color_crop){
@@ -466,34 +504,34 @@ and open the template in the editor.
                     show_gis_MacquarieBogan_unregulated();
                     show_gis_MacquarieBogan_groundwater();
                     
-                    Environment = L.geoJSON(Macquarie_Wetland, {
-                        //style: function (feature) {
-                        //        return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};                               
-                       // },
-                        onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color: getColor(feature.properties.GROUP_), weight: 1.0, fillOpacity: 0.8});
-                            return layer.bindPopup('Name: ' + feature.properties.NAME + '<br/>' 
-                                    + 'Type: ' + feature.properties.GROUP_ + '<br/>' 
-                                    + 'Area: ' + toThousands(Math.round(feature.properties.HECTARES*100)/100) + ' Ha');
-                        }
-                        }).addTo(map);
+//                    Environment = L.geoJSON(Macquarie_Wetland, {
+//                        //style: function (feature) {
+//                        //        return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};                               
+//                       // },
+//                        onEachFeature: function onEach(feature, layer){
+//                            layer.setStyle({color: getColor(feature.properties.GROUP_), weight: 1.0, fillOpacity: 0.8});
+//                            return layer.bindPopup('Name: ' + feature.properties.NAME + '<br/>' 
+//                                    + 'Type: ' + feature.properties.GROUP_ + '<br/>' 
+//                                    + 'Area: ' + toThousands(Math.round(feature.properties.HECTARES*100)/100) + ' Ha');
+//                        }
+//                        }).addTo(map);
                 } 
                 
                 if(CATName === 'ManningRiver'){
                     show_gis_Manning_unregulated();
                     show_gis_Manning_groundwater();
                     
-                    Environment = L.geoJSON(Manning_Wetland, {
-                        //style: function (feature) {
-                        //        return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};
-                        //},
-                        onEachFeature: function onEach(feature, layer){
-                            layer.setStyle({color: getColor(feature.properties.GROUP_), weight: 1.0, fillOpacity: 0.8});
-                            return layer.bindPopup('Name: ' + feature.properties.NAME + '<br/>' 
-                                    + 'Type: ' + feature.properties.GROUP_ + '<br/>' 
-                                    + 'Area: ' + toThousands(Math.round(feature.properties.HECTARES*100)/100) + ' Ha');
-                        }
-                        }).addTo(map);
+//                    Environment = L.geoJSON(Manning_Wetland, {
+//                        //style: function (feature) {
+//                        //        return { color: getRandomColor(), weight: 0.5, fillOpacity: 0.4};
+//                        //},
+//                        onEachFeature: function onEach(feature, layer){
+//                            layer.setStyle({color: getColor(feature.properties.GROUP_), weight: 1.0, fillOpacity: 0.8});
+//                            return layer.bindPopup('Name: ' + feature.properties.NAME + '<br/>' 
+//                                    + 'Type: ' + feature.properties.GROUP_ + '<br/>' 
+//                                    + 'Area: ' + toThousands(Math.round(feature.properties.HECTARES*100)/100) + ' Ha');
+//                        }
+//                        }).addTo(map);
                 } 
                 //Zooms to the layer selected
                 if (CATName==="MacquarieBogan"){
@@ -504,14 +542,14 @@ and open the template in the editor.
                     map.setView([-31.75, 151.9],10);                   
                 }
                 
-                hover_info.addTo(map);
+//                hover_info.addTo(map);
                 if (checkbox_id !== null){
                     checkbox_id.style.display = "block";
                 }
                 //Reset to default checkbox
                 $("input[type=checkbox]").each(function() { this.checked=false; });
                 featureCATCollection.push(CAT);
-                featureCATCollection.push(Environment);
+                //featureCATCollection.push(Environment);
                 displayedCAT.push(CATName);
                 check_collection.push(checkbox_id);
                 // Remove other's layers
@@ -594,9 +632,144 @@ and open the template in the editor.
                 }, "").replace(/\,$/g, ""); 
                     return mask + temp + decimal; 
             }
+            
+            //display environmental assets info
+            var featureCEACollection = []; 
+            function show_gis_cea_mac(id){
+                var checkBox = document.getElementById(id); 
+                document.getElementById("legend").appendChild(elem_ov);
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'cea');
+                elem.innerHTML = (
+                        '<img src="../../images/green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Floodplain wetland<br>'+
+                        '<img src="../../images/blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Reservoir<br>'+
+                        '<img src="../../images/purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Freshwater lake<br>'+
+                        '<img src="../../images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coastal lagoons and lakes<br>'+
+                        '<img src="../../images/cyan.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Estuarine wetland<div style="height:2px;"><br></div'
+                        );
+                if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
+                    var Environment = L.geoJSON(Macquarie_Wetland, {
+                        onEachFeature: function onEach(feature, layer){
+                            layer.setStyle({color: getColor(feature.properties.GROUP_), weight: 1.0, fillOpacity: 0.8});
+                            return layer.bindPopup('Name: ' + feature.properties.NAME + '<br/>' 
+                                    + 'Type: ' + feature.properties.GROUP_ + '<br/>' 
+                                    + 'Area: ' + toThousands(Math.round(feature.properties.HECTARES*100)/100) + ' Ha');
+                        }
+                        }).addTo(map);
+                    featureCEACollection.push(Environment);
+                    hover_info.addTo(map);
+                }
+                if (checkBox.checked === false){
+                    removeLayer(featureCEACollection);
+                    var elementToBeRemoved = document.getElementById('cea');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                    map.removeControl(hover_info);
+                }
+            }
+            
+            var featureCEACollection = []; 
+            function show_gis_cea_man(id){
+                var checkBox = document.getElementById(id); 
+                document.getElementById("legend").appendChild(elem_ov);
+                var elem = document.createElement("div");
+                elem.setAttribute('id', 'cea');
+                elem.innerHTML = (
+                        '<img src="../../images/green.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Floodplain wetland<br>'+
+                        '<img src="../../images/blue.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Reservoir<br>'+
+                        '<img src="../../images/purple.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Freshwater lake<br>'+
+                        '<img src="../../images/brown.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Coastal lagoons and lakes<br>'+
+                        '<img src="../../images/cyan.png"  width="13" height="13" align = "center">&nbsp; &nbsp;Estuarine wetland<div style="height:2px;"><br></div'
+                        );
+                if (checkBox.checked === true){
+                    document.getElementById("legend").appendChild(elem);
+                    var Environment = L.geoJSON(Manning_Wetland, {
+                        onEachFeature: function onEach(feature, layer){
+                            layer.setStyle({color: getColor(feature.properties.GROUP_), weight: 1.0, fillOpacity: 0.8});
+                            return layer.bindPopup('Name: ' + feature.properties.NAME + '<br/>' 
+                                    + 'Type: ' + feature.properties.GROUP_ + '<br/>' 
+                                    + 'Area: ' + toThousands(Math.round(feature.properties.HECTARES*100)/100) + ' Ha');
+                        }
+                        }).addTo(map);
+                    featureCEACollection.push(Environment);
+                    hover_info.addTo(map);
+                }
+                if (checkBox.checked === false){
+                    removeLayer(featureCEACollection);
+                    var elementToBeRemoved = document.getElementById('cea');
+                    document.getElementById('legend').removeChild(elementToBeRemoved);
+                    map.removeControl(hover_info);
+                }
+            }
+            
+            //display HEVAE
+            var featureHEVAECollection = []; 
+            function show_gis_hevae_mac(id){
+                var checkBox = document.getElementById(id);
+                if (checkBox.checked === true){
+                    var HEVAE = L.geoJSON(Mac_HEVAE,{
+                        onEachFeature: function onEach(feature, layer){
+                            layer.setStyle({color: getColor_hevae(feature.properties.HEVAE_Inst), weight: 1.0, fillOpacity: 0.8});
+                        }
+                    }).addTo(map);
+                    featureHEVAECollection.push(HEVAE);
+                }
+                if (checkBox.checked === false){
+                    removeLayer(featureHEVAECollection);
+                }
+            }
+            
+            var featureHEVAECollection = []; 
+            function show_gis_hevae_man(id){
+                var checkBox = document.getElementById(id);
+                if (checkBox.checked === true){
+                    var HEVAE = L.geoJSON(Man_HEVAE,{
+                        onEachFeature: function onEach(feature, layer){
+                            layer.setStyle({color: getColor_hevae(feature.properties.HEVAE_Inst), weight: 1.0, fillOpacity: 0.8});
+                        }
+                    }).addTo(map);
+                    featureHEVAECollection.push(HEVAE);
+                }
+                if (checkBox.checked === false){
+                    removeLayer(featureHEVAECollection);
+                }
+            }
+            
+            //display RISK
+            var featureRISKCollection = []; 
+            function show_gis_risk_mac(id){
+                var checkBox = document.getElementById(id);
+                if (checkBox.checked === true){
+                    var RISK = L.geoJSON(Mac_risk,{
+                        onEachFeature: function onEach(feature, layer){
+                            layer.setStyle({color: getColor_hevae(feature.properties.RISK_OVERA), weight: 1.0, fillOpacity: 0.8});
+                        }
+                    }).addTo(map);
+                    featureRISKCollection.push(RISK);
+                }
+                if (checkBox.checked === false){
+                    removeLayer(featureRISKCollection);
+                }
+            }
+            
+            var featureRISKCollection = []; 
+            function show_gis_risk_man(id){
+                var checkBox = document.getElementById(id);
+                if (checkBox.checked === true){
+                    var RISK = L.geoJSON(Man_risk,{
+                        onEachFeature: function onEach(feature, layer){
+                            layer.setStyle({color: getColor_hevae(feature.properties.RISK_OVERA), weight: 1.0, fillOpacity: 0.8});
+                        }
+                    }).addTo(map);
+                    featureRISKCollection.push(RISK);
+                }
+                if (checkBox.checked === false){
+                    removeLayer(featureRISKCollection);
+                }
+            }
+                      
                                            
-            //display regulated info for MacquarieBogan
-                     
+            //display regulated info for MacquarieBogan                    
             function show_gis_MacquarieBogan_regulated(){
                 var displayed_gis_layer_regulated = []; 
 //                var checkBox = document.getElementById(id); 

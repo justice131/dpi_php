@@ -197,8 +197,8 @@ and open the template in the editor.
                             opacity: showIt(1),
                             color: 'white',
                             dashArray: '3',
-                            fillOpacity: 0.8 * showIt(feature.properties.FUI/100),
-                            fillColor: getColorScalar(feature.properties.FUI/100)
+                            fillOpacity: 0.8 * showIt(feature.properties.FUI),
+                            fillColor: getColorScalar(feature.properties.FUI)
                     };
             }
             var max_row=0;//Get the row number of ranking file
@@ -254,7 +254,7 @@ and open the template in the editor.
                             right: 1,
                             bottom: 15
                     })
-                    .color(function (d) { return getColorScalar(d.FUI/100) });
+                    .color(function (d) { return getColorScalar(d.FUI) });
 
 
             //Read data for parallel coordinate

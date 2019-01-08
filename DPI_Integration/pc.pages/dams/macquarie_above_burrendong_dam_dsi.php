@@ -19,7 +19,7 @@ and open the template in the editor.
 				<div class="box">
 					<div class="box-title">
                                             <div id="s0_title">
-                                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Burrendong--Water risk due to drought</span>
+                                                <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Burrendong--Risk to catchment due to drought</span>
                                             </div>
 					</div>
 					<div class="box-content">

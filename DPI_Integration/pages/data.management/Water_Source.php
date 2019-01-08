@@ -60,7 +60,7 @@
                         $irrigable_area=$result_arr['irrigable_area'];
                         $wetland_area=$result_arr['wetland_area'];
                         echo "<tr><td>$id</td><td>$catchment</td><td>$water_source</td>"
-                            . "<td>$longterm_extraction_limit</td><td>$unreg_entitlement</td><td>mean_flow</td>"
+                            . "<td>$longterm_extraction_limit</td><td>$unreg_entitlement</td><td>$mean_flow</td>"
                             . "<td>$FUI</td><td>$DSI</td>"
                             . "<td>$irrigable_area</td><td>$wetland_area</td><tr>";
                     }

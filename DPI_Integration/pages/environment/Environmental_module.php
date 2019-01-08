@@ -6,7 +6,7 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Critical Environmental Assets</title>
+        <title>Environmental Assessment</title>
         <?php include("../../common.scripts/all_import_scripts.html"); ?>
         <script type="text/javascript" src="../../border/Macquarie_Wetland.geojson"></script>
         <script type="text/javascript" src="../../border/Manning_Wetland.geojson"></script>
@@ -78,20 +78,20 @@ and open the template in the editor.
 			<div class="box-container" style="width:83.5%" id="map_panel">
 				<div class="box">
 					<div id="map_title" class="box-title">
-						<h4><b>Critical Environmental Assets</b></h4>
+						<h4><b>Environmental Assessment</b></h4>
 					</div>
 					<div class="box-content">
                                             <div id="map"></div>
 					</div>
                                         <div id="MacquarieBogan">
                                                 <input type="checkbox" id="CEA" onclick="show_gis_cea_mac('CEA')"> <font size="2">Critical Environmental Assets</font></br>       
-                                                <input type="checkbox" id="HEVAE" onclick="show_gis_hevae_mac('HEVAE')"> <font size="2">HEVAE</font></br>   
+                                                <input type="checkbox" id="HEVAE" onclick="show_gis_hevae_mac('HEVAE')"> <font size="1">HEVAE (High Ecological Value Aquatic Ecosystem)</font></br>   
                                                 <input type="checkbox" id="Risk" onclick="show_gis_risk_mac('Risk')"> <font size="2">River Risk</font>
                                         </div>
                                     
                                         <div id="ManningRiver">
                                                 <input type="checkbox" id="CEA_MAN" onclick="show_gis_cea_man('CEA_MAN')"> <font size="2">Critical Environmental Assets</font></br>       
-                                                <input type="checkbox" id="HEVAE_MAN" onclick="show_gis_hevae_man('HEVAE_MAN')"> <font size="2">HEVAE</font></br>   
+                                                <input type="checkbox" id="HEVAE_MAN" onclick="show_gis_hevae_man('HEVAE_MAN')"> <font size="1">HEVAE (High Ecological Value Aquatic Ecosystem)</font></br>   
                                                 <input type="checkbox" id="Risk_MAN" onclick="show_gis_risk_man('Risk_MAN')"> <font size="2">River Risk</font>
                                         </div>
                                     

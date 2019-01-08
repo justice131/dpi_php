@@ -388,6 +388,21 @@ and open the template in the editor.
                     '#33ff33'//Green
             ];
             
+            var ylegend_h = L.control({position: 'bottomright'});//Legend
+            ylegend_h.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'ylegend_h');
+                div.innerHTML +="<img src=\"../../images/index_icons/legend_hevae.jpg\" width=\"135px\" height=\"105px\"/>";
+                return div;
+            };
+            
+            var ylegend_r = L.control({position: 'bottomright'});//Legend
+            ylegend_r.onAdd = function (map) {
+                var div = L.DomUtil.create('div', 'ylegend_r');
+                div.innerHTML +="<img src=\"../../images/index_icons/legend_risk.jpg\" width=\"135px\" height=\"110px\"/>";
+                return div;
+            };
+            
+            
             function inside (point, vs) {
                 var x = point[0], y = point[1];
                 var inside = false;
@@ -707,6 +722,8 @@ and open the template in the editor.
             function show_gis_hevae_mac(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){
+                    ylegend_h.addTo(map);//add index icon
+                    
                     var HEVAE = L.geoJSON(Mac_HEVAE,{
                         onEachFeature: function onEach(feature, layer){
                             layer.setStyle({color: getColor_hevae(feature.properties.HEVAE_Inst), weight: 1.0, fillOpacity: 0.8});
@@ -716,6 +733,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     removeLayer(featureHEVAECollection);
+                    map.removeControl(ylegend_h);
                 }
             }
             
@@ -723,6 +741,8 @@ and open the template in the editor.
             function show_gis_hevae_man(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){
+                    ylegend_h.addTo(map);//add index icon
+                    
                     var HEVAE = L.geoJSON(Man_HEVAE,{
                         onEachFeature: function onEach(feature, layer){
                             layer.setStyle({color: getColor_hevae(feature.properties.HEVAE_Inst), weight: 1.0, fillOpacity: 0.8});
@@ -732,6 +752,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     removeLayer(featureHEVAECollection);
+                    map.removeControl(ylegend_h);
                 }
             }
             
@@ -740,6 +761,8 @@ and open the template in the editor.
             function show_gis_risk_mac(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){
+                    ylegend_r.addTo(map);//add index icon
+                     
                     var RISK = L.geoJSON(Mac_risk,{
                         onEachFeature: function onEach(feature, layer){
                             layer.setStyle({color: getColor_hevae(feature.properties.RISK_OVERA), weight: 1.0, fillOpacity: 0.8});
@@ -749,6 +772,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     removeLayer(featureRISKCollection);
+                    map.removeControl(ylegend_r);
                 }
             }
             
@@ -756,6 +780,7 @@ and open the template in the editor.
             function show_gis_risk_man(id){
                 var checkBox = document.getElementById(id);
                 if (checkBox.checked === true){
+                    ylegend_r.addTo(map);//add index icon
                     var RISK = L.geoJSON(Man_risk,{
                         onEachFeature: function onEach(feature, layer){
                             layer.setStyle({color: getColor_hevae(feature.properties.RISK_OVERA), weight: 1.0, fillOpacity: 0.8});
@@ -765,6 +790,7 @@ and open the template in the editor.
                 }
                 if (checkBox.checked === false){
                     removeLayer(featureRISKCollection);
+                    map.removeControl(ylegend_r);
                 }
             }
                       

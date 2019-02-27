@@ -122,6 +122,8 @@ $sql = "CREATE TABLE IF NOT EXISTS water_source( ".
     "DSI FLOAT, ".
     "irrigable_area FLOAT, ".
     "wetland_area FLOAT, ".
+    "infrastructure_upgrade_schedule VARCHAR(50), ".
+    "estimated_infrastructure_upgrade VARCHAR(50), ".
     "PRIMARY KEY (id))ENGINE=InnoDB DEFAULT CHARSET=utf8; ";
 mysqli_query($conn,$sql);
 

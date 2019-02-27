@@ -41,6 +41,8 @@
                         <th>wetland_area</th>
                         <th>infrastructure_upgrade_schedule</th>
                         <th>estimated_infrastructure_upgrade</th>
+                        <th>average_risk</th>
+                        <th>max_risk</th>
                     <tr>
                 </thead>
                 <tbody>
@@ -63,11 +65,14 @@
                         $wetland_area=$result_arr['wetland_area'];
                         $infrastructure_upgrade_schedule=$result_arr['infrastructure_upgrade_schedule'];
                         $estimated_infrastructure_upgrade=$result_arr['estimated_infrastructure_upgrade'];
+                        $average_risk=$result_arr['average_risk'];
+                        $max_risk=$result_arr['max_risk'];
                         echo "<tr><td>$id</td><td>$catchment</td><td>$water_source</td>"
                             . "<td>$longterm_extraction_limit</td><td>$unreg_entitlement</td><td>$mean_flow</td>"
                             . "<td>$FUI</td><td>$DSI</td>"
                             . "<td>$irrigable_area</td><td>$wetland_area</td>"
-                            . "<td>$infrastructure_upgrade_schedule</td><td>$estimated_infrastructure_upgrade</td><tr>";
+                            . "<td>$infrastructure_upgrade_schedule</td><td>$estimated_infrastructure_upgrade</td>"
+                            . "<td>$average_risk</td><td>$max_risk</td><tr>";
                     }
                 ?>
                 </tbody>

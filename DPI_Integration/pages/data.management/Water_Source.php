@@ -39,6 +39,8 @@
                         <th>DSI</th>
                         <th>irrigable_area</th>
                         <th>wetland_area</th>
+                        <th>infrastructure_upgrade_schedule</th>
+                        <th>estimated_infrastructure_upgrade</th>
                     <tr>
                 </thead>
                 <tbody>
@@ -59,10 +61,13 @@
                         $DSI=$result_arr['DSI'];   
                         $irrigable_area=$result_arr['irrigable_area'];
                         $wetland_area=$result_arr['wetland_area'];
+                        $infrastructure_upgrade_schedule=$result_arr['infrastructure_upgrade_schedule'];
+                        $estimated_infrastructure_upgrade=$result_arr['estimated_infrastructure_upgrade'];
                         echo "<tr><td>$id</td><td>$catchment</td><td>$water_source</td>"
                             . "<td>$longterm_extraction_limit</td><td>$unreg_entitlement</td><td>$mean_flow</td>"
                             . "<td>$FUI</td><td>$DSI</td>"
-                            . "<td>$irrigable_area</td><td>$wetland_area</td><tr>";
+                            . "<td>$irrigable_area</td><td>$wetland_area</td>"
+                            . "<td>$infrastructure_upgrade_schedule</td><td>$estimated_infrastructure_upgrade</td><tr>";
                     }
                 ?>
                 </tbody>

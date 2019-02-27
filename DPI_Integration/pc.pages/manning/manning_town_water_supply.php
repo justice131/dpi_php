@@ -20,7 +20,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div>
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Manning Catchment--Opportunity of mining</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Town Water Supply Insight for Manning Catchment--Opportunity</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">
@@ -32,7 +32,7 @@ and open the template in the editor.
                 <div class="box">
                     <div class="box-title">
                         <div>
-                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Water Source of Manning Catchment--Risk to Mining</span>
+                            <span style="font-size:18px; font-weight:bold; margin-bottom: 0; height: 48px;">Town Water Supply Insight for Manning Catchment--Risk</span>
                         </div>
                     </div>
                     <div class="box-content" style="padding: 10px 10px 10px 20px;">

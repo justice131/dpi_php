@@ -1,4 +1,4 @@
 /* 
  * Javascript settings
  */
-heightRatio = 0.9;
+heightRatio = 1.1;

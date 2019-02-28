@@ -1105,8 +1105,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_1["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_1["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_1["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
 
                     <?php if(!empty($lga_1)){?>
@@ -1159,8 +1159,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_2["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_2["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_2["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1235,8 +1235,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_3["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_3["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     var Mak_uw_4 = L.marker(unregulated_3, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
@@ -1267,8 +1267,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_4["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_4["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_4["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1321,8 +1321,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_5["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_5["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_5["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1375,8 +1375,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_6["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_6["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_6["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1429,8 +1429,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_7["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_7["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_7["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1483,8 +1483,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_8["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_8["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_8["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1538,8 +1538,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_9["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_9["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_9["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1592,8 +1592,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_10["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_10["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_10["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1646,8 +1646,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_11["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_11["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_11["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1700,8 +1700,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_12["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_12["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_12["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1754,8 +1754,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_13["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_13["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_13["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1808,8 +1808,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_14["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_14["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_14["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1862,8 +1862,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_15["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_15["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_15["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1916,8 +1916,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_16["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_16["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_16["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1971,8 +1971,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_17["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_17["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_17["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_17["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2025,8 +2025,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_18["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_18["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_18["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_18["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2079,8 +2079,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_19["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_19["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_19["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_19["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2133,8 +2133,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_20["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_20["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_20["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_20["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2187,8 +2187,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_21["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_21["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_21["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_21["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2241,8 +2241,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_22["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_22["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_22["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_22["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2295,8 +2295,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_23["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_23["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_23["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_23["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2349,8 +2349,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_24["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_24["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_24["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_24["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2403,8 +2403,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_25["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_25["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_25["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_25["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2457,8 +2457,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_26["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_26["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_26["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_26["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2511,8 +2511,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_27["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_27["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_27["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_27["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2565,8 +2565,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_28["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_28["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_28["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_28["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2619,8 +2619,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_29["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_29["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_29["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_29["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                     
                     <?php if(!empty($lga_1)){?>
@@ -3196,8 +3196,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_1["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_1["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_1["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?>  
                         
                     <?php if(!empty($lga_2)){?>
@@ -3250,8 +3250,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_2["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_2["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_2["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3304,8 +3304,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_3["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_3["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3358,8 +3358,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_4["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_4["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_4["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3412,8 +3412,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_5["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_5["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_5["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3466,8 +3466,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_6["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_6["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_6["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3521,8 +3521,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_7["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_7["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_7["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3575,8 +3575,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_8["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_8["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_8["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3629,8 +3629,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_9["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_9["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_9["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3683,8 +3683,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_10["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_10["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_10["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3737,8 +3737,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_11["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_11["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_11["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3792,8 +3792,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_12["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_12["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_12["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?>
                         
                     <?php if(!empty($lga_2)){?>
@@ -3846,8 +3846,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_13["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_13["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_13["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3900,8 +3900,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_14["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_14["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_14["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3954,8 +3954,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_15["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_15["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_15["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                     
                     <?php if(!empty($lga_2)){?>
@@ -4008,8 +4008,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_16["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
-                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
-                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
+                        var IUS ="<?php echo $ro_16["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_16["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>

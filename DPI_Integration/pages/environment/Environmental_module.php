@@ -1138,6 +1138,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_0["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_0["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_0["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_0["max_risk"]; ?>";
                     <?php }?>  
                     
                     <?php if(!empty($lga_1)){?>
@@ -1171,7 +1173,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_1);
 
                     <?php if(!empty($ro_1)){?>
@@ -1183,6 +1188,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_1["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_1["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_1["max_risk"]; ?>";
                     <?php }?> 
 
                     <?php if(!empty($lga_1)){?>
@@ -1216,7 +1223,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_2);
 
                     <?php if(!empty($ro_2)){?>
@@ -1228,6 +1238,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_2["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_2["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_2["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1261,7 +1273,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_3);
 
                     <?php if(!empty($lga_1)){?>
@@ -1295,6 +1310,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_3["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_3["max_risk"]; ?>";
                     <?php }?> 
                     var Mak_uw_4 = L.marker(unregulated_3, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
@@ -1305,7 +1322,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_4);
 
                     <?php if(!empty($ro_4)){?>
@@ -1317,6 +1337,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_4["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_4["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_4["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1350,7 +1372,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));     
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );    
 //                    markersLayer.addLayer(Mak_uw_5);
 
                     <?php if(!empty($ro_5)){?>
@@ -1362,6 +1387,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_5["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_5["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_5["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1395,7 +1422,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_6);
 
                     <?php if(!empty($ro_6)){?>
@@ -1407,6 +1437,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_6["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_6["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_6["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1440,7 +1472,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_7);
  
                      <?php if(!empty($ro_7)){?>
@@ -1452,6 +1487,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_7["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_7["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_7["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1485,7 +1522,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));  
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_8);
 
                     <?php if(!empty($ro_8)){?>
@@ -1497,6 +1537,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_8["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_8["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_8["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1531,7 +1573,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_9);
                     
                     <?php if(!empty($ro_9)){?>
@@ -1543,6 +1588,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_9["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_9["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_9["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1576,7 +1623,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_10);
             
                      <?php if(!empty($ro_10)){?>
@@ -1588,6 +1638,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_10["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_10["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_10["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1621,7 +1673,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_11);
             
                     <?php if(!empty($ro_11)){?>
@@ -1633,6 +1688,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_11["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_11["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_11["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1666,7 +1723,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_12);
             
                     <?php if(!empty($ro_12)){?>
@@ -1678,6 +1738,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_12["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_12["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_12["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1711,7 +1773,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_13);
  
                      <?php if(!empty($ro_13)){?>
@@ -1723,6 +1788,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_13["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_13["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_13["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1756,7 +1823,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_14);
 
                     <?php if(!empty($ro_14)){?>
@@ -1768,6 +1838,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_14["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_14["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_14["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1801,7 +1873,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_15);
 
                     <?php if(!empty($ro_15)){?>
@@ -1813,6 +1888,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_15["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_15["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_15["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1846,7 +1923,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_16);
 
                     <?php if(!empty($ro_16)){?>
@@ -1858,6 +1938,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_16["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_16["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_16["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1892,7 +1974,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_17);
  
                     <?php if(!empty($ro_17)){?>
@@ -1904,6 +1989,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_17["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_17["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_17["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_17["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1937,7 +2024,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_18);
  
                      <?php if(!empty($ro_18)){?>
@@ -1949,6 +2039,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_18["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_18["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_18["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_18["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1982,7 +2074,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_19);
 
                     <?php if(!empty($ro_19)){?>
@@ -1994,6 +2089,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_19["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_19["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_19["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_19["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2027,7 +2124,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_20);
 
                     <?php if(!empty($ro_20)){?>
@@ -2039,6 +2139,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_20["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_20["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_20["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_20["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2072,7 +2174,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_21);
 
                     <?php if(!empty($ro_21)){?>
@@ -2084,6 +2189,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_21["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_21["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_21["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_21["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2117,7 +2224,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_22);
 
                     <?php if(!empty($ro_22)){?>
@@ -2129,6 +2239,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_22["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_22["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_22["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_22["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2162,7 +2274,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_23);
  
                      <?php if(!empty($ro_23)){?>
@@ -2174,6 +2289,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_23["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_23["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_23["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_23["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2207,7 +2324,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_24);
  
                      <?php if(!empty($ro_24)){?>
@@ -2219,6 +2339,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_24["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_24["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_24["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_24["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2252,7 +2374,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_25);
 
                     <?php if(!empty($ro_25)){?>
@@ -2264,6 +2389,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_25["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_25["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_25["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_25["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2297,7 +2424,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_26);
 
                     <?php if(!empty($ro_26)){?>
@@ -2309,6 +2439,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_26["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_26["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_26["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_26["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2342,7 +2474,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_27);
 
                     <?php if(!empty($ro_27)){?>
@@ -2354,6 +2489,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_27["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_27["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_27["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_27["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2387,7 +2524,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_28);
 
                     <?php if(!empty($ro_28)){?>
@@ -2399,6 +2539,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_28["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_28["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_28["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_28["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2432,7 +2574,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_29);
 
                     <?php if(!empty($ro_29)){?>
@@ -2444,6 +2589,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_29["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_29["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_29["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_29["max_risk"]; ?>";
                     <?php }?> 
                     
                     <?php if(!empty($lga_1)){?>
@@ -2477,7 +2624,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_uw_30);
             
                     displayed_gis_layer_unregulated.push(Mak_uw_1);
@@ -2956,6 +3106,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_1["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_1["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_1["max_risk"]; ?>";
                     <?php }?>  
                         
                     <?php if(!empty($lga_2)){?>
@@ -2989,7 +3141,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_1);
 
                     <?php if(!empty($ro_2)){?>
@@ -3001,6 +3156,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_2["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_2["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_2["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3034,7 +3191,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_2);
 
                     <?php if(!empty($ro_3)){?>
@@ -3046,6 +3206,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_3["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_3["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3079,7 +3241,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_3);
   
                     <?php if(!empty($ro_4)){?>
@@ -3091,6 +3256,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_4["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_4["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_4["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3124,7 +3291,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_4);
             
                     <?php if(!empty($ro_5)){?>
@@ -3136,6 +3306,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_5["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_5["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_5["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3169,7 +3341,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_5);
   
                     <?php if(!empty($ro_6)){?>
@@ -3181,6 +3356,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_6["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_6["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_6["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3215,7 +3392,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_6);
    
                     <?php if(!empty($ro_7)){?>
@@ -3227,6 +3407,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_7["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_7["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_7["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3260,7 +3442,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_7);
    
                     <?php if(!empty($ro_8)){?>
@@ -3272,6 +3457,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_8["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_8["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_8["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3305,7 +3492,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_8);
   
                     <?php if(!empty($ro_9)){?>
@@ -3317,6 +3507,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_9["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_9["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_9["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3350,7 +3542,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_9);
    
                     <?php if(!empty($ro_10)){?>
@@ -3362,6 +3557,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_10["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_10["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_10["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3395,7 +3592,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_10);
   
                     <?php if(!empty($ro_11)){?>
@@ -3407,6 +3607,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_11["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_11["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_11["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3441,7 +3643,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_11);
    
                     <?php if(!empty($ro_12)){?>
@@ -3453,6 +3658,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_12["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_12["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_12["max_risk"]; ?>";
                     <?php }?>
                         
                     <?php if(!empty($lga_2)){?>
@@ -3486,7 +3693,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_12);
   
                     <?php if(!empty($ro_13)){?>
@@ -3498,6 +3708,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_13["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_13["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_13["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3531,7 +3743,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_13);
   
                     <?php if(!empty($ro_14)){?>
@@ -3543,6 +3758,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_14["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_14["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_14["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3576,7 +3793,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_14);
                     
                     <?php if(!empty($ro_15)){?>
@@ -3588,6 +3808,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_15["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_15["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_15["max_risk"]; ?>";
                     <?php }?> 
                     
                     <?php if(!empty($lga_2)){?>
@@ -3621,7 +3843,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_15);
  
                     <?php if(!empty($ro_16)){?>
@@ -3633,6 +3858,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_16["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var AR ="<?php echo $ro_16["average_risk"]; ?>";
+                        var MR ="<?php echo $ro_16["max_risk"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3666,7 +3893,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
+                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    );
 //                    markersLayer.addLayer(Mak_16);
             
                     displayed_gis_layer_unregulated.push(Mak_1);

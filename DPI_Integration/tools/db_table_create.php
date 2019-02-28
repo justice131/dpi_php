@@ -114,7 +114,7 @@ mysqli_query($conn,$sql);
 $sql = "CREATE TABLE IF NOT EXISTS water_source( ".
     "id INT NOT NULL AUTO_INCREMENT, ".
     "catchment VARCHAR(50), ".
-    "water_source VARCHAR(50), ".
+    "water_source VARCHAR(100), ".
     "longterm_extraction_limit FLOAT, ".
     "unreg_entitlement FLOAT, ".
     "mean_flow FLOAT, ".

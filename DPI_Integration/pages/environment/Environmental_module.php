@@ -1174,8 +1174,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_1);
 
@@ -1224,8 +1224,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_2);
 
@@ -1274,8 +1274,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_3);
 
@@ -1323,8 +1323,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_4);
 
@@ -1373,8 +1373,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );    
 //                    markersLayer.addLayer(Mak_uw_5);
 
@@ -1423,8 +1423,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_6);
 
@@ -1473,8 +1473,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_7);
  
@@ -1523,8 +1523,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_8);
 
@@ -1574,8 +1574,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_9);
                     
@@ -1624,8 +1624,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_10);
             
@@ -1674,8 +1674,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_11);
             
@@ -1724,8 +1724,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_12);
             
@@ -1774,8 +1774,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_13);
  
@@ -1824,8 +1824,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_14);
 
@@ -1874,8 +1874,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_15);
 
@@ -1924,8 +1924,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_16);
 
@@ -1975,8 +1975,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_17);
  
@@ -2025,8 +2025,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_18);
  
@@ -2075,8 +2075,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_19);
 
@@ -2125,8 +2125,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_20);
 
@@ -2175,8 +2175,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_21);
 
@@ -2225,8 +2225,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_22);
 
@@ -2275,8 +2275,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_23);
  
@@ -2325,8 +2325,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_24);
  
@@ -2375,8 +2375,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_25);
 
@@ -2425,8 +2425,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_26);
 
@@ -2475,8 +2475,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_27);
 
@@ -2525,8 +2525,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_28);
 
@@ -2575,8 +2575,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_29);
 
@@ -2625,8 +2625,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_uw_30);
             
@@ -3142,8 +3142,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_1);
 
@@ -3192,8 +3192,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_2);
 
@@ -3242,8 +3242,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_3);
   
@@ -3292,8 +3292,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_4);
             
@@ -3342,8 +3342,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_5);
   
@@ -3393,8 +3393,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_6);
    
@@ -3443,8 +3443,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_7);
    
@@ -3493,8 +3493,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_8);
   
@@ -3543,8 +3543,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_9);
    
@@ -3593,8 +3593,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_10);
   
@@ -3644,8 +3644,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_11);
    
@@ -3694,8 +3694,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_12);
   
@@ -3744,8 +3744,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_13);
   
@@ -3794,8 +3794,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_14);
                     
@@ -3844,8 +3844,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_15);
  
@@ -3894,8 +3894,8 @@ and open the template in the editor.
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
                     + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
-                    + 'River Risk: ' + Math.round((AR*100)*10)/10 + ' % (Average)<br/>'
-                    + 'River Risk: ' + Math.round((MR*100)*10)/10 + ' % (Maximum)'
+                    + 'River Risk: ' + Math.round(AR*100)/100 + ' (Average)<br/>'
+                    + 'River Risk: ' + Math.round(MR*100)/100 + ' (Maximum)'
                     );
 //                    markersLayer.addLayer(Mak_16);
             

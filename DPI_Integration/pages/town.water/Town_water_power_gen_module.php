@@ -1518,6 +1518,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_0["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_0["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_0["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_0["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?>  
                     
                     <?php if(!empty($lga_1)){?>
@@ -1551,7 +1553,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_1);
 
                     <?php if(!empty($ro_1)){?>
@@ -1563,6 +1568,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_1["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_1["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_1["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
 
                     <?php if(!empty($lga_1)){?>
@@ -1596,7 +1603,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_2);
 
                     <?php if(!empty($ro_2)){?>
@@ -1608,6 +1618,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_2["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_2["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_2["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1641,7 +1653,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_3);
 
                     <?php if(!empty($lga_1)){?>
@@ -1675,6 +1690,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_3["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_3["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                     var Mak_uw_4 = L.marker(unregulated_3, {icon: icon_unreg(UE/AE), water_source: MacquarieBogan_unregulated.features[3].properties.WATER_SOUR}).addTo(map)
                     .bindPopup('<b>' + MacquarieBogan_unregulated.features[3].properties.WATER_SOUR+ '</b><br/><br/>' 
@@ -1685,7 +1702,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_4);
 
                     <?php if(!empty($ro_4)){?>
@@ -1697,6 +1717,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_4["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_4["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_4["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1730,7 +1752,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));     
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );   
 //                    markersLayer.addLayer(Mak_uw_5);
 
                     <?php if(!empty($ro_5)){?>
@@ -1742,6 +1767,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_5["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_5["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_5["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1775,7 +1802,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_6);
 
                     <?php if(!empty($ro_6)){?>
@@ -1787,6 +1817,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_6["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_6["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_6["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1820,7 +1852,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_7);
  
                      <?php if(!empty($ro_7)){?>
@@ -1832,6 +1867,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_7["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_7["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_7["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1865,7 +1902,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));  
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    ); 
 //                    markersLayer.addLayer(Mak_uw_8);
 
                     <?php if(!empty($ro_8)){?>
@@ -1877,6 +1917,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_8["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_8["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_8["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1911,7 +1953,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_9);
                     
                     <?php if(!empty($ro_9)){?>
@@ -1923,6 +1968,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_9["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_9["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_9["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -1956,7 +2003,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_10);
             
                      <?php if(!empty($ro_10)){?>
@@ -1968,6 +2018,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_10["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_10["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_10["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2001,7 +2053,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_11);
             
                     <?php if(!empty($ro_11)){?>
@@ -2013,6 +2068,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_11["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_11["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_11["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2046,7 +2103,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_12);
             
                     <?php if(!empty($ro_12)){?>
@@ -2058,6 +2118,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_12["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_12["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_12["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2091,7 +2153,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_13);
  
                      <?php if(!empty($ro_13)){?>
@@ -2103,6 +2168,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_13["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_13["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_13["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2136,7 +2203,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_14);
 
                     <?php if(!empty($ro_14)){?>
@@ -2148,6 +2218,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_14["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_14["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_14["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2181,7 +2253,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_15);
 
                     <?php if(!empty($ro_15)){?>
@@ -2193,6 +2268,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_15["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_15["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_15["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2226,7 +2303,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_16);
 
                     <?php if(!empty($ro_16)){?>
@@ -2238,6 +2318,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_16["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_16["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_16["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2272,7 +2354,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_17);
  
                     <?php if(!empty($ro_17)){?>
@@ -2284,6 +2369,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_17["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_17["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_17["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_17["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2317,7 +2404,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_18);
  
                      <?php if(!empty($ro_18)){?>
@@ -2329,6 +2419,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_18["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_18["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_18["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_18["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2362,7 +2454,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_19);
 
                     <?php if(!empty($ro_19)){?>
@@ -2374,6 +2469,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_19["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_19["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_19["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_19["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2407,7 +2504,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_20);
 
                     <?php if(!empty($ro_20)){?>
@@ -2419,6 +2519,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_20["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_20["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_20["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_20["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2452,7 +2554,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_21);
 
                     <?php if(!empty($ro_21)){?>
@@ -2464,6 +2569,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_21["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_21["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_21["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_21["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2497,7 +2604,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_22);
 
                     <?php if(!empty($ro_22)){?>
@@ -2509,6 +2619,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_22["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_22["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_22["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_22["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2542,7 +2654,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_23);
  
                      <?php if(!empty($ro_23)){?>
@@ -2554,6 +2669,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_23["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_23["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_23["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_23["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2587,7 +2704,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_24);
  
                      <?php if(!empty($ro_24)){?>
@@ -2599,6 +2719,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_24["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_24["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_24["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_24["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2632,7 +2754,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_25);
 
                     <?php if(!empty($ro_25)){?>
@@ -2644,6 +2769,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_25["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_25["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_25["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_25["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2677,7 +2804,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_26);
 
                     <?php if(!empty($ro_26)){?>
@@ -2689,6 +2819,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_26["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_26["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_26["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_26["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2722,7 +2854,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_27);
 
                     <?php if(!empty($ro_27)){?>
@@ -2734,6 +2869,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_27["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_27["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_27["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_27["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2767,7 +2904,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_28);
 
                     <?php if(!empty($ro_28)){?>
@@ -2779,6 +2919,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_28["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_28["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_28["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_28["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_1)){?>
@@ -2812,7 +2954,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_29);
 
                     <?php if(!empty($ro_29)){?>
@@ -2824,6 +2969,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_29["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_29["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_29["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_29["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                     
                     <?php if(!empty($lga_1)){?>
@@ -2857,7 +3004,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_uw_30);
             
                     displayed_gis_layer_unregulated.push(Mak_uw_1);
@@ -3622,6 +3772,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_1["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_1["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_1["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_1["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?>  
                         
                     <?php if(!empty($lga_2)){?>
@@ -3655,7 +3807,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_1);
 
                     <?php if(!empty($ro_2)){?>
@@ -3667,6 +3822,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_2["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_2["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_2["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_2["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3700,7 +3857,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_2);
 
                     <?php if(!empty($ro_3)){?>
@@ -3712,6 +3872,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_3["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_3["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_3["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_3["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3745,7 +3907,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_3);
   
                     <?php if(!empty($ro_4)){?>
@@ -3757,6 +3922,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_4["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_4["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_4["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_4["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3790,7 +3957,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_4);
             
                     <?php if(!empty($ro_5)){?>
@@ -3802,6 +3972,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_5["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_5["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_5["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_5["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3835,7 +4007,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_5);
   
                     <?php if(!empty($ro_6)){?>
@@ -3847,6 +4022,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_6["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_6["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_6["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_6["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3881,7 +4058,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_6);
    
                     <?php if(!empty($ro_7)){?>
@@ -3893,6 +4073,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_7["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_7["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_7["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_7["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3926,7 +4108,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_7);
    
                     <?php if(!empty($ro_8)){?>
@@ -3938,6 +4123,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_8["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_8["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_8["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_8["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -3971,7 +4158,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_8);
   
                     <?php if(!empty($ro_9)){?>
@@ -3983,6 +4173,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_9["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_9["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_9["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_9["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4016,7 +4208,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_9);
    
                     <?php if(!empty($ro_10)){?>
@@ -4028,6 +4223,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_10["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_10["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_10["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_10["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4061,7 +4258,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_10);
   
                     <?php if(!empty($ro_11)){?>
@@ -4073,6 +4273,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_11["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_11["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_11["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_11["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4107,7 +4309,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_11);
    
                     <?php if(!empty($ro_12)){?>
@@ -4119,6 +4324,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_12["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_12["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_12["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_12["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?>
                         
                     <?php if(!empty($lga_2)){?>
@@ -4152,7 +4359,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_12);
   
                     <?php if(!empty($ro_13)){?>
@@ -4164,6 +4374,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_13["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_13["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_13["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_13["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4197,7 +4409,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_13);
   
                     <?php if(!empty($ro_14)){?>
@@ -4209,6 +4424,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_14["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_14["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_14["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_14["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4242,7 +4459,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_14);
                     
                     <?php if(!empty($ro_15)){?>
@@ -4254,6 +4474,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_15["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_15["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_15["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_15["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                     
                     <?php if(!empty($lga_2)){?>
@@ -4287,7 +4509,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_15);
  
                     <?php if(!empty($ro_16)){?>
@@ -4299,6 +4524,8 @@ and open the template in the editor.
                         var IE ="<?php echo $ro_16["irrigable_area"]; ?>";
                         var WA ="<?php echo $ro_16["wetland_area"]; ?>";
                         var RA = (UE/AE)*100;
+                        var IUS ="<?php echo $ro_16["infrastructure_upgrade_schedule"]; ?>";
+                        var EIU ="<?php echo $ro_16["estimated_infrastructure_upgrade"]; ?>";
                     <?php }?> 
                         
                     <?php if(!empty($lga_2)){?>
@@ -4332,7 +4559,10 @@ and open the template in the editor.
                     + 'DSI: ' + toThousands(Math.round(DS*100)/100) + '<br/>'
                     + 'Irrigable Area: ' + toThousands(IE)+ ' Ha' + '<br/>'
                     + 'Wetland Area: ' + toThousands(WA)+ ' Ha' + '<br/>'
-                    + 'Population: ' + toThousands(Math.round(Population)));
+                    + 'Population: ' + toThousands(Math.round(Population))+ '<br/>'
+                    + 'Infrastructure Upgrade Schedule : ' + IUS+ '<br/>'
+                    + 'Estimated Infrastructure Upgrade : ' + EIU
+                    );
 //                    markersLayer.addLayer(Mak_16);
             
                     displayed_gis_layer_unregulated.push(Mak_1);
